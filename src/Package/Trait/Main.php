@@ -1,5 +1,5 @@
 <?php
-namespace Package\Raxon\App\Filemanager\Trait;
+namespace Package\Raxon\Filemanager\Trait;
 
 use Raxon\App;
 use Raxon\Config;
@@ -24,6 +24,7 @@ use Exception;
 
 
 trait Main {
+    const NAME = 'Filemanager';
 
     /**
      * @throws DirectoryCreateException
@@ -90,7 +91,7 @@ trait Main {
             $object->config('ds')
         ;
         $dir_target = $dir_application .
-            'Filemanager' .
+            self::NAME .
             $object->config('ds')
         ;
         if(!File::exist($dir_target)){

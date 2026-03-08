@@ -1,6 +1,6 @@
 {
-    "name" : "raxon_app/filemanager",
-    "description" : "raxon_app/filemanager see https://raxon.org for detailed usage",
+    "name" : "raxon/filemanager",
+    "description" : "raxon/filemanager see https://raxon.org for detailed usage",
     "type" : "application",
     "keywords" : ["application", "filemanager", "raxon", "library", "framework", "domain","raxon.org"],
     "homepage": "https://raxon.org",

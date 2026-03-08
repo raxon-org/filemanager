@@ -1,0 +1,69 @@
+{{$options = options()}}
+<?php
+namespace Domain\{{php.namespace.host($options.frontend.host)}}\Application\FileManager\Controller;
+
+use Raxon\App;
+use Raxon\Module\Controller;
+
+use Raxon\Exception\LocateException;
+use Raxon\Exception\UrlEmptyException;
+use Raxon\Exception\UrlNotExistException;
+use Raxon\Exception\ObjectException;
+use Raxon\Exception\FileWriteException;
+
+class Manager extends Controller {
+    const DIR = __DIR__ . DIRECTORY_SEPARATOR;
+
+    /**
+     * @throws LocateException
+     * @throws ObjectException
+     * @throws UrlEmptyException
+     * @throws UrlNotExistException
+     * @throws FileWriteException
+     */
+    public static function main(App $object){
+        $name = Manager::name(__FUNCTION__ , __CLASS__, '/');
+        $url = Manager::locate($object, $name);
+        return Manager::response($object, $url);
+    }
+
+    /**
+     * @throws LocateException
+     * @throws ObjectException
+     * @throws UrlEmptyException
+     * @throws UrlNotExistException
+     * @throws FileWriteException
+     */
+    public static function list_directory(App $object){
+        $name = Manager::name(__FUNCTION__ , __CLASS__, '/');
+        $url = Manager::locate($object, $name);
+        $object->config('response.url', $url);
+        return Manager::response($object, $url);
+    }
+
+    /**
+     * @throws LocateException
+     * @throws ObjectException
+     * @throws UrlEmptyException
+     * @throws UrlNotExistException
+     * @throws FileWriteException
+     */
+    public static function list_file(App $object){
+        $name = Manager::name(__FUNCTION__ , __CLASS__, '/');
+        $url = Manager::locate($object, $name);
+        return Manager::response($object, $url);
+    }
+
+    /**
+     * @throws LocateException
+     * @throws ObjectException
+     * @throws UrlEmptyException
+     * @throws UrlNotExistException
+     * @throws FileWriteException
+     */
+    public static function address_bar(App $object){
+        $name = Manager::name(__FUNCTION__ , __CLASS__, '/');
+        $url = Manager::locate($object, $name);
+        return Manager::response($object, $url);
+    }
+}

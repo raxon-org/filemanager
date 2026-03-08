@@ -1,0 +1,32 @@
+{
+  "name": "ROLE_SYSTEM",
+  "rank": 1,
+  "#class": "Account.Role",
+  "permission": [
+    {
+      "name": "FileSystem:update",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "FileSystem:create",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "FileSystem:rename",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "FileSystem:copy",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "FileSystem:delete",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "FileSystem:read",
+      "#class": "Account.Permission",
+      "#comment": "Application PhotoViewer read"
+    }
+  ]
+}

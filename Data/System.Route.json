@@ -1,0 +1,19 @@
+{
+  "System": {
+    "Route": [
+      {
+        "#class": "System.Route",
+        "name": "raxon-org-cli-application-filemanager",
+        "path": "raxon_app\/filemanager",
+        "controller": "Package:Raxon:App:Filemanager:Controller:Cli:run",
+        "priority": 1001,
+        "request": {
+          "language": "en"
+        },
+        "method": [
+          "CLI"
+        ]
+      }
+    ]
+  }
+}

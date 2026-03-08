@@ -1,0 +1,78 @@
+{{$backend.host = options('backend.host')}}{{literal}}
+//{{RAX}}
+import { address } from "/Application/Filemanager/Module/Address.js";
+import { directory } from "/Application/Filemanager/Module/Directory.js";
+import { file } from "/Application/Filemanager/Module/File.js";
+import { head } from "/Application/Filemanager/Module/Head.js";
+import { menu } from "/Application/Filemanager/Module/Menu.js";
+import { root } from "/Module/Web.js";
+import { taskbar } from "/Application/Desktop/Module/Taskbar.js";
+import { task } from "/Application/Desktop/Module/Task.js";
+import { dialog } from "/Dialog/Module/Dialog.js";
+import { language, translation } from "/Module/Translation.js";
+import { version } from "/Module/Priya.js";
+import user from "/Module/User.js";
+require(
+    [
+        root() + 'Application/Filemanager/Css/Indent.css?' + version(),
+        root() + 'Application/Filemanager/Css/Filemanager.css?' + version(),
+        root() + 'Dialog/Css/Dialog.css?' + version(),
+        root() + 'Js/Dropzone/5.9.2/min/dropzone.min.css?' + version(),
+        root() + 'Js/Dropzone/5.9.2/min/dropzone.min.js?' + version()
+    ],
+    function(){
+        user.refreshUrl("{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}User/Refresh/Token/");
+        user.loginUrl("{{route.get('user-login')}}");
+        language("{{language()}}");
+        translation.import("{{raw|>translation.export('json-line')}}");
+        let active = file.data.get('active') ?? [];
+        active.push("{{$id}}");
+        file.data.set({
+            "controller" : "{{raw|>object(config('controller'), 'json-line')}}",
+            "section.id" : "{{$id}}",
+            "active": active,
+            "route.backend.directory" : "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/List/Directory/",
+            "route.backend.file.list": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/List/File/",
+            "route.backend.file.create.directory": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/Directory/",
+            "route.backend.file.create.file": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/File/",
+            "route.backend.file.rename": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/Rename/",
+            "route.backend.file.copy": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/Copy/",
+            "route.backend.file.delete": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/",
+            "route.backend.extension": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}Entity/Extension/",
+            "route.backend.tree": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/List/Tree/",
+            "route.backend.upload": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/Upload/",
+            "route.backend.context.menu": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}FileSystem/ContextMenu/",
+            "route.frontend.address.bar":"{{route.get($section.name + '-address-bar')}}",
+            "route.frontend.directory":"{{route.get($section.name + '-list-directory')}}",
+            "route.frontend.file.list": "{{route.get($section.name + '-list-file')}}",
+            "route.frontend.application": "{{route.get('application-open')}}",
+            "route.frontend.open": "{{route.get($section.name + '-file-open')}}",
+            "upload.max.filesize": 10486
+        });
+        task.active({
+            "id": "{{$id}}",
+            "namespace": "{{$section.name}}",
+            "config": {
+                "url": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}Application/Config/Filemanager/"
+            },
+            "sse" : {
+                "url": "{{server.url('{{/literal}}{{$backend.host}}{{literal}}')}}Task/?user.key=" + user.get('key') + '&channel=' + "{{$id}}",
+
+            }
+        }, (config) => {
+            console.log(config);
+            taskbar.add("{{$section.name}}", "{{$id}}");
+            menu.init();
+            head.init();
+            address.read(config);
+            directory.read();
+            dialog.init("{{$id}}");
+//file.section_active("{{$id}}");
+            taskbar.active("{{$id}}");
+        });
+
+
+
+
+    });
+{{/literal}}

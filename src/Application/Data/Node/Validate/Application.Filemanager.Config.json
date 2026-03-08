@@ -1,0 +1,116 @@
+{
+    "Application": {
+        "Filemanager": {
+            "Config": {
+                "create": {
+                    "validate": {
+                        "uuid": [
+                            {
+                                "is.uuid": true
+                            }
+                        ],
+                        "name": [
+                            {
+                                "is.unique": {
+                                    "class": "Application.Filemanager.Config",
+                                    "attribute": [
+                                        "user",
+                                        "name"
+                                    ]
+                                }
+                            },
+                            {
+                                "string.length": ">=1"
+                            },
+                            {
+                                "string.length": "<=63"
+                            }
+                        ],
+                        "user": [
+                            {
+                                "is.uuid": true
+                            }
+                        ],
+                        "options": [
+                            {
+                                "is.object": true
+                            }
+                        ]
+                    }
+                },
+                "put": {
+                    "validate": {
+                        "uuid": [
+                            {
+                                "is.uuid": true
+                            }
+                        ],
+                        "name": [
+                            {
+                                "is.unique": {
+                                    "class": "Application.Filemanager.Config",
+                                    "attribute": [
+                                        "user",
+                                        "name"
+                                    ]
+                                }
+                            },
+                            {
+                                "string.length": ">=1"
+                            },
+                            {
+                                "string.length": "<=63"
+                            }
+                        ],
+                        "user": [
+                            {
+                                "is.uuid": true
+                            }
+                        ],
+                        "options": [
+                            {
+                                "is.object": true
+                            }
+                        ]
+                    }
+                },
+                "patch": {
+                    "validate": {
+                        "uuid": [
+                            {
+                                "is.uuid": true
+                            }
+                        ],
+                        "?name": [
+                            {
+                                "is.unique": {
+                                    "class": "Application.Filemanager.Config",
+                                    "attribute": [
+                                        "user",
+                                        "name"
+                                    ]
+                                }
+                            },
+                            {
+                                "string.length": ">=1"
+                            },
+                            {
+                                "string.length": "<=63"
+                            }
+                        ],
+                        "?user": [
+                            {
+                                "is.uuid": true
+                            }
+                        ],
+                        "?options": [
+                            {
+                                "is.object": true
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

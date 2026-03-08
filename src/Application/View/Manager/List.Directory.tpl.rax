@@ -1,0 +1,102 @@
+{{$backend.host = options('backend.host')}}{{literal}}{{RAX}}
+{{require(config('controller.dir.view') + config('controller.title') + '/Init.tpl')}}
+{{script('module')}}
+import { directory } from "/Application/Filemanager/Module/Directory.js";
+directory.open();
+{{/script}}
+{{$request = request()}}
+{{if(!is.empty($request.dir))}}
+    {{if(is.array($request.nodeList.tree))}}
+        {{$indent = (int) $request.indent}}
+        {{$li.data.indent = $indent + 1}}
+        {{foreach($request.nodeList.tree as $nr => $file)}}
+            {{if ($file.has_sub_dir)}}
+                {{$li.class = 'bind indent indent-' + $indent + ' expand'}}
+                {{$li.data.url = server.url('{{/literal}}{{$backend.host}}{{literal}}') + 'FileSystem/List/Directory/'}}
+                {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
+                {{$li.data.dir = $file.url}}
+                {{$li.data.target = "section[id='" + $id + "'] ul.tree section[data-dir='" + $li.data.dir + "']"}}
+                {{$li.data.method = "replace"}}
+                {{file.manager.tree.directory($file, $li, 'has_sub_dir')}}
+            {{else}}
+                {{$li.class = 'bind indent indent-' + $indent}}
+                {{$li.data.url = server.url('{{/literal}}{{$backend.host}}{{literal}}') + 'FileSystem/List/Directory/'}}
+                {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
+                {{$li.data.dir = $file.url}}
+                {{$li.data.target = "section[id='" + $id + "'] ul.tree section[data-dir='" + $li.data.dir + "']"}}
+                {{$li.data.method = "replace"}}
+                {{file.manager.tree.directory($file, $li)}}
+            {{/if}}
+        {{/foreach}}
+    {{else.if(is.array($request.nodeList))}}
+        {{$indent = (int) $request.indent}}
+        {{$li.data.indent = $indent + 1}}
+        {{foreach($request.nodeList as $nr => $file)}}
+            {{if ($file.has_sub_dir)}}
+                {{$li.class = 'bind indent indent-' + $indent + ' expand'}}
+                {{$li.data.url = server.url('{{/literal}}{{$backend.host}}{{literal}}') + 'FileSystem/List/Directory/'}}
+                {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
+                {{$li.data.dir = $file.url}}
+                {{$li.data.target = "section[id='" + $id + "'] ul.tree section[data-dir='" + $li.data.dir + "']"}}
+                {{$li.data.method = "replace"}}
+                {{file.manager.tree.directory($file, $li, 'has_sub_dir')}}
+            {{else}}
+                {{$li.class = 'bind indent indent-' + $indent}}
+                {{$li.data.url = server.url('{{/literal}}{{$backend.host}}{{literal}}') + 'FileSystem/List/Directory/'}}
+                {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
+                {{$li.data.dir = $file.url}}
+                {{$li.data.target = "section[id='" + $id + "'] ul.tree section[data-dir='" + $li.data.dir + "']"}}
+                {{$li.data.method = "replace"}}
+                {{file.manager.tree.directory($file, $li)}}
+            {{/if}}
+        {{/foreach}}
+    {{/if}}
+{{else}}
+    {{$tree.default_url = '/'}}
+    {{$request.method = 'replace'}}
+    {{$request.target = html.target.create('section', ['id' => $id])}}
+    {{$request.target += ' .tree'}}
+    <ul class="{{config('controller.name')}}-manager-tree tree">
+        {{$indent = 0}}
+        {{if($request.nodeList.tree)}}
+            {{$li.data.indent = $indent + 1}}
+            {{$li.data.url = server.url('{{/literal}}{{$backend.host}}{{literal}}') + 'FileSystem/List/Directory/'}}
+            {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
+            {{foreach($request.nodeList.tree as $node)}}
+                {{$li.data.dir = $node.dir}}
+                {{$li.data.target = $node.target}}
+                {{$li.data.method = $node.method}}
+                {{$li.data.section.dir = $node.section.dir}}
+                {{if (is.set($node.rename))}}
+                    {{$li.data.rename = 'data-rename="false"'}}
+                {{else}}
+                    {{$li.data.rename = ''}}
+                {{/if}}
+                <li
+                    class="bind indent indent-{{$indent}} expand"
+                    data-url="{{$li.data.url}}"
+                    data-frontend-url="{{$li.data.frontend.url}}"
+                    data-target="{{$li.data.target}}"
+                    data-method="{{$li.data.method}}"
+                    data-dir="{{$li.data.dir}}"
+                    data-indent="{{$li.data.indent}}"
+                    data-section-dir="{{$li.data.section.dir}}"
+                    {{$li.data.rename}}
+                >
+                    <p>
+                        <span class="has-sub-dir expand">
+                            <i class="fas fa-angle-right"></i>
+                        </span>
+                        <span class="icon">
+                            <i class="{{$node.icon.class}}"></i>
+                        </span>
+                        <span class="name">{{$node.name}}</span>
+                        <span class="loader"></span>
+                    </p>
+                </li>
+                <section data-dir="{{$node.section.dir}}"></section>
+            {{/foreach}}
+        {{/if}}
+    </ul>
+{{/if}}
+{{/literal}}

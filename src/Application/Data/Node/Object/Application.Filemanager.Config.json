@@ -1,0 +1,141 @@
+{
+  "Node": {
+    "#class": "Application.Filemanager.Config",
+    "type": "object",
+    "property": [
+      {
+        "name": "options",
+        "type": "object",
+        "property": [
+          {
+            "name": "columns",
+            "type": "object",
+            "property": [
+              {
+                "name": "icon",
+                "type": "object",
+                "property": [
+                  {
+                    "name": "title",
+                    "type": "string"
+                  },
+                  {
+                    "name": "css",
+                    "type": "object",
+                    "property": [
+                      {
+                        "name": "min-width",
+                        "type": "string"
+                      }
+                    ]
+                  }
+                ]
+              },
+                {
+                    "name": "name",
+                    "type": "object",
+                    "property": [
+                        {
+                            "name": "title",
+                            "type": "string"
+                        },
+                        {
+                            "name": "css",
+                            "type": "object",
+                            "property": [
+                                {
+                                    "name": "min-width",
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "modified",
+                    "type": "object",
+                    "property": [
+                      {
+                        "name": "title",
+                        "type": "string"
+                      },
+                      {
+                        "name": "css",
+                        "type": "object",
+                        "property": [
+                          {
+                            "name": "min-width",
+                            "type": "string"
+                          }
+                        ]
+                      }
+                    ]
+                },
+                {
+                    "name": "type",
+                    "type": "object",
+                    "property": [
+                      {
+                        "name": "title",
+                        "type": "string"
+                      },
+                      {
+                        "name": "css",
+                        "type": "object",
+                        "property": [
+                          {
+                            "name": "min-width",
+                            "type": "string"
+                          }
+                        ]
+                      }
+                    ]
+                },
+                {
+                    "name": "size",
+                    "type": "object",
+                    "property": [
+                      {
+                        "name": "title",
+                        "type": "string"
+                      },
+                      {
+                        "name": "css",
+                        "type": "object",
+                        "property": [
+                          {
+                            "name": "min-width",
+                            "type": "string"
+                          }
+                        ]
+                      }
+                    ]
+                }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "user",
+        "type": "string"
+      },
+      {
+        "name": "uuid",
+        "type": "uuid"
+      },
+      {
+        "name": "#class",
+        "type": "string"
+      }
+    ]
+  },
+  "sort": [
+    "user"
+  ],
+  "is.unique": [
+    "user"
+  ],
+  "sync" : {
+    "interval": 60
+  }
+}

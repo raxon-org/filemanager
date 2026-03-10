@@ -243,6 +243,7 @@ trait Main {
     public function get_users($role=''): array
     {
         $object = $this->object();
+        $list = [];
         switch($role){
             case 'ROLE_ADMIN':
                 $node = new Node($object);
@@ -253,31 +254,37 @@ trait Main {
                         'name' => 'ROLE_ADMIN'
                     ]
                 ]);
-                ddd($response);
+                if(
+                    array_key_exists('node', $response) &&
+                    is_object($response['node'])
+                ){
+                    $table = 'user';
+                    $options = (object) [];
+                    $options->relation = true;
+                    $config = Database::config($object);
+                    $connection = $object->config('doctrine.environment.system.*');
+                    $em = Database::entity_manager($object, $config, $connection);
+                    $entity = str_replace('.', '', Controller::name($table));
+                    $object->request('entity', $entity);
+                    $object->request('filter', [
+                        'role' => $response['node']->uuid,
+                    ]);
+                    /*
+                        'where' => [
+                        [
+                            'attribute' => 'uuid',
+                            'operator' => 'in',
+                            'value' => $item->getRole()
+                        ]
+                    ],
+                    */
 
+                    $list = Entity::list($object, $em, $node->role_system(), $options);
+                    ddd($list);
 
-                $table = 'user';
-                $options = (object) [];
-                $options->relation = true;
-                $config = Database::config($object);
-                $connection = $object->config('doctrine.environment.system.*');
-                $em = Database::entity_manager($object, $config, $connection);
-                $entity = str_replace('.', '', Controller::name($table));
-                $object->request('entity', $entity);
-
-            /*
-                'where' => [
-                [
-                    'attribute' => 'uuid',
-                    'operator' => 'in',
-                    'value' => $item->getRole()
-                ]
-            ],
-            */
-
-                $list = Entity::list($object, $em, $node->role_system(), $options);
-                ddd($list);
+                }
         }
+        return $list;
     }
 
 

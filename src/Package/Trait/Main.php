@@ -286,11 +286,7 @@ trait Main {
                     $list = Entity::list($object, $em, $node->role_system(), $options);
                     if(array_key_exists('nodeList', $list)){
                         foreach($list['nodeList'] as $nr => $item){
-                            if(array_key_exists('role', $item)){
-                                foreach($item['role'] as $role){
-                                    d($role->name);
-                                }
-                            }
+                            breakpoint($item);
                         }
                     }
                 }

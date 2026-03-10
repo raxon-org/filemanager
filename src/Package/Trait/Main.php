@@ -266,9 +266,11 @@ trait Main {
                     $em = Database::entity_manager($object, $config, $connection);
                     $entity = str_replace('.', '', Controller::name($table));
                     $object->request('entity', $entity);
-                    $object->request('filter', [
-                        'role' => [
-                            $response['node']->uuid,
+                    $object->request('where', [
+                        [
+                            'attribute' => 'role',
+                            'operator' => '===',
+                            'value' => 'JSON_CONTAINS("' . $entity  .'.role", "' .$response['node']->uuid.'") = 1'
                         ]
                     ]);
                     /*

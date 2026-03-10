@@ -284,14 +284,16 @@ trait Main {
                     */
 
                     $list = Entity::list($object, $em, $node->role_system(), $options);
-                    ddd($list);
-                    foreach($list as $nr => $item){
-                        if(property_exists($item, 'role')){
-                            foreach($item->role as $role){
-                                d($role->name);
+                    if(array_key_exists('nodeList', $list)){
+                        foreach($list['nodeList'] as $nr => $item){
+                            if(property_exists($item, 'role')){
+                                foreach($item->role as $role){
+                                    d($role->name);
+                                }
                             }
                         }
                     }
+
                 }
         }
         return $list;

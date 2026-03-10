@@ -209,7 +209,28 @@ trait Main {
         }
         // get all admin users
 
-        $users = $this->get_users('ROLE_ADMIN');
+        $list = $this->get_users('ROLE_ADMIN');
+        if(array_key_exists('nodeList', $list)){
+            foreach($list['nodeList'] as $nr => $user){
+                if(array_key_exists('uuid', $user)){
+                    $node = new Node($object);
+                    $class = 'Application.Desktop.Navigation';
+                    $role = $node->role_system();
+                    $response = $node->record(
+                        $class,
+                        $role,
+                        [
+                            'filter' => [
+                                'name' => self::NAME,
+                                'user' => $user['uuid']
+                            ],
+                            'relation' => false
+                        ]
+                    );
+                    breakpoint($response);
+                }
+            }
+        }
 
 
 
@@ -220,20 +241,6 @@ trait Main {
 
 
 
-        $node = new Node($object);
-        $class = 'Application.Desktop.Navigation';
-        $role = $node->role_system();
-        $response = $node->record(
-            $class,
-            $role,
-            [
-                'filter' => [
-                    'name' => self::NAME,
-                    'user' => 'uuid'
-                ],
-                'relation' => false
-            ]
-        );
     }
 
     /**
@@ -273,23 +280,9 @@ trait Main {
                             'value' => 'JSON_CONTAINS("' . $entity  .'.role", "' .$response['node']->uuid.'") = 1'
                         ]
                     ]);
-                    /*
-                        'where' => [
-                        [
-                            'attribute' => 'uuid',
-                            'operator' => 'in',
-                            'value' => $item->getRole()
-                        ]
-                    ],
-                    */
-
                     $list = Entity::list($object, $em, $node->role_system(), $options);
-                    if(array_key_exists('nodeList', $list)){
-                        foreach($list['nodeList'] as $nr => $item){
-                            breakpoint($item);
-                        }
-                    }
                 }
+            break;
         }
         return $list;
     }

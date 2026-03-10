@@ -249,7 +249,7 @@ trait Main {
                 $options = (object) [];
                 $options->relation = true;
                 $config = Database::config($object);
-                $connection = $object->config('doctrine.environment.' . $options->connection . '.' . '*');
+                $connection = $object->config('doctrine.environment.system.*');
                 $em = Database::entity_manager($object, $config, $connection);
                 $entity = str_replace('.', '', Controller::name($table));
                 $object->request('entity', $entity);

@@ -267,7 +267,9 @@ trait Main {
                     $entity = str_replace('.', '', Controller::name($table));
                     $object->request('entity', $entity);
                     $object->request('filter', [
-                        'role' => $response['node']->uuid,
+                        'role' => [
+                            $response['node']->uuid,
+                        ]
                     ]);
                     /*
                         'where' => [

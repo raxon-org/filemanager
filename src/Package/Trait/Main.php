@@ -213,7 +213,6 @@ trait Main {
         if(array_key_exists('nodeList', $list)){
             foreach($list['nodeList'] as $nr => $user){
                 if(array_key_exists('uuid', $user)){
-                    breakpoint($user['uuid']);
                     $node = new Node($object);
                     $class = 'Application.Desktop.Navigation';
                     $role = $node->role_system();
@@ -237,7 +236,20 @@ trait Main {
                             'relation' => false
                         ]
                     );
-                    breakpoint($response);
+                    if($response === null){
+                        $record = [
+                            "name" => self::NAME,
+                            "user" => $user['uuid'],
+                            "route" => (object) [
+                                'name' => 'application.file.manager',
+                                'get' => '{{route.name($this.name)}}'
+                            ],
+                            "url" => '{{route.get($this.route.get)}}',
+                            "svg" => '/Application/' . self::NAME . '/Icon/Icon.png',
+                            "icon" => '/Application/' . self::NAME . '/Icon/Icon.png'
+                        ];
+                        $response = $node->create($class, $role, $record);
+                    }
                 }
             }
         }

@@ -288,7 +288,7 @@ trait Main {
                         foreach($list['nodeList'] as $nr => $item){
                             ddd($item);
                             if(array_key_exists('role', $item)){
-                                foreach($item['role'] as $nr => $role){
+                                foreach($item['role'] as $role){
                                     d($role);
                                 }
                             }

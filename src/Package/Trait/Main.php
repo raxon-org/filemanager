@@ -213,6 +213,7 @@ trait Main {
         if(array_key_exists('nodeList', $list)){
             foreach($list['nodeList'] as $nr => $user){
                 if(array_key_exists('uuid', $user)){
+                    breakpoint($user['uuid']);
                     $node = new Node($object);
                     $class = 'Application.Desktop.Navigation';
                     $role = $node->role_system();
@@ -220,9 +221,17 @@ trait Main {
                         $class,
                         $role,
                         [
-                            'filter' => [
-                                'name' => self::NAME,
-                                'user' => $user['uuid']
+                            'where' => [
+                                [
+                                    'attribute' => 'name',
+                                    'operator' => '===',
+                                    'value' => self::NAME,
+                                ],
+                                [
+                                    'attribute' => 'user',
+                                    'operator' => '===',
+                                    'value' => $user['uuid'],
+                                ]
                             ],
                             'relation' => false
                         ]

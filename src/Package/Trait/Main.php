@@ -245,6 +245,17 @@ trait Main {
         $object = $this->object();
         switch($role){
             case 'ROLE_ADMIN':
+                $node = new Node($object);
+                $class = 'Account.Role';
+                $role = $node->role_system();
+                $response = $node->record($class, $role, [
+                    'filter' => [
+                        'name' => 'ROLE_ADMIN'
+                    ]
+                ]);
+                ddd($response);
+
+
                 $table = 'user';
                 $options = (object) [];
                 $options->relation = true;
@@ -253,7 +264,17 @@ trait Main {
                 $em = Database::entity_manager($object, $config, $connection);
                 $entity = str_replace('.', '', Controller::name($table));
                 $object->request('entity', $entity);
-                $node = new Node($object);
+
+            /*
+                'where' => [
+                [
+                    'attribute' => 'uuid',
+                    'operator' => 'in',
+                    'value' => $item->getRole()
+                ]
+            ],
+            */
+
                 $list = Entity::list($object, $em, $node->role_system(), $options);
                 ddd($list);
         }

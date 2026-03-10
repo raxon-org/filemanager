@@ -4,11 +4,14 @@ namespace Package\Raxon\Filemanager\Trait;
 use Raxon\App;
 use Raxon\Config;
 
+use Raxon\Doctrine\Module\Database;
+use Raxon\Doctrine\Module\Entity;
 use Raxon\Exception\FileWriteException;
 use Raxon\Exception\DirectoryCreateException;
 use Raxon\Exception\ObjectException;
 
 use Raxon\Module\Cli;
+use Raxon\Module\Controller;
 use Raxon\Module\Data;
 use Raxon\Module\Dir;
 use Raxon\Module\Core;
@@ -204,6 +207,57 @@ trait Main {
         if($notification){
             echo $notification;
         }
+        // get all admin users
+
+        $users = $this->get_users('ROLE_ADMIN');
+
+
+
+
+
+
+
+
+
+
+        $node = new Node($object);
+        $class = 'Application.Desktop.Navigation';
+        $role = $node->role_system();
+        $response = $node->record(
+            $class,
+            $role,
+            [
+                'filter' => [
+                    'name' => self::NAME,
+                    'user' => 'uuid'
+                ],
+                'relation' => false
+            ]
+        );
     }
+
+    /**
+     * @throws ObjectException
+     * @throws Exception
+     */
+    public function get_users($role=''): array
+    {
+        $object = $this->object();
+        switch($role){
+            case 'ROLE_ADMIN':
+                $table = 'user';
+                $options = (object) [];
+                $options->relation = true;
+                $config = Database::config($object);
+                $connection = $object->config('doctrine.environment.' . $options->connection . '.' . '*');
+                $em = Database::entity_manager($object, $config, $connection);
+                $entity = str_replace('.', '', Controller::name($table));
+                $object->request('entity', $entity);
+                $node = new Node($object);
+                $list = Entity::list($object, $em, $node->role_system(), $options);
+                ddd($list);
+        }
+    }
+
 
 }

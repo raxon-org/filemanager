@@ -227,6 +227,7 @@ trait Main {
                                     'operator' => '===',
                                     'value' => self::NAME,
                                 ],
+                                'and',
                                 [
                                     'attribute' => 'user',
                                     'operator' => '===',

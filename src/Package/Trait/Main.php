@@ -287,14 +287,13 @@ trait Main {
                     if(array_key_exists('nodeList', $list)){
                         foreach($list['nodeList'] as $nr => $item){
                             ddd($item);
-                            if(property_exists($item, 'role')){
-                                foreach($item->role as $role){
-                                    d($role->name);
+                            if(array_key_exists('role', $item)){
+                                foreach($item['role'] as $nr => $role){
+                                    d($role);
                                 }
                             }
                         }
                     }
-
                 }
         }
         return $list;

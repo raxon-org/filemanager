@@ -209,7 +209,17 @@ trait Main {
         }
         // get all admin users
 
-        $list = $this->get_users('ROLE_ADMIN');
+        $list = $this->user_list('ROLE_ADMIN');
+        $this->navigation_create($list);
+    }
+
+    /**
+     * @throws ObjectException
+     * @throws Exception
+     */
+    public function navigation_create($list): void
+    {
+        $object = $this->object();
         if(array_key_exists('nodeList', $list)){
             foreach($list['nodeList'] as $nr => $user){
                 if(array_key_exists('uuid', $user)){
@@ -253,23 +263,13 @@ trait Main {
                 }
             }
         }
-
-
-
-
-
-
-
-
-
-
     }
 
     /**
      * @throws ObjectException
      * @throws Exception
      */
-    public function get_users($role=''): array
+    public function user_list($role=''): array
     {
         $object = $this->object();
         $list = [];

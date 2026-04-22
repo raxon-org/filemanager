@@ -1380,13 +1380,13 @@ file.download = async (element) => {
     });
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
-// Convert response to Blob
+    // Convert response to Blob
     const blob = await response.blob();
 
-// Create temporary URL
+    // Create temporary URL
     const blobUrl = URL.createObjectURL(blob);
 
-// Create anchor element for download
+    // Create anchor element for download
     const a = document.createElement('a');
     a.href = blobUrl;
     a.download = _('_').basename(url); // Change as needed

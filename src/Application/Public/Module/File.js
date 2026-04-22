@@ -705,6 +705,7 @@ file.context_menu_item = ({
                     }
                     case __('file.manager.contextmenu.share'): {
                         alert('share');
+                        file.download(element);
                         break;
                     }
                     case __('file.manager.contextmenu.delete'): {

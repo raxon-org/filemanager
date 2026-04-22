@@ -470,6 +470,11 @@ file.context_menu = ({
                     }
                     case __('file.manager.contextmenu.share'): {
                         alert('share');
+                        alert(element);
+
+
+
+
                         break;
                     }
                     case __('file.manager.contextmenu.delete'): {

@@ -1338,7 +1338,7 @@ file.delete = (element) => {
     });
 }
 
-file.download = (element) => {
+file.download = async (element) => {
     const section = getSectionById(file.data.get('section.id'));
     if(!section){
         return;
@@ -1372,30 +1372,29 @@ file.download = (element) => {
         //not sure yet, maybe an archive...
         return;
     }
+    const response = await fetch(route.url, {
+        headers: {
+            'Authorization': 'Bearer ' + token,
+            'Accept': 'application/octet-stream'
+        }
+    });
+    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
-    header("Authorization", 'Bearer ' + token);
-    request(route.url, node, (url, response) => {
-        console.log(response);
-
-        // Convert response to Blob
-        const blob = response.blob();
+// Convert response to Blob
+    const blob = await response.blob();
 
 // Create temporary URL
-        const blobUrl = URL.createObjectURL(blob);
+    const blobUrl = URL.createObjectURL(blob);
 
 // Create anchor element for download
-        const a = document.createElement('a');
-        a.href = blobUrl;
-        a.download = _('_').basename(url); // Change as needed
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-
-// Release memory
-        URL.revokeObjectURL(blobUrl);
-
-
-    });
+    const a = document.createElement('a');
+    a.href = blobUrl;
+    a.download = _('_').basename(url); // Change as needed
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    // Release memory
+    URL.revokeObjectURL(blobUrl);
 }
 
 file.rename = (element) => {

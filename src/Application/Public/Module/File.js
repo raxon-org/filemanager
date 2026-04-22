@@ -78,7 +78,7 @@ file.size = (size) => {
     return size;
 }
 
-file.context_menu = ({
+file.context_menu = async ({
     event,
     node,
     section,
@@ -469,7 +469,7 @@ file.context_menu = ({
                         break;
                     }
                     case __('file.manager.contextmenu.share'): {
-                        file.download(element);
+                        await file.download(element);
                         break;
                     }
                     case __('file.manager.contextmenu.delete'): {
@@ -797,9 +797,9 @@ file.list = (config, response) => {
             li.data('dir', node.url);
             li.data('type', node.type);
             create_ul.appendChild(li);
-            li.on('click', (event) => {
+            li.on('click', async (event) => {
                 //load context menu...
-                file.context_menu({
+                await file.context_menu({
                     'event' : event,
                     'node' : node,
                     'section' : section,

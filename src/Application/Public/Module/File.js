@@ -1389,7 +1389,8 @@ file.download = async (element) => {
     // Create anchor element for download
     const a = document.createElement('a');
     a.href = blobUrl;
-    a.download = _('_').basename(route.url); // Change as needed
+    console.log(_('_').basename(element.data('file')));
+    a.download = _('_').basename(element.data('file')); // Change as needed
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

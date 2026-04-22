@@ -1375,8 +1375,7 @@ file.download = (element) => {
 
     header("Authorization", 'Bearer ' + token);
     request(route.url, node, (url, response) => {
-        const refresh = section.select('.refresh');
-        refresh.click();
+        console.log(response);
     });
 }
 

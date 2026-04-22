@@ -469,12 +469,7 @@ file.context_menu = ({
                         break;
                     }
                     case __('file.manager.contextmenu.share'): {
-                        alert('share');
-                        alert(element);
-                        console.log(element);
-
-
-
+                        file.download(element);
                         break;
                     }
                     case __('file.manager.contextmenu.delete'): {
@@ -1338,9 +1333,48 @@ file.delete = (element) => {
     request(route.delete, node, (url, response) => {
         const refresh = section.select('.refresh');
         refresh.click();
-    });}
+    });
+}
 
+file.download = (element) => {
+    const section = getSectionById(file.data.get('section.id'));
+    if(!section){
+        return;
+    }
+    const context_menu = section.select('.context-menu');
+    const context_menu_item = section.select('.context-menu-item');
+    file.data.delete('context.menu.active');
+    file.data.delete('context.menu.item.active');
+    if(context_menu){
+        context_menu.remove();
+    }
+    if(context_menu_item){
+        context_menu_item.remove();
+    }
 
+    const route = {
+        url : file.data.get('route.backend.file.download')
+    };
+    const token = user.token();
+    let node;
+    if(element.data('type') === 'File'){
+        node = {
+            "url": element.data('file')
+        }
+    } else {
+        node = {
+            "url": element.data('dir')
+        }
+        //not sure yet, maybe an archive...
+        return;
+    }
+
+    header("Authorization", 'Bearer ' + token);
+    request(route.url, node, (url, response) => {
+        const refresh = section.select('.refresh');
+        refresh.click();
+    });
+}
 
 file.rename = (element) => {
     const section = getSectionById(file.data.get('section.id'));

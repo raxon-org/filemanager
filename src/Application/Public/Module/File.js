@@ -1374,6 +1374,8 @@ file.download = async (element) => {
         return;
     }
     const response = await fetch(route.url, {
+        method: 'POST', // HTTP method
+        body: JSON.stringify(node),
         headers: {
             'Authorization': 'Bearer ' + token,
             // 'Accept': 'application/octet-stream'

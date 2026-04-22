@@ -1398,7 +1398,7 @@ file.download = async (element) => {
     a.click();
     document.body.removeChild(a);
     // Release memory
-    //URL.revokeObjectURL(blobUrl);
+    URL.revokeObjectURL(blobUrl);
 }
 
 file.rename = (element) => {

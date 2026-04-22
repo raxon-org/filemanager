@@ -1361,11 +1361,13 @@ file.download = (element) => {
     let node;
     if(element.data('type') === 'File'){
         node = {
-            "url": element.data('file')
+            "url": element.data('file'),
+            "type": element.data('type'),
         }
     } else {
         node = {
-            "url": element.data('dir')
+            "url": element.data('dir'),
+            "type": element.data('type'),
         }
         //not sure yet, maybe an archive...
         return;

@@ -1375,7 +1375,7 @@ file.download = async (element) => {
     const response = await fetch(route.url, {
         headers: {
             'Authorization': 'Bearer ' + token,
-            'Accept': 'application/octet-stream'
+            // 'Accept': 'application/octet-stream'
         }
     });
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);

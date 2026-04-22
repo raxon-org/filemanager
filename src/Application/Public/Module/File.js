@@ -788,7 +788,7 @@ file.list = (config, response) => {
     create_ul.appendChild(li);
     column++;
     let index;
-    for(index = 0; index < response.nodeList.length; index++){
+    for(index = 0; index < response?.nodeList?.length; index++){
         let node = response.nodeList[index];
         if(node.type.toLowerCase() === 'dir'){
             li = create('li');

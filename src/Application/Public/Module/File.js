@@ -495,6 +495,7 @@ file.context_menu = ({
         }
         table_tr.on('mouseover', (event) => {
             let keyboard_shortcut = event.target.closest('.keyboard-shortcut');
+            console.log(keyboard_shortcut);
             if(keyboard_shortcut){
                 console.log(keyboard_shortcut);
                 keyboard_shortcut.addClass('active');
@@ -502,6 +503,7 @@ file.context_menu = ({
         });
         table_tr.on('mouseout', (event) => {
             let keyboard_shortcut = event.target.closest('.keyboard-shortcut');
+            console.log(keyboard_shortcut);
             if (keyboard_shortcut) {
                 console.log(keyboard_shortcut);
                 keyboard_shortcut.removeClass('active');

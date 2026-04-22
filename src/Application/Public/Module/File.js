@@ -760,7 +760,7 @@ file.list = (config, response) => {
     console.log(response)
     let column = 0;
     let totalBytes = 0;
-    let totalItems = response.nodeList.length;
+    let totalItems = response?.nodeList?.length ?? 0;
     let create_ul = create('ul');
     let li = create('li');
     li.addClass('header icon');

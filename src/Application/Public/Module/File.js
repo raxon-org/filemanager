@@ -471,7 +471,7 @@ file.context_menu = ({
                     case __('file.manager.contextmenu.share'): {
                         alert('share');
                         alert(element);
-
+                        console.log(element);
 
 
 

@@ -38,6 +38,7 @@ require(
             "route.backend.file.rename": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}FileSystem/Rename/",
             "route.backend.file.copy": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}FileSystem/Copy/",
             "route.backend.file.delete": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}FileSystem/",
+            "route.backend.file.download": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}FileSystem/Download/",
             "route.backend.extension": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}Entity/Extension/",
             "route.backend.tree": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}FileSystem/List/Tree/",
             "route.backend.upload": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}FileSystem/Upload/",

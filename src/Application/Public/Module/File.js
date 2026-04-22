@@ -78,7 +78,7 @@ file.size = (size) => {
     return size;
 }
 
-file.context_menu = async ({
+file.context_menu = ({
     event,
     node,
     section,
@@ -469,7 +469,7 @@ file.context_menu = async ({
                         break;
                     }
                     case __('file.manager.contextmenu.share'): {
-                        await file.download(element);
+                        file.download(element);
                         break;
                     }
                     case __('file.manager.contextmenu.delete'): {

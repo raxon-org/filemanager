@@ -1613,6 +1613,7 @@ file.new_directory = (element) => {
         }
         header("Authorization", 'Bearer ' + token);
         request(route.directory.new, node, (url, response) => {
+            console.log(response);
             const refresh = section.select('.refresh');
             refresh.click();
             div.remove();

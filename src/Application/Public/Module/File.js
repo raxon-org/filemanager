@@ -84,6 +84,7 @@ file.context_menu = ({
     section,
     element
 }) => {
+    console.log(node);
     let is_active = file.data.get('context.menu.active');
     if(is_active){
         return;

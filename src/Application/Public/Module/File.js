@@ -1508,8 +1508,8 @@ file.new_file = (element) => {
         context_menu_item.remove();
     }
     const route = {
-        new : {
-            file: file.data.get('route.backend.file.create.file')
+        file : {
+            new: file.data.get('route.backend.file.create.file')
         },
         // frontend : file.data.get('route.frontend.application')
     };
@@ -1524,17 +1524,16 @@ file.new_file = (element) => {
     div.style.zIndex = parseInt(dialog.style.zIndex) + 1;
     section.appendChild(div);
     let form = div.select('form[name="file-new"]');
-    let input_directory_new = div.select('input[name="file_new"]');
-    let button_ok = div.select('button[name="ok"]');
+    let input_file_new = div.select('input[name="file_new"]');
     form.on('submit', (event) => {
         event.preventDefault();
         const token = user.token();
         let node = {
             "type": "File",
-            "url": _('prototype').str_replace('../','', element.data('dir') + input_directory_new.value)
+            "url": _('prototype').str_replace('../','', element.data('dir') + input_file_new.value)
         }
         header("Authorization", 'Bearer ' + token);
-        request(route.new.file, node, (url, response) => {
+        request(route.file.new, node, (url, response) => {
             const refresh = section.select('.refresh');
             refresh.click();
             div.remove();
@@ -1573,8 +1572,8 @@ file.new_directory = (element) => {
         context_menu_item.remove();
     }
     const route = {
-        new : {
-            directory: file.data.get('route.backend.file.create.directory')
+        directory : {
+            new : file.data.get('route.backend.file.create.directory')
         },
         // frontend : file.data.get('route.frontend.application')
     };
@@ -1613,7 +1612,7 @@ file.new_directory = (element) => {
             "url": _('prototype').str_replace('../','', element.data('dir') + input_directory_new.value)
         }
         header("Authorization", 'Bearer ' + token);
-        request(route.new.directory, node, (url, response) => {
+        request(route.directory.new, node, (url, response) => {
             const refresh = section.select('.refresh');
             refresh.click();
             div.remove();

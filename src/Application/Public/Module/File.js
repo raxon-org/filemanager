@@ -1374,6 +1374,12 @@ file.download = async (element) => {
         //not sure yet, maybe an archive...
         return;
     }
+    console.log(user.data());
+
+
+    const url = route.url + '/' + node.url + '?key=' + user.data('user.key');
+    console.log(url);
+
     console.log(node);
 
 

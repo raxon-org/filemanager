@@ -1375,8 +1375,7 @@ file.download = async (element) => {
         return;
     }
     let user_current = user.data();
-    alert(user.data('key'));
-    const url = route.url + '?url=' + node.url + '&key=' + user_current?.key;
+    const url = route.url + '?url=' + node.url + '&key=' + user_current?.key + '&type=' + node.type;
     const a = document.createElement('a');
     a.href = url;
     a.download = _('_').basename(element.data('file')); // Change as needed

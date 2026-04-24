@@ -1374,6 +1374,9 @@ file.download = async (element) => {
         //not sure yet, maybe an archive...
         return;
     }
+    console.log(node);
+
+
     const response = await fetch(route.url, {
         method: 'POST', // HTTP method
         body: JSON.stringify(node),

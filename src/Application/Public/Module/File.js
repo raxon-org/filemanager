@@ -1374,12 +1374,14 @@ file.download = async (element) => {
         //not sure yet, maybe an archive...
         return;
     }
+    let user = user.data();
     console.log(user.data('key'));
 
-    const url = route.url + '?url=' + node.url + '&key=' + user.data('key');
+    const url = route.url + '?url=' + node.url + '&key=' + user?.key;
     const a = document.createElement('a');
     a.href = url;
     a.download = _('_').basename(element.data('file')); // Change as needed
+    a.target = '_blank';
     document.body.appendChild(a);
     a.click();
 

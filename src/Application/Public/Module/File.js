@@ -1377,6 +1377,15 @@ file.download = async (element) => {
     console.log(user.data('key'));
 
     const url = route.url + '?url=' + node.url + '&key=' + user.data('key');
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = _('_').basename(element.data('file')); // Change as needed
+    document.body.appendChild(a);
+    a.click();
+
+
+
+    /*
     console.log(url);
     console.log('https://api.workandtravel.staging/FileSystem/?url=%2Fmnt%2FVps3%2FMount%2FAudio%2FMusic%2F17-2026%2FRaXon+-+Roadtrip.230.mp3&key=6d783970-a88f-4ff2-a528-25cf47ae6de2-3df28013-1afc-408b-9435-57ee2e330c65');
 
@@ -1409,6 +1418,7 @@ file.download = async (element) => {
     document.body.removeChild(a);
     // Release memory
     URL.revokeObjectURL(blobUrl);
+     */
 }
 
 file.rename = (element) => {

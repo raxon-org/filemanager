@@ -1374,10 +1374,10 @@ file.download = async (element) => {
         //not sure yet, maybe an archive...
         return;
     }
-    let user = user.data();
+    let user_current = user.data();
     console.log(user.data('key'));
 
-    const url = route.url + '?url=' + node.url + '&key=' + user?.key;
+    const url = route.url + '?url=' + node.url + '&key=' + user_current?.key;
     const a = document.createElement('a');
     a.href = url;
     a.download = _('_').basename(element.data('file')); // Change as needed

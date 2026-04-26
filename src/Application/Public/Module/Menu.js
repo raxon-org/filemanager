@@ -94,6 +94,7 @@ menu.upload = () => {
                     url: file.data.get('route.backend.upload'),
                     maxFilesize: file.data.get('upload.max.filesize'),
                     chunking: file.data.get('upload.chunking'),
+                    parallelChunkUploads: file.data.get('upload.parallel.chunk.uploads'),
                     // chunkSize: file.data.get('upload.chunk.size'),
                     // parallelUploads: file.data.get('upload.parallel.uploads'),
                     // timeout: file.data.get('upload.timeout'),

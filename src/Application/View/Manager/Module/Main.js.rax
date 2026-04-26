@@ -50,7 +50,7 @@ require(
             "route.frontend.open": "{{route.get($section.name + '-file-open')}}",
             "upload.max.filesize": 10 * 1024 * 1024,
             "upload.chunking": true,
-            "upload.chunksize": 1024 * 1024 * 2,
+            "upload.chunksize": 2 * 1024 * 1024,
             "upload.max.retries": 3,
             "upload.parallel": 2,
             "upload.timeout": 60000

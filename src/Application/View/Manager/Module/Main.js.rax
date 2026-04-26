@@ -48,7 +48,7 @@ require(
             "route.frontend.file.list": "{{route.get($section.name + '-list-file')}}",
             "route.frontend.application": "{{route.get('application-open')}}",
             "route.frontend.open": "{{route.get($section.name + '-file-open')}}",
-            "upload.max.filesize": 2,
+            "upload.max.filesize": 1024 * 1024 * 10,
             "upload.chunking": true,
             "upload.chunksize": 1024 * 1024 * 2,
             "upload.max.retries": 3,

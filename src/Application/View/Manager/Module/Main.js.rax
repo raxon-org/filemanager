@@ -51,7 +51,7 @@ require(
             "upload.max.filesize": 10 * 1024 * 1024,
             "upload.chunking": true,
             "upload.chunksize": 2 * 1024 * 1024,
-            "upload.parallelChunkUploads": true
+            "upload.parallelChunkUploads": true,
             "upload.max.retries": 3,
             "upload.parallel": 2,
             "upload.timeout": 60000

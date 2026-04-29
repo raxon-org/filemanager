@@ -1374,6 +1374,7 @@ file.download = async (element) => {
         //not sure yet, maybe an archive...
         return;
     }
+    console.log(node);
     let user_current = user.data();
     const url = route.url + '?url=' + node.url + '&key=' + user_current?.key + '&type=' + node.type;
     const a = document.createElement('a');

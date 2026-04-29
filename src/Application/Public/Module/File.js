@@ -1363,12 +1363,12 @@ file.download = async (element) => {
     let node;
     if(element.data('type') === 'File'){
         node = {
-            "url": _('_').str_replace('&', '%26', element.data('file')),
+            "url": _('_').urlencode(element.data('file')),
             "type": element.data('type'),
         }
     } else {
         node = {
-            "url": _('_').str_replace('&', '%26', element.data('dir')),
+            "url": _('_').urlencode(element.data('dir')),
             "type": element.data('type'),
         }
         //not sure yet, maybe an archive...

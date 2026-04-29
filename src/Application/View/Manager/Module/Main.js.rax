@@ -52,8 +52,9 @@ require(
             "upload.chunking": true,
             "upload.chunksize": 2 * 1024 * 1024,
             "upload.parallelChunkUploads": true,
-            "upload.max.retries": 3,
-            "upload.parallel": 2,
+            "upload.retry.chunk": true,
+            "upload.retryChunksLimit": 5,
+            "upload.parallel": 4,
             "upload.timeout": 60000
         });
         task.active({

@@ -89,6 +89,10 @@ menu.upload = () => {
             upload = create('div', 'dropzone upload');
             upload.attribute('id', 'upload-' + file.data.get('section.id'));
             body.appendChild(upload);
+            let directory = input.val();
+            if(directory.length > 0 && directory.charAt(directory.length - 1) !== '/'){
+                directory += '/';
+            }
             let drop = new Dropzone(
                 '#' + upload.attribute('id'), {
                     url: file.data.get('route.backend.upload'),
@@ -102,7 +106,7 @@ menu.upload = () => {
                         "Authorization" : "Bearer " + user.token()
                     },
                     params : {
-                        directory : input.val()
+                        directory : directory
                     }
                 }
             );

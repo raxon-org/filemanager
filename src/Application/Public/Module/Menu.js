@@ -102,6 +102,7 @@ menu.upload = () => {
                     retryChunks: file.data.get('upload.retry.chunk'),
                     // chunkSize: file.data.get('upload.chunk.size'),
                     parallelUploads: file.data.get('upload.parallel'),
+                    filesizeBase: file.data.get('upload.filesize.base'),
                     // timeout: file.data.get('upload.timeout'),
                     headers : {
                         "Authorization" : "Bearer " + user.token()

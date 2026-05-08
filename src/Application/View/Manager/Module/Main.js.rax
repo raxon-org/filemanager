@@ -55,7 +55,8 @@ require(
             "upload.retry.chunk": true,
             "upload.retryChunksLimit": 5,
             "upload.parallel": 4,
-            "upload.timeout": 60000
+            "upload.timeout": 60000,
+            "upload.filesize.base": 1024
         });
         task.active({
             "id": "{{$id}}",

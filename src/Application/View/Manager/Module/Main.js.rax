@@ -17,8 +17,8 @@ require(
         root() + 'Application/Filemanager/Css/Indent.css?' + version(),
         root() + 'Application/Filemanager/Css/Filemanager.css?' + version(),
         root() + 'Dialog/Css/Dialog.css?' + version(),
-        root() + 'Js/Dropzone/5.9.2/min/dropzone.min.css?' + version(),
-        root() + 'Js/Dropzone/5.9.2/min/dropzone.min.js?' + version()
+        root() + 'Javascript/Dropzone/5.9.2/min/dropzone.min.css?' + version(),
+        root() + 'Javascript/Dropzone/5.9.2/min/dropzone.min.js?' + version()
     ],
     function(){
         user.refreshUrl("{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}User/Refresh/Token/");

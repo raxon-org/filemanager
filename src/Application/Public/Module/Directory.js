@@ -99,7 +99,7 @@ directory.expand_close = (li) => {
     if(folder_open){
         folder_open.removeClass('fa-folder-open').addClass('fa-folder');
     }
-    const section = select('section[id="' + file.data.get('section.id') + '"] ul.tree section[data-dir=\'' + _('_').htmlspecialchars(li.data('dir')) + '\']');
+    const section = select('section[id="' + file.data.get('section.id') + '"] ul.tree section[data-dir=\'' + _('_').htmlspecialchars(li.data('dir')).replace(/'/g, '\'') + '\']');
     if(section){
         section.html('');
     }
@@ -161,7 +161,7 @@ directory.tree = (data) => {
             if(!is.empty(node.section) && !is.empty(node.section.dir)){
                 //node.section.dir need to be htmlspecialchars
                 console.log(node.section.dir);
-                node.target = 'section[id=\'' + file.data.get('section.id') + '\'] ul.tree section[data-dir=\'' + _('_').htmlspecialchars(node.section.dir) + '\']';
+                node.target = 'section[id=\'' + file.data.get('section.id') + '\'] ul.tree section[data-dir=\'' + _('_').htmlspecialchars(node.section.dir).replace(/'/g, '\'') + '\']';
                 console.log(node.target);
             }
             node.method = 'replace';

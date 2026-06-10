@@ -36,16 +36,16 @@ directory.open();
                 {{$li.class = 'bind indent indent-' + $indent + ' expand'}}
                 {{$li.data.url = server.url("{{/literal}}{{$backend.host}}{{literal}}") + 'FileSystem/List/Directory/'}}
                 {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
-                {{$li.data.dir = $file.url|>string.replace:"'":"\\'"}}
-                {{$li.data.target = "section[id='" + $id + "'] ul.tree section[data-dir='" + $li.data.dir + "']"}}
+                {{$li.data.dir = $file.url}}
+                {{$li.data.target = "section[id='" + $id + "'] ul.tree section[data-dir=\"" + $li.data.dir + "\"]"}}
                 {{$li.data.method = "replace"}}
                 {{file.manager.tree.directory($file, $li, 'has_sub_dir')}}
             {{else}}
                 {{$li.class = 'bind indent indent-' + $indent}}
                 {{$li.data.url = server.url("{{/literal}}{{$backend.host}}{{literal}}") + 'FileSystem/List/Directory/'}}
                 {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
-                {{$li.data.dir = $file.url|>string.replace:"'":"\\'"}}
-                {{$li.data.target = "section[id='" + $id + "'] ul.tree section[data-dir='" + $li.data.dir + "']"}}
+                {{$li.data.dir = $file.url}}
+                {{$li.data.target = "section[id='" + $id + "'] ul.tree section[data-dir=\"" + $li.data.dir + "\"]"}}
                 {{$li.data.method = "replace"}}
                 {{file.manager.tree.directory($file, $li)}}
             {{/if}}

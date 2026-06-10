@@ -68,7 +68,7 @@ directory.expand_open = (li) => {
     const token = user.token();
     header("Authorization", 'Bearer ' + token);
     let node = {};
-    node.directory = _('_').htmlspecialchars(li.data('dir')).replace(/'/g, '\'');
+    node.directory = _('_').htmlspecialchars(li.data('dir')).replace(/'/g, '\\\'');
     li.request(null, node, (url, data) => {
         console.log(data);
         if(exception.authorization(data)){
@@ -162,7 +162,7 @@ directory.tree = (data) => {
             if(!is.empty(node.section) && !is.empty(node.section.dir)){
                 //node.section.dir need to be htmlspecialchars
                 console.log(node.section.dir);
-                let section_dir = _('_').htmlspecialchars(node.section.dir).replace(/'/g, '\'');
+                let section_dir = _('_').htmlspecialchars(node.section.dir).replace(/'/g, '\\\'');
                 console.log(section_dir);
                 node.target = 'section[id=\'' + file.data.get('section.id') + '\'] ul.tree section[data-dir=\'' + section_dir + '\']';
                 console.log(node.target);

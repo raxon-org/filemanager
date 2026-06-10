@@ -161,7 +161,7 @@ directory.tree = (data) => {
             if(!is.empty(node.section) && !is.empty(node.section.dir)){
                 //node.section.dir need to be htmlspecialchars
                 console.log(node.section.dir);
-                node.target = 'section[id=\'' + file.data.get('section.id') + '\'] ul.tree section[data-dir=\'' + node.section.dir.replace('\'/g', '\\\'') +'\']';
+                node.target = 'section[id=\'' + file.data.get('section.id') + '\'] ul.tree section[data-dir=\'' + node.section.dir +'\']';
                 console.log(node.target);
             }
             node.method = 'replace';

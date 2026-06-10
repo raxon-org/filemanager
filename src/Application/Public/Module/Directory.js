@@ -68,7 +68,7 @@ directory.expand_open = (li) => {
     const token = user.token();
     header("Authorization", 'Bearer ' + token);
     let node = {};
-    node.directory = _('_').htmlspecialchars(li.data('dir'));
+    node.directory = _('_').htmlspecialchars(li.data('dir')).replace(/'/g, '\'');
     li.request(null, node, (url, data) => {
         console.log(data);
         if(exception.authorization(data)){

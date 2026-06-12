@@ -908,6 +908,14 @@ file.list = (config, response) => {
             li.on('click', (event) => {
                 file.open(event);
             });
+            li.on('contextmenu', (event) => {
+                file.context_menu({
+                    'event' : event,
+                    'node' : node,
+                    'section' : section,
+                    'element' : event.target.closest('li'),
+                });
+            });
             create_ul.appendChild(li);
             li = create('li');
             li.data('file', node.url);

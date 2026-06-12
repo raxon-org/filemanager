@@ -17,7 +17,7 @@ address.resize = () => {
     if(!section){
         return;
     }
-    const input = section.select('input[name="search"]');
+    const input = section.select('input[name="address"]');
     input.trigger('change');
 }
 

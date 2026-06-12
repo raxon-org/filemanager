@@ -13,7 +13,7 @@ import { AutoProcessor, read_audio } from '/Xenova/transformers@2.14.0.js';
 let address = {};
 
 address.resize = () => {
-    const section = getSectionById(file.data.get('section.id'));
+    const section = getSection(file.data.get('section.id'));
     if(!section){
         return;
     }

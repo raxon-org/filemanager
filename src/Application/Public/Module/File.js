@@ -793,6 +793,7 @@ file.list = (config, response) => {
     for(index = 0; index < totalItems; index++){
         let node = response.nodeList[index];
         let node_context = node;
+        let element_context = null;
         if(node.type.toLowerCase() === 'dir'){
             li = create('li');
             li.addClass('icon');
@@ -811,11 +812,12 @@ file.list = (config, response) => {
             });
             li.on('contextmenu', async (event) => {
                 event.preventDefault();
+                element_context = event.target.closest('li');
                 await file.context_menu({
                     'event' : event,
                     'node' : node_context,
                     'section' : section,
-                    'element' : event.target.closest('li'),
+                    'element' : element_context,
                 });
             });
             li = create('li');
@@ -832,7 +834,7 @@ file.list = (config, response) => {
                     'event' : event,
                     'node' : node_context,
                     'section' : section,
-                    'element' : event.target.closest('li'),
+                    'element' : element_context,
                 });
             });
             create_ul.appendChild(li);
@@ -850,7 +852,7 @@ file.list = (config, response) => {
                     'event' : event,
                     'node' : node_context,
                     'section' : section,
-                    'element' : event.target.closest('li'),
+                    'element' : element_context,
                 });
             });
             create_ul.appendChild(li);
@@ -875,7 +877,7 @@ file.list = (config, response) => {
                     'event' : event,
                     'node' : node_context,
                     'section' : section,
-                    'element' : event.target.closest('li'),
+                    'element' : element_context,
                 });
             });
             create_ul.appendChild(li);
@@ -893,7 +895,7 @@ file.list = (config, response) => {
                     'event' : event,
                     'node' : node_context,
                     'section' : section,
-                    'element' : event.target.closest('li'),
+                    'element' : element_context,
                 });
             });
             create_ul.appendChild(li);
@@ -916,7 +918,7 @@ file.list = (config, response) => {
                     'event' : event,
                     'node' : node_context,
                     'section' : section,
-                    'element' : event.target.closest('li'),
+                    'element' : element_context,
                 });
             });
             console.log(node);
@@ -941,7 +943,7 @@ file.list = (config, response) => {
                     'event' : event,
                     'node' : node_context,
                     'section' : section,
-                    'element' : event.target.closest('li'),
+                    'element' : element_context,
                 });
             });
             create_ul.appendChild(li);
@@ -961,7 +963,7 @@ file.list = (config, response) => {
                     'event' : event,
                     'node' : node_context,
                     'section' : section,
-                    'element' : event.target.closest('li'),
+                    'element' : element_context,
                 });
             });
             create_ul.appendChild(li);
@@ -987,7 +989,7 @@ file.list = (config, response) => {
                     'event' : event,
                     'node' : node_context,
                     'section' : section,
-                    'element' : event.target.closest('li'),
+                    'element' : element_context,
                 });
             });
             create_ul.appendChild(li);
@@ -1007,7 +1009,7 @@ file.list = (config, response) => {
                     'event' : event,
                     'node' : node_context,
                     'section' : section,
-                    'element' : event.target.closest('li'),
+                    'element' : element_context,
                 });
             });
             create_ul.appendChild(li);

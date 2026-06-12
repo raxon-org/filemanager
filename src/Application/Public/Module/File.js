@@ -914,6 +914,7 @@ file.list = (config, response) => {
             });
             li.on('contextmenu', async (event) => {
                 event.preventDefault();
+                element_context = event.target.closest('li');
                 await file.context_menu({
                     'event' : event,
                     'node' : node_context,

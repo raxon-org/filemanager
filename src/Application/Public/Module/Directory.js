@@ -154,18 +154,13 @@ directory.open = (event) => {
 }
 
 directory.tree = (data) => {
-    console.log(data);
     if(is.array(data?.nodeList?.tree)){
         let index;
         for(index=0; index<data.nodeList.tree.length; index++){
             let node = data.nodeList.tree[index];
             if(!is.empty(node.section) && !is.empty(node.section.dir)){
-                //node.section.dir need to be htmlspecialchars
-                console.log(node.section.dir);
                 let section_dir = _('_').htmlspecialchars(node.section.dir).replace(/'/g, '\\\'');
-                console.log(section_dir);
                 node.target = 'section[id=\'' + file.data.get('section.id') + '\'] ul.tree section[data-dir=\'' + section_dir + '\']';
-                console.log(node.target);
             }
             node.method = 'replace';
         }
@@ -252,24 +247,6 @@ directory.first = () => {
     }
     input.val(dir);
     input.trigger('change');
-    directory.active(node);
-}
-
-directory.resize = () => {
-    const section = getSectionById(file.data.get('section.id'));
-    if(!section){
-        return;
-    }
-    const list = section.select('.tree li');
-    let node;
-    if(is.nodeList(list)){
-        node = list[0];
-    } else {
-        node = list;
-    }
-    if(!node){
-        return;
-    }
     directory.active(node);
 }
 

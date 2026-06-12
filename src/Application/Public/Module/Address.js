@@ -12,6 +12,15 @@ import { AutoProcessor, read_audio } from '/Xenova/transformers@2.14.0.js';
 
 let address = {};
 
+address.resize = () => {
+    const section = getSectionById(file.data.get('section.id'));
+    if(!section){
+        return;
+    }
+    const input = section.select('input[name="search"]');
+    input.trigger('change');
+}
+
 address.title = (directory) => {
     const section = getSection(file.data.get('section.id'));
     if(!section){

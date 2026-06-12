@@ -793,7 +793,7 @@ file.list = (config, response) => {
     for(index = 0; index < totalItems; index++){
         let node = response.nodeList[index];
         let node_context = node;
-        let element_context = null;
+        let element_context;
         if(node.type.toLowerCase() === 'dir'){
             li = create('li');
             li.addClass('icon');
@@ -801,6 +801,7 @@ file.list = (config, response) => {
             li.data('dir', node.url);
             li.data('type', node.type);
             create_ul.appendChild(li);
+            element_context = li;
             li.on('click', async (event) => {
                 //load context menu...
                 await file.context_menu({
@@ -812,7 +813,6 @@ file.list = (config, response) => {
             });
             li.on('contextmenu', async (event) => {
                 event.preventDefault();
-                element_context = event.target.closest('li');
                 await file.context_menu({
                     'event' : event,
                     'node' : node_context,
@@ -912,6 +912,7 @@ file.list = (config, response) => {
                     'element' : event.target.closest('li'),
                 });
             });
+            element_context = li;
             li.on('contextmenu', async (event) => {
                 event.preventDefault();
                 element_context = event.target.closest('li');
@@ -922,7 +923,6 @@ file.list = (config, response) => {
                     'element' : element_context,
                 });
             });
-            console.log(node);
             li.data('file', node.url);
             li.data('dir', file.dirname(node.url));
             li.data('extension', node.extension);

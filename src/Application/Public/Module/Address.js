@@ -17,8 +17,12 @@ address.resize = () => {
     if(!section){
         return;
     }
-    const input = section.select('input[name="address"]');
-    input.trigger('change');
+    const data = file.data.get('directory.current.list');
+    if(data){
+        file.list(data);
+    }
+    // const input = section.select('input[name="address"]');
+    // input.trigger('change');
 }
 
 address.title = (directory) => {
@@ -313,6 +317,7 @@ address.bar = (config) => {
                         token = user.token();
                         header("Authorization", 'Bearer ' + token);
                         request(route.backend, node, (url, data) => {
+                            file.data.set('directory.current.list', data);
                             console.log('file list after authorization failure');
                             file.list(data);
                         });
@@ -323,6 +328,7 @@ address.bar = (config) => {
                 });
             } else {
                 console.log('file list');
+                file.data.set('directory.current.list', data);
                 file.list(config, data);
             }
         });

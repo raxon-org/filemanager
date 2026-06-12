@@ -15,7 +15,7 @@ directory.open();
                 {{$li.data.url = server.url("{{/literal}}{{$backend.host}}{{literal}}") + 'FileSystem/List/Directory/'}}
                 {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
                 {{$li.data.dir = $file.url}}
-                {{$li.data.dir_target = dir.target($file.url)}}
+                {{$li.data.dir_target = $file.url|>string.replace:'\':'\\\''}}
                 {{$li.data.target = "section[id='" + $id + "'] ul.tree section[data-dir='" + $li.data.dir_data + "']"}}
                 {{$li.data.method = "replace"}}
                 {{file.manager.tree.directory($file, $li, 'has_sub_dir')}}
@@ -24,7 +24,7 @@ directory.open();
                 {{$li.data.url = server.url("{{/literal}}{{$backend.host}}{{literal}}") + 'FileSystem/List/Directory/'}}
                 {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
                 {{$li.data.dir = $file.url}}
-                {{$li.data.dir_target = dir.target($file.url)}}
+                {{$li.data.dir_target = $file.url|>string.replace:'\':'\\\''}}
                 {{$li.data.target = "section[id='" + $id + "'] ul.tree section[data-dir='" + $li.data.dir_target + "']"}}
                 {{$li.data.method = "replace"}}
                 {{file.manager.tree.directory($file, $li)}}
@@ -39,7 +39,7 @@ directory.open();
                 {{$li.data.url = server.url("{{/literal}}{{$backend.host}}{{literal}}") + 'FileSystem/List/Directory/'}}
                 {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
                 {{$li.data.dir = $file.url}}
-                {{$li.data.dir_target = dir.target($file.url)}}
+                {{$li.data.dir_target = $file.url|>string.replace:'\':'\\\''}}
                 {{$li.data.target = "section[id='" + $id + "'] ul.tree section[data-dir='" + $li.data.dir_target + "']"}}
                 {{$li.data.method = "replace"}}
                 {{file.manager.tree.directory($file, $li, 'has_sub_dir')}}
@@ -48,7 +48,7 @@ directory.open();
                 {{$li.data.url = server.url("{{/literal}}{{$backend.host}}{{literal}}") + 'FileSystem/List/Directory/'}}
                 {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
                 {{$li.data.dir = $file.url}}
-                {{$li.data.dir_target = dir.target($file.url)}}
+                {{$li.data.dir_target = $file.url|>string.replace:'\':'\\\''}}
                 {{$li.data.target = "section[id='" + $id + "'] ul.tree section[data-dir='" + $li.data.dir_target + "']"}}
                 {{$li.data.method = "replace"}}
                 {{file.manager.tree.directory($file, $li)}}

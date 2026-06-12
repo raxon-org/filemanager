@@ -1573,7 +1573,7 @@ file.new_file = (element) => {
         div.addClass('dialog-active');
     });
     dialog.init(file.data.get('section.id'));
-    input_directory_new.focus();
+    input_file_new.focus();
 }
 
 file.new_directory = (element) => {

@@ -75,6 +75,9 @@ require(
             head.init();
             address.read(config);
             directory.read();
+            window.addEventListener('resize', () => {
+                directory.read();
+            });
             dialog.init("{{$id}}");
 //file.section_active("{{$id}}");
             taskbar.active("{{$id}}");

@@ -909,6 +909,7 @@ file.list = (config, response) => {
                 file.open(event);
             });
             li.on('contextmenu', (event) => {
+                event.preventDefault();
                 file.context_menu({
                     'event' : event,
                     'node' : node,

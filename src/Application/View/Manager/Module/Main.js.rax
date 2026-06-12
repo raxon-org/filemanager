@@ -76,7 +76,7 @@ require(
             address.read(config);
             directory.read();
             window.addEventListener('resize', () => {
-                directory.resize();
+                address.resize();
             });
             dialog.init("{{$id}}");
 //file.section_active("{{$id}}");

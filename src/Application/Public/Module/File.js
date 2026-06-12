@@ -792,6 +792,7 @@ file.list = (config, response) => {
     let index;
     for(index = 0; index < totalItems; index++){
         let node = response.nodeList[index];
+        let node_context = node;
         if(node.type.toLowerCase() === 'dir'){
             li = create('li');
             li.addClass('icon');
@@ -812,7 +813,7 @@ file.list = (config, response) => {
                 event.preventDefault();
                 await file.context_menu({
                     'event' : event,
-                    'node' : node,
+                    'node' : node_context,
                     'section' : section,
                     'element' : event.target.closest('li'),
                 });
@@ -829,7 +830,7 @@ file.list = (config, response) => {
                 event.preventDefault();
                 await file.context_menu({
                     'event' : event,
-                    'node' : node,
+                    'node' : node_context,
                     'section' : section,
                     'element' : event.target.closest('li'),
                 });
@@ -847,7 +848,7 @@ file.list = (config, response) => {
                 event.preventDefault();
                 await file.context_menu({
                     'event' : event,
-                    'node' : node,
+                    'node' : node_context,
                     'section' : section,
                     'element' : event.target.closest('li'),
                 });
@@ -872,7 +873,7 @@ file.list = (config, response) => {
                 event.preventDefault();
                 await file.context_menu({
                     'event' : event,
-                    'node' : node,
+                    'node' : node_context,
                     'section' : section,
                     'element' : event.target.closest('li'),
                 });
@@ -890,7 +891,7 @@ file.list = (config, response) => {
                 event.preventDefault();
                 await file.context_menu({
                     'event' : event,
-                    'node' : node,
+                    'node' : node_context,
                     'section' : section,
                     'element' : event.target.closest('li'),
                 });
@@ -913,7 +914,7 @@ file.list = (config, response) => {
                 event.preventDefault();
                 await file.context_menu({
                     'event' : event,
-                    'node' : node,
+                    'node' : node_context,
                     'section' : section,
                     'element' : event.target.closest('li'),
                 });
@@ -938,7 +939,7 @@ file.list = (config, response) => {
                 event.preventDefault();
                 await file.context_menu({
                     'event' : event,
-                    'node' : node,
+                    'node' : node_context,
                     'section' : section,
                     'element' : event.target.closest('li'),
                 });
@@ -958,7 +959,7 @@ file.list = (config, response) => {
                 event.preventDefault();
                 await file.context_menu({
                     'event' : event,
-                    'node' : node,
+                    'node' : node_context,
                     'section' : section,
                     'element' : event.target.closest('li'),
                 });
@@ -984,7 +985,7 @@ file.list = (config, response) => {
                 event.preventDefault();
                 await file.context_menu({
                     'event' : event,
-                    'node' : node,
+                    'node' : node_context,
                     'section' : section,
                     'element' : event.target.closest('li'),
                 });
@@ -1004,7 +1005,7 @@ file.list = (config, response) => {
                 event.preventDefault();
                 await file.context_menu({
                     'event' : event,
-                    'node' : node,
+                    'node' : node_context,
                     'section' : section,
                     'element' : event.target.closest('li'),
                 });

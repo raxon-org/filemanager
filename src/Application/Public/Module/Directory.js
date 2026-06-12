@@ -255,6 +255,24 @@ directory.first = () => {
     directory.active(node);
 }
 
+directory.resize = () => {
+    const section = getSectionById(file.data.get('section.id'));
+    if(!section){
+        return;
+    }
+    const list = section.select('.tree li');
+    let node;
+    if(is.nodeList(list)){
+        node = list[0];
+    } else {
+        node = list;
+    }
+    if(!node){
+        return;
+    }
+    directory.active(node);
+}
+
 directory.create_data = (data, li) => {
     data.indent = li.data('indent');
     data.method = li.data('method');

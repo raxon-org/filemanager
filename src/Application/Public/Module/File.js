@@ -808,10 +808,9 @@ file.list = (config, response) => {
                     'element' : event.target.closest('li'),
                 });
             });
-            li.on('contextmenu', (event) => {
-                alert('yes');
+            li.on('contextmenu', async (event) => {
                 event.preventDefault();
-                file.context_menu({
+                await file.context_menu({
                     'event' : event,
                     'node' : node,
                     'section' : section,
@@ -826,10 +825,9 @@ file.list = (config, response) => {
             li.on('click', (event) => {
                 file.open(event);
             });
-            li.on('contextmenu', (event) => {
-                alert('yes');
+            li.on('contextmenu', async (event) => {
                 event.preventDefault();
-                file.context_menu({
+                await file.context_menu({
                     'event' : event,
                     'node' : node,
                     'section' : section,
@@ -845,10 +843,9 @@ file.list = (config, response) => {
             li.on('click', (event) => {
                 file.open(event);
             });
-            li.on('contextmenu', (event) => {
-                alert('yes');
+            li.on('contextmenu', async (event) => {
                 event.preventDefault();
-                file.context_menu({
+                await file.context_menu({
                     'event' : event,
                     'node' : node,
                     'section' : section,
@@ -871,10 +868,9 @@ file.list = (config, response) => {
             li.on('click', (event) => {
                 file.open(event);
             });
-            li.on('contextmenu', (event) => {
-                alert('yes');
+            li.on('contextmenu', async (event) => {
                 event.preventDefault();
-                file.context_menu({
+                await file.context_menu({
                     'event' : event,
                     'node' : node,
                     'section' : section,
@@ -890,10 +886,9 @@ file.list = (config, response) => {
             li.on('click', (event) => {
                 file.open(event);
             });
-            li.on('contextmenu', (event) => {
-                alert('yes');
+            li.on('contextmenu', async (event) => {
                 event.preventDefault();
-                file.context_menu({
+                await file.context_menu({
                     'event' : event,
                     'node' : node,
                     'section' : section,
@@ -905,19 +900,18 @@ file.list = (config, response) => {
             li = create('li');
             li.addClass('icon');
             li.html('<i class="far fa-file"></i>');
-            li.on('click', (event) => {
+            li.on('click', async (event) => {
                 //load context menu...
-                file.context_menu({
+                await file.context_menu({
                     'event' : event,
                     'node' : node,
                     'section' : section,
                     'element' : event.target.closest('li'),
                 });
             });
-            li.on('contextmenu', (event) => {
-                alert('yes');
+            li.on('contextmenu', async (event) => {
                 event.preventDefault();
-                file.context_menu({
+                await file.context_menu({
                     'event' : event,
                     'node' : node,
                     'section' : section,
@@ -940,10 +934,9 @@ file.list = (config, response) => {
             li.on('click', (event) => {
                 file.open(event);
             });
-            li.on('contextmenu', (event) => {
-                alert('yes');
+            li.on('contextmenu', async (event) => {
                 event.preventDefault();
-                file.context_menu({
+                await file.context_menu({
                     'event' : event,
                     'node' : node,
                     'section' : section,
@@ -961,10 +954,9 @@ file.list = (config, response) => {
             li.on('click', (event) => {
                 file.open(event);
             });
-            li.on('contextmenu', (event) => {
-                alert('yes');
+            li.on('contextmenu', async (event) => {
                 event.preventDefault();
-                file.context_menu({
+                await file.context_menu({
                     'event' : event,
                     'node' : node,
                     'section' : section,
@@ -988,10 +980,9 @@ file.list = (config, response) => {
             li.on('click', (event) => {
                 file.open(event);
             });
-            li.on('contextmenu', (event) => {
-                alert('yes');
+            li.on('contextmenu', async (event) => {
                 event.preventDefault();
-                file.context_menu({
+                await file.context_menu({
                     'event' : event,
                     'node' : node,
                     'section' : section,
@@ -1009,10 +1000,9 @@ file.list = (config, response) => {
             li.on('click', (event) => {
                 file.open(event);
             });
-            li.on('contextmenu', (event) => {
-                alert('yes');
+            li.on('contextmenu', async (event) => {
                 event.preventDefault();
-                file.context_menu({
+                await file.context_menu({
                     'event' : event,
                     'node' : node,
                     'section' : section,

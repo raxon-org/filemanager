@@ -19,10 +19,7 @@ address.resize = () => {
     }
     const config = file.data.get('config');
     const data = file.data.get('directory.current.list');
-    if(
-        config &&
-        data
-    ){
+    if(data){
         file.list(config, data);
     }
     // const input = section.select('input[name="address"]');

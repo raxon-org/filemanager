@@ -6,7 +6,7 @@ import { getSection } from "/Module/Section.js";
 import { taskbar } from "/Application/Desktop/Module/Taskbar.js";
 import user from "/Module/User.js";
 import create from "/Module/Create.js";
-import { pipeline } from '/Xenova/transformers@2.14.0.js';
+//import { pipeline } from '/Xenova/transformers@2.14.0.js';
 import { AutoModelForSeq2SeqLM, AutoTokenizer } from '/Xenova/transformers@2.14.0.js';
 import { AutoProcessor, read_audio } from '/Xenova/transformers@2.14.0.js';
 
@@ -219,6 +219,7 @@ address.search = () => {
             // console.log(output);
 
             // Allocate a pipeline for Automatic Speech Recognition
+            /*
             let start = microtime(true);
             let transcriber = await pipeline('automatic-speech-recognition', 'Xenova/whisper-tiny.en');
 
@@ -235,6 +236,7 @@ address.search = () => {
                 let duration = (microtime(true) - start) * 1000;
                 console.log(duration + ' msec');
             }
+             */
 
         // Transcribe an audio file, loaded from a URL.
         //     let result = await transcriber('/Application/Filemanager/Module/Mp3/remco.01.mp3');

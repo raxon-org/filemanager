@@ -808,6 +808,16 @@ file.list = (config, response) => {
                     'element' : event.target.closest('li'),
                 });
             });
+            li.on('contextmenu', (event) => {
+                alert('yes');
+                event.preventDefault();
+                file.context_menu({
+                    'event' : event,
+                    'node' : node,
+                    'section' : section,
+                    'element' : event.target.closest('li'),
+                });
+            });
             li = create('li');
             li.data('dir', node.url);
             li.data('type', node.type);
@@ -815,6 +825,16 @@ file.list = (config, response) => {
             li.html(node.name);
             li.on('click', (event) => {
                 file.open(event);
+            });
+            li.on('contextmenu', (event) => {
+                alert('yes');
+                event.preventDefault();
+                file.context_menu({
+                    'event' : event,
+                    'node' : node,
+                    'section' : section,
+                    'element' : event.target.closest('li'),
+                });
             });
             create_ul.appendChild(li);
             li = create('li');
@@ -824,6 +844,16 @@ file.list = (config, response) => {
             li.html(date('Y-m-d H:i', node.mtime));
             li.on('click', (event) => {
                 file.open(event);
+            });
+            li.on('contextmenu', (event) => {
+                alert('yes');
+                event.preventDefault();
+                file.context_menu({
+                    'event' : event,
+                    'node' : node,
+                    'section' : section,
+                    'element' : event.target.closest('li'),
+                });
             });
             create_ul.appendChild(li);
             li = create('li');
@@ -841,6 +871,16 @@ file.list = (config, response) => {
             li.on('click', (event) => {
                 file.open(event);
             });
+            li.on('contextmenu', (event) => {
+                alert('yes');
+                event.preventDefault();
+                file.context_menu({
+                    'event' : event,
+                    'node' : node,
+                    'section' : section,
+                    'element' : event.target.closest('li'),
+                });
+            });
             create_ul.appendChild(li);
             li = create('li');
             li.data('dir', node.url);
@@ -850,6 +890,16 @@ file.list = (config, response) => {
             li.on('click', (event) => {
                 file.open(event);
             });
+            li.on('contextmenu', (event) => {
+                alert('yes');
+                event.preventDefault();
+                file.context_menu({
+                    'event' : event,
+                    'node' : node,
+                    'section' : section,
+                    'element' : event.target.closest('li'),
+                });
+            });
             create_ul.appendChild(li);
         } else {
             li = create('li');
@@ -857,6 +907,16 @@ file.list = (config, response) => {
             li.html('<i class="far fa-file"></i>');
             li.on('click', (event) => {
                 //load context menu...
+                file.context_menu({
+                    'event' : event,
+                    'node' : node,
+                    'section' : section,
+                    'element' : event.target.closest('li'),
+                });
+            });
+            li.on('contextmenu', (event) => {
+                alert('yes');
+                event.preventDefault();
                 file.context_menu({
                     'event' : event,
                     'node' : node,
@@ -880,6 +940,16 @@ file.list = (config, response) => {
             li.on('click', (event) => {
                 file.open(event);
             });
+            li.on('contextmenu', (event) => {
+                alert('yes');
+                event.preventDefault();
+                file.context_menu({
+                    'event' : event,
+                    'node' : node,
+                    'section' : section,
+                    'element' : event.target.closest('li'),
+                });
+            });
             create_ul.appendChild(li);
             li = create('li');
             li.data('file', node.url);
@@ -890,6 +960,16 @@ file.list = (config, response) => {
             li.html(date('Y-m-d H:i', node.mtime));
             li.on('click', (event) => {
                 file.open(event);
+            });
+            li.on('contextmenu', (event) => {
+                alert('yes');
+                event.preventDefault();
+                file.context_menu({
+                    'event' : event,
+                    'node' : node,
+                    'section' : section,
+                    'element' : event.target.closest('li'),
+                });
             });
             create_ul.appendChild(li);
             li = create('li');
@@ -928,6 +1008,16 @@ file.list = (config, response) => {
             li.html(file.size(node.size));
             li.on('click', (event) => {
                 file.open(event);
+            });
+            li.on('contextmenu', (event) => {
+                alert('yes');
+                event.preventDefault();
+                file.context_menu({
+                    'event' : event,
+                    'node' : node,
+                    'section' : section,
+                    'element' : event.target.closest('li'),
+                });
             });
             create_ul.appendChild(li);
         }

@@ -16,7 +16,6 @@ directory.open();
                 {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
                 {{$li.data.dir = $file.url}}
                 {{$li.data.dir_target = $file.url|>string.replace:'\'':'\\\''}}
-                {{d($li.data.dir_target)}}
                 {{$li.data.target = "section[id='" + $id + "'] ul.tree section[data-dir='" + $li.data.dir_data + "']"}}
                 {{$li.data.method = "replace"}}
                 {{file.manager.tree.directory($file, $li, 'has_sub_dir')}}

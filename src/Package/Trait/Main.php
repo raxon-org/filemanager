@@ -28,6 +28,7 @@ use Exception;
 
 trait Main {
     const NAME = 'Filemanager';
+    const ROUTE_NAME = 'application.filemanager';
 
     /**
      * @throws DirectoryCreateException
@@ -251,7 +252,7 @@ trait Main {
                             "name" => self::NAME,
                             "user" => $user['uuid'],
                             "route" => (object) [
-                                'name' => 'application.file.manager',
+                                'name' => self::ROUTE_NAME,
                                 'get' => '{{route.name($this.name)}}'
                             ],
                             "url" => '{{route.get($this.route.get)}}',

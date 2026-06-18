@@ -177,9 +177,6 @@ trait Main {
                                     $parse = new Parse($clone, $data, $flags, $clone_options->data());
                                     $read = File::read($file->url);                                                                                                            
                                     $content = $parse->compile($read, $data);
-                                    if(stristr($file->url, 'list.directory.tpl')){
-                                        ddd($content);
-                                    }
                                     if($patch !== null) {
                                         File::delete($file->target);
                                     }                                    

@@ -2,7 +2,7 @@
     "System": {
         "Route": [
             {
-                "name": "application-file-manager",
+                "name": "application-filemanager",
                 "path": "\/Application\/Filemanager\/",
                 "host": "{{options('frontend.host')}}",
                 "controller": "Domain:{{app.controller.host(options('frontend.host'))}}:Application:Filemanager:Controller:Manager:main",
@@ -13,7 +13,7 @@
                 ]
             },
             {
-                "name": "application-file-manager-address-bar",
+                "name": "application-filemanager-address-bar",
                 "path": "\/Application\/Filemanager\/AddressBar\/",
                 "host": "{{options('frontend.host')}}",
                 "controller": "Domain:{{app.controller.host(options('frontend.host'))}}:Application:Filemanager:Controller:Manager:address.bar",
@@ -24,7 +24,7 @@
                 ]
             },
             {
-                "name": "application-file-manager-list-directory",
+                "name": "application-filemanager-list-directory",
                 "path": "\/Application\/Filemanager\/List\/Directory\/",
                 "host": "{{options('frontend.host')}}",
                 "controller": "Domain:{{app.controller.host(options('frontend.host'))}}:Application:Filemanager:Controller:Manager:list.directory",
@@ -35,7 +35,7 @@
                 ]
             },
             {
-                "name": "application-file-manager-list-file",
+                "name": "application-filemanager-list-file",
                 "path": "\/Application\/Filemanager\/List\/File\/",
                 "host": "{{options('frontend.host')}}",
                 "controller": "Domain:{{app.controller.host(options('frontend.host'))}}:Application:Filemanager:Controller:Manager:list.file",
@@ -46,7 +46,7 @@
                 ]
             },
             {
-                "name": "application-file-manager-file-open",
+                "name": "application-filemanager-file-open",
                 "path": "\/Application\/Filemanager\/File\/Open\/",
                 "host": "{{options('frontend.host')}}",
                 "controller": "Domain:{{app.controller.host(options('frontend.host'))}}:Application:Filemanager:Controller:Manager:file.open",
@@ -57,7 +57,7 @@
                 ]
             },
             {
-                "name": "application-file-manager-icon",
+                "name": "application-filemanager-icon",
                 "url": "\/Application\/Filemanager\/Icon\/Icon.png",
                 "host": "{{options('frontend.host')}}",
                 "priority": 3006

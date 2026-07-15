@@ -83,11 +83,9 @@ trait Main {
         if($response_frontend === null){
             throw new Exception('Frontend.host option is required and must be defined in Node/System.Host.json aborting...');
         }
-        if($response_backend === null){
+        if($response_backend     === null){
             throw new Exception('Backend.host option is required and must be defined in Node/System.Host.json aborting...');
         }
-
-
         $dir_read = $object->config('project.dir.vendor') .
             $object->request('package') .
             $object->config('ds') .
@@ -142,8 +140,6 @@ trait Main {
                         $file->original_extension = File::extension($file->target);
                         if(!File::exist($file->target) || $patch !== null){
                             $clone_options = new Data();
-                            d($response_frontend);
-                            ddd($response_backend);
                             if(!property_exists($response_frontend['node'],'subdomain')){
                                 $clone_options->set('frontend.host', $response_frontend['node']->domain . '.' . $response_frontend['node']->extension);
                             } else {

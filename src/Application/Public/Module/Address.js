@@ -621,7 +621,7 @@ address.interleave = (inputL, inputR) => {
     return result;
 }
 
-address.read = (config) => {
+address.read = () => {
     const route = {
         frontend : file.data.get('route.frontend.address.bar')
     };

@@ -60,22 +60,12 @@ require(
         });
         task.active({
             "id": "{{$id}}",
-            "namespace": "{{$section.name}}",
-            /*
-            "config": {
-                "url": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}Application/Config/Filemanager/"
-            },
-            "sse" : {
-                "url": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}Task/?user.key=" + user.get('key') + '&channel=' + "{{$id}}",
-
-            }
-             */
-        }, (config) => {
-            console.log(config);
+            "namespace": "{{$section.name}}"
+        }, () => {
             taskbar.add("{{$section.name}}", "{{$id}}");
             menu.init();
             head.init();
-            address.read(config);
+            address.read();
             directory.read();
             window.addEventListener('resize', () => {
                 address.resize();
@@ -84,9 +74,5 @@ require(
 //file.section_active("{{$id}}");
             taskbar.active("{{$id}}");
         });
-
-
-
-
     });
 {{/literal}}

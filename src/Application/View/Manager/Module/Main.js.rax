@@ -64,12 +64,6 @@ require(
             "id": "{{$id}}",
             "namespace": "{{$section.name}}",
         }, () => {
-            taskbar.add("{{$section.name}}", "{{$id}}");
-            menu.init();
-            head.init();
-            address.read();
-            /*
-            taskbar.add("{{$section.name}}", "{{$id}}");
             menu.init();
             head.init();
             priya.debug('event');
@@ -78,7 +72,6 @@ require(
             window.addEventListener('resize', () => {
                 address.resize();
             });
-            */
             dialog.init("{{$id}}");
 //file.section_active("{{$id}}");
             taskbar.active("{{$id}}");

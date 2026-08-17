@@ -286,21 +286,41 @@ trait Main {
                 $node = new Node($object);
                 $class = 'Account.User';
                 $role_system = $node->role_system();
+                $limit = 100;
                 $count = $node->count($class, $role_system);
-                ddd($count);
-                $response = $node->list($class, $role_system, [
-                    /*
-                    'where' => [
-                        [
-                            'value' => $role,
-                            'attribute' => 'role.name',
-                            'operator' => '===',
-                        ]
-                    ],
-                    */
-                    "relation" => true
-                ]);
-                ddd($response);
+                $page_count = 1;
+                if($limit > 0){
+                    $page_count = ceil($count / $limit);
+                }
+                $sort = $object->request('sort');
+                if(empty($sort)){
+                    $sort = [
+                        'uuid' => 'ASC'
+                    ];
+                }
+                $filter = $object->request('filter') ?? [];
+                elseif(!is_array($filter)){
+                    throw new Exception('Filter must be an array.');
+                }
+                for($page = 1; $page <= $limit; $page++){
+                    $response = $node->list($class, $role_system, [
+                        /*
+                        'where' => [
+                            [
+                                'value' => $role,
+                                'attribute' => 'role.name',
+                                'operator' => '===',
+                            ]
+                        ],
+                        */
+                        "relation" => true,
+                        'sort' => $sort,
+                        'filter' => $filter,
+                        'limit' =>  $limit,
+                        'page' => $page
+                    ]);
+                    ddd($response);
+                }
                 if(
                     array_key_exists('node', $response) &&
                     is_object($response['node'])

@@ -329,9 +329,9 @@ trait Main {
                                             'ROLE_SYSTEM',
                                             'ROLE_DOCUMENTER',
                                             'ROLE_TESTER'
-                                ],
-                                true
-                                )
+                                        ],
+                                    true
+                                    )
                                 ){
                                     d($user_role->name ?? null);
                                     dd($user);

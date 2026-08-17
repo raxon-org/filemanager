@@ -313,16 +313,33 @@ trait Main {
                         'limit' =>  $limit,
                         'page' => $page
                     ]);
-                    ddd($response);
                     if(
                         $response !== null &&
                         is_array($response) &&
                         array_key_exists('list', $response)
                     ){
                         foreach($response['list'] as $nr => $user){
-                            d($user->role->name ?? null);
-                            $user->password = '[redacted]';
-                            $list[] = $user;
+                            foreach($user->role as $user_role){
+                                if(
+                                    in_array(
+                                        $user_role->name, [
+                                            'ROLE_ADMIN',
+                                            'ROLE_USER',
+                                            'ROLE_BACKLOG',
+                                            'ROLE_SYSTEM',
+                                            'ROLE_DOCUMENTER',
+                                            'ROLE_TESTER'
+                                ],
+                                true
+                                )
+                                ){
+                                    d($user_role->name ?? null);
+                                    dd($user);
+                                    $user->password = '[redacted]';
+                                    $list[] = $user;
+
+                                }
+                            }
                         }
                     }
                 }

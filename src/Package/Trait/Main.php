@@ -307,15 +307,9 @@ trait Main {
                 }
                 for($page = 1; $page <= $page_count; $page++){
                     $response = $node->list($class, $role_system, [
-                        /*
                         'where' => [
-                            [
-                                'value' => $role,
-                                'attribute' => 'role.name',
-                                'operator' => '===',
-                            ]
+                            ['role in.array ["ROLE_ADMIN", "ROLE_USER", "ROLE_BACKLOG", "ROLE_SYSTEM]']
                         ],
-                        */
                         "relation" => true,
                         'sort' => $sort,
                         'filter' => $filter,

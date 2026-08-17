@@ -224,6 +224,7 @@ trait Main {
     public function navigation_create($list): void
     {
         $object = $this->object();
+        ddd($list);
         if(array_key_exists('nodeList', $list)){
             foreach($list['nodeList'] as $nr => $user){
                 if(array_key_exists('uuid', $user)){

@@ -322,37 +322,19 @@ trait Main {
                         'limit' =>  $limit,
                         'page' => $page
                     ]);
-                    ddd($response);
-                }
-
-
-                if(
-                    array_key_exists('node', $response) &&
-                    is_object($response['node'])
-                ){
-                    /*
-                    $table = 'user';
-                    $options = (object) [];
-                    $options->relation = true;
-                    $config = Database::config($object);
-                    $connection = $object->config('doctrine.environment.system.*');
-                    $em = Database::entity_manager($object, $config, $connection);
-                    $entity = str_replace('.', '', Controller::name($table));
-                    $object->request('entity', $entity);
-                    $object->request('where', [
-                        [
-                            'attribute' => 'role',
-                            'operator' => '===',
-                            'value' => 'JSON_CONTAINS("' . $entity  .'.role", "' .$response['node']->uuid.'") = 1'
-                        ]
-                    ]);
-                    $list = Entity::list($object, $em, $node->role_system(), $options);
-                    */
+                    if(
+                        $response !== null &&
+                        is_array($response) &&
+                        array_key_exists('list', $response)
+                    ){
+                        foreach($response['list'] as $nr => $user){
+                            $user->password = '[redacted]';
+                            $list[] = $user;
+                        }
+                    }
                 }
             break;
         }
         return $list;
     }
-
-
 }

@@ -10,4 +10,4 @@
 {{else}}
 {{$id = 'uuid-' + uuid()}}
 {{/if}}
-{{$section.name = 'application-file-' + config('controller.name')}}
+{{$section.name = 'application-file' + config('controller.name')}}

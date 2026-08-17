@@ -61,7 +61,7 @@ require(
         task.active({
             "id": "{{$id}}",
             "namespace": "{{$section.name}}",
-        }, (config) => {
+        }, () => {
             taskbar.add("{{$section.name}}", "{{$id}}");
             menu.init();
             head.init();

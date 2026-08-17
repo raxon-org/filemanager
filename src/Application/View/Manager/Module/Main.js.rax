@@ -60,16 +60,20 @@ require(
         });
         task.active({
             "id": "{{$id}}",
-            "namespace": "{{$section.name}}"
-        }, () => {
+            "namespace": "{{$section.name}}",
+        }, (config) => {
+            priya.debug(config);
+            /*
             taskbar.add("{{$section.name}}", "{{$id}}");
             menu.init();
             head.init();
+            priya.debug('event');
             address.read();
             directory.read();
             window.addEventListener('resize', () => {
                 address.resize();
             });
+            */
             dialog.init("{{$id}}");
 //file.section_active("{{$id}}");
             taskbar.active("{{$id}}");

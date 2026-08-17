@@ -26,7 +26,7 @@ trait Main {
         'ROLE_DOCUMENTER',
         'ROLE_TESTER',
     ];
-    
+
     /**
      * @throws DirectoryCreateException
      * @throws Exception
@@ -214,7 +214,6 @@ trait Main {
         // get all admin users
 
         $list = $this->user_list();
-        ddd($list);
         $this->navigation_create($list);
     }
 

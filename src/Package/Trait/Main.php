@@ -286,7 +286,10 @@ trait Main {
                 $node = new Node($object);
                 $class = 'Account.User';
                 $role_system = $node->role_system();
+                $count = $node->count($class, $role_system);
+                ddd($count);
                 $response = $node->list($class, $role_system, [
+                    /*
                     'where' => [
                         [
                             'value' => $role,
@@ -294,6 +297,7 @@ trait Main {
                             'operator' => '===',
                         ]
                     ],
+                    */
                     "relation" => true
                 ]);
                 ddd($response);

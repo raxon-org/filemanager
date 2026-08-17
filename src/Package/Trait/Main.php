@@ -224,47 +224,47 @@ trait Main {
     public function navigation_create($list): void
     {
         $object = $this->object();
-        ddd($list);
-        if(array_key_exists('nodeList', $list)){
-            foreach($list['nodeList'] as $nr => $user){
-                if(array_key_exists('uuid', $user)){
-                    $node = new Node($object);
-                    $class = 'Application.Desktop.Navigation';
-                    $role = $node->role_system();
-                    $response = $node->record(
-                        $class,
-                        $role,
-                        [
-                            'where' => [
-                                [
-                                    'attribute' => 'name',
-                                    'operator' => '===',
-                                    'value' => self::NAME,
-                                ],
-                                'and',
-                                [
-                                    'attribute' => 'user',
-                                    'operator' => '===',
-                                    'value' => $user['uuid'],
-                                ]
+        foreach($list as $nr => $user){
+            if(
+                is_object($user) &&
+                property_exists($user, 'uuid')
+            ) {
+                $node = new Node($object);
+                $class = 'Application.Desktop.Navigation';
+                $role = $node->role_system();
+                $response = $node->record(
+                    $class,
+                    $role,
+                    [
+                        'where' => [
+                            [
+                                'attribute' => 'name',
+                                'operator' => '===',
+                                'value' => self::NAME,
                             ],
-                            'relation' => false
-                        ]
-                    );
-                    if($response === null){
-                        $record = [
-                            "name" => self::NAME,
-                            "user" => $user['uuid'],
-                            "route" => (object) [
-                                'name' => self::ROUTE_NAME,
-                                'get' => '{{route.name($this.name)}}'
-                            ],
-                            "url" => '{{route.get($this.route.get)}}',
-                            "svg" => '/Application/' . self::NAME . '/Icon/Icon.png',
-                            "icon" => '/Application/' . self::NAME . '/Icon/Icon.png'
-                        ];
-                        $response = $node->create($class, $role, $record);
-                    }
+                            'and',
+                            [
+                                'attribute' => 'user',
+                                'operator' => '===',
+                                'value' => $user->uuid,
+                            ]
+                        ],
+                        'relation' => false
+                    ]
+                );
+                if ($response === null) {
+                    $record = [
+                        "name" => self::NAME,
+                        "user" => $user->uuid ?? null,
+                        "route" => (object)[
+                            'name' => self::ROUTE_NAME,
+                            'get' => '{{route.name($this.name)}}'
+                        ],
+                        "url" => '{{route.get($this.route.get)}}',
+                        "svg" => '/Application/' . self::NAME . '/Icon/Icon.png',
+                        "icon" => '/Application/' . self::NAME . '/Icon/Icon.png'
+                    ];
+                    $response = $node->create($class, $role, $record);
                 }
             }
         }

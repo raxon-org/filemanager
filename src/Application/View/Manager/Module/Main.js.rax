@@ -62,7 +62,10 @@ require(
             "id": "{{$id}}",
             "namespace": "{{$section.name}}",
         }, (config) => {
-            priya.debug(config);
+            taskbar.add("{{$section.name}}", "{{$id}}");
+            menu.init();
+            head.init();
+            address.read();
             /*
             taskbar.add("{{$section.name}}", "{{$id}}");
             menu.init();

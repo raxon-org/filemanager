@@ -272,7 +272,7 @@ address.search = () => {
     });
 }
 
-address.bar = (config) => {
+address.bar = () => {
     console.log('address bar');
     const section = getSection(file.data.get('section.id'));
     if(!section){
@@ -300,7 +300,7 @@ address.bar = (config) => {
             header(attr, object_header[attr]);
         }
         request(route.backend, node, (url, data) => {
-            console.log(data);
+            priya.debug(data);
             if(exception.authorization(data)){
                 user.authorization((url, response) => {
                     console.log(response);
@@ -318,7 +318,8 @@ address.bar = (config) => {
                         token = user.token();
                         header("Authorization", 'Bearer ' + token);
                         request(route.backend, node, (url, data) => {
-                            file.data.set('config', config);
+                            priya.debug(data);
+                            // file.data.set('config', config);
                             file.data.set('directory.current.list', data);
                             console.log('file list after authorization failure');
                             file.list(config, data);
@@ -631,7 +632,7 @@ address.read = () => {
         }
     };
     request(route.frontend, data, (url, response) => {
-        address.bar(config);
+        address.bar();
         address.search();
         address.microphone();
         // address.microphone();

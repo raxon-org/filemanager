@@ -290,10 +290,11 @@ trait Main {
                     'where' => [
                         [
                             'value' => $role,
-                            'attribute' => 'role',
+                            'attribute' => 'role.name',
                             'operator' => '===',
                         ]
-                    ]
+                    ],
+                    "relation" => true
                 ]);
                 ddd($response);
                 if(

@@ -61,6 +61,7 @@ require(
         task.active({
             "id": "{{$id}}",
             "namespace": "{{$section.name}}",
+            /*
             "config": {
                 "url": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}Application/Config/Filemanager/"
             },
@@ -68,6 +69,7 @@ require(
                 "url": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}Task/?user.key=" + user.get('key') + '&channel=' + "{{$id}}",
 
             }
+             */
         }, (config) => {
             console.log(config);
             taskbar.add("{{$section.name}}", "{{$id}}");

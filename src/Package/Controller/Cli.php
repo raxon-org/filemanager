@@ -1,23 +1,15 @@
 <?php
-
 namespace Package\Raxon\Filemanager\Controller;
 
-use Raxon\App;
-use Raxon\Config;
-
-use Raxon\Module\Core;
-use Raxon\Module\Controller;
-use Raxon\Module\Data;
-use Raxon\Module\Dir;
-use Raxon\Module\File;
-
 use Exception;
-
+use Raxon\App;
 use Raxon\Exception\LocateException;
 use Raxon\Exception\ObjectException;
 use Raxon\Exception\UrlEmptyException;
 use Raxon\Exception\UrlNotExistException;
-
+use Raxon\Module\Controller;
+use Raxon\Module\Dir;
+use Raxon\Module\File;
 class Cli extends Controller {
     const DIR = __DIR__ . '/';
     const MODULE_INFO = 'Info';

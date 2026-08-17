@@ -283,23 +283,17 @@ trait Main {
         switch($role){
             case 'ROLE_ADMIN':
                 $node = new Node($object);
-                $class = 'Account.User';
+                $class = 'Account.Role';
                 $role = $node->role_system();
-                $response = $node->list($class, $role, [
-                    'where' => [
-                        [
-                            'attribute' => 'role',
-                            'operator' => '===',
-                            'value= "ROLE_ADMIN'
-                        ]
+                $response = $node->record($class, $role, [
+                    'filter' => [
+                        'name' => 'ROLE_ADMIN'
                     ]
                 ]);
-                ddd($response);                                                                                                             
                 if(
                     array_key_exists('node', $response) &&
                     is_object($response['node'])
                 ){
-                    /*
                     $table = 'user';
                     $options = (object) [];
                     $options->relation = true;
@@ -316,7 +310,6 @@ trait Main {
                         ]
                     ]);
                     $list = Entity::list($object, $em, $node->role_system(), $options);
-                    */
                 }
             break;
         }

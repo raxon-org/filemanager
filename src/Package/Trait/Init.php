@@ -1,11 +1,11 @@
 <?php
 namespace Package\Raxon\Filemanager\Trait;
 
+use Exception;
 use Raxon\App;
-
 use Raxon\Node\Module\Node;
 
-use Exception;
+
 trait Init {
 
     /**

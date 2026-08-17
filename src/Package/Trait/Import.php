@@ -1,13 +1,12 @@
 <?php
 namespace Package\Raxon\Filemanager\Trait;
 
+use Exception;
 use Raxon\Exception\DirectoryCreateException;
 use Raxon\Exception\FileWriteException;
 use Raxon\Exception\ObjectException;
-
 use Raxon\Node\Module\Node;
 
-use Exception;
 trait Import {
 
     /**

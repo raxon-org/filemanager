@@ -298,11 +298,14 @@ trait Main {
                         'uuid' => 'ASC'
                     ];
                 }
-                $filter = $object->request('filter') ?? [];
+                $filter = $object->request('filter');
+                if(empty($filter)){
+                    $filter = [];
+                }
                 elseif(!is_array($filter)){
                     throw new Exception('Filter must be an array.');
                 }
-                for($page = 1; $page <= $limit; $page++){
+                for($page = 1; $page <= $page_count; $page++){
                     $response = $node->list($class, $role_system, [
                         /*
                         'where' => [
@@ -321,6 +324,8 @@ trait Main {
                     ]);
                     ddd($response);
                 }
+
+
                 if(
                     array_key_exists('node', $response) &&
                     is_object($response['node'])

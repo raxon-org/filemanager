@@ -289,9 +289,9 @@ trait Main {
                 $response = $node->list($class, $role_system, [
                     'where' => [
                         [
+                            'value' => $role,
                             'attribute' => 'role',
                             'operator' => '===',
-                            'value' => $role
                         ]
                     ]
                 ]);

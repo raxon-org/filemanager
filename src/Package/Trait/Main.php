@@ -307,22 +307,19 @@ trait Main {
                 }
                 for($page = 1; $page <= $page_count; $page++){
                     $response = $node->list($class, $role_system, [
-                        'where' => [
-                            ['role in.array ["ROLE_ADMIN", "ROLE_USER", "ROLE_BACKLOG", "ROLE_SYSTEM]']
-                        ],
                         "relation" => true,
                         'sort' => $sort,
                         'filter' => $filter,
                         'limit' =>  $limit,
                         'page' => $page
                     ]);
-                    ddd($response);
                     if(
                         $response !== null &&
                         is_array($response) &&
                         array_key_exists('list', $response)
                     ){
                         foreach($response['list'] as $nr => $user){
+                            d($user->role->name ?? null);
                             $user->password = '[redacted]';
                             $list[] = $user;
                         }

@@ -217,6 +217,7 @@ trait Main {
         // get all admin users
 
         $list = $this->user_list('ROLE_ADMIN');
+        ddd($list);
         $this->navigation_create($list);
     }
 
@@ -284,17 +285,17 @@ trait Main {
             case 'ROLE_ADMIN':
                 $node = new Node($object);
                 $class = 'Account.User';
-                $role = $node->role_system();
-                $response = $node->list($class, $role, [
+                $role_system = $node->role_system();
+                $response = $node->list($class, $role_system, [
                     'where' => [
                         [
                             'attribute' => 'role',
                             'operator' => '===',
-                            'value= "ROLE_ADMIN'
+                            'value' => $role
                         ]
                     ]
                 ]);
-                ddd($response);                                                                                                             
+                ddd($response);
                 if(
                     array_key_exists('node', $response) &&
                     is_object($response['node'])

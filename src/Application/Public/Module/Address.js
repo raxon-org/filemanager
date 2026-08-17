@@ -330,10 +330,10 @@ address.bar = () => {
                     }
                 });
             } else {
-                console.log('file list');
-                file.data.set('config', config);
+                priya.debug(data);
+                // file.data.set('config', config);
                 file.data.set('directory.current.list', data);
-                file.list(config, data);
+                // file.list(config, data);
             }
         });
     });

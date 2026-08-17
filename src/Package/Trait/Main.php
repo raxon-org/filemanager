@@ -1,35 +1,32 @@
 <?php
 namespace Package\Raxon\Filemanager\Trait;
 
+use Exception;
 use Raxon\App;
 use Raxon\Config;
-
-use Raxon\Doctrine\Module\Database;
-use Raxon\Doctrine\Module\Entity;
-use Raxon\Exception\FileWriteException;
 use Raxon\Exception\DirectoryCreateException;
 use Raxon\Exception\ObjectException;
-
 use Raxon\Module\Cli;
-use Raxon\Module\Controller;
 use Raxon\Module\Data;
 use Raxon\Module\Dir;
 use Raxon\Module\Core;
-use Raxon\Module\Event;
 use Raxon\Module\File;
-use Raxon\Module\Host;
-use Raxon\Module\Sort;
-use Raxon\Parse\Module\Parse;
-
 use Raxon\Node\Module\Node;
-
-use Exception;
-
+use Raxon\Parse\Module\Parse;
 
 trait Main {
     const NAME = 'Filemanager';
     const ROUTE_NAME = 'application.filemanager';
 
+    const ROLES_ALLOWED = [
+        'ROLE_ADMIN',
+        'ROLE_USER',
+        'ROLE_BACKLOG',
+        'ROLE_SYSTEM',
+        'ROLE_DOCUMENTER',
+        'ROLE_TESTER',
+    ];
+    
     /**
      * @throws DirectoryCreateException
      * @throws Exception
@@ -216,7 +213,7 @@ trait Main {
         }
         // get all admin users
 
-        $list = $this->user_list('ROLE_ADMIN');
+        $list = $this->user_list();
         ddd($list);
         $this->navigation_create($list);
     }
@@ -277,73 +274,54 @@ trait Main {
      * @throws ObjectException
      * @throws Exception
      */
-    public function user_list($role=''): array
+    public function user_list(): array
     {
         $object = $this->object();
         $list = [];
-        switch($role){
-            case 'ROLE_ADMIN':
-                $node = new Node($object);
-                $class = 'Account.User';
-                $role_system = $node->role_system();
-                $limit = 100;
-                $count = $node->count($class, $role_system);
-                $page_count = 1;
-                if($limit > 0){
-                    $page_count = ceil($count / $limit);
-                }
-                $sort = $object->request('sort');
-                if(empty($sort)){
-                    $sort = [
-                        'uuid' => 'ASC'
-                    ];
-                }
-                $filter = $object->request('filter');
-                if(empty($filter)){
-                    $filter = [];
-                }
-                elseif(!is_array($filter)){
-                    throw new Exception('Filter must be an array.');
-                }
-                for($page = 1; $page <= $page_count; $page++){
-                    $response = $node->list($class, $role_system, [
-                        "relation" => true,
-                        'sort' => $sort,
-                        'filter' => $filter,
-                        'limit' =>  $limit,
-                        'page' => $page
-                    ]);
-                    if(
-                        $response !== null &&
-                        is_array($response) &&
-                        array_key_exists('list', $response)
-                    ){
-                        foreach($response['list'] as $nr => $user){
-                            foreach($user->role as $user_role){
-                                if(
-                                    in_array(
-                                        $user_role->name, [
-                                            'ROLE_ADMIN',
-                                            'ROLE_USER',
-                                            'ROLE_BACKLOG',
-                                            'ROLE_SYSTEM',
-                                            'ROLE_DOCUMENTER',
-                                            'ROLE_TESTER'
-                                        ],
-                                    true
-                                    )
-                                ){
-                                    d($user_role->name ?? null);
-                                    dd($user);
-                                    $user->password = '[redacted]';
-                                    $list[] = $user;
-
-                                }
-                            }
+        $node = new Node($object);
+        $class = 'Account.User';
+        $role_system = $node->role_system();
+        $limit = 100;
+        $count = $node->count($class, $role_system);
+        $page_count = 1;
+        if($limit > 0){
+            $page_count = ceil($count / $limit);
+        }
+        $sort = $object->request('sort');
+        if(empty($sort)){
+            $sort = [
+                'uuid' => 'ASC'
+            ];
+        }
+        $filter = $object->request('filter');
+        if(empty($filter)){
+            $filter = [];
+        }
+        elseif(!is_array($filter)){
+            throw new Exception('Filter must be an array.');
+        }
+        for($page = 1; $page <= $page_count; $page++){
+            $response = $node->list($class, $role_system, [
+                "relation" => true,
+                'sort' => $sort,
+                'filter' => $filter,
+                'limit' =>  $limit,
+                'page' => $page
+            ]);
+            if(
+                $response !== null &&
+                is_array($response) &&
+                array_key_exists('list', $response)
+            ){
+                foreach($response['list'] as $nr => $user){
+                    foreach($user->role as $user_role){
+                        if(in_array($user_role->name, self::ROLES_ALLOWED, true)){
+                            $user->password = '[redacted]';
+                            $list[] = $user;
                         }
                     }
                 }
-            break;
+            }
         }
         return $list;
     }

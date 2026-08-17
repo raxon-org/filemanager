@@ -631,10 +631,12 @@ address.read = () => {
             id : file.data.get('section.id')
         }
     };
+    priya.debug(route);
+    priya.debug(data);
     request(route.frontend, data, (url, response) => {
         address.bar();
         address.search();
-        address.microphone();
+        // address.microphone();
         // address.microphone();
         address.up();
     });

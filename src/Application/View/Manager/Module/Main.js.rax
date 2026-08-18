@@ -27,8 +27,6 @@ require(
         translation.import("{{raw|>translation.export('json-line')}}");
         let active = file.data.get('active') ?? [];
         active.push("{{$id}}");
-        priya.debug("{{$section.name}}");
-        priya.debug("{{route.get($section.name + '-address-bar')}}");
         file.data.set({
             "controller" : "{{raw|>object(config('controller'), 'json-line')}}",
             "section.id" : "{{$id}}",

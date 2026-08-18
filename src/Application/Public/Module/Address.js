@@ -300,7 +300,6 @@ address.bar = () => {
             header(attr, object_header[attr]);
         }
         request(route.backend, node, (url, data) => {
-            priya.debug(data);
             if(exception.authorization(data)){
                 user.authorization((url, response) => {
                     console.log(response);
@@ -318,11 +317,10 @@ address.bar = () => {
                         token = user.token();
                         header("Authorization", 'Bearer ' + token);
                         request(route.backend, node, (url, data) => {
-                            priya.debug(data);
                             // file.data.set('config', config);
                             file.data.set('directory.current.list', data);
-                            console.log('file list after authorization failure');
-                            file.list(config, data);
+                            // console.log('file list after authorization failure');
+                            file.list(data);
                         });
                     } else {
                         //redirect user login
@@ -330,10 +328,9 @@ address.bar = () => {
                     }
                 });
             } else {
-                priya.debug(data);
                 // file.data.set('config', config);
                 file.data.set('directory.current.list', data);
-                // file.list(config, data);
+                file.list(data);
             }
         });
     });

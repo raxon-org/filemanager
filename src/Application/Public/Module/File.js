@@ -750,7 +750,7 @@ file.dirname = (url) => {
     return url.substring(0, url.lastIndexOf('/')) + '/';
 }
 
-file.list = (config, response) => {
+file.list = (response) => {
     const section = getSectionById(file.data.get('section.id'));
     console.log(file.data.get('section.id'));
     console.log(section);
@@ -758,7 +758,6 @@ file.list = (config, response) => {
     if(!section){
         return;
     }
-    console.log(config);
     console.log(response)
     let column = 0;
     let totalBytes = 0;

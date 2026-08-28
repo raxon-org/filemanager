@@ -214,15 +214,16 @@ trait Main {
         // get all admin users
 
         $list = $this->user_list();
-        $this->navigation_create($list);
+        $this->navigation_create($list, $options);
     }
 
     /**
      * @throws ObjectException
      * @throws Exception
      */
-    public function navigation_create($list): void
+    public function navigation_create(array $list, object|null $options=null): void
     {
+        $patch = $options->patch ?? null;
         $object = $this->object();
         foreach($list as $nr => $user){
             if(
@@ -265,7 +266,25 @@ trait Main {
                         "icon" => '/Application/' . self::NAME . '/Icon/Icon.png'
                     ];
                     $response = $node->create($class, $role, $record);
-                    dd($response);                   
+                    dd($response);
+                }
+                elseif(
+                    $response &&
+                    $patch
+                ) {
+                    $patch_record = [
+                        "name" => self::NAME,
+                        "user" => $user->uuid ?? null,
+                        "route" => (object)[
+                            'name' => self::ROUTE_NAME,
+                            'get' => '{{route.name($this.name)}}'
+                        ],
+                        "url" => '{{route.get($this.route.get)}}',
+                        "svg" => '/Application/' . self::NAME . '/Icon/Icon.png',
+                        "icon" => '/Application/' . self::NAME . '/Icon/Icon.png'
+                    ];
+                    $response = $node->patch($class, $role, $patch_record);
+                    ddd($response);
                 }
             }
         }

@@ -272,20 +272,21 @@ trait Main {
                     $response &&
                     $patch
                 ) {
-                    dd($response);
-                    $patch_record = [
-                        "name" => self::NAME,
-                        "user" => $user->uuid ?? null,
-                        "route" => (object)[
-                            'name' => self::ROUTE_NAME,
-                            'get' => '{{route.name($this.name)}}'
-                        ],
-                        "url" => '{{route.get($this.route.get)}}',
-                        "svg" => '/Application/' . self::NAME . '/Icon/Icon.png',
-                        "icon" => '/Application/' . self::NAME . '/Icon/Icon.png'
-                    ];
-                    $response = $node->patch($class, $role, $patch_record);
-                    ddd($response);
+                    $uuid = $response['node']->uuid ?? null;
+                    if($uuid !== null){
+                        $patch_record = [
+                            "name" => self::NAME,
+                            "user" => $user->uuid ?? null,
+                            "route" => (object)[
+                                'name' => self::ROUTE_NAME,
+                                'get' => '{{route.name($this.name)}}'
+                            ],
+                            "url" => '{{route.get($this.route.get)}}',
+                            "svg" => '/Application/' . self::NAME . '/Icon/Icon.png',
+                            "icon" => '/Application/' . self::NAME . '/Icon/Icon.png'
+                        ];
+                        $response = $node->patch($class, $role, $patch_record);
+                    }
                 }
             }
         }

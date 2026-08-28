@@ -266,7 +266,6 @@ trait Main {
                         "icon" => '/Application/' . self::NAME . '/Icon/Icon.png'
                     ];
                     $response = $node->create($class, $role, $record);
-                    dd($response);
                 }
                 elseif(
                     $response &&

@@ -16,7 +16,7 @@ use Raxon\Parse\Module\Parse;
 
 trait Main {
     const NAME = 'Filemanager';
-    const ROUTE_NAME = 'application.filemanager';
+    const ROUTE_NAME = 'application.file.manager';
 
     const ROLES_ALLOWED = [
         'ROLE_ADMIN',

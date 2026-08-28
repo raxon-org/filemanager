@@ -272,6 +272,7 @@ trait Main {
                     $response &&
                     $patch
                 ) {
+                    dd($response);
                     $patch_record = [
                         "name" => self::NAME,
                         "user" => $user->uuid ?? null,

@@ -1333,7 +1333,7 @@ file.open_file_with = (element) => {
         context_menu_item.remove();
     }
     const route = {
-        extension : file.data.get('route.backend.extension'),
+        backend : file.data.get('route.backend.file.open'),
         frontend : file.data.get('route.frontend.application')
     };
     let node = {
@@ -1347,7 +1347,7 @@ file.open_file_with = (element) => {
     }
     const token = user.token();
     header("Authorization", 'Bearer ' + token);
-    request(route.extension, node, (url, data) => {
+    request(route.backend, node, (url, data) => {
         if(exception.authorization(data)){
             user.authorization((url, response) => {
                 if(exception.authorization(response)){

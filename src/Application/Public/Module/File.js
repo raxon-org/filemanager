@@ -1337,13 +1337,13 @@ file.open_file_with = (element) => {
         frontend : file.data.get('route.frontend.application')
     };
     let node = {
-        "filter[name]" : element.data('extension'),
+        "filter[extension]" : element.data('extension'),
         "request" : {
             "method" : "GET"
         }
     };
-    if(!node["filter[name]"]){
-        node["filter[name]"] = 'txt';
+    if(!node["filter[extension]"]){
+        node["filter[extension]"] = 'txt';
     }
     const token = user.token();
     header("Authorization", 'Bearer ' + token);

@@ -5,17 +5,14 @@ use Package\Raxon\Desktop\Module\Navigation;
 use Package\Raxon\Account\Module\User;
 use Raxon\App;
 use Raxon\Config;
-
 use Raxon\Exception\DirectoryCreateException;
-
 use Raxon\Module\Cli;
 use Raxon\Module\Data;
 use Raxon\Module\Dir;
 use Raxon\Module\Core;
 use Raxon\Module\File;
-use Raxon\Parse\Module\Parse;
-
 use Raxon\Node\Module\Node;
+use Raxon\Parse\Module\Parse;
 
 use Exception;
 
@@ -93,7 +90,6 @@ trait Main {
         if($notification){
             echo $notification;
         }
-        d('finish');
     }
 
     /**

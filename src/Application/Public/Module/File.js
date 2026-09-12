@@ -1356,7 +1356,7 @@ file.open_file_with = (element) => {
                             request(
                                 route.frontend, {
                                     'file' : element.data('file'),
-                                    'nodeList' : data.list,
+                                    'list' : data.list,
                                 }, (url, response) => {
                                 });
                         }
@@ -1368,7 +1368,7 @@ file.open_file_with = (element) => {
                 request(
                     route.frontend, {
                         'file' : element.data('file'),
-                        'nodeList' : data.list,
+                        'list' : data.list,
                     }, (url, response) => {
                 });
             }

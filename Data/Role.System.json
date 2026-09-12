@@ -27,6 +27,10 @@
       "name": "FileSystem:read",
       "#class": "Account.Permission",
       "#comment": "Application PhotoViewer read"
+    },
+    {
+      "name": "Application:Filemanager:open",
+      "#class": "Account.Permission"
     }
   ]
 }

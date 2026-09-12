@@ -23,7 +23,8 @@ class Application extends Controller {
      * @throws FileWriteException
      */
     public static function open(App $object){
-        $role = Permission::controller($object, 'System:' . File::basename(__CLASS__), __FUNCTION__, $user);
+        $role = Permission::controller($object, File::basename(__CLASS__) . ':Filemanager', __FUNCTION__, $user);
+
         d($user);
         d($role);
         dd($object->request());

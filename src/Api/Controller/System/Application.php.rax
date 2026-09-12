@@ -52,6 +52,7 @@ class Application extends Controller {
                         'operator' => 'in.array',
                     ]
                 ],
+                'limit' => '*'
             ]);
             return new Response(
                 $data,

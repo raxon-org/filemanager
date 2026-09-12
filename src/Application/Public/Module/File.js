@@ -1351,39 +1351,26 @@ file.open_file_with = (element) => {
                     redirect(user.loginUrl());
                 } else {
                     user.data('user', response?.node);
-                    request(route.extension, node, (url, response) => {
-                        if(response?.nodeList){
-                            let index;
-                            for(index = 0; index < response.nodeList.length; index++){
-                                let node = response.nodeList[index];
-                                if(node && is.array(node?.applications)){
-                                    let data_send = {};
-                                    data_send.file = element.data('file');
-                                    data_send.nodeList = node.applications;
-                                    request(route.frontend, data_send, (url, response) => {
-                                        console.log(response);
-                                    });
-                                }
-                            }
+                    request(route.backend, node, (url, data) => {
+                        if(data?.list){
+                            request(
+                                route.frontend, {
+                                    'file' : element.data('file'),
+                                    'nodeList' : data.list,
+                                }, (url, response) => {
+                                });
                         }
                     });
                 }
             });
         } else {
-            if(data?.nodeList){
-                let index;
-                for(index = 0; index < data.nodeList.length; index++){
-                    let node = data.nodeList[index];
-                    if(node && is.array(node?.applications)){
-                        let data_send = {};
-                        data_send.file = element.data('file');
-                        data_send.nodeList = node.applications;
-                        request(route.frontend, data_send, (url, response) => {
-                            console.log(url);
-                            console.log(response);
-                        });
-                    }
-                }
+            if(data?.list){
+                request(
+                    route.frontend, {
+                        'file' : element.data('file'),
+                        'nodeList' : data.list,
+                    }, (url, response) => {
+                });
             }
         }
 

@@ -33,27 +33,24 @@ class Application extends Controller {
             $node = new Node($object);
             $class = 'System.Server.Extension';
             $response = $node->record($class, $node->role_system(), [
-                    'where' => [
-                            [
-                                    'value' => $extension,
-                                    'attribute' => 'name',
-                                    'operator' => '===',
-                            ]
-                    ],
-                    'relation' => true
+                'where' => [
+                    [
+                        'value' => $extension,
+                        'attribute' => 'name',
+                        'operator' => '===',
+                    ]
+                ]
             ]);
-            //$record = $response['node'];
-            ddd($response);
+            $record = $response['node'];
             $class = 'System.Application';
             $response = $node->list($class, $node->role_system(), [
-                    'where' => [
-                            [
-                                    'value' => $extension,
-                                    'attribute' => 'extension.name',
-                                    'operator' => 'in.array',
-                            ]
-                    ],
-                    'relation' => true
+                'where' => [
+                    [
+                        'value' => $record->uuid,
+                        'attribute' => 'extension',
+                        'operator' => 'in.array',
+                    ]
+                ],
             ]);
             ddd($response);
         }

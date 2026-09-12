@@ -2,6 +2,7 @@
 namespace Package\Raxon\Filemanager\Trait;
 
 use Package\Raxon\Desktop\Module\Navigation;
+use Package\Raxon\Account\Module\User;
 use Raxon\App;
 use Raxon\Config;
 

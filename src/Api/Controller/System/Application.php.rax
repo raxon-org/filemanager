@@ -31,15 +31,29 @@ class Application extends Controller {
         if(property_exists($role, 'name') && $role->name === 'ROLE_ADMIN'){
             $extension = $object->request('extension');
             $node = new Node($object);
+            $class = 'System.Server.Extension';
+            $response = $node->record($class, $node->role_system(), [
+                    'where' => [
+                            [
+                                    'value' => $extension,
+                                    'attribute' => 'name',
+                                    'operator' => '===',
+                            ]
+                    ],
+                    'relation' => true
+            ]);
+            //$record = $response['node'];
+            ddd($response);
             $class = 'System.Application';
             $response = $node->list($class, $node->role_system(), [
                     'where' => [
                             [
                                     'value' => $extension,
-                                    'attribute' => 'extension',
-                                    'operator' => 'in',
+                                    'attribute' => 'extension.name',
+                                    'operator' => 'in.array',
                             ]
-                    ]
+                    ],
+                    'relation' => true
             ]);
             ddd($response);
         }

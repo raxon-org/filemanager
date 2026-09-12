@@ -39,7 +39,7 @@ require(
             "route.backend.file.copy": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}FileSystem/Copy/",
             "route.backend.file.delete": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}FileSystem/",
             "route.backend.file.download": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}FileSystem/Download/",
-            "route.backend.file.open": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}Node/System.Application/",
+            "route.backend.file.open": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}Filemanager/Open/",
             "route.backend.tree": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}FileSystem/List/Tree/",
             "route.backend.upload": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}FileSystem/Upload/",
             "route.backend.context.menu": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}FileSystem/ContextMenu/",

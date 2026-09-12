@@ -1,0 +1,14 @@
+{{$options = options()}}
+<?php
+namespace Domain\{{php.namespace.host($options.backend.host)}}\Controller;
+
+use Raxon\App;
+use Raxon\Module\Controller;
+
+class Manager extends Controller {
+    const DIR = __DIR__ . DIRECTORY_SEPARATOR;
+
+    public static function file_open(App $object){
+        dd($object->request());
+    }
+}

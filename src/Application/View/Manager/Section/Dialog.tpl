@@ -6,8 +6,8 @@
         </div>
         <div class="body">
             <ul class="application-open">
-            {{if(is.array($request.nodeList))}}
-                {{foreach($request.nodeList as $nr => $node)}}
+            {{if(is.array($request.list))}}
+                {{foreach($request.list as $nr => $node)}}
                     {{$node.url = parse.string($node.url)}}
                     {{$node.icon_url = parse.string($node.icon_url)}}
                     {{$request.extension = $request.file|>file.extension}}
@@ -15,7 +15,7 @@
                     <li data-file="{{$request.file|>default:''}}" data-extension="{{$request.extension|>default:''}}" data-url="{{$node.url|>default:''}}" data-contenttype="{{$node.contentType|>default:''}}">
                         <img class="icon-url" src="{{$node.icon_url|>default:''}}" alt="" />
                         <span class="name">
-                        {{$node.name}}
+                        {{$node.display.name|>default:$node.name}}
                         </span>
                     </li>
                 {{/foreach}}

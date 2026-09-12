@@ -68,15 +68,16 @@ class Manager extends Controller {
     }
 
     /**
-         * @throws LocateException
-         * @throws ObjectException
-         * @throws UrlEmptyException
-         * @throws UrlNotExistException
-         * @throws FileWriteException
-         */
-        public static function file_open(App $object){
-            $name = Manager::name(__FUNCTION__ , __CLASS__, '/');
-            $url = Manager::locate($object, $name);
-            return Manager::response($object, $url);
-        }
+     * @throws LocateException
+     * @throws ObjectException
+     * @throws UrlEmptyException
+     * @throws UrlNotExistException
+     * @throws FileWriteException
+     */
+    public static function list_directory(App $object){
+        $name = Manager::name(__FUNCTION__ , __CLASS__, '/');
+        $url = Manager::locate($object, $name);
+        $object->config('response.url', $url);
+        return Manager::response($object, $url);
+    }
 }

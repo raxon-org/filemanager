@@ -239,7 +239,6 @@ trait Main {
 
         }
         $options->read = $read;
-        d($read);
         echo 'Installing API: ' . $count . ' files' . PHP_EOL;
         $this->install_list($options);
     }
@@ -274,14 +273,17 @@ trait Main {
         }
         $dir = new Dir();
         $read = $dir->read($dir_read, true);
+        $count = 0;
         foreach($read as $nr => $file){
             $explode = explode($dir_read, $file->url, 2);
             if(array_key_exists(1, $explode)){
                 $file->target = $dir_target . $explode[1];
+            } else {
+                unset($read[$nr]);
             }
         }
         $options->read = $read;
-        echo 'Installing Frontend: ' . count($read) . ' files' . PHP_EOL;
+        echo 'Installing Frontend: ' . $count . ' files' . PHP_EOL;
         $this->install_list($options);
     }
 

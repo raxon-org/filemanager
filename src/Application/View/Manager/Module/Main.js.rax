@@ -46,7 +46,7 @@ require(
             "route.frontend.address.bar":"{{route.get($section.name + '-address-bar')}}",
             "route.frontend.directory":"{{route.get($section.name + '-list-directory')}}",
             "route.frontend.file.list": "{{route.get($section.name + '-list-file')}}",
-            "route.frontend.application": "{{route.get('application-open')}}",
+            "route.frontend.application": "{{route.get($section.name + '-file-open')}}",
             "route.frontend.open": "{{route.get($section.name + '-file-open')}}",
             "upload.max.filesize": 10 * 1024 * 1024,
             "upload.chunking": true,

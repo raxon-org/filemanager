@@ -3,7 +3,7 @@
       "Route": [
         {
           "#class": "System.Route",
-          "name": "api-filemanager-file-open",
+          "name": "api-file-manager-file-open",
           "path": "/Filemanager/Open/",
           "host": "{{options('backend.host')}}",
           "controller": "Domain:{{app.controller.host(options('backend.host'))}}:Controller:System:Application:open",

@@ -275,17 +275,18 @@ trait Main {
         $read = $dir->read($dir_read, true);
         $count = 0;
         foreach($read as $nr => $file){
-            $explode = explode($dir_read, $file->url, 2);
-            if(array_key_exists(1, $explode)){
-                $file->target = $dir_target . $explode[1];
+            if($file->type === File::TYPE){
+                $explode = explode($dir_read, $file->url, 2);
+                if(array_key_exists(1, $explode)){
+                    $file->target = $dir_target . $explode[1];
+                }
+                $count++;
             } else {
                 unset($read[$nr]);
             }
-            $count++;
         }
         $options->read = $read;
         echo 'Installing Frontend: ' . $count . ' files' . PHP_EOL;
         $this->install_list($options);
     }
-
 }

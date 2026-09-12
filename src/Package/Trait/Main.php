@@ -1,5 +1,5 @@
 <?php
-namespace Package\Raxon\Desktop\Trait;
+namespace Package\Raxon\Filemanager\Trait;
 
 use Package\Raxon\Desktop\Module\Navigation;
 use Raxon\App;

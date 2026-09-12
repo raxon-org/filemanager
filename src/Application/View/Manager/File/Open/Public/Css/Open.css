@@ -1,0 +1,45 @@
+section[name="application-open"] {
+}
+
+section[name="application-open"] .dialog {
+    width: 250px;
+    height: calc(100% - 320px);
+    top: 150px;
+    left: calc(50% - 125px);
+}
+
+section[name="application-open"] .body {
+    background: rgba(255, 255, 255, 1);
+    height: calc(100% - 40px);
+    width: 100%;
+    overflow: auto;
+}
+
+section[name="application-open"] ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+section[name="application-open"] li {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+section[name="application-open"] li.selected {
+    background: rgba(72, 158, 173, 1);
+}
+
+section[name="application-open"] li:hover {
+    background: rgba(200, 226, 230, 1);
+}
+
+section[name="application-open"] li img {
+    height: 32px;
+    padding-left: 10px;
+}
+
+section[name="application-open"] li span {
+    position: relative;
+    top: -10px;
+}

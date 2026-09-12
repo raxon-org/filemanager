@@ -23,7 +23,7 @@ class Manager extends Controller {
      * @throws FileWriteException
      */
     public static function file_open(App $object){
-        $role = Permission::controller($object, 'Filemanager\\' . File::basename(__CLASS__), __FUNCTION__, $user);
+        $role = Permission::controller($object, 'Filemanager:' . File::basename(__CLASS__), __FUNCTION__, $user);
 
         d($user);
         d($role);

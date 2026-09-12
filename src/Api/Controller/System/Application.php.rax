@@ -11,6 +11,7 @@ use Raxon\Exception\FileWriteException;
 
 use Raxon\Module\Controller;
 use Raxon\Module\File;
+use Raxon\Module\Response;
 use Raxon\Node\Module\Node;
 
 
@@ -55,7 +56,7 @@ class Application extends Controller {
             return new Response(
                 $data,
                 Response::TYPE_JSON
-            );            
+            );
         }
     }
 }

@@ -43,7 +43,7 @@ class Application extends Controller {
             ]);
             $record = $response['node'];
             $class = 'System.Application';
-            $response = $node->list($class, $node->role_system(), [
+            $data = $node->list($class, $node->role_system(), [
                 'where' => [
                     [
                         'value' => $record->uuid,
@@ -52,7 +52,10 @@ class Application extends Controller {
                     ]
                 ],
             ]);
-            ddd($response);
+            return new Response(
+                $data,
+                Response::TYPE_JSON
+            );            
         }
     }
 }

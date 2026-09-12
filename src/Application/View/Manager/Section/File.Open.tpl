@@ -1,4 +1,4 @@
-<section id="{{$id}}" name="{{config('controller.name')}}-open" class="display-none">
+<section id="{{$id}}" name="application-file-{{config('controller.name')}}-open" class="display-none">
     <div class="dialog dialog-{{config('controller.name')}}-open">
         <div class="head">
             <h1><i class="fas fa-cog"></i> Applications</h1>

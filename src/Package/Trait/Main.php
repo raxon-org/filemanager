@@ -236,7 +236,6 @@ trait Main {
             } else {
                 unset($read[$nr]);
             }
-
         }
         $options->read = $read;
         echo 'Installing API: ' . $count . ' files' . PHP_EOL;

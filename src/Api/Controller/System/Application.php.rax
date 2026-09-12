@@ -11,6 +11,7 @@ use Raxon\Exception\FileWriteException;
 
 use Raxon\Module\Controller;
 use Raxon\Module\File;
+use Raxon\Node\Module\Node;
 
 
 class Application extends Controller {
@@ -24,9 +25,23 @@ class Application extends Controller {
      */
     public static function open(App $object){
         $role = Permission::controller($object, File::basename(__CLASS__) . ':Filemanager', __FUNCTION__, $user);
-
-        d($user);
-        d($role);
-        dd($object->request());
+        if($role === null){
+            throw new AuthorizationException('You are not allowed to access this resource.');
+        }
+        if(property_exists($role, 'name') && $role->name === 'ROLE_ADMIN'){
+            $extension = $object->request('extension');
+            $node = new Node($object);
+            $class = 'System.Application';
+            $response = $node->list($class, $node->role_system(), [
+                    'where' => [
+                            [
+                                    'value' => $extension,
+                                    'attribute' => 'extension',
+                                    'operator' => 'in',
+                            ]
+                    ]
+            ]);
+            ddd($response);
+        }
     }
 }

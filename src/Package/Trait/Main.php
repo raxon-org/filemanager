@@ -281,6 +281,7 @@ trait Main {
             } else {
                 unset($read[$nr]);
             }
+            $count++;
         }
         $options->read = $read;
         echo 'Installing Frontend: ' . $count . ' files' . PHP_EOL;

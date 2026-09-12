@@ -1,6 +1,6 @@
 {{$options = options()}}
 <?php
-namespace Domain\{{php.namespace.host($options.backend.host)}}\Controller;
+namespace Domain\{{php.namespace.host($options.backend.host)}}\Controller\System;
 
 use Package\Raxon\Account\Module\Permission;
 use Raxon\App;
@@ -13,7 +13,7 @@ use Raxon\Module\Controller;
 use Raxon\Module\File;
 
 
-class Manager extends Controller {
+class Application extends Controller {
     const DIR = __DIR__ . DIRECTORY_SEPARATOR;
 
     /**
@@ -22,9 +22,8 @@ class Manager extends Controller {
      * @throws AuthorizationException
      * @throws FileWriteException
      */
-    public static function file_open(App $object){
-        $role = Permission::controller($object, 'Filemanager:' . File::basename(__CLASS__), __FUNCTION__, $user);
-
+    public static function open(App $object){
+        $role = Permission::controller($object, 'System:' . File::basename(__CLASS__), __FUNCTION__, $user);
         d($user);
         d($role);
         dd($object->request());

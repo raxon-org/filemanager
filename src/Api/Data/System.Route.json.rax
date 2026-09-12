@@ -6,7 +6,7 @@
           "name": "api-filemanager-file-open",
           "path": "/Filemanager/Open/",
           "host": "{{options('backend.host')}}",
-          "controller": "Domain:{{app.controller.host(options('backend.host'))}}:Controller:Manager:file.open",
+          "controller": "Domain:{{app.controller.host(options('backend.host'))}}:Controller:System:Application:open",
           "priority": 2001,
           "method": [
             "GET",

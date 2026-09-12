@@ -7,7 +7,7 @@ import { version } from "/Module/Priya.js";
 
 require(
     [
-        root() + 'Application/Css/Open.css?' + version(),
+        root() + 'Application/Filemanager/Css/open.css?' + version(),
         root() + 'Dialog/Css/Dialog.css?' + version(),
     ],
     () => {

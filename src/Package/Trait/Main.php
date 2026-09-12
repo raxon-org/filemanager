@@ -92,6 +92,7 @@ trait Main {
         if($notification){
             echo $notification;
         }
+        d('finish');
     }
 
     /**

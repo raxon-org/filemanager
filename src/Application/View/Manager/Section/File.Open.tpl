@@ -11,8 +11,7 @@
                     {{$url = $node.url}}
                     {{dd($url)}}
                     {{if(property.exist($url, $environment))}}
-                        {{$url = parse.string($url.$environment)}}
-                        {{d($url)}}
+                        {{$url = parse.string(object.get($url,$environment))}}// $url.$environment : new writing in parse todo...
                         {{$node.icon_url = parse.string($node.icon_url)}}
                         {{$request.extension = $request.file|>file.extension}}
                         {{$node.contentType = config('contentType.' + $request.extension)}}

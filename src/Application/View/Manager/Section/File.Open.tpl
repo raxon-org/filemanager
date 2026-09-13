@@ -8,13 +8,12 @@
             <ul class="application-open">
             {{if(is.array($request.list))}}
                 {{foreach($request.list as $nr => $node)}}
-                    {{$url = $node.url}}                 
                     {{if(property.exist($url, $environment))}}
-                        {{$url = parse.string(object.get($url,$environment))}}// $url.$environment : new writing in parse todo...
+                        {{$node.url = parse.string($node.url)}}// $url.$environment : new writing in parse todo...
                         {{$node.icon_url = parse.string($node.icon_url)}}
                         {{$request.extension = $request.file|>file.extension}}
                         {{$node.contentType = config('contentType.' + $request.extension)}}
-                        <li data-file="{{$request.file|>default:''}}" data-extension="{{$request.extension|>default:''}}" data-url="{{$url|>default:''}}" data-contenttype="{{$node.contentType|>default:''}}">
+                        <li data-file="{{$request.file|>default:''}}" data-extension="{{$request.extension|>default:''}}" data-url="{{$node.url|>default:''}}" data-contenttype="{{$node.contentType|>default:''}}">
                             <img class="icon-url" src="{{$node.icon_url|>default:''}}" alt="" />
                             <span class="name">
                             {{$node.display.name|>default:$node.name}}

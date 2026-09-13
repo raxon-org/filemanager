@@ -9,7 +9,9 @@
             {{if(is.array($request.list))}}
                 {{foreach($request.list as $nr => $node)}}
                     {{$url = (array) $node.url}}
+                    {{dd($url)}}
                     {{if(array.key.exist($url, $environment))}}
+
                         {{$url = parse.string($url[$environment])}}
                         {{$node.icon_url = parse.string($node.icon_url)}}
                         {{$request.extension = $request.file|>file.extension}}

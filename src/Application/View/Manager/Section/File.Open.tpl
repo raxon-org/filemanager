@@ -9,7 +9,7 @@
             {{if(is.array($request.list))}}
                 {{foreach($request.list as $nr => $node)}}
                     {{$url = $node.url}}
-                    {{d($url)}}
+                    {{dd($url)}}
                     {{if(property.exist($url, $environment))}}
                         {{$url = parse.string($url.$environment)}}
                         {{d($url)}}

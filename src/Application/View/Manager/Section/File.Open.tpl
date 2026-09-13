@@ -15,7 +15,7 @@
                     <li data-file="{{$request.file|>default:''}}" data-extension="{{$request.extension|>default:''}}" data-url="{{$node.url|>default:''}}" data-contenttype="{{$node.contentType|>default:''}}">
                         <img class="icon-url" src="{{$node.icon_url|>default:''}}" alt="" />
                         <span class="name">
-                        {{$node.display.name|>default:$node.name}}
+                        {{$node.display.name|>default:$node.name|>default:''}}
                         </span>
                     </li>
                 {{/foreach}}

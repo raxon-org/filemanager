@@ -11,3 +11,4 @@
 {{$id = 'uuid-' + uuid()}}
 {{/if}}
 {{$section.name = 'application-file-' + config('controller.name')}}
+{{$environment =environment()}}

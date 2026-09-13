@@ -8,11 +8,11 @@
             <ul class="application-open">
             {{if(is.array($request.list))}}
                 {{foreach($request.list as $nr => $node)}}
-                    {{$url = (array) $node.url}}
-                    {{dd($url)}}
-                    {{if(array.key.exist($url, $environment))}}
-
-                        {{$url = parse.string($url[$environment])}}
+                    {{$url = $node.url}}
+                    {{d($url)}}
+                    {{if(property.exist($url, $environment))}}
+                        {{$url = parse.string($url.$environment)}}
+                        {{d($url)}}
                         {{$node.icon_url = parse.string($node.icon_url)}}
                         {{$request.extension = $request.file|>file.extension}}
                         {{$node.contentType = config('contentType.' + $request.extension)}}

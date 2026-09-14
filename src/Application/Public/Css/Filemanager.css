@@ -255,6 +255,7 @@ section[name="application-file-manager"] .body .loading i {
 section[name="application-file-manager"] .body .loading span {
     display: inline-block;
     margin-top: 10px;
+    color: rgba(255, 255, 255, 1);
 }
 
 section[name="application-file-manager"] .body div.tree {

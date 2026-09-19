@@ -54,6 +54,7 @@ class Application extends Controller {
                 ],
                 'limit' => '*'
             ]);
+            dd($data);
             return new Response(
                 $data,
                 Response::TYPE_JSON

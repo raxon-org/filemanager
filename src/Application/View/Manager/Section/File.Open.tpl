@@ -8,7 +8,7 @@
             <ul class="application-open">
             {{if(is.array($request.list))}}
                 {{foreach($request.list as $nr => $node)}}
-                {{dd($node)}} 
+                {{dd($node)}}
                     {{$node.url = parse.string($node.url)}}// $url.$environment : new writing in parse todo...
                     {{$node.icon_url = parse.string($node.icon_url)}}
                     {{$request.extension = $request.file|>file.extension}}

@@ -57,7 +57,7 @@ class Application extends Controller {
             if(empty($data) || empty($data['list'])){
                 throw new ObjectException('No application found.');
             }
-            foreach($data['list'] as $item){
+            foreach($data['list'] as $nr => $item){
                 if(!empty($_SERVER['ORIGIN'])){
                     if(property_exists($item, 'directory')){
                         if(property_exists($item->directory, 'application')){
@@ -78,6 +78,7 @@ class Application extends Controller {
                         $item->icon = $_SERVER['ORIGIN'] . $item->icon;
                     }
                 }
+                $data['list'][$nr] = $item;
             }
             return new Response(
                 $data,

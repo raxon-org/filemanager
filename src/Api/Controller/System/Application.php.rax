@@ -57,26 +57,25 @@ class Application extends Controller {
             if(empty($data) || empty($data['list'])){
                 throw new ObjectException('No application found.');
             }
-            ddd($_SERVER);
             foreach($data['list'] as $nr => $item){
-                if(!empty($_SERVER['ORIGIN'])){
+                if(!empty($_SERVER['HTTP_ORIGIN'])){
                     if(property_exists($item, 'directory')){
                         if(property_exists($item->directory, 'application')){
-                            $item->url = $_SERVER['ORIGIN'] . '/' . $item->directory->application;
+                            $item->url = $_SERVER['HTTP_ORIGIN'] . '/' . $item->directory->application;
                         }
                     }
                     if(property_exists($item, 'icon')){
-                        $item->icon = $_SERVER['ORIGIN'] . '/' . $item->icon;
+                        $item->icon = $_SERVER['HTTP_ORIGIN'] . '/' . $item->icon;
                     }
                 }
-                elseif(!empty($_SERVER['REFERER'])){
+                elseif(!empty($_SERVER['HTTP_REFERER'])){
                     if(property_exists($item, 'directory')){
                         if(property_exists($item->directory, 'application')){
-                            $item->url = $_SERVER['REFERER'] . $item->directory->application;
+                            $item->url = $_SERVER['HTTP_REFERER'] . $item->directory->application;
                         }
                     }
                     if(property_exists($item, 'icon')){
-                        $item->icon = $_SERVER['ORIGIN'] . $item->icon;
+                        $item->icon = $_SERVER['HTTP_REFERER'] . $item->icon;
                     }
                 }
                 $data['list'][$nr] = $item;

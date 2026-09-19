@@ -54,28 +54,28 @@ class Application extends Controller {
                 ],
                 'limit' => '*'
             ]);
-            if(empty($data) || empty($data['list')){
+            if(empty($data) || empty($data['list'])){
                 throw new ObjectException('No application found.');
             }
             foreach($data['list'] as $item){
                 if(!empty($_SERVER['ORIGIN')){
                     if(property_exists($item, 'directory')){
                         if(property_exists($item->directory, 'application')){
-                            $item->url = $_SERVER['ORIGIN'] . '/' . '$item->directory->application;
+                            $item->url = $_SERVER['ORIGIN'] . '/' . $item->directory->application;
                         }
                     }
                     if(property_exists($item, 'icon')){
-                        $item->icon = $_SERVER['ORIGIN'] . '/' . '$item->icon;
+                        $item->icon = $_SERVER['ORIGIN'] . '/' . $item->icon;
                     }
                 }
                 elseif(!empty($_SERVER['REFERER')){
                     if(property_exists($item, 'directory')){
                         if(property_exists($item->directory, 'application')){
-                            $item->url = $_SERVER['REFERER'] . '$item->directory->application;
+                            $item->url = $_SERVER['REFERER'] . $item->directory->application;
                         }
                     }
                     if(property_exists($item, 'icon')){
-                        $item->icon = $_SERVER['ORIGIN'] . '$item->icon;
+                        $item->icon = $_SERVER['ORIGIN'] . $item->icon;
                     }
                 }
             }

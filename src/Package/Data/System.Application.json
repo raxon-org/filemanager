@@ -27,8 +27,7 @@
         "target": null,
         "description": "File manager (Managing files and directories)",
         "icon": "Application/{{$this.name}}/Icon/Icon.png",
-        "user": "{{Package.Raxon.Filemanager:Setup:user.list(flags(), options(), $this)}}",
-        "extension": "{{Package.Raxon.Filemanager:Setup:extension.list(flags(), options(), $this)}}"
+        "user": "{{Package.Raxon.Filemanager:Setup:user.list(flags(), options(), $this)}}"
       }
     ]
   }

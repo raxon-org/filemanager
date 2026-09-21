@@ -301,7 +301,6 @@ address.bar = () => {
         }
         priya.exception_exclude(["Raxon\\Exception\\ErrorException"]); //exclude exceptions from debugging...
         request(route.backend, node, (url, data) => {
-            priya.exception_exclude(); //return state to debug to all exceptions included
             if(exception.authorization(data)){
                 user.authorization((url, response) => {
                     console.log(response);
@@ -320,11 +319,11 @@ address.bar = () => {
                         header("Authorization", 'Bearer ' + token);
                         priya.exception_exclude(["Raxon\\Exception\\ErrorException"]); //exclude exceptions from debugging...
                         request(route.backend, node, (url, data) => {
-                            priya.exception_exclude(); //return state to debug to all exceptions included
                             // file.data.set('config', config);
                             file.data.set('directory.current.list', data);
                             // console.log('file list after authorization failure');
                             file.list(data);
+                            priya.exception_exclude(); //return state to debug to all exceptions included
                         });
                     } else {
                         //redirect user login
@@ -335,6 +334,7 @@ address.bar = () => {
                 // file.data.set('config', config);
                 file.data.set('directory.current.list', data);
                 file.list(data);
+                priya.exception_exclude(); //return state to debug to all exceptions included
             }
         });
     });

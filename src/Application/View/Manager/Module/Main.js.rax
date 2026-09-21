@@ -27,6 +27,13 @@ require(
         translation.import("{{raw|>translation.export('json-line')}}");
         let active = file.data.get('active') ?? [];
         active.push("{{$id}}");
+
+        let exception_included = priya.collection('debug.exception.included');
+        let index = 0;
+        for(index = 0; index < exception_included.length; index++) {
+            exception = exception_included[index];
+            console.log(exception);
+        }
         file.data.set({
             "controller" : "{{raw|>object(config('controller'), 'json-line')}}",
             "section.id" : "{{$id}}",

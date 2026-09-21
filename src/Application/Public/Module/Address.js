@@ -300,21 +300,24 @@ address.bar = () => {
             header(attr, object_header[attr]);
         }
         let exception_included = priya.collection('debug.exception.included');
+        console.log(exception_included);
         let index = 0;
+        let exception_included_list;
         for(index = 0; index < exception_included.length; index++) {
             let exception = exception_included[index];
             if(
                 in_array(
                     exception, [
-                        'Raxon\\Exception\\ErrorException'
+                        "Raxon\\Exception\\ErrorException"
                     ],
                     true
                 )
             ){
-                exception_included.splice(index, 1);
+                continue;
             }
+            exception_included_list.push(exception);
         }
-        priya.collection('debug.exception.included', exception_included);
+        priya.collection('debug.exception.included', exception_included_list);
         request(route.backend, node, (url, data) => {
             if(exception.authorization(data)){
                 user.authorization((url, response) => {

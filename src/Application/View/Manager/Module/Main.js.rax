@@ -31,7 +31,7 @@ require(
         let exception_included = priya.collection('debug.exception.included');
         let index = 0;
         for(index = 0; index < exception_included.length; index++) {
-            exception = exception_included[index];
+            let exception = exception_included[index];
             console.log(exception);
         }
         file.data.set({

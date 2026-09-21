@@ -299,26 +299,9 @@ address.bar = () => {
         for(attr in object_header){
             header(attr, object_header[attr]);
         }
-        let exception_included = priya.collection('debug.exception.included');
-        console.log(exception_included);
-        let index = 0;
-        let exception_included_list;
-        for(index = 0; index < exception_included.length; index++) {
-            let exception = exception_included[index];
-            if(
-                in_array(
-                    exception, [
-                        "Raxon\\Exception\\ErrorException"
-                    ],
-                    true
-                )
-            ){
-                continue;
-            }
-            exception_included_list.push(exception);
-        }
-        priya.collection('debug.exception.included', exception_included_list);
+        priya.exception_exclude(["Raxon\\Exception\\ErrorException"]); //exclude exceptions from debugging...
         request(route.backend, node, (url, data) => {
+            priya.exception_exclude(); //return state to debug to all exceptions included
             if(exception.authorization(data)){
                 user.authorization((url, response) => {
                     console.log(response);
@@ -335,7 +318,9 @@ address.bar = () => {
                         user.data(node);
                         token = user.token();
                         header("Authorization", 'Bearer ' + token);
+                        priya.exception_exclude(["Raxon\\Exception\\ErrorException"]); //exclude exceptions from debugging...
                         request(route.backend, node, (url, data) => {
+                            priya.exception_exclude(); //return state to debug to all exceptions included
                             // file.data.set('config', config);
                             file.data.set('directory.current.list', data);
                             // console.log('file list after authorization failure');

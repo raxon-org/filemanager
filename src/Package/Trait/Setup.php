@@ -3,8 +3,10 @@ namespace Package\Raxon\Filemanager\Trait;
 
 use Package\Raxon\Desktop\Module\Navigation;
 use Package\Raxon\Account\Module\User;
+use Package\Raxon\Basic\Trait\Install;
 use Raxon\App;
 use Raxon\Config;
+
 use Raxon\Exception\DirectoryCreateException;
 use Raxon\Module\Cli;
 use Raxon\Module\Data;
@@ -16,9 +18,11 @@ use Raxon\Parse\Module\Parse;
 
 use Exception;
 
-trait Main {
+trait Setup {
     const NAME = 'Filemanager';
     const ROUTE_NAME = 'application.file.manager';
+
+    use Install;
     /**
      * @throws DirectoryCreateException
      * @throws Exception
@@ -29,59 +33,22 @@ trait Main {
         if($object->config(Config::POSIX_ID) !== 0){
             return;
         }
-        $frontend_options = null;
-        $has_frontend = false;
-        if(property_exists($options, 'frontend')){
-            if(property_exists($options->frontend, 'host')){                
-                $has_frontend = true;
-                $frontend_options = [
-                    'where' => [
-                        [
-                            'value' => $options->frontend->host,
-                            'attribute' => 'name',
-                            'operator' => 'partial',
-                        ]
-                    ]
-                ];
-            }                
-        }
-        $backend_options = null;
-        $has_backend = false;
-        if(property_exists($options, 'backend')){
-            if(property_exists($options->backend, 'host')){                
-                $has_backend = true;
-                $backend_options = [
-                    'where' => [
-                        [
-                            'value' => $options->backend->host,
-                            'attribute' => 'name',
-                            'operator' => 'partial',
-                        ]
-                    ]
-                ];                
-            }
-        }
-        if($has_frontend === false){
-            throw new Exception('Frontend.host option is required and must be defined in Node/System.Host.json aborting...');
-        }
-        if($has_backend === false){
-            throw new Exception('Backend.host option is required and must be defined in Node/System.Host.json aborting...');
-        }
-        $class = 'System.Host';
-        $node = new Node($object);
-        $response_frontend = $node->record($class, $node->role_system(), $frontend_options);
-        $response_backend = $node->record($class, $node->role_system(), $backend_options);
-        $options->frontend = $response_frontend['node'];
-        $options->backend = $response_backend['node'];
-        $this->install_api($options);
-        $this->install_application($options);
+        $application_list = $this->install_system_application(
+            $flags,
+            $options,
+        );
         $list = User::list($object, User::ROLES_ALLOWED);
-        Navigation::create($object, $list, (object)[
-            'name' => self::NAME,
-            'route' => (object) [
-                'name' => self::ROUTE_NAME,
-            ]
-        ]);
+//        $this->object($object);
+        foreach($application_list as $application){
+            $this->install_api($options, $application);
+            $this->install_application($options, $application);
+            Navigation::create(
+                $object,
+                $list,
+                $options,
+                $application
+            );
+        }
         $command = 'app install raxon/account -patch';
         Core::execute($object, $command, $output, $notification);
         if($output){

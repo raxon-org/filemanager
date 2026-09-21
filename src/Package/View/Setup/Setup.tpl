@@ -3,5 +3,5 @@
 {{Package.Raxon.Filemanager:Import:role.system()}}
 {{$flags = flags()}}
 {{$options = options()}}
-{{Package.Raxon.Filemanager:Main:install($flags, $options)}}
+{{Package.Raxon.Filemanager:Setup:install($flags, $options)}}
 {{/if}}

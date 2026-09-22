@@ -300,7 +300,6 @@ address.bar = () => {
         for(attr in object_header){
             header(attr, object_header[attr]);
         }
-        debug.exception([]);
         debug.exception_exclude(["Raxon\\Exception\\ErrorException"]);
 
 //        priya.exception_exclude(["Raxon\\Exception\\ErrorException"]); //exclude exceptions from debugging...

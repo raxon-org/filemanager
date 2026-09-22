@@ -306,6 +306,10 @@ address.bar = () => {
         request(route.backend, node, (url, data) => {
             if(data?.class === 'Raxon\\Exception\\DirectoryNotExistException'){
                 let element = _('_').create('div');
+
+                let directory = input.val().split('/');
+                console.log(directory);
+
                 element.data('dir', input.val());
                 file.new_directory(element);
             }

@@ -300,9 +300,10 @@ address.bar = () => {
         for(attr in object_header){
             header(attr, object_header[attr]);
         }
+        debug.exception([]);
         debug.exception_exclude(["Raxon\\Exception\\ErrorException"]);
 
-        priya.exception_exclude(["Raxon\\Exception\\ErrorException"]); //exclude exceptions from debugging...
+//        priya.exception_exclude(["Raxon\\Exception\\ErrorException"]); //exclude exceptions from debugging...
         request(route.backend, node, (url, data) => {
             if(exception.authorization(data)){
                 user.authorization((url, response) => {
@@ -326,7 +327,7 @@ address.bar = () => {
                             file.data.set('directory.current.list', data);
                             // console.log('file list after authorization failure');
                             file.list(data);
-                            priya.exception_exclude(); //return state to debug to all exceptions included
+                            debug.exception_exclude(); //return state to debug to all exceptions included
                         });
                     } else {
                         //redirect user login
@@ -337,7 +338,7 @@ address.bar = () => {
                 // file.data.set('config', config);
                 file.data.set('directory.current.list', data);
                 file.list(data);
-                priya.exception_exclude(); //return state to debug to all exceptions included
+                debug.exception_exclude(); //return state to debug to all exceptions included
             }
         });
     });

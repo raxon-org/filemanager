@@ -25,6 +25,7 @@ require(
         user.loginUrl("{{route.get('user-login')}}");
         language("{{language()}}");
         translation.import("{{raw|>translation.export('json-line')}}");
+        debug.exception("{{raw|>debug.exception('json-line')}}");
         let active = file.data.get('active') ?? [];
         active.push("{{$id}}");
         file.data.set({

@@ -1,0 +1,11 @@
+{
+  "Debug:" : {
+    "Exception": [
+      "Raxon\\Exception\\LocateException",
+      "Raxon\\Exception\\ObjectException",
+      "Raxon\\Exception\\PluginNotFoundException",
+      "Raxon\\Exception\\UrlEmptyException",
+      "Raxon\\Exception\\UrlNotExistException"
+    ]
+  }
+}

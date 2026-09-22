@@ -300,7 +300,7 @@ address.bar = () => {
         for(attr in object_header){
             header(attr, object_header[attr]);
         }
-        debug.exception_exclude(["Raxon\\Exception\\ErrorException"]);
+        debug.exception_exclude(["Raxon\\Exception\\DirectoryNotExistException"]);
 
 //        priya.exception_exclude(["Raxon\\Exception\\ErrorException"]); //exclude exceptions from debugging...
         request(route.backend, node, (url, data) => {

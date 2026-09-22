@@ -10,7 +10,7 @@ import { taskbar } from "/Application/Desktop/Module/Taskbar.js";
 import { task } from "/Application/Desktop/Module/Task.js";
 import { dialog } from "/Dialog/Module/Dialog.js";
 import { language, translation } from "/Module/Translation.js";
-import { version } from "/Module/Priya.js";
+import { version, debug } from "/Module/Priya.js";
 import user from "/Module/User.js";
 require(
     [

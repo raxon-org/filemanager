@@ -1676,7 +1676,7 @@ file.new_directory = (element) => {
     };
     let div = create('div');
     const dialog_active = section.select('.dialog-active');
-    dialog_active.removeClass('dialog-active');
+    dialog_active?.removeClass('dialog-active');
     div.addClass('dialog dialog-active dialog-new-directory');
     /*
     div.style.position = 'absolute';

@@ -308,10 +308,18 @@ address.bar = () => {
                 let element = _('_').create('div');
 
                 let directory = input.val().split('/');
+                directory.pop();
+                let name = directory.pop();
+                directory.push('');
+                directory = directory.join('/');
                 console.log(directory);
 
-                element.data('dir', input.val());
+                element.data('dir', directory);
                 file.new_directory(element);
+                let input_directory_new = section.select('input[name="directory_new"]');
+                if(input_directory_new){
+                    input_directory_new.value = name;
+                }
             }
             if(exception.authorization(data)){
                 user.authorization((url, response) => {

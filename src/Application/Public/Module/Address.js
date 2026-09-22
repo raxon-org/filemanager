@@ -304,6 +304,11 @@ address.bar = () => {
 
 //        priya.exception_exclude(["Raxon\\Exception\\ErrorException"]); //exclude exceptions from debugging...
         request(route.backend, node, (url, data) => {
+            if(data?.class === 'Raxon\\Exception\\DirectoryNotExistException'){
+                let element = _('_').create('div');
+                element.data('dir', input.val());
+                file.new_directory(element);
+            }
             if(exception.authorization(data)){
                 user.authorization((url, response) => {
                     console.log(response);

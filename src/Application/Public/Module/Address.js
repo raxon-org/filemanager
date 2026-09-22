@@ -4,6 +4,7 @@ import { exception } from "/Module/Exception.js";
 import { file } from "/Application/Filemanager/Module/File.js";
 import { getSection } from "/Module/Section.js";
 import { taskbar } from "/Application/Desktop/Module/Taskbar.js";
+import { debug } from "/Module/Priya.js";
 import user from "/Module/User.js";
 import create from "/Module/Create.js";
 //import { pipeline } from '/Xenova/transformers@2.14.0.js';
@@ -299,6 +300,8 @@ address.bar = () => {
         for(attr in object_header){
             header(attr, object_header[attr]);
         }
+        debug.exception_exclude(["Raxon\\Exception\\ErrorException"]);
+
         priya.exception_exclude(["Raxon\\Exception\\ErrorException"]); //exclude exceptions from debugging...
         request(route.backend, node, (url, data) => {
             if(exception.authorization(data)){

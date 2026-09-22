@@ -1,5 +1,5 @@
 {
-  "Debug:" : {
+  "Debug" : {
     "Exception": [
       "Raxon\\Exception\\LocateException",
       "Raxon\\Exception\\ObjectException",

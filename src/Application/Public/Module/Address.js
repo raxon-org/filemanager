@@ -328,7 +328,7 @@ address.bar = () => {
                     let body = input_directory_new.closest('.body');
                     let form = body.select('form');
                     let p;
-                    p = body.select('p.message');
+                    p = body.select('.message');
                     console.log(p);
                     if(!p){
                         p = create('p');

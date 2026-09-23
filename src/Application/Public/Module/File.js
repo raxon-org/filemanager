@@ -1345,6 +1345,7 @@ file.open_file_with = (element) => {
     const token = user.token();
     header("Authorization", 'Bearer ' + token);
     request(route.backend, node, (url, data) => {
+        console.log(data);
         if(exception.authorization(data)){
             user.authorization((url, response) => {
                 if(exception.authorization(response)){
@@ -1360,6 +1361,7 @@ file.open_file_with = (element) => {
                                 }, (url, response) => {
                                 });
                         }
+                        console.log(data);
                     });
                 }
             });

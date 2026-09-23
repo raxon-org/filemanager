@@ -326,13 +326,14 @@ address.bar = () => {
                 let message = data?.message;
                 if(message){
                     let body = input_directory_new.closest('.body');
+                    let form = body.select('form');
                     let p;
                     p = body.select('p.message');
                     if(!p){
                         p = create('p');
                         p.className = 'message';
                         p.html(message);
-                        body.prepend(p);
+                        body.insertBefore(p, form);
                     }
                     let dialog = body.closest('.dialog');
                     dialog.addClass('has-message');

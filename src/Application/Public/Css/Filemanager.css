@@ -217,7 +217,7 @@ section[name="application-file-manager"] .dialog-new-file .body{
     height: 80px;
 }
 
-section[name="application-file-manager"] .dialog-new-directory .body.has-message {
+section[name="application-file-manager"] .dialog-new-directory.has-message .body {
     height: 130px;
 }
 

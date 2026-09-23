@@ -360,6 +360,7 @@ address.bar = () => {
                 } else {
                     p.html(message);
                 }
+                alert('yes');
             }
             if(exception.authorization(data)){
                 user.authorization((url, response) => {

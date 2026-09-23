@@ -208,6 +208,14 @@ section[name="application-file-manager"] .dialog-new-file {
     top: calc(50% - 60px);
 }
 
+section[name="application-file-manager"] .dialog-new-directory .has-message {
+    height: 180px;
+}
+
+section[name="application-file-manager"] .dialog-new-directory .body .has-message {
+    height: 130px;
+}
+
 section[name="application-file-manager"] .dialog-new-directory .body,
 section[name="application-file-manager"] .dialog-new-file .body{
     height: 80px;

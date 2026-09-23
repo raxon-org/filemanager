@@ -332,6 +332,8 @@ address.bar = () => {
                     p.className = 'message';
                     p.html(message);
                     body.appendChild(p);
+                    let dialog = body.closest('.dialog');
+                    dialog.addClass('has-message');
                 }
             }
             if(exception.authorization(data)){

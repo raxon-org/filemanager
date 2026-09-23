@@ -57,7 +57,11 @@ class Application extends Controller {
                 'limit' => '*'
             ]);
             if(empty($data) || empty($data['list'])){
-                throw new ApplicationNotFoundException('No application found for extension: ' . $extension . '.');
+                $name = Application::name(__FUNCTION__ , __CLASS__, '/');
+                $object->data('extension', $extension);
+                $url = Application::locate($object, $name);
+                $message = Application::response($object, $url);
+                throw new ApplicationNotFoundException($message);
             }
             foreach($data['list'] as $nr => $item){
                 if(!empty($_SERVER['HTTP_ORIGIN'])){

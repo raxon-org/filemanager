@@ -1722,7 +1722,7 @@ file.new_directory = (element) => {
             event.preventDefault();
             const token = user.token();
             let node = {
-                "type": "Directory",
+                "type": "Dir",
                 "url": _('prototype').str_replace('../','', element.data('dir') + input_directory_new.value)
             }
             header("Authorization", 'Bearer ' + token);

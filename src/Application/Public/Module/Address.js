@@ -329,7 +329,7 @@ address.bar = () => {
                     let form = body.select('form');
                     let p;
                     p = body.select('.message');
-                    console.log(p);
+                    return;
                     if(!p){
                         p = create('p');
                         p.className = 'message';

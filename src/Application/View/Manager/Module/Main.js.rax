@@ -57,7 +57,10 @@ require(
             "upload.retryChunksLimit": 5,
             "upload.parallel": 4,
             "upload.timeout": 60000,
-            "upload.filesize.base": 1024
+            "upload.filesize.base": 1024,
+            "open.with.exception.message": [
+                "Package\\Raxon\\Filemanager\\Exception\\ApplicationNotFoundException"
+            ]
         });
         task.active({
             "id": "{{$id}}",

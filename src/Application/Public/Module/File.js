@@ -1317,6 +1317,38 @@ file.open = (event) => {
     }
 }
 
+file.exception = {
+    message : (section, data) => {
+        let div;
+        div = section.select('.dialog-message');
+        const dialog = section.select('.dialog-manager-main');
+        let button_ok;
+        let button_cancel;
+        let button_close;
+        if(div){
+            const dialog_active = section.select('.dialog-active');
+            if(dialog_active){
+                dialog_active.removeClass('dialog-active');
+            }
+            div.addClass('dialog dialog-active dialog-message');
+            button_ok = div.select('button[name="ok"]');
+            //button_cancel = div.select('button[name="cancel"]');
+            button_close = div.select('.close');
+        } else {
+            div = create('div');
+            const dialog_active = section.select('.dialog-active');
+            if (dialog_active) {
+                dialog_active.removeClass('dialog-active');
+            }
+            div.addClass('dialog dialog-active dialog-message');
+            div.innerHTML = '<div class="head"><h1><img src="/Application/Filemanager/Icon/Icon.png" class="icon"> Message </h1><span class="close"><i class="fas fa-window-close"></i></span><span class="minimize"><i class="far fa-window-minimize"></i></span></div><div class="body"><p class="message">' + data?.message + '</p><form name="message"><button type="submit" name="ok">Ok</button></form></div>';
+            // let body = element.closest('.body');
+            div.style.zIndex = parseInt(dialog.style.zIndex) + 1;
+            section.appendChild(div);
+        }
+    }
+};
+
 file.open_file_with = (element) => {
     const section = getSectionById(file.data.get('section.id'));
     if(!section){
@@ -1345,37 +1377,42 @@ file.open_file_with = (element) => {
     const token = user.token();
     header("Authorization", 'Bearer ' + token);
     request(route.backend, node, (url, data) => {
-        console.log(data);
-        if(exception.authorization(data)){
-            user.authorization((url, response) => {
-                if(exception.authorization(response)){
-                    redirect(user.loginUrl());
-                } else {
-                    user.data('user', response?.node);
-                    request(route.backend, node, (url, data) => {
-                        if(data?.list){
-                            request(
-                                route.frontend, {
-                                    'file' : element.data('file'),
-                                    'list' : data.list,
-                                }, (url, response) => {
-                                });
-                        }
-                        console.log(data);
-                    });
-                }
-            });
+        if(
+            data?.class &&
+            in_array(data?.class, file.data.get('open.with.exception.message'), true)
+        ){
+            file.exception.message(section, data);
         } else {
-            if(data?.list){
-                request(
-                    route.frontend, {
-                        'file' : element.data('file'),
-                        'list' : data.list,
-                    }, (url, response) => {
+            if(exception.authorization(data)){
+                user.authorization((url, response) => {
+                    if(exception.authorization(response)){
+                        redirect(user.loginUrl());
+                    } else {
+                        user.data('user', response?.node);
+                        request(route.backend, node, (url, data) => {
+                            if(data?.list){
+                                request(
+                                    route.frontend, {
+                                        'file' : element.data('file'),
+                                        'list' : data.list,
+                                    }, (url, response) => {
+                                    });
+                            }
+                            console.log(data);
+                        });
+                    }
                 });
+            } else {
+                if(data?.list){
+                    request(
+                        route.frontend, {
+                            'file' : element.data('file'),
+                            'list' : data.list,
+                        }, (url, response) => {
+                        });
+                }
             }
         }
-
     });
 }
 

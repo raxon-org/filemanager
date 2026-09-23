@@ -221,6 +221,10 @@ section[name="application-file-manager"] .dialog-new-directory.has-message .body
     height: 130px;
 }
 
+section[name="application-file-manager"] .dialog-new-directory .body .message {
+    background: rgba(245, 245, 245, 1);
+}
+
 section[name="application-file-manager"] .dialog-new-directory .body input[type="text"],
 section[name="application-file-manager"] .dialog-new-file .body input[type="text"]{
     width: calc(100% - 14px);

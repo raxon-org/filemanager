@@ -130,7 +130,7 @@ directory.open = (event) => {
         if (!li) {
             return;
         }
-        const dialog = li.closest('.dialog');
+        const dialog = li.closest('.dialog-manager-main');
         if(!dialog){
             return;
         }

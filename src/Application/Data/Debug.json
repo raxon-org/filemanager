@@ -1,6 +1,7 @@
 {
   "Debug" : {
     "Exception": [
+      "Package\\Raxon\\Filemanager\\Exception\\ApplicationNotFoundException",
       "Raxon\\Exception\\LocateException",
       "Raxon\\Exception\\DirectoryException",
       "Raxon\\Exception\\ObjectException",

@@ -331,7 +331,7 @@ address.bar = () => {
                     let p = create('p');
                     p.className = 'message';
                     p.html(message);
-                    body.appendChild(p);
+                    body.prepend(p);
                 }
             }
             if(exception.authorization(data)){

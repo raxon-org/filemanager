@@ -1738,7 +1738,18 @@ file.new_directory = (element) => {
                         let message = body.select('.message');
                         message.html(data?.message);
                     }
-                } else {
+                }
+                else if(data?.class === 'Raxon\\Exception\\DirectoryCreateException'){
+                    const section = getSectionById(file.data.get('section.id'));
+                    if(!section){
+                        return;
+                    }
+                    let form = section.select('form[name="directory-new"]');
+                    let body = form.closest('.body');
+                    let message = body.select('.message');
+                    message.html(data?.message);
+                }
+                else {
                     const refresh = section.select('.refresh');
                     refresh.click();
                     div.remove();

@@ -1674,70 +1674,76 @@ file.new_directory = (element) => {
         },
         // frontend : file.data.get('route.frontend.application')
     };
-    let div = create('div');
-    const dialog_active = section.select('.dialog-active');
-    if(dialog_active){
-        dialog_active.removeClass('dialog-active');
-    }
-    div.addClass('dialog dialog-active dialog-new-directory');
-    /*
-    div.style.position = 'absolute';
-    div.style.top = '50%';
-    div.style.left = '50%';
-    div.style.transform = 'translate(-50%, -50%)';
-    div.style.zIndex = '1000';
-    div.style.backgroundColor = '#fff';
-    div.style.padding = '10px';
-    div.style.borderRadius = '5px';
-    div.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
-    div.style.textAlign = 'center';
-    div.style.width = '300px';
-    div.style.height = '100px';
-     */
-    div.innerHTML = '<div class="head"><h1><img src="/Application/Filemanager/Icon/Icon.png" class="icon"> New directory</h1><span class="close"><i class="fas fa-window-close"></i></span><span class="minimize"><i class="far fa-window-minimize"></i></span></div><div class="body"><form name="directory-new"><input type="text" name="directory_new" placeholder="New directory" /><br><button type="submit" name="ok">Ok</button><button type="button" name="cancel">Cancel</button></form></div>';
-    // let body = element.closest('.body');
-
-    const dialog = section.select('.dialog-manager-main');
-    div.style.zIndex = parseInt(dialog.style.zIndex) + 1;
-    section.appendChild(div);
-    let form = div.select('form[name="directory-new"]');
-    let input_directory_new = div.select('input[name="directory_new"]');
-    let button_ok = div.select('button[name="ok"]');
-    form.on('submit', (event) => {
-        event.preventDefault();
-        const token = user.token();
-        let node = {
-            "type": "Directory",
-            "url": _('prototype').str_replace('../','', element.data('dir') + input_directory_new.value)
+    let div;
+    div = section.select('.dialog-new-directory');
+    if(div){
+        const dialog_active = section.select('.dialog-active');
+        if(dialog_active){
+            dialog_active.removeClass('dialog-active');
         }
-        header("Authorization", 'Bearer ' + token);
-        request(route.directory.new, node, (url, response) => {
-            console.log(response);
-            const refresh = section.select('.refresh');
-            refresh.click();
+        div.addClass('dialog dialog-active dialog-new-directory');
+    } else {
+        div = create('div');
+        const dialog_active = section.select('.dialog-active');
+        if(dialog_active){
+            dialog_active.removeClass('dialog-active');
+        }
+        div.addClass('dialog dialog-active dialog-new-directory');
+        /*
+        div.style.position = 'absolute';
+        div.style.top = '50%';
+        div.style.left = '50%';
+        div.style.transform = 'translate(-50%, -50%)';
+        div.style.zIndex = '1000';
+        div.style.backgroundColor = '#fff';
+        div.style.padding = '10px';
+        div.style.borderRadius = '5px';
+        div.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+        div.style.textAlign = 'center';
+        div.style.width = '300px';
+        div.style.height = '100px';
+         */
+        div.innerHTML = '<div class="head"><h1><img src="/Application/Filemanager/Icon/Icon.png" class="icon"> New directory</h1><span class="close"><i class="fas fa-window-close"></i></span><span class="minimize"><i class="far fa-window-minimize"></i></span></div><div class="body"><form name="directory-new"><input type="text" name="directory_new" placeholder="New directory" /><br><button type="submit" name="ok">Ok</button><button type="button" name="cancel">Cancel</button></form></div>';
+        // let body = element.closest('.body');
+
+        const dialog = section.select('.dialog-manager-main');
+        div.style.zIndex = parseInt(dialog.style.zIndex) + 1;
+        section.appendChild(div);
+        let form = div.select('form[name="directory-new"]');
+        let input_directory_new = div.select('input[name="directory_new"]');
+        let button_ok = div.select('button[name="ok"]');
+        form.on('submit', (event) => {
+            event.preventDefault();
+            const token = user.token();
+            let node = {
+                "type": "Directory",
+                "url": _('prototype').str_replace('../','', element.data('dir') + input_directory_new.value)
+            }
+            header("Authorization", 'Bearer ' + token);
+            request(route.directory.new, node, (url, response) => {
+                console.log(response);
+                const refresh = section.select('.refresh');
+                refresh.click();
+                div.remove();
+            });
+        });
+        // button_ok.on('click', (event) => {});
+
+        let button_cancel = div.select('button[name="cancel"]');
+        button_cancel.on('click', (event) => {
             div.remove();
         });
-    });
-    // button_ok.on('click', (event) => {});
-
-    let button_cancel = div.select('button[name="cancel"]');
-    button_cancel.on('click', (event) => {
-        div.remove();
-    });
-    let button_close = div.select('.close');
-    button_close.on('click', (event) => {
-        div.remove();
-    })
-    div.on('click', (event) => {
-        div.addClass('dialog-active');
-    });
-    /*
-    input_directory_new.on('click', (event) => {
-        div.addClass('dialog-active');
-    });
-     */
+        let button_close = div.select('.close');
+        button_close.on('click', (event) => {
+            div.remove();
+        })
+        div.on('click', (event) => {
+            div.addClass('dialog-active');
+        });
+    }
     dialog.init(file.data.get('section.id'));
-    input_directory_new.focus();
+    button_ok.focus();
+    //input_directory_new.focus();
 }
 
 file.section_active = (id) => {

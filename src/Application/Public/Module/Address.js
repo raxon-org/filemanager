@@ -329,14 +329,13 @@ address.bar = () => {
                     let form = body.select('form');
                     let p;
                     p = body.select('.message');
-                    return;
                     if(!p){
                         p = create('p');
                         p.className = 'message';
                         p.html(message);
                         body.insertBefore(p, form);
                     } else {
-                        //p.html(message);
+                        p.html(message);
                     }
                     let dialog = body.closest('.dialog');
                     dialog.addClass('has-message');

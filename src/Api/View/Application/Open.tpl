@@ -1,1 +1,1 @@
-test {{$extension|>default:''}}
+test {{$extension|>default:''}} mooi

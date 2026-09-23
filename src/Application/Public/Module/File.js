@@ -1726,7 +1726,13 @@ file.new_directory = (element) => {
                 "url": _('prototype').str_replace('../','', element.data('dir') + input_directory_new.value)
             }
             header("Authorization", 'Bearer ' + token);
-            request(route.directory.new, node, (url, response) => {
+            request(route.directory.new, node, (url, data) => {
+                if(data?.class === 'Raxon\\\\Exception\\\\DirectoryNotExistException'){
+                    if(data?.message){
+                        let message = div.select('.message');
+                        message.html(data?.message);
+                    }
+                }
                 const refresh = section.select('.refresh');
                 refresh.click();
                 div.remove();

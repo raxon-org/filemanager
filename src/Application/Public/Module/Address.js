@@ -323,6 +323,14 @@ address.bar = () => {
                 if(input_directory_new){
                     input_directory_new.value = name;
                 }
+                let message_list = _('_').state('message');
+                let body = input_directory_new.closest('.body');
+                let form = body.select('form');
+                let p;
+                p = body.select('.message');
+                for(let index = 0; index < message_list.length; index++){
+                    p.html(p.html() + message_list[index] + "<br>\n");
+                }
                 let message = data?.message;
                 if(message){
                     let body = input_directory_new.closest('.body');

@@ -3,6 +3,7 @@
 namespace Domain\{{php.namespace.host($options.backend.host)}}\Controller\System;
 
 use Package\Raxon\Account\Module\Permission;
+use Package\Raxon\Filemanager\Exception\ApplicationNotFoundException;
 use Raxon\App;
 use Raxon\Exception\ErrorException;
 use Raxon\Exception\ObjectException;
@@ -23,6 +24,7 @@ class Application extends Controller {
      * @throws ObjectException
      * @throws AuthorizationException
      * @throws FileWriteException
+     * @throws ApplicationNotFoundException
      */
     public static function open(App $object){
         $role = Permission::controller($object, File::basename(__CLASS__) . ':Filemanager', __FUNCTION__, $user);
@@ -55,7 +57,7 @@ class Application extends Controller {
                 'limit' => '*'
             ]);
             if(empty($data) || empty($data['list'])){
-                throw new ObjectException('No application found.');
+                throw new ApplicationNotFoundException('No application found for extension: ' . $extension . '.');
             }
             foreach($data['list'] as $nr => $item){
                 if(!empty($_SERVER['HTTP_ORIGIN'])){

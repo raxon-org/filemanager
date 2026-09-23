@@ -1679,12 +1679,16 @@ file.new_directory = (element) => {
     const dialog = section.select('.dialog-manager-main');
     let button_ok;
     let button_cancel;
+    let button_close;
     if(div){
         const dialog_active = section.select('.dialog-active');
         if(dialog_active){
             dialog_active.removeClass('dialog-active');
         }
         div.addClass('dialog dialog-active dialog-new-directory');
+        button_ok = div.select('button[name="ok"]');
+        button_cancel = div.select('button[name="cancel"]');
+        button_close = div.select('.close');
     } else {
         div = create('div');
         const dialog_active = section.select('.dialog-active');
@@ -1734,7 +1738,7 @@ file.new_directory = (element) => {
         button_cancel.on('click', (event) => {
             div.remove();
         });
-        let button_close = div.select('.close');
+        button_close = div.select('.close');
         button_close.on('click', (event) => {
             div.remove();
         })

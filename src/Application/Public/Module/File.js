@@ -1727,10 +1727,15 @@ file.new_directory = (element) => {
             }
             header("Authorization", 'Bearer ' + token);
             request(route.directory.new, node, (url, data) => {
-                console.log(data);
                 if(data?.class === 'Raxon\\Exception\\DirectoryNotExistException'){
                     if(data?.message){
-                        let message = div.select('.message');
+                        const section = getSectionById(file.data.get('section.id'));
+                        if(!section){
+                            return;
+                        }
+                        let form = section.select('form[name="directory-new"]');
+                        let body = form.closest('.body');
+                        let message = body.select('.message');
                         message.html(message.html() + "<br>\n" + data?.message);
                     }
                 } else {

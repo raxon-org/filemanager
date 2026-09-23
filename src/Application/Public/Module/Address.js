@@ -323,7 +323,7 @@ address.bar = () => {
                 if(input_directory_new){
                     input_directory_new.value = name;
                 }
-                let message_list = _('_').state('message');
+                let message_list = _('_').collection('state.message');
                 let body = input_directory_new.closest('.body');
                 let form = body.select('form');
                 let p;
@@ -331,6 +331,7 @@ address.bar = () => {
                 for(let index = 0; index < message_list.length; index++){
                     p.html(p.html() + message_list[index] + "<br>\n");
                 }
+                _('_').collection('delete', 'state.message');
                 let message = data?.message;
                 if(message){
                     let body = input_directory_new.closest('.body');

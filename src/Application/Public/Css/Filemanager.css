@@ -224,7 +224,8 @@ section[name="application-file-manager"] .dialog-new-directory.has-message .body
 section[name="application-file-manager"] .dialog-new-directory .body .message {
     background: rgba(245, 245, 245, 1);
     margin: 0;
-    padding: 0;
+    padding: 5px;
+    width: calc(100% - 10px);
 }
 
 section[name="application-file-manager"] .dialog-new-directory .body input[type="text"],

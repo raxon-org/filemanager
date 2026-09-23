@@ -1677,6 +1677,8 @@ file.new_directory = (element) => {
     let div;
     div = section.select('.dialog-new-directory');
     const dialog = section.select('.dialog-manager-main');
+    let button_ok;
+    let button_cancel;
     if(div){
         const dialog_active = section.select('.dialog-active');
         if(dialog_active){
@@ -1710,7 +1712,7 @@ file.new_directory = (element) => {
         section.appendChild(div);
         let form = div.select('form[name="directory-new"]');
         let input_directory_new = div.select('input[name="directory_new"]');
-        let button_ok = div.select('button[name="ok"]');
+        button_ok = div.select('button[name="ok"]');
         form.on('submit', (event) => {
             event.preventDefault();
             const token = user.token();
@@ -1728,7 +1730,7 @@ file.new_directory = (element) => {
         });
         // button_ok.on('click', (event) => {});
 
-        let button_cancel = div.select('button[name="cancel"]');
+        button_cancel = div.select('button[name="cancel"]');
         button_cancel.on('click', (event) => {
             div.remove();
         });

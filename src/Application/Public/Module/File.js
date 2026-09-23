@@ -1676,6 +1676,7 @@ file.new_directory = (element) => {
     };
     let div;
     div = section.select('.dialog-new-directory');
+    const dialog = section.select('.dialog-manager-main');
     if(div){
         const dialog_active = section.select('.dialog-active');
         if(dialog_active){
@@ -1705,8 +1706,6 @@ file.new_directory = (element) => {
          */
         div.innerHTML = '<div class="head"><h1><img src="/Application/Filemanager/Icon/Icon.png" class="icon"> New directory</h1><span class="close"><i class="fas fa-window-close"></i></span><span class="minimize"><i class="far fa-window-minimize"></i></span></div><div class="body"><form name="directory-new"><input type="text" name="directory_new" placeholder="New directory" /><br><button type="submit" name="ok">Ok</button><button type="button" name="cancel">Cancel</button></form></div>';
         // let body = element.closest('.body');
-
-        const dialog = section.select('.dialog-manager-main');
         div.style.zIndex = parseInt(dialog.style.zIndex) + 1;
         section.appendChild(div);
         let form = div.select('form[name="directory-new"]');

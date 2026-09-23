@@ -1727,7 +1727,7 @@ file.new_directory = (element) => {
             }
             header("Authorization", 'Bearer ' + token);
             request(route.directory.new, node, (url, data) => {
-                if(data?.class === 'Raxon\\\\Exception\\\\DirectoryNotExistException'){
+                if(data?.class === 'Raxon\\Exception\\DirectoryNotExistException'){
                     if(data?.message){
                         let message = div.select('.message');
                         message.html(data?.message);

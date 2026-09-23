@@ -332,7 +332,7 @@ address.bar = () => {
                         p = create('p');
                         p.className = 'message';
                         p.html(message);
-                        body.appendChild(p);
+                        body.prependChild(p);
                     }
                     let dialog = body.closest('.dialog');
                     dialog.addClass('has-message');

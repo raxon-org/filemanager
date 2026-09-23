@@ -323,15 +323,10 @@ address.bar = () => {
                 if(input_directory_new){
                     input_directory_new.value = name;
                 }
-                let message_list = _('_').collection('state.message') ?? [];
                 let body = input_directory_new.closest('.body');
                 let form = body.select('form');
                 let p;
                 p = body.select('.message');
-                for(let index = 0; index < message_list.length; index++){
-                    p.html(p.html() + message_list[index] + "<br>\n");
-                }
-                _('_').collection('delete', 'state.message');
                 let message = data?.message;
                 if(message){
                     let body = input_directory_new.closest('.body');
@@ -344,10 +339,26 @@ address.bar = () => {
                         p.html(message);
                         body.insertBefore(p, form);
                     } else {
-                        p.html(p.html() + message);
+                        p.html(message);
                     }
                     let dialog = body.closest('.dialog');
                     dialog.addClass('has-message');
+                }
+            }
+            else if(data?.class === 'Raxon\\Exception\\DirectoryCreateException'){
+                let input_directory_new = section.select('input[name="directory_new"]');
+                let body = input_directory_new.closest('.body');
+                let form = body.select('form');
+                let p;
+                let message = data?.message;
+                p = body.select('.message');
+                if(!p){
+                    p = create('p');
+                    p.className = 'message';
+                    p.html(message);
+                    body.insertBefore(p, form);
+                } else {
+                    p.html(message);
                 }
             }
             if(exception.authorization(data)){

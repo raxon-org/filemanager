@@ -1736,10 +1736,7 @@ file.new_directory = (element) => {
                         let form = section.select('form[name="directory-new"]');
                         let body = form.closest('.body');
                         let message = body.select('.message');
-                        let message_list = _('_').collection('state.message') ?? [];
-                        message_list.push(data?.message);
-                        _('_').state('message', message_list);
-                        //message.html(message.html() + "<br>\n" + data?.message);
+                        message.html(data?.message);
                     }
                 } else {
                     const refresh = section.select('.refresh');

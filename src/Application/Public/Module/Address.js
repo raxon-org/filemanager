@@ -308,12 +308,15 @@ address.bar = () => {
                 let element = _('_').create('div');
 
                 let directory = input.val().split('/');
-                directory.pop();
-                let name = directory.pop();
+                let is_empty = directory.pop();
+                let name;
+                if(is.empty(is_empty)){
+                    name = directory.pop();
+                } else {
+                    name = is_empty;
+                }
                 directory.push('');
                 directory = directory.join('/');
-                console.log(directory);
-
                 element.data('dir', directory);
                 file.new_directory(element);
                 let input_directory_new = section.select('input[name="directory_new"]');
@@ -323,6 +326,7 @@ address.bar = () => {
                 let message = data?.message;
                 if(message){
                     let body = input_directory_new.closest('body');
+                    console.log(body);
                     let p = create('p');
                     p.className = 'message';
                     p.html(message);

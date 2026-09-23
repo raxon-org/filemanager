@@ -2,7 +2,6 @@
   "Debug" : {
     "Exception": [
       "Raxon\\Exception\\LocateException",
-      "Raxon\\Exception\\DirectoryNotExistException",
       "Raxon\\Exception\\DirectoryException",
       "Raxon\\Exception\\ObjectException",
       "Raxon\\Exception\\PluginNotFoundException",

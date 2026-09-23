@@ -320,6 +320,14 @@ address.bar = () => {
                 if(input_directory_new){
                     input_directory_new.value = name;
                 }
+                let message = data?.message;
+                if(message){
+                    let body = input_directory_new.closest('body');
+                    let p = create('p');
+                    p.className = 'message';
+                    p.html(message);
+                    body.appendChild(p);
+                }
             }
             if(exception.authorization(data)){
                 user.authorization((url, response) => {

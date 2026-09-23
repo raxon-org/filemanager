@@ -1714,6 +1714,7 @@ file.new_directory = (element) => {
         // let body = element.closest('.body');
         div.style.zIndex = parseInt(dialog.style.zIndex) + 1;
         section.appendChild(div);
+        let body = div.select('body');
         let form = div.select('form[name="directory-new"]');
         let input_directory_new = div.select('input[name="directory_new"]');
         button_ok = div.select('button[name="ok"]');
@@ -1726,7 +1727,6 @@ file.new_directory = (element) => {
             }
             header("Authorization", 'Bearer ' + token);
             request(route.directory.new, node, (url, response) => {
-                console.log(response);
                 const refresh = section.select('.refresh');
                 refresh.click();
                 div.remove();

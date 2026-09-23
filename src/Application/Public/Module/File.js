@@ -1376,10 +1376,13 @@ file.open_file_with = (element) => {
     }
     const token = user.token();
     header("Authorization", 'Bearer ' + token);
+    let exception_message = file.data.get('open.with.exception.message') ?? [
+        '"Package\\Raxon\\Filemanager\\Exception\\ApplicationNotFoundException"'
+    ];
     request(route.backend, node, (url, data) => {
         if(
             data?.class &&
-            in_array(data?.class, file.data.get('open.with.exception.message'), true)
+            in_array(data?.class, exception_message, true)
         ){
             file.exception.message(section, data);
         } else {

@@ -196,6 +196,26 @@ section[name="application-file-manager"] .body form[name="file-rename"] input[ty
     background: transparent;
 }
 
+section[name="application-file-manager"] .dialog-message {
+    width: 600px;
+    min-width: 600px;
+    height: 300px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(200, 200, 200, 1);
+    position: absolute;
+    left: calc(50% - 150px);
+    top: calc(50% - 60px);
+}
+
+section[name="application-file-manager"] .dialog-message .body {
+    height: 260px;
+}
+
+section[name="application-file-manager"] .dialog-message .body button[name="ok"] {
+    width: 100%;
+    height: 40px;
+}
+
 section[name="application-file-manager"] .dialog-new-directory,
 section[name="application-file-manager"] .dialog-new-file {
     width: 300px;

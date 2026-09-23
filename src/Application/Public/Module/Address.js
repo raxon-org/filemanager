@@ -323,15 +323,17 @@ address.bar = () => {
                 if(input_directory_new){
                     input_directory_new.value = name;
                 }
-                console.log(data);
                 let message = data?.message;
                 if(message){
                     let body = input_directory_new.closest('.body');
-                    console.log(body);
-                    let p = create('p');
-                    p.className = 'message';
-                    p.html(message);
-                    body.appendChild(p);
+                    let p;
+                    p = body.select('p.message');
+                    if(!p){
+                        p = create('p');
+                        p.className = 'message';
+                        p.html(message);
+                        body.appendChild(p);
+                    }
                     let dialog = body.closest('.dialog');
                     dialog.addClass('has-message');
                 }

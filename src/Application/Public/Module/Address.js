@@ -334,6 +334,8 @@ address.bar = () => {
                         p.className = 'message';
                         p.html(message);
                         body.insertBefore(p, form);
+                    } else {
+                        p.html(p.html() + "<br>\n" + message);
                     }
                     let dialog = body.closest('.dialog');
                     dialog.addClass('has-message');

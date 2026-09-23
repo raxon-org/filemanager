@@ -1731,12 +1731,13 @@ file.new_directory = (element) => {
                 if(data?.class === 'Raxon\\Exception\\DirectoryNotExistException'){
                     if(data?.message){
                         let message = div.select('.message');
-                        message.html(data?.message);
+                        message.html(message.html() + "<br>\n" + data?.message);
                     }
+                } else {
+                    const refresh = section.select('.refresh');
+                    refresh.click();
+                    div.remove();
                 }
-                const refresh = section.select('.refresh');
-                refresh.click();
-                div.remove();
             });
         });
         // button_ok.on('click', (event) => {});

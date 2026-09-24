@@ -1324,7 +1324,9 @@ file.exception = {
             dialog_active.removeClass('dialog-active');
         }
         const body = select('body');
-        body.appendChild(data.message);
+        const element = create('div');
+        element.html(data.message);
+        body.append(element.innerHTML);
         const dialog = body.select('.dialog-message');
         console.log(dialog);
     }

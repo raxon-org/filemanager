@@ -1324,10 +1324,11 @@ file.exception = {
             dialog_active.removeClass('dialog-active');
         }
         const body = select('body');
-        const element = create('div');
+        const element = create('section');
+        element.name = 'message-container';
         element.html(data.message);
-        body.append(element.innerHTML);
-        const dialog = body.select('.dialog-message');
+        body.appendChild(element);
+        const dialog = body.select('.message-container dialog');
         console.log(dialog);
     }
 };

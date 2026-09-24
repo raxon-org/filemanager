@@ -6,7 +6,7 @@
             <span class="close"><i class="fas fa-window-close"></i></span><span class="minimize"><i class="far fa-window-minimize"></i></span>
         </div>
         <div class="body">
-            <p class="message">' + {{$message}} + '</p>
+            <p class="message">{{$message}}</p>
             <form name="message">
                 <button type="submit" name="ok">Ok</button>
             </form>

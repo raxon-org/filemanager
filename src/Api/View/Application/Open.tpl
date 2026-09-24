@@ -1,5 +1,5 @@
 {{$response = (object) [
-    'application' => $application,
+    'application' => config('application'),
     'extension' => $extension,
     'message' => $message,
     'class' => 'dialog dialog-active dialog-message',

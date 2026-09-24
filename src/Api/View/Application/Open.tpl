@@ -1,3 +1,5 @@
+{{require(config('controller.dir.view') + 'Application/Dialog.tpl')}}
+/*
 {{$response = (object) [
     'application' => config('application'),
     'extension' => $extension,
@@ -7,3 +9,4 @@
     'link' => $link
 ]}}
 {{raw|>json.encode($response, 'JSON_PRETTY_PRINT')}}
+*/

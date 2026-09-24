@@ -58,7 +58,7 @@ class Application extends Controller {
             ]);
             if(empty($data) || empty($data['list'])){
                 $name = Application::name(__FUNCTION__ , __CLASS__, '/');
-                $object->data('application.name', $name);
+                $object->config('application.name', $name);
                 $object->data('extension', $extension);
                 $object->data('message', 'The application for "' . $extension . '" is not installed.');
                 $url = Application::locate($object, $name);

@@ -1,3 +1,4 @@
+{{dd('{{$this}}')}}
 {{block.html()}}
 <section name="application-message" class="display-none">
     <div class="{{$class}}">

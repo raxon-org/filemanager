@@ -1387,6 +1387,7 @@ file.open_file_with = (element) => {
             data?.class &&
             in_array(data?.class, exception_message, true)
         ){
+            console.log(data);
             file.exception.message(section, data);
         } else {
             if(exception.authorization(data)){

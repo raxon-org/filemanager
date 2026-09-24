@@ -1323,7 +1323,10 @@ file.exception = {
         if(dialog_active){
             dialog_active.removeClass('dialog-active');
         }
-        console.log(data);
+        const body = select('body');
+        body.appendChild(data.message);
+        const dialog = body.select('.dialog-message');
+        console.log(dialog);
     }
 };
 

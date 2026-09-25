@@ -1327,13 +1327,23 @@ file.exception = {
         document.body.insertAdjacentHTML("beforeend", data.message);
         const section_message = select('body section[name="application-message"]');
         if(is.nodeList(section_message)){
-            for(let index in section_message){
-                const dialog_message = section_message[index].select('.dialog');
-                const form = dialog_message.select('form');
-                form.on('submit', (event) => {
-                    event.preventDefault();
-                    section_message.remove();
-                });
+            for(let section_index in section_message){
+                const form_message = select('body section[name="application-message"] form');
+                if(is.nodeList(form_message)){
+                    for(let form_index in form_message){
+                        const form = form_message[form_index];
+                        form.on('submit', (event) => {
+                            event.preventDefault();
+                            section_message.remove();
+                        });
+                    }
+                } else {
+                    const form = form_message;
+                    form.on('submit', (event) => {
+                        event.preventDefault();
+                        section_message.remove();
+                    });
+                }
                 dialog.init(section_message?.id);
             }
         } else {

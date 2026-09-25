@@ -196,7 +196,7 @@ section[name="application-file-manager"] .body form[name="file-rename"] input[ty
     background: transparent;
 }
 
-section[name="application-file-manager"] .dialog-message {
+section[name="application-message"] .dialog-message {
     width: 600px;
     min-width: 600px;
     height: 300px;
@@ -207,12 +207,12 @@ section[name="application-file-manager"] .dialog-message {
     top: calc(50% - 60px);
 }
 
-section[name="application-file-manager"] .dialog-message .body {
+section[name="application-message"] .dialog-message .body {
     height: calc(100% - 40px);
     position: relative;
 }
 
-section[name="application-file-manager"] .dialog-message .body p {
+section[name="application-message"] .dialog-message .body p {
     padding: 10px;
 }
 

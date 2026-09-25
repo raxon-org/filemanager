@@ -1325,7 +1325,7 @@ file.exception = {
         }
         const body = select('body');
         body.html(body.html() + data.message);
-        const dialog = body.select('.message-container dialog');
+        const dialog = body.select('section[name="application-message"] .dialog');
         console.log(dialog);
     }
 };

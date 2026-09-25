@@ -1331,7 +1331,7 @@ file.exception = {
                 const form_message = select('body section[name="application-message"] form');
                 if(is.nodeList(form_message)){
                     for(let form_index in form_message){
-                        const form = select(form_message[form_index]);
+                        const form = priya.attach(form_message[form_index]);
                         form.on('submit', (event) => {
                             event.preventDefault();
                             section_message.remove();

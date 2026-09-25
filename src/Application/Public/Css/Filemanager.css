@@ -213,7 +213,7 @@ section[name="application-message"] .dialog-message .body p {
     padding: 10px;
 }
 
-section[name="application-file-manager"] .dialog-message .body button[name="ok"] {
+section[name="application-message"] .dialog-message .body button[name="ok"] {
     width: 100%;
     height: 40px;
     position: absolute;

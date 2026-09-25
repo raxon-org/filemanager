@@ -1325,8 +1325,14 @@ file.exception = {
             dialog_active.removeClass('dialog-active');
         }
         document.body.insertAdjacentHTML("beforeend", data.message);
-        const section_message = select('section[name="application-message"]');
-        console.log(section_message?.id);
+        const section_message = select('body section[name="application-message"]');
+        const dialog_message = section_message.select('.dialog');
+        const button_ok = dialog_message.select('.button[name="ok"]');
+        if(button_ok){
+            button_ok.on('click', () => {
+                section_message.remove();
+            });
+        }
         dialog.init(section_message?.id);
     }
 };

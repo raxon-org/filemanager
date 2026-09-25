@@ -1329,7 +1329,6 @@ file.exception = {
         let messages = section_message.select('.message');
         if(is.nodeList(section_message)){
             for(let index=0; index < section_message.length - 1; index++){
-
                 section_message[index].remove();
             }
         }
@@ -1340,7 +1339,9 @@ file.exception = {
         for(let index=0; index < messages.length; index++){
             message_text += messages[index].html();
         }
-        message.html(message_text);
+        if(message_text) {
+            message.html(message_text + "<br>\n" + message.html());
+        }
         const form = dialog_message.select('form');
         form.on('submit', (event) => {
             event.preventDefault();

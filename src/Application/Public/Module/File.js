@@ -1328,7 +1328,9 @@ file.exception = {
         let section_message = select('body section[name="application-message"]');
         if(is.nodeList(section_message)){
             for(let index=1; index < section_message.length; index++){
-                section_message[0].innerHTML += section_message[index].innerHTML;
+                let section_message_item = _('_').attach(section_message[index]);
+                console.log(section_message_item);
+                //section_message[0].innerHTML += section_message[index].innerHTML;
                 section_message[index].remove();
             }
         } else if(section_message) {

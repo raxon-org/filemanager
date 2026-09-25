@@ -1326,8 +1326,9 @@ file.exception = {
         }
         const body = select('body');
         body.html(body.html() + data.message);
-        dialog.init(section?.id);
-        console.log(dialog);
+        const section_message = body.select('section[name="application-message"]');
+        console.log(section_message?.id);
+        dialog.init(section_message?.id);
     }
 };
 

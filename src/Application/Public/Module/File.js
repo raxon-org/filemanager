@@ -1326,13 +1326,21 @@ file.exception = {
         }
         document.body.insertAdjacentHTML("beforeend", data.message);
         let section_message = select('body section[name="application-message"]');
+        let messages = section_message.select('.message');
         if(is.nodeList(section_message)){
             for(let index=0; index < section_message.length - 1; index++){
+
                 section_message[index].remove();
             }
         }
         section_message = select('body section[name="application-message"]');
         const dialog_message = section_message.select('.dialog');
+        const message = dialog_message.select('.message');
+        let message_text = '';
+        for(let index=0; index < messages.length; index++){
+            message_text += messages[index].html();
+        }
+        message.html(message_text);
         const form = dialog_message.select('form');
         form.on('submit', (event) => {
             event.preventDefault();

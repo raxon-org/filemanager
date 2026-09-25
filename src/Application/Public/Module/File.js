@@ -1327,12 +1327,11 @@ file.exception = {
         document.body.insertAdjacentHTML("beforeend", data.message);
         const section_message = select('body section[name="application-message"]');
         const dialog_message = section_message.select('.dialog');
-        const button_ok = dialog_message.select('.button[name="ok"]');
-        if(button_ok){
-            button_ok.on('click', () => {
-                section_message.remove();
-            });
-        }
+        const form = dialog_message.select('form');
+        form.on('submit', (event) => {
+            event.preventDefault();
+            section_message.remove();
+        });
         dialog.init(section_message?.id);
     }
 };

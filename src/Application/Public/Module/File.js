@@ -11,6 +11,7 @@ import { __ } from "/Module/Translation.js";
 import create from "/Module/Create.js";
 import user from "/Module/User.js";
 import login from "/User/Module/Login.js";
+import { dialog } from "/Dialog/Module/Dialog.js";
 
 let file = {};
 file.data = {
@@ -1325,7 +1326,8 @@ file.exception = {
         }
         const body = select('body');
         body.html(body.html() + data.message);
-        const dialog = body.select('section[name="application-message"] .dialog');
+        const div = body.select('section[name="application-message"] .dialog');
+        dialog.init("{{$id}}");
         console.log(dialog);
     }
 };

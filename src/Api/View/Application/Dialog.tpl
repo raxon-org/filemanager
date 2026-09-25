@@ -1,5 +1,6 @@
+{{$id = uuid()}}
 {{block.html()}}
-<section name="application-message" class="display-none">
+<section name="application-message" class="display-none" id="{{$id}}">
     <div class="dialog dialog-active dialog-message">
         <div class="head">
             <h1><img src="/Application/Filemanager/Icon/Message.png" class="icon"> Message </h1>

@@ -1,4 +1,4 @@
-{{$id = uuid()}}
+{{$id = 'uuid-' + uuid()}}
 {{block.html()}}
 <section name="application-message" class="display-none" id="{{$id}}">
     <div class="dialog dialog-active dialog-message">

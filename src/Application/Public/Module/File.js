@@ -1325,36 +1325,21 @@ file.exception = {
             dialog_active.removeClass('dialog-active');
         }
         document.body.insertAdjacentHTML("beforeend", data.message);
-        const section_message = select('body section[name="application-message"]');
+        let section_message = select('body section[name="application-message"]');
         if(is.nodeList(section_message)){
-            for(let section_index in section_message){
-                const form_message = select('body section[name="application-message"] form');
-                if(is.nodeList(form_message)){
-                    for(let form_index in form_message){
-                        const form = priya.attach(form_message[form_index]);
-                        form.on('submit', (event) => {
-                            event.preventDefault();
-                            section_message.remove();
-                        });
-                    }
-                } else {
-                    const form = form_message;
-                    form.on('submit', (event) => {
-                        event.preventDefault();
-                        section_message.remove();
-                    });
-                }
-                dialog.init(section_message?.id);
+            for(let index=1; index < section_message.length; index++){
+                section_message[0].innerHTML += section_message[index].innerHTML;
+                section_message[index].remove();
             }
-        } else {
+        } else if(section_message) {
             const dialog_message = section_message.select('.dialog');
             const form = dialog_message.select('form');
             form.on('submit', (event) => {
                 event.preventDefault();
                 section_message.remove();
             });
-            dialog.init(section_message?.id);
         }
+        dialog.init(section_message?.id);
     }
 };
 

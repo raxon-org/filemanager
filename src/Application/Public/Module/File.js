@@ -1328,25 +1328,16 @@ file.exception = {
         let section_message = select('body section[name="application-message"]');
         if(is.nodeList(section_message)){
             for(let index=1; index < section_message.length; index++){
-                let section_message_item = _('_').attach(section_message[index]);
-                const dialog_message = section_message_item.select('.dialog');
-                const form = dialog_message.select('form');
-                form.on('submit', (event) => {
-                    event.preventDefault();
-                    section_message_item.remove();
-                });
-                console.log(section_message_item);
-                //section_message[0].innerHTML += section_message[index].innerHTML;
                 section_message[index].remove();
             }
-        } else if(section_message) {
-            const dialog_message = section_message.select('.dialog');
-            const form = dialog_message.select('form');
-            form.on('submit', (event) => {
-                event.preventDefault();
-                section_message.remove();
-            });
         }
+        section_message = select('body section[name="application-message"]');
+        const dialog_message = section_message.select('.dialog');
+        const form = dialog_message.select('form');
+        form.on('submit', (event) => {
+            event.preventDefault();
+            section_message.remove();
+        });
         dialog.init(section_message?.id);
     }
 };

@@ -1336,7 +1336,7 @@ file.exception = {
         const dialog_message = section_message.select('.dialog');
         const message = dialog_message.select('.message');
         let message_text = '';
-        for(let index=0; index < messages.length - 1; index++){
+        for(let index=0; index < messages.length - 2; index++){
             message_text += messages[index].html();
         }
         if(message_text) {

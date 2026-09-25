@@ -1327,7 +1327,7 @@ file.exception = {
         document.body.insertAdjacentHTML("beforeend", data.message);
         let section_message = select('body section[name="application-message"]');
         if(is.nodeList(section_message)){
-            for(let index=1; index < section_message.length; index++){
+            for(let index=0; index < section_message.length - 1; index++){
                 section_message[index].remove();
             }
         }

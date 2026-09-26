@@ -1327,7 +1327,15 @@ file.exception = {
         if(data?.class === 'Raxon\\Exception\\AuthorizationException'){
             let dialog = create('div');
             dialog.addClass('dialog dialog-active dialog-message');
-            dialog.html('<div class="dialog-content">' + data.message + '</div>');
+            dialog.html('<div class="head">\n' +
+                '        <h1><img src="/Application/Filemanager/Icon/Message.png" class="icon"> Message </h1>\n' +
+                '        <span class="close"><i class="fas fa-window-close"></i></span><span class="minimize"><i class="far fa-window-minimize"></i></span>\n' +
+                '        </div>\n' +
+                '        <div class="body"><p class="message">' + data.message + '</p>' +
+                '        <form name="message">\n' +
+                '        <button type="submit" name="ok">Ok</button>\n' +
+                '        </form>'+
+                '        </div>');
             section.appendChild(dialog, section.firstChild);
         } else {
             document.body.insertAdjacentHTML("beforeend", data.message);

@@ -1331,7 +1331,7 @@ file.exception = {
                 '        <h1><img src="/Application/Filemanager/Icon/Message.png" class="icon"> Message </h1>\n' +
                 '        <span class="close"><i class="fas fa-window-close"></i></span><span class="minimize"><i class="far fa-window-minimize"></i></span>\n' +
                 '        </div>\n' +
-                '        <div class="body"><p class="message">' + _('_').str_replace(data.message, "\n", "<br>\n") + '</p>' +
+                '        <div class="body"><p class="message">' + _('_').str_replace("\n", "<br>\n", data.message) + '</p>' +
                 '        <form name="message">\n' +
                 '        <button type="submit" name="ok">Ok</button>\n' +
                 '        </form>'+

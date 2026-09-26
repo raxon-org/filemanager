@@ -59,6 +59,7 @@ require(
             "upload.timeout": 60000,
             "upload.filesize.base": 1024,
             "open.with.exception.message": [
+                "Raxon\\Exception\\AuthorizationException",
                 "Package\\Raxon\\Filemanager\\Exception\\ApplicationNotFoundException"
             ]
         });

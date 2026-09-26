@@ -232,6 +232,8 @@ section[name="application-file-manager"] .dialog-message {
     position: absolute;
     left: calc(50% - 150px);
     top: calc(50% - 60px);
+    min-width: 480px;
+    min-height: 180px;
 }
 
 section[name="application-file-manager"] .dialog-message .body {

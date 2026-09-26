@@ -1324,22 +1324,32 @@ file.exception = {
         if(dialog_active){
             dialog_active.removeClass('dialog-active');
         }
-        document.body.insertAdjacentHTML("beforeend", data.message);
-        let section_message = select('body section[name="application-message"]');
-        if(is.nodeList(section_message)){
-            for(let index=0; index < section_message.length - 1; index++){
-                section_message[index].remove();
+        if(data?.class === 'Raxon\\Exception\\AuthorizationException'){
+            let dialog = create('div');
+            dialog.addClass('dialog dialog-active dialog-message');
+            dialog.html('<div class="dialog-content">' + data.message + '</div>');
+            section.appendChild(dialog, section.firstChild);
+        } else {
+            document.body.insertAdjacentHTML("beforeend", data.message);
+            let section_message = select('body section[name="application-message"]');
+            if(is.nodeList(section_message)){
+                for(let index=0; index < section_message.length - 1; index++){
+                    section_message[index].remove();
+                }
             }
+            section_message = select('body section[name="application-message"]');
+            if(!section_message){
+                return;
+            }
+            const dialog_message = section_message.select('.dialog');
+            const message = dialog_message.select('.message');
+            const form = dialog_message.select('form');
+            form.on('submit', (event) => {
+                event.preventDefault();
+                section_message.remove();
+            });
+            dialog.init(section_message?.id);
         }
-        section_message = select('body section[name="application-message"]');
-        const dialog_message = section_message.select('.dialog');
-        const message = dialog_message.select('.message');
-        const form = dialog_message.select('form');
-        form.on('submit', (event) => {
-            event.preventDefault();
-            section_message.remove();
-        });
-        dialog.init(section_message?.id);
     }
 };
 

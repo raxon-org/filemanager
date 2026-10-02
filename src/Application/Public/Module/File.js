@@ -1408,6 +1408,8 @@ file.open_file_with = (element) => {
             refresh_token
         ){
             user.authorization((url, response) => {
+                console.log(response);
+                /*
                 if(
                     response?.class &&
                     in_array(response?.class, [
@@ -1432,6 +1434,7 @@ file.open_file_with = (element) => {
                         }
                     });
                 }
+                */                 
             });
         }
         else if(

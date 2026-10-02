@@ -3,11 +3,12 @@
 namespace Domain\{{php.namespace.host($options.backend.host)}}\Controller\System;
 
 use Package\Raxon\Account\Module\Permission;
+use Package\Raxon\Account\Exception\AuthorizationException;
 use Package\Raxon\Filemanager\Exception\ApplicationNotFoundException;
 use Raxon\App;
 use Raxon\Exception\ErrorException;
 use Raxon\Exception\ObjectException;
-use Raxon\Exception\AuthorizationException;
+
 use Raxon\Exception\FileWriteException;
 
 use Raxon\Module\Controller;

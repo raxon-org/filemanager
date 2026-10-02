@@ -1327,19 +1327,21 @@ file.exception = {
         if(data?.class === 'Raxon\\Exception\\AuthorizationException'){
             let section_message = create('section');
             section_message.name = 'application-message';
-            section_message.id = 'application-message';
+            section_message.id = 'application-message-authorization';
             section_message.html('<div class="dialog dialog-active dialog-message">' +
                 '        <div class="head">\n' +
                 '        <h1><img src="/Application/Filemanager/Icon/Message.png" class="icon"> Message </h1>\n' +
                 '        <span class="close"><i class="fas fa-window-close"></i></span><span class="minimize"><i class="far fa-window-minimize"></i></span>\n' +
                 '        </div>\n' +
-                '        <div class="body"><p class="message">' + _('_').str_replace("\n", "<br>\n", data.message) + '</p>' +
+                '        <div class="body">' +
+                '        <p class="message">' + _('_').str_replace("\n", "<br>\n", data.message) + '</p>' +
                 '        <form name="message">\n' +
                 '        <button type="submit" name="ok">Ok</button>\n' +
                 '        </form>'+
                 '        </div>' +
                 '        </div>');
-            document.body.insertAdjacentHTML("beforeend", section_message.html());
+            document.body.appendChild(section_message);
+            //document.body.insertAdjacentHTML("beforeend", section_message.html());
             dialog.init(section_message?.id);
         } else {
             document.body.insertAdjacentHTML("beforeend", data.message);

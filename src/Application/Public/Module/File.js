@@ -1408,6 +1408,7 @@ file.open_file_with = (element) => {
             refresh_token
         ){
             user.authorization((url, response) => {
+                alert('1');
                 console.log(response);
                 /*
                 if(
@@ -1434,7 +1435,7 @@ file.open_file_with = (element) => {
                         }
                     });
                 }
-                */                 
+                */
             });
         }
         else if(
@@ -1445,6 +1446,7 @@ file.open_file_with = (element) => {
             ], true) &&
             !refresh_token
         ){
+            alert('here');
             redirect(user.loginUrl());
         }
         else if(

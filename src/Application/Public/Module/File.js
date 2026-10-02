@@ -1400,9 +1400,18 @@ file.open_file_with = (element) => {
     request(route.backend, node, (url, data) => {
         if(
             data?.class &&
+            in_array(data?.class, [
+                'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+            ], true)
+        ){
+            console.log(user.refreshToken());
+            alert('expired token');
+        }
+        else if(
+            data?.class &&
             in_array(data?.class, exception_message, true)
         ){
-            console.log(data);
             file.exception.message(section, data);
         } else {
             if(exception.authorization(data)){

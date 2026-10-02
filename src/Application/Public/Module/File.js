@@ -1393,6 +1393,7 @@ file.open_file_with = (element) => {
         node.extension = 'txt';
     }
     const token = user.token();
+    const refresh_token = user.refreshToken();
     header("Authorization", 'Bearer ' + token);
     let exception_message = file.data.get('open.with.exception.message') ?? [
         '"Package\\Raxon\\Filemanager\\Exception\\ApplicationNotFoundException"'
@@ -1403,10 +1404,45 @@ file.open_file_with = (element) => {
             in_array(data?.class, [
                 'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
                 'Package\\Raxon\\Account\\Exception\\AuthorizationException',
-            ], true)
+            ], true) &&
+            refresh_token
         ){
-            console.log(user.refreshToken());
-            alert('expired token');
+            user.authorization((url, response) => {
+                if(
+                    response?.class &&
+                    in_array(response?.class, [
+                        'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                        'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                    ], true) &&
+                    refresh_token
+                ){
+                    redirect(user.loginUrl());
+                } else {
+                    user.token(response.node?.token);
+                    user.refreshToken(response.node?.refresh_token);
+                    user.data('user', response?.node);
+                    request(route.backend, node, (url, data) => {
+                        if(data?.list){
+                            request(
+                                route.frontend, {
+                                    'file' : element.data('file'),
+                                    'list' : data.list,
+                                }, (url, response) => {
+                                });
+                        }
+                    });
+                }
+            });
+        }
+        else if(
+            data?.class &&
+            in_array(data?.class, [
+                'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+            ], true) &&
+            !refresh_token
+        ){
+            redirect(user.loginUrl());
         }
         else if(
             data?.class &&

@@ -1418,9 +1418,9 @@ file.open_file_with = (element) => {
                 ){
                     redirect(user.loginUrl());
                 } else {
-                    user.token(response.node?.token);
-                    user.refreshToken(response.node?.refresh_token);
-                    const node = response?.node;
+                    user.token(data.node?.token);
+                    user.refreshToken(data.node?.refresh_token);
+                    const node = data?.node;
                     delete node?.token;
                     delete node?.refresh_token;
                     user.data(node);
@@ -1442,8 +1442,8 @@ file.open_file_with = (element) => {
             });
         }
         else if(
-            data?.class &&
-            in_array(data?.class, [
+            response?.class &&
+            in_array(response?.class, [
                 'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
                 'Package\\Raxon\\Account\\Exception\\AuthorizationException',
             ], true) &&
@@ -1452,19 +1452,19 @@ file.open_file_with = (element) => {
             redirect(user.loginUrl());
         }
         else if(
-            data?.class &&
-            in_array(data?.class, exception_message, true)
+            response?.class &&
+            in_array(response?.class, exception_message, true)
         ){
-            file.exception.message(section, data);
-        } else if(data?.list){
+            file.exception.message(section, response);
+        } else if(response?.list){
             request(
                 route.frontend, {
                     'file' : element.data('file'),
-                    'list' : data.list,
-                }, (url, response) => {
+                    'list' : response.list,
+                }, (url, data) => {
                 });
         } else {
-            console.log(data);
+            console.log(response);
         }
     });
 }

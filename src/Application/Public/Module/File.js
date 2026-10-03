@@ -1420,10 +1420,12 @@ file.open_file_with = (element) => {
                 } else {
                     user.token(data.node?.token);
                     user.refreshToken(data.node?.refresh_token);
+                    /* dont do:
                     const node = data?.node;
                     delete node?.token;
                     delete node?.refresh_token;
                     user.data(node);
+                     */
                     file.open_file_with(element);
                     /*
                     header('Authorization', 'Bearer ' + user.token());

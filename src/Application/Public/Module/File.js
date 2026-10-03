@@ -1398,10 +1398,10 @@ file.open_file_with = (element) => {
     let exception_message = file.data.get('open.with.exception.message') ?? [
         '"Package\\Raxon\\Filemanager\\Exception\\ApplicationNotFoundException"'
     ];
-    request(route.backend, node, (url, data) => {
+    request(route.backend, node, (url, response) => {
         if(
-            data?.class &&
-            in_array(data?.class, [
+            response?.class &&
+            in_array(response?.class, [
                 'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
                 'Package\\Raxon\\Account\\Exception\\AuthorizationException',
             ], true) &&
@@ -1418,9 +1418,9 @@ file.open_file_with = (element) => {
                 ){
                     redirect(user.loginUrl());
                 } else {
-                    user.token(data.node?.token);
-                    user.refreshToken(data.node?.refresh_token);
-                    const node = data?.node;
+                    user.token(response.node?.token);
+                    user.refreshToken(response.node?.refresh_token);
+                    const node = response?.node;
                     delete node.token;
                     delete node.refresh_token;
                     user.data(node);

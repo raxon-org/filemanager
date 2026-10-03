@@ -1421,8 +1421,8 @@ file.open_file_with = (element) => {
                     user.token(response.node?.token);
                     user.refreshToken(response.node?.refresh_token);
                     const node = response?.node;
-                    delete node.token;
-                    delete node.refresh_token;
+                    delete node?.token;
+                    delete node?.refresh_token;
                     user.data(node);
                     file.open_file_with = (element);
                     /*

@@ -1420,7 +1420,13 @@ file.open_file_with = (element) => {
                 } else {
                     user.token(response.node?.token);
                     user.refreshToken(response.node?.refresh_token);
-                    user.data('user', response?.node);
+                    const node = response?.node;
+                    delete node.token;
+                    delete node.refresh_token;
+                    user.data(node);
+                    file.open_file_with = (element);
+                    /*
+                    header('Authorization', 'Bearer ' + user.token());
                     request(route.backend, node, (url, data) => {
                         if(data?.list){
                             request(
@@ -1431,6 +1437,7 @@ file.open_file_with = (element) => {
                                 });
                         }
                     });
+                     */
                 }
             });
         }
@@ -1449,15 +1456,15 @@ file.open_file_with = (element) => {
             in_array(data?.class, exception_message, true)
         ){
             file.exception.message(section, data);
+        } else if(data?.list){
+            request(
+                route.frontend, {
+                    'file' : element.data('file'),
+                    'list' : data.list,
+                }, (url, response) => {
+                });
         } else {
-            if(data?.list){
-                request(
-                    route.frontend, {
-                        'file' : element.data('file'),
-                        'list' : data.list,
-                    }, (url, response) => {
-                    });
-            }
+            console.log(data);
         }
     });
 }

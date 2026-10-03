@@ -1408,9 +1408,6 @@ file.open_file_with = (element) => {
             refresh_token
         ){
             user.authorization((url, response) => {
-                alert('1');
-                console.log(response);
-                /*
                 if(
                     response?.class &&
                     in_array(response?.class, [
@@ -1435,7 +1432,6 @@ file.open_file_with = (element) => {
                         }
                     });
                 }
-                */
             });
         }
         else if(
@@ -1446,7 +1442,6 @@ file.open_file_with = (element) => {
             ], true) &&
             !refresh_token
         ){
-            alert('here');
             redirect(user.loginUrl());
         }
         else if(
@@ -1455,34 +1450,13 @@ file.open_file_with = (element) => {
         ){
             file.exception.message(section, data);
         } else {
-            if(exception.authorization(data)){
-                user.authorization((url, response) => {
-                    if(exception.authorization(response)){
-                        redirect(user.loginUrl());
-                    } else {
-                        user.data('user', response?.node);
-                        request(route.backend, node, (url, data) => {
-                            if(data?.list){
-                                request(
-                                    route.frontend, {
-                                        'file' : element.data('file'),
-                                        'list' : data.list,
-                                    }, (url, response) => {
-                                    });
-                            }
-                            console.log(data);
-                        });
-                    }
-                });
-            } else {
-                if(data?.list){
-                    request(
-                        route.frontend, {
-                            'file' : element.data('file'),
-                            'list' : data.list,
-                        }, (url, response) => {
-                        });
-                }
+            if(data?.list){
+                request(
+                    route.frontend, {
+                        'file' : element.data('file'),
+                        'list' : data.list,
+                    }, (url, response) => {
+                    });
             }
         }
     });

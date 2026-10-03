@@ -1424,7 +1424,7 @@ file.open_file_with = (element) => {
                     delete node?.token;
                     delete node?.refresh_token;
                     user.data(node);
-                    file.open_file_with = (element);
+                    file.open_file_with(element);
                     /*
                     header('Authorization', 'Bearer ' + user.token());
                     request(route.backend, node, (url, data) => {

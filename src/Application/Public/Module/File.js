@@ -1407,10 +1407,10 @@ file.open_file_with = (element) => {
             ], true) &&
             refresh_token
         ){
-            user.authorization((url, response) => {
+            user.authorization((url, data) => {
                 if(
-                    response?.class &&
-                    in_array(response?.class, [
+                    data?.class &&
+                    in_array(data?.class, [
                         'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
                         'Package\\Raxon\\Account\\Exception\\AuthorizationException',
                     ], true) &&
@@ -1418,9 +1418,9 @@ file.open_file_with = (element) => {
                 ){
                     redirect(user.loginUrl());
                 } else {
-                    user.token(response.node?.token);
-                    user.refreshToken(response.node?.refresh_token);
-                    const node = response?.node;
+                    user.token(data.node?.token);
+                    user.refreshToken(data.node?.refresh_token);
+                    const node = data?.node;
                     delete node.token;
                     delete node.refresh_token;
                     user.data(node);

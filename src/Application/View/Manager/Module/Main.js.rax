@@ -21,8 +21,19 @@ require(
         root() + 'Javascript/Dropzone/5.9.2/min/dropzone.min.js?' + version()
     ],
     function(){
-        user.refreshUrl("{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}User/Refresh/Token/");
-        user.loginUrl("{{route.get('user-login')}}");
+        user.init({
+            "backend": {
+                "url": {
+                    "current": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}User/Current/",
+                    "refresh": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}User/Refresh/Token/",
+                }
+            },
+            "frontend": {
+                "url": {
+                    "login": "{{server.url(\"{{/literal}}{{$frontend.host}}{{literal}}\")}}User/Login/",
+                }
+            }
+        });            
         language("{{language()}}");
         translation.import("{{raw|>translation.export('json-line')}}");
         //debug.init("{{raw|>debug.init()}}");

@@ -2,6 +2,7 @@ import { file } from "/Application/Filemanager/Module/File.js";
 import { getSectionById } from "/Module/Section.js";
 import user from "/Module/User.js";
 import { exception } from "/Module/Exception.js";
+import {navigation} from "../../../../../desktop/src/Application/Public/Module/Navigation";
 
 let directory = {};
 
@@ -177,6 +178,7 @@ directory.read = () => {
         frontend :file.data.get('route.frontend.directory')
     };
     const retry = file.data.get('directory.read.retry');
+    const url_login = user.url.login();
     const token = user.token();
     const refresh_token = user.refreshToken();
     if (
@@ -186,8 +188,17 @@ directory.read = () => {
     ){
         header("Authorization", 'Bearer ' + token);
         request(route.backend, null, (url, data) => {
-            if(data?.class === 'Package\\Raxon\\Account\\Exception\\TokenExpiredException'){
-                user.authorization(() => {
+            if(
+                response?.class &&
+                in_array(
+                    response?.class, [
+                        'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                        'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                    ],
+                    true
+                )
+            ){
+                user.authorization((url, data) => {
                     if (
                         data?.class &&
                         in_array(
@@ -204,35 +215,33 @@ directory.read = () => {
                     else if (
                         data.node?.token &&
                         data.node?.refresh_token
-                    ) {
+                    ){
                         user.token(data.node?.token);
                         user.refreshToken(data.node?.refresh_token);
                         const original = user.data();
-                        const node = data?.node;
+                        const node = data?.node || {};
                         delete node?.token;
                         delete node?.refresh_token;
-                        const merge = {...original, ...node};
+                        const merge = { ...original, ...node };
                         user.data(merge);
                         directory.read();
                     } else {
-                        redirect(user.url.login());
+                        if(url_login){
+                            redirect(url_login);
+                        }
                     }
                 });
             }
-            if(
-                !is.empty(retry) &&
-                exception.authorization(data)
-            ){
-                redirect(user.url.login);
-            }
             else if(
-                is.empty(retry) &&
-                exception.authorization(data)
+                response?.class &&
+                in_array(
+                    response.class, [
+                        'Raxon\\Exception\\AuthorizationException',
+                    ])
             ){
-                user.authorization(() => {
-                    file.data.set('directory.read.retry', 1);
-                    directory.read();
-                });
+                if(url_login){
+                    redirect(url_login);
+                }
             } else {
                 data = directory.tree(data);
                 request(route.frontend, data, (url, response) => {

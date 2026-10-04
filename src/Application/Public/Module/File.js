@@ -396,8 +396,7 @@ file.context_menu = ({
                                                     delete user_node?.refresh_token;
                                                     const merge = {...original, ...user_node};
                                                     user.data(merge);
-                                                    const token = user.token();
-                                                    header("Authorization", 'Bearer ' + token);
+                                                    header("Authorization", 'Bearer ' + user.token());
                                                     request(route.rename, node, (url, response) => {
                                                         const refresh = section.select('.refresh');
                                                         refresh.click();
@@ -456,8 +455,7 @@ file.context_menu = ({
                                                     delete user_node?.refresh_token;
                                                     const merge = {...original, ...user_node};
                                                     user.data(merge);
-                                                    const token = user.token();
-                                                    header("Authorization", 'Bearer ' + token);
+                                                    header("Authorization", 'Bearer ' + user.token());
                                                     request(route.rename, node, (url, response) => {
                                                         const refresh = section.select('.refresh');
                                                         refresh.click();
@@ -524,8 +522,7 @@ file.context_menu = ({
                                                 delete user_node?.refresh_token;
                                                 const merge = {...original, ...user_node};
                                                 user.data(merge);
-                                                const token = user.token();
-                                                header("Authorization", 'Bearer ' + token);
+                                                header("Authorization", 'Bearer ' + user.token());
                                                 request(route.copy, node, (url, response) => {
                                                     const refresh = section.select('.refresh');
                                                     refresh.click();
@@ -592,8 +589,7 @@ file.context_menu = ({
                                                     delete user_node?.refresh_token;
                                                     const merge = {...original, ...user_node};
                                                     user.data(merge);
-                                                    const token = user.token();
-                                                    header("Authorization", 'Bearer ' + token);
+                                                    header("Authorization", 'Bearer ' + user.token());
                                                     request(route.rename, node, (url, response) => {
                                                         const refresh = section.select('.refresh');
                                                         refresh.click();
@@ -652,8 +648,7 @@ file.context_menu = ({
                                                     delete user_node?.refresh_token;
                                                     const merge = {...original, ...user_node};
                                                     user.data(merge);
-                                                    const token = user.token();
-                                                    header("Authorization", 'Bearer ' + token);
+                                                    header("Authorization", 'Bearer ' + user.token());
                                                     request(route.rename, node, (url, response) => {
                                                         const address = section.select('input[name="address"]');
                                                         if(address){
@@ -724,8 +719,7 @@ file.context_menu = ({
                                                     delete user_node?.refresh_token;
                                                     const merge = {...original, ...user_node};
                                                     user.data(merge);
-                                                    const token = user.token();
-                                                    header("Authorization", 'Bearer ' + token);
+                                                    header("Authorization", 'Bearer ' + user.token());
                                                     request(route.copy, node, (url, response) => {
                                                         const refresh = section.select('.refresh');
                                                         refresh.click();
@@ -785,8 +779,7 @@ file.context_menu = ({
                                                     delete user_node?.refresh_token;
                                                     const merge = {...original, ...user_node};
                                                     user.data(merge);
-                                                    const token = user.token();
-                                                    header("Authorization", 'Bearer ' + token);
+                                                    header("Authorization", 'Bearer ' + user.token());
                                                     request(route.copy, node, (url, response) => {
                                                         const refresh = section.select('.refresh');
                                                         refresh.click();
@@ -830,7 +823,6 @@ file.context_menu = ({
                     }
 
                 }
-
             });
         }
         table_tr.on('mouseover', (event) => {
@@ -1734,7 +1726,7 @@ file.open_file_with = (element) => {
     const refresh_token = user.refreshToken();
     header("Authorization", 'Bearer ' + token);
     let exception_message = file.data.get('open.with.exception.message') ?? [
-        '"Package\\Raxon\\Filemanager\\Exception\\ApplicationNotFoundException"'
+        'Package\\Raxon\\Filemanager\\Exception\\ApplicationNotFoundException'
     ];
     request(route.backend, node, (url, response) => {
         if(
@@ -1844,6 +1836,55 @@ file.delete = (element) => {
 
     header("Authorization", 'Bearer ' + token);
     request(route.delete, node, (url, response) => {
+        if(
+            response?.class &&
+            in_array(
+                response?.class, [
+                    'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                    'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                ],
+                true
+            )
+        ){
+            user.authorization((url, data) => {
+                if (
+                    data?.class &&
+                    in_array(
+                        data?.class, [
+                            'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                            'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                        ],
+                        true
+                    ) &&
+                    refresh_token
+                ) {
+                    if(url_login){
+                        redirect(url_login);
+                    }
+                }
+                else if (
+                    data.node?.token &&
+                    data.node?.refresh_token
+                ){
+                    user.token(data.node?.token);
+                    user.refreshToken(data.node?.refresh_token);
+                    const original = user.data();
+                    const user_node = data?.node || {};
+                    delete user_node?.token;
+                    delete user_node?.refresh_token;
+                    const merge = { ...original, ...user_node };
+                    user.data(merge);
+                    header("Authorization", 'Bearer ' + user.token());
+                    request(route.delete, node, (url, response) => {
+                        const refresh = section.select('.refresh');
+                        refresh.click();
+                    });
+                } else {
+                    const refresh = section.select('.refresh');
+                    refresh.click();
+                }
+            });
+        }
         const refresh = section.select('.refresh');
         refresh.click();
     });
@@ -2021,8 +2062,11 @@ file.rename = (element) => {
                             delete user_node?.refresh_token;
                             const merge = { ...original, ...user_node };
                             user.data(merge);
-                            const refresh = section.select('.refresh');
-                            refresh.click();
+                            header("Authorization", 'Bearer ' + user.token());
+                            request(route.rename, node, (url, response) => {
+                                const refresh = section.select('.refresh');
+                                refresh.click();
+                            });
                         } else {
                             const refresh = section.select('.refresh');
                             refresh.click();
@@ -2059,8 +2103,55 @@ file.rename = (element) => {
             editable.data('submit', true);
             header("Authorization", 'Bearer ' + token);
             request(route.rename, node, (url, response) => {
-                const refresh = section.select('.refresh');
-                refresh.click();
+                if(
+                    response?.class &&
+                    in_array(
+                        response?.class, [
+                            'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                            'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                        ],
+                        true
+                    )
+                ){
+                    user.authorization((url, data) => {
+                        if (
+                            data?.class &&
+                            in_array(
+                                data?.class, [
+                                    'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                                    'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                                ],
+                                true
+                            ) &&
+                            refresh_token
+                        ) {
+                            if(url_login){
+                                redirect(url_login);
+                            }
+                        }
+                        else if (
+                            data.node?.token &&
+                            data.node?.refresh_token
+                        ){
+                            user.token(data.node?.token);
+                            user.refreshToken(data.node?.refresh_token);
+                            const original = user.data();
+                            const user_node = data?.node || {};
+                            delete user_node?.token;
+                            delete user_node?.refresh_token;
+                            const merge = { ...original, ...user_node };
+                            user.data(merge);
+                            header("Authorization", 'Bearer ' + user.token());
+                            request(route.rename, node, (url, response) => {
+                                const refresh = section.select('.refresh');
+                                refresh.click();
+                            });
+                        } else {
+                            const refresh = section.select('.refresh');
+                            refresh.click();
+                        }
+                    });
+                }
             });
         }
     });

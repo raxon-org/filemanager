@@ -12,6 +12,7 @@ import create from "/Module/Create.js";
 import user from "/Module/User.js";
 import login from "/User/Module/Login.js";
 import { dialog } from "/Dialog/Module/Dialog.js";
+import {directory} from "./Directory";
 
 let file = {};
 file.data = {
@@ -1850,8 +1851,52 @@ file.delete = (element) => {
 
     header("Authorization", 'Bearer ' + token);
     request(route.delete, node, (url, response) => {
-        const refresh = section.select('.refresh');
-        refresh.click();
+        if(
+            response?.class &&
+            in_array(
+                response?.class, [
+                    'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                    'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                ],
+                true
+            )
+        ){
+            user.authorization((url, data) => {
+                if (
+                    data?.class &&
+                    in_array(
+                        data?.class, [
+                            'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                            'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                        ],
+                        true
+                    ) &&
+                    refresh_token
+                ) {
+                    if(url_login){
+                        redirect(url_login);
+                    }
+                }
+                else if (
+                    data.node?.token &&
+                    data.node?.refresh_token
+                ){
+                    user.token(data.node?.token);
+                    user.refreshToken(data.node?.refresh_token);
+                    const original = user.data();
+                    const user_node = data?.node || {};
+                    delete user_node?.token;
+                    delete user_node?.refresh_token;
+                    const merge = { ...original, ...user_node };
+                    user.data(merge);
+                    const refresh = section.select('.refresh');
+                    refresh.click();
+                } else {
+                    const refresh = section.select('.refresh');
+                    refresh.click();
+                }
+            });
+        }
     });
 }
 
@@ -1989,8 +2034,53 @@ file.rename = (element) => {
             editable.html(editable.select('input[name="destination"]').value + '&nbsp;<i class="fas fa-spinner fa-spin"></i>');
             header("Authorization", 'Bearer ' + token);
             request(route.rename, node, (url, response) => {
-                const refresh = section.select('.refresh');
-                refresh.click();
+                if(
+                    response?.class &&
+                    in_array(
+                        response?.class, [
+                            'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                            'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                        ],
+                        true
+                    )
+                ){
+                    user.authorization((url, data) => {
+                        if (
+                            data?.class &&
+                            in_array(
+                                data?.class, [
+                                    'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                                    'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                                ],
+                                true
+                            ) &&
+                            refresh_token
+                        ) {
+                            if(url_login){
+                                redirect(url_login);
+                            }
+                        }
+                        else if (
+                            data.node?.token &&
+                            data.node?.refresh_token
+                        ){
+                            user.token(data.node?.token);
+                            user.refreshToken(data.node?.refresh_token);
+                            const original = user.data();
+                            const user_node = data?.node || {};
+                            delete user_node?.token;
+                            delete user_node?.refresh_token;
+                            const merge = { ...original, ...user_node };
+                            user.data(merge);
+                            const refresh = section.select('.refresh');
+                            refresh.click();
+                        } else {
+                            const refresh = section.select('.refresh');
+                            refresh.click();
+                        }
+                    });
+                }
+
             });
         }
     })

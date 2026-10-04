@@ -402,6 +402,7 @@ file.context_menu = ({
                                                     delete user_node?.refresh_token;
                                                     const merge = {...original, ...user_node};
                                                     user.data(merge);
+                                                    const token = user.token();
                                                     header("Authorization", 'Bearer ' + token);
                                                     request(route.rename, node, (url, response) => {
                                                         const refresh = section.select('.refresh');
@@ -461,6 +462,7 @@ file.context_menu = ({
                                                     delete user_node?.refresh_token;
                                                     const merge = {...original, ...user_node};
                                                     user.data(merge);
+                                                    const token = user.token();
                                                     header("Authorization", 'Bearer ' + token);
                                                     request(route.rename, node, (url, response) => {
                                                         const refresh = section.select('.refresh');
@@ -528,6 +530,7 @@ file.context_menu = ({
                                                 delete user_node?.refresh_token;
                                                 const merge = {...original, ...user_node};
                                                 user.data(merge);
+                                                const token = user.token();
                                                 header("Authorization", 'Bearer ' + token);
                                                 request(route.copy, node, (url, response) => {
                                                     const refresh = section.select('.refresh');
@@ -595,6 +598,7 @@ file.context_menu = ({
                                                     delete user_node?.refresh_token;
                                                     const merge = {...original, ...user_node};
                                                     user.data(merge);
+                                                    const token = user.token();
                                                     header("Authorization", 'Bearer ' + token);
                                                     request(route.rename, node, (url, response) => {
                                                         const refresh = section.select('.refresh');
@@ -654,6 +658,7 @@ file.context_menu = ({
                                                     delete user_node?.refresh_token;
                                                     const merge = {...original, ...user_node};
                                                     user.data(merge);
+                                                    const token = user.token();
                                                     header("Authorization", 'Bearer ' + token);
                                                     request(route.rename, node, (url, response) => {
                                                         const address = section.select('input[name="address"]');
@@ -725,6 +730,7 @@ file.context_menu = ({
                                                     delete user_node?.refresh_token;
                                                     const merge = {...original, ...user_node};
                                                     user.data(merge);
+                                                    const token = user.token();
                                                     header("Authorization", 'Bearer ' + token);
                                                     request(route.copy, node, (url, response) => {
                                                         const refresh = section.select('.refresh');
@@ -785,6 +791,7 @@ file.context_menu = ({
                                                     delete user_node?.refresh_token;
                                                     const merge = {...original, ...user_node};
                                                     user.data(merge);
+                                                    const token = user.token();
                                                     header("Authorization", 'Bearer ' + token);
                                                     request(route.copy, node, (url, response) => {
                                                         const refresh = section.select('.refresh');

@@ -154,6 +154,9 @@ directory.open = (event) => {
 }
 
 directory.tree = (data) => {
+    if(typeof data !== 'object'){
+        return data;
+    }
     if(is.array(data?.nodeList?.tree)){
         let index;
         for(index=0; index<data.nodeList.tree.length; index++){

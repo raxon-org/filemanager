@@ -7,7 +7,6 @@ import { taskbar } from "/Application/Desktop/Module/Taskbar.js";
 import { debug } from "/Module/Priya.js";
 import user from "/Module/User.js";
 import create from "/Module/Create.js";
-import {navigation} from "../../../../../desktop/src/Application/Public/Module/Navigation";
 //import { pipeline } from '/Xenova/transformers@2.14.0.js';
 //import { AutoModelForSeq2SeqLM, AutoTokenizer } from '/Xenova/transformers@2.14.0.js';
 //import { AutoProcessor, read_audio } from '/Xenova/transformers@2.14.0.js';

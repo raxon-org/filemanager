@@ -2,6 +2,7 @@ import { file } from "/Application/Filemanager/Module/File.js";
 import { getSectionById } from "/Module/Section.js";
 import user from "/Module/User.js";
 import { exception } from "/Module/Exception.js";
+import {navigation} from "../../../../../desktop/src/Application/Public/Module/Navigation";
 
 let directory = {};
 
@@ -70,7 +71,79 @@ directory.expand_open = (li) => {
     let node = {};
     node.directory = _('_').htmlspecialchars(li.data('dir')).replace(/'/g, '\\\'');
     //node.type = li.data('type');
-    li.request(null, node, (url, data) => {
+    li.request(null, node, (url, response) => {
+        if(
+            response?.class &&
+            in_array(
+                response?.class, [
+                    'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                    'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                ],
+                true
+            )
+        ){
+            user.authorization((url, data) => {
+                if (
+                    data?.class &&
+                    in_array(
+                        data?.class, [
+                            'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                            'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                        ],
+                        true
+                    ) &&
+                    refresh_token
+                ) {
+                    redirect(user.url.login());
+                }
+                else if (
+                    response.node?.token &&
+                    response.node?.refresh_token
+                ){
+                    user.token(response.node?.token);
+                    user.refreshToken(response.node?.refresh_token);
+                    const original = user.data();
+                    const node = response?.node || {};
+                    delete node?.token;
+                    delete node?.refresh_token;
+                    const merge = { ...original, ...node };
+                    user.data(merge);
+                    directory.expand_close(li);
+                    directory.expand_open(li);
+                } else {
+                    if(url_login){
+                        redirect(url_login);
+                    }
+                }
+            });
+        }
+        else if(
+            response?.class &&
+            in_array(
+                response.class, [
+                    'Raxon\\Exception\\AuthorizationException',
+                ])
+        ){
+            if(url_login){
+                redirect(url_login);
+            }
+        }
+        else if (!is.empty(response.node)) {
+            const original = user.data();
+            const node = response.node;
+            delete node?.token;
+            delete node?.refresh_token;
+            const merge = {...original, ...node};
+            user.set(merge);
+            directory.expand_close(li);
+            directory.expand_open(li);
+        } else {
+            const data = directory.create_data(response, li);
+            request(li.data('frontend-url'), data, (url, response) => {
+                loader.html('');
+            });
+        }
+
         console.log(data);
         /*
         if(exception.authorization(data)){

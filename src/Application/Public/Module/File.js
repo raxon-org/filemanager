@@ -361,10 +361,58 @@ file.context_menu = ({
                                         destination : element.data('dir') + cut_item.name
                                     };
                                     const token = user.token();
+                                    const refresh_token = user.refreshToken();
+                                    const url_login = user.url.login();
                                     header("Authorization", 'Bearer ' + token);
                                     request(route.rename, node, (url, response) => {
-                                        const refresh = section.select('.refresh');
-                                        refresh.click();
+                                        if(
+                                            response?.class &&
+                                            in_array(
+                                                response?.class, [
+                                                    'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                                                    'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                                                ],
+                                                true
+                                            )
+                                        ) {
+                                            user.authorization((url, data) => {
+                                                if (
+                                                    data?.class &&
+                                                    in_array(
+                                                        data?.class, [
+                                                            'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                                                            'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                                                        ],
+                                                        true
+                                                    ) &&
+                                                    refresh_token
+                                                ) {
+                                                    if (url_login) {
+                                                        redirect(url_login);
+                                                    }
+                                                } else if (
+                                                    data.node?.token &&
+                                                    data.node?.refresh_token
+                                                ) {
+                                                    user.token(data.node?.token);
+                                                    user.refreshToken(data.node?.refresh_token);
+                                                    const original = user.data();
+                                                    const node = data?.node || {};
+                                                    delete node?.token;
+                                                    delete node?.refresh_token;
+                                                    const merge = {...original, ...node};
+                                                    user.data(merge);
+                                                    header("Authorization", 'Bearer ' + token);
+                                                    request(route.rename, node, (url, response) => {
+                                                        const refresh = section.select('.refresh');
+                                                        refresh.click();
+                                                    });
+                                                }
+                                            });
+                                        } else {
+                                            const refresh = section.select('.refresh');
+                                            refresh.click();
+                                        }
                                     });
                                 } else {
                                     let node = {
@@ -372,16 +420,63 @@ file.context_menu = ({
                                         destination : element.data('dir') + cut_item.name  + '/'
                                     };
                                     const token = user.token();
+                                    const refresh_token = user.refreshToken();
+                                    const url_login = user.url.login();
                                     header("Authorization", 'Bearer ' + token);
                                     request(route.rename, node, (url, response) => {
-                                        const address = section.select('input[name="address"]');
-                                        if(address){
-                                            address.value = node.destination;
-                                            address.trigger('change');
+                                        if(
+                                            response?.class &&
+                                            in_array(
+                                                response?.class, [
+                                                    'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                                                    'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                                                ],
+                                                true
+                                            )
+                                        ) {
+                                            user.authorization((url, data) => {
+                                                if (
+                                                    data?.class &&
+                                                    in_array(
+                                                        data?.class, [
+                                                            'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                                                            'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                                                        ],
+                                                        true
+                                                    ) &&
+                                                    refresh_token
+                                                ) {
+                                                    if (url_login) {
+                                                        redirect(url_login);
+                                                    }
+                                                } else if (
+                                                    data.node?.token &&
+                                                    data.node?.refresh_token
+                                                ) {
+                                                    user.token(data.node?.token);
+                                                    user.refreshToken(data.node?.refresh_token);
+                                                    const original = user.data();
+                                                    const node = data?.node || {};
+                                                    delete node?.token;
+                                                    delete node?.refresh_token;
+                                                    const merge = {...original, ...node};
+                                                    user.data(merge);
+                                                    header("Authorization", 'Bearer ' + token);
+                                                    request(route.rename, node, (url, response) => {
+                                                        const refresh = section.select('.refresh');
+                                                        refresh.click();
+                                                    });
+                                                }
+                                            });
+                                        } else {
+                                            const address = section.select('input[name="address"]');
+                                            if(address){
+                                                address.value = node.destination;
+                                                address.trigger('change');
+                                            }
                                         }
                                     });
                                 }
-
                             }
                             file.data.delete('clipboard.cut');
                             let copy = file.data.get('clipboard.copy') ?? [];
@@ -391,13 +486,59 @@ file.context_menu = ({
                                     source : copy_item.file,
                                     destination : element.data('dir') + copy_item.name
                                 };
-                                console.log(node);
-                                console.log(route.copy);
                                 const token = user.token();
+                                const refresh_token = user.refreshToken();
+                                const url_login = user.url.login();
                                 header("Authorization", 'Bearer ' + token);
                                 request(route.copy, node, (url, response) => {
-                                    const refresh = section.select('.refresh');
-                                    refresh.click();
+                                    if(
+                                        response?.class &&
+                                        in_array(
+                                            response?.class, [
+                                                'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                                                'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                                            ],
+                                            true
+                                        )
+                                    ) {
+                                        user.authorization((url, data) => {
+                                            if (
+                                                data?.class &&
+                                                in_array(
+                                                    data?.class, [
+                                                        'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                                                        'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                                                    ],
+                                                    true
+                                                ) &&
+                                                refresh_token
+                                            ) {
+                                                if (url_login) {
+                                                    redirect(url_login);
+                                                }
+                                            } else if (
+                                                data.node?.token &&
+                                                data.node?.refresh_token
+                                            ) {
+                                                user.token(data.node?.token);
+                                                user.refreshToken(data.node?.refresh_token);
+                                                const original = user.data();
+                                                const node = data?.node || {};
+                                                delete node?.token;
+                                                delete node?.refresh_token;
+                                                const merge = {...original, ...node};
+                                                user.data(merge);
+                                                header("Authorization", 'Bearer ' + token);
+                                                request(route.copy, node, (url, response) => {
+                                                    const refresh = section.select('.refresh');
+                                                    refresh.click();
+                                                });
+                                            }
+                                        });
+                                    } else {
+                                        const refresh = section.select('.refresh');
+                                        refresh.click();
+                                    }
                                 });
                             }
                             file.data.delete('clipboard.copy');
@@ -413,10 +554,58 @@ file.context_menu = ({
                                         destination : element.data('dir') + cut_item.name
                                     };
                                     const token = user.token();
+                                    const refresh_token = user.refreshToken();
+                                    const url_login = user.url.login();
                                     header("Authorization", 'Bearer ' + token);
                                     request(route.rename, node, (url, response) => {
-                                        const refresh = section.select('.refresh');
-                                        refresh.click();
+                                        if(
+                                            response?.class &&
+                                            in_array(
+                                                response?.class, [
+                                                    'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                                                    'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                                                ],
+                                                true
+                                            )
+                                        ) {
+                                            user.authorization((url, data) => {
+                                                if (
+                                                    data?.class &&
+                                                    in_array(
+                                                        data?.class, [
+                                                            'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                                                            'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                                                        ],
+                                                        true
+                                                    ) &&
+                                                    refresh_token
+                                                ) {
+                                                    if (url_login) {
+                                                        redirect(url_login);
+                                                    }
+                                                } else if (
+                                                    data.node?.token &&
+                                                    data.node?.refresh_token
+                                                ) {
+                                                    user.token(data.node?.token);
+                                                    user.refreshToken(data.node?.refresh_token);
+                                                    const original = user.data();
+                                                    const node = data?.node || {};
+                                                    delete node?.token;
+                                                    delete node?.refresh_token;
+                                                    const merge = {...original, ...node};
+                                                    user.data(merge);
+                                                    header("Authorization", 'Bearer ' + token);
+                                                    request(route.rename, node, (url, response) => {
+                                                        const refresh = section.select('.refresh');
+                                                        refresh.click();
+                                                    });
+                                                }
+                                            });
+                                        } else {
+                                            const refresh = section.select('.refresh');
+                                            refresh.click();
+                                        }
                                     });
                                 } else {
                                     let node = {
@@ -424,12 +613,63 @@ file.context_menu = ({
                                         destination : element.data('dir') + cut_item.name  + '/'
                                     };
                                     const token = user.token();
+                                    const refresh_token = user.refreshToken();
+                                    const url_login = user.url.login();
                                     header("Authorization", 'Bearer ' + token);
                                     request(route.rename, node, (url, response) => {
-                                        const address = section.select('input[name="address"]');
-                                        if(address){
-                                            address.value = node.destination;
-                                            address.trigger('change');
+                                        if(
+                                            response?.class &&
+                                            in_array(
+                                                response?.class, [
+                                                    'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                                                    'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                                                ],
+                                                true
+                                            )
+                                        ) {
+                                            user.authorization((url, data) => {
+                                                if (
+                                                    data?.class &&
+                                                    in_array(
+                                                        data?.class, [
+                                                            'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                                                            'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                                                        ],
+                                                        true
+                                                    ) &&
+                                                    refresh_token
+                                                ) {
+                                                    if (url_login) {
+                                                        redirect(url_login);
+                                                    }
+                                                } else if (
+                                                    data.node?.token &&
+                                                    data.node?.refresh_token
+                                                ) {
+                                                    user.token(data.node?.token);
+                                                    user.refreshToken(data.node?.refresh_token);
+                                                    const original = user.data();
+                                                    const node = data?.node || {};
+                                                    delete node?.token;
+                                                    delete node?.refresh_token;
+                                                    const merge = {...original, ...node};
+                                                    user.data(merge);
+                                                    header("Authorization", 'Bearer ' + token);
+                                                    request(route.rename, node, (url, response) => {
+                                                        const address = section.select('input[name="address"]');
+                                                        if(address){
+                                                            address.value = node.destination;
+                                                            address.trigger('change');
+                                                        }
+                                                    });
+                                                }
+                                            });
+                                        } else {
+                                            const address = section.select('input[name="address"]');
+                                            if(address){
+                                                address.value = node.destination;
+                                                address.trigger('change');
+                                            }
                                         }
                                     });
                                 }
@@ -444,10 +684,59 @@ file.context_menu = ({
                                         destination : element.data('dir') + copy_item.name
                                     };
                                     const token = user.token();
+                                    const refresh_token = user.refreshToken();
+                                    const url_login = user.url.login();
                                     header("Authorization", 'Bearer ' + token);
                                     request(route.copy, node, (url, response) => {
-                                        const refresh = section.select('.refresh');
-                                        refresh.click();
+                                        if(
+                                            response?.class &&
+                                            in_array(
+                                                response?.class, [
+                                                    'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                                                    'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                                                ],
+                                                true
+                                            )
+                                        ) {
+                                            user.authorization((url, data) => {
+                                                if (
+                                                    data?.class &&
+                                                    in_array(
+                                                        data?.class, [
+                                                            'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                                                            'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                                                        ],
+                                                        true
+                                                    ) &&
+                                                    refresh_token
+                                                ) {
+                                                    if (url_login) {
+                                                        redirect(url_login);
+                                                    }
+                                                } else if (
+                                                    data.node?.token &&
+                                                    data.node?.refresh_token
+                                                ) {
+                                                    user.token(data.node?.token);
+                                                    user.refreshToken(data.node?.refresh_token);
+                                                    const original = user.data();
+                                                    const node = data?.node || {};
+                                                    delete node?.token;
+                                                    delete node?.refresh_token;
+                                                    const merge = {...original, ...node};
+                                                    user.data(merge);
+                                                    header("Authorization", 'Bearer ' + token);
+                                                    request(route.copy, node, (url, response) => {
+                                                        const refresh = section.select('.refresh');
+                                                        refresh.click();
+                                                    });
+                                                }
+                                            });
+                                        } else {
+                                            const refresh = section.select('.refresh');
+                                            refresh.click();
+                                        }
+
                                     });
                                 } else {
                                     let node = {
@@ -455,10 +744,58 @@ file.context_menu = ({
                                         destination : element.data('dir') + copy_item.name  + '/'
                                     };
                                     const token = user.token();
+                                    const refresh_token = user.refreshToken();
+                                    const url_login = user.url.login();
                                     header("Authorization", 'Bearer ' + token);
                                     request(route.copy, node, (url, response) => {
-                                        const refresh = section.select('.refresh');
-                                        refresh.click();
+                                        if(
+                                            response?.class &&
+                                            in_array(
+                                                response?.class, [
+                                                    'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                                                    'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                                                ],
+                                                true
+                                            )
+                                        ) {
+                                            user.authorization((url, data) => {
+                                                if (
+                                                    data?.class &&
+                                                    in_array(
+                                                        data?.class, [
+                                                            'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                                                            'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                                                        ],
+                                                        true
+                                                    ) &&
+                                                    refresh_token
+                                                ) {
+                                                    if (url_login) {
+                                                        redirect(url_login);
+                                                    }
+                                                } else if (
+                                                    data.node?.token &&
+                                                    data.node?.refresh_token
+                                                ) {
+                                                    user.token(data.node?.token);
+                                                    user.refreshToken(data.node?.refresh_token);
+                                                    const original = user.data();
+                                                    const node = data?.node || {};
+                                                    delete node?.token;
+                                                    delete node?.refresh_token;
+                                                    const merge = {...original, ...node};
+                                                    user.data(merge);
+                                                    header("Authorization", 'Bearer ' + token);
+                                                    request(route.copy, node, (url, response) => {
+                                                        const refresh = section.select('.refresh');
+                                                        refresh.click();
+                                                    });
+                                                }
+                                            });
+                                        } else {
+                                            const refresh = section.select('.refresh');
+                                            refresh.click();
+                                        }
                                     });
                                 }
                             }

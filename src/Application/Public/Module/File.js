@@ -397,10 +397,10 @@ file.context_menu = ({
                                                     user.token(data.node?.token);
                                                     user.refreshToken(data.node?.refresh_token);
                                                     const original = user.data();
-                                                    const node = data?.node || {};
-                                                    delete node?.token;
-                                                    delete node?.refresh_token;
-                                                    const merge = {...original, ...node};
+                                                    const user_node = data?.node || {};
+                                                    delete user_node?.token;
+                                                    delete user_node?.refresh_token;
+                                                    const merge = {...original, ...user_node};
                                                     user.data(merge);
                                                     header("Authorization", 'Bearer ' + token);
                                                     request(route.rename, node, (url, response) => {
@@ -456,10 +456,10 @@ file.context_menu = ({
                                                     user.token(data.node?.token);
                                                     user.refreshToken(data.node?.refresh_token);
                                                     const original = user.data();
-                                                    const node = data?.node || {};
-                                                    delete node?.token;
-                                                    delete node?.refresh_token;
-                                                    const merge = {...original, ...node};
+                                                    const user_node = data?.node || {};
+                                                    delete user_node?.token;
+                                                    delete user_node?.refresh_token;
+                                                    const merge = {...original, ...user_node};
                                                     user.data(merge);
                                                     header("Authorization", 'Bearer ' + token);
                                                     request(route.rename, node, (url, response) => {
@@ -523,10 +523,10 @@ file.context_menu = ({
                                                 user.token(data.node?.token);
                                                 user.refreshToken(data.node?.refresh_token);
                                                 const original = user.data();
-                                                const node = data?.node || {};
-                                                delete node?.token;
-                                                delete node?.refresh_token;
-                                                const merge = {...original, ...node};
+                                                const user_node = data?.node || {};
+                                                delete user_node?.token;
+                                                delete user_node?.refresh_token;
+                                                const merge = {...original, ...user_node};
                                                 user.data(merge);
                                                 header("Authorization", 'Bearer ' + token);
                                                 request(route.copy, node, (url, response) => {
@@ -590,10 +590,10 @@ file.context_menu = ({
                                                     user.token(data.node?.token);
                                                     user.refreshToken(data.node?.refresh_token);
                                                     const original = user.data();
-                                                    const node = data?.node || {};
-                                                    delete node?.token;
-                                                    delete node?.refresh_token;
-                                                    const merge = {...original, ...node};
+                                                    const user_node = data?.node || {};
+                                                    delete user_node?.token;
+                                                    delete user_node?.refresh_token;
+                                                    const merge = {...original, ...user_node};
                                                     user.data(merge);
                                                     header("Authorization", 'Bearer ' + token);
                                                     request(route.rename, node, (url, response) => {
@@ -649,10 +649,10 @@ file.context_menu = ({
                                                     user.token(data.node?.token);
                                                     user.refreshToken(data.node?.refresh_token);
                                                     const original = user.data();
-                                                    const node = data?.node || {};
-                                                    delete node?.token;
-                                                    delete node?.refresh_token;
-                                                    const merge = {...original, ...node};
+                                                    const user_node = data?.node || {};
+                                                    delete user_node?.token;
+                                                    delete user_node?.refresh_token;
+                                                    const merge = {...original, ...user_node};
                                                     user.data(merge);
                                                     header("Authorization", 'Bearer ' + token);
                                                     request(route.rename, node, (url, response) => {
@@ -720,10 +720,10 @@ file.context_menu = ({
                                                     user.token(data.node?.token);
                                                     user.refreshToken(data.node?.refresh_token);
                                                     const original = user.data();
-                                                    const node = data?.node || {};
-                                                    delete node?.token;
-                                                    delete node?.refresh_token;
-                                                    const merge = {...original, ...node};
+                                                    const user_node = data?.node || {};
+                                                    delete user_node?.token;
+                                                    delete user_node?.refresh_token;
+                                                    const merge = {...original, ...user_node};
                                                     user.data(merge);
                                                     header("Authorization", 'Bearer ' + token);
                                                     request(route.copy, node, (url, response) => {
@@ -780,10 +780,10 @@ file.context_menu = ({
                                                     user.token(data.node?.token);
                                                     user.refreshToken(data.node?.refresh_token);
                                                     const original = user.data();
-                                                    const node = data?.node || {};
-                                                    delete node?.token;
-                                                    delete node?.refresh_token;
-                                                    const merge = {...original, ...node};
+                                                    const user_node = data?.node || {};
+                                                    delete user_node?.token;
+                                                    delete user_node?.refresh_token;
+                                                    const merge = {...original, ...user_node};
                                                     user.data(merge);
                                                     header("Authorization", 'Bearer ' + token);
                                                     request(route.copy, node, (url, response) => {

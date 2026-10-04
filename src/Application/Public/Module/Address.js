@@ -7,6 +7,7 @@ import { taskbar } from "/Application/Desktop/Module/Taskbar.js";
 import { debug } from "/Module/Priya.js";
 import user from "/Module/User.js";
 import create from "/Module/Create.js";
+import {navigation} from "../../../../../desktop/src/Application/Public/Module/Navigation";
 //import { pipeline } from '/Xenova/transformers@2.14.0.js';
 //import { AutoModelForSeq2SeqLM, AutoTokenizer } from '/Xenova/transformers@2.14.0.js';
 //import { AutoProcessor, read_audio } from '/Xenova/transformers@2.14.0.js';
@@ -294,6 +295,7 @@ address.bar = () => {
         input.data('dir', input.val());
         address.title(input.val());
         let token = user.token();
+        let refresh_token = user.refreshToken();
         header("Authorization", 'Bearer ' + token);
         const object_header = file.data.get('header');
         let attr;
@@ -301,9 +303,77 @@ address.bar = () => {
             header(attr, object_header[attr]);
         }
         debug.exception_exclude(["Raxon\\Exception\\DirectoryNotExistException"]);
-
+        let url_login = user.url.login();
 //        priya.exception_exclude(["Raxon\\Exception\\ErrorException"]); //exclude exceptions from debugging...
         request(route.backend, node, (url, data) => {
+            if(
+                response?.class &&
+                in_array(
+                    response?.class, [
+                        'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                        'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                    ],
+                    true
+                )
+            ){
+                user.authorization((url, data) => {
+                    if (
+                        data?.class &&
+                        in_array(
+                            data?.class, [
+                                'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
+                                'Package\\Raxon\\Account\\Exception\\AuthorizationException',
+                            ],
+                            true
+                        ) &&
+                        refresh_token
+                    ) {
+                        redirect(user.url.login());
+                    }
+                    else if (
+                        data.node?.token &&
+                        data.node?.refresh_token
+                    ){
+                        user.token(data.node?.token);
+                        user.refreshToken(data.node?.refresh_token);
+                        const original = user.data();
+                        const node = data?.node || {};
+                        delete node?.token;
+                        delete node?.refresh_token;
+                        const merge = { ...original, ...node };
+                        user.data(merge);
+                        input.trigger('change');
+                        /*
+                        token = user.token();
+                        header("Authorization", 'Bearer ' + token);
+                        priya.exception_exclude(["Raxon\\Exception\\ErrorException"]); //exclude exceptions from debugging...
+                        request(route.backend, node, (url, data) => {
+                            // file.data.set('config', config);
+                            file.data.set('directory.current.list', data);
+                            // console.log('file list after authorization failure');
+                            file.list(data);
+                            debug.exception_exclude(); //return state to debug to all exceptions included
+                        });
+                        */
+
+                    } else {
+                        if(url_login){
+                            redirect(url_login);
+                        }
+                    }
+                });
+            }
+            else if(
+                response?.class &&
+                in_array(
+                    response.class, [
+                        'Raxon\\Exception\\AuthorizationException',
+                    ])
+            ){
+                if(url_login){
+                    redirect(url_login);
+                }
+            }
             if(data?.class === 'Raxon\\Exception\\DirectoryNotExistException'){
                 let element = _('_').create('div');
 
@@ -360,37 +430,6 @@ address.bar = () => {
                 } else {
                     p.html(message);
                 }
-                alert('yes');
-            }
-            if(exception.authorization(data)){
-                user.authorization((url, response) => {
-                    console.log(response);
-                    if (!is.empty(response.node)) {
-                        if (response.node?.token) {
-                            user.token(response.node.token);
-                        }
-                        if (response.node?.refreshToken) {
-                            user.refreshToken(response.node.refreshToken);
-                        }
-                        let node = response.node;
-                        delete node?.token;
-                        delete node?.refreshToken;
-                        user.data(node);
-                        token = user.token();
-                        header("Authorization", 'Bearer ' + token);
-                        priya.exception_exclude(["Raxon\\Exception\\ErrorException"]); //exclude exceptions from debugging...
-                        request(route.backend, node, (url, data) => {
-                            // file.data.set('config', config);
-                            file.data.set('directory.current.list', data);
-                            // console.log('file list after authorization failure');
-                            file.list(data);
-                            debug.exception_exclude(); //return state to debug to all exceptions included
-                        });
-                    } else {
-                        //redirect user login
-                        redirect("{{route.get(route.prefix() + '-user-login')}}");
-                    }
-                });
             } else {
                 // file.data.set('config', config);
                 file.data.set('directory.current.list', data);

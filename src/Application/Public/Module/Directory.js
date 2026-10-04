@@ -2,7 +2,6 @@ import { file } from "/Application/Filemanager/Module/File.js";
 import { getSectionById } from "/Module/Section.js";
 import user from "/Module/User.js";
 import { exception } from "/Module/Exception.js";
-import {navigation} from "../../../../../desktop/src/Application/Public/Module/Navigation";
 
 let directory = {};
 

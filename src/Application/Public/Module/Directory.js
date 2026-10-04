@@ -242,7 +242,7 @@ directory.read = () => {
                     redirect(url_login);
                 }
             } else {
-                data = directory.tree(data);
+                let data = directory.tree(response);
                 request(route.frontend, data, (url, response) => {
                     if(
                         is.empty(retry) &&

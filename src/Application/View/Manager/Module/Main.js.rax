@@ -33,7 +33,7 @@ require(
                     "login": "{{server.url(\"{{/literal}}{{$frontend.host}}{{literal}}\")}}User/Login/",
                 }
             }
-        });            
+        });
         language("{{language()}}");
         translation.import("{{raw|>translation.export('json-line')}}");
         //debug.init("{{raw|>debug.init()}}");

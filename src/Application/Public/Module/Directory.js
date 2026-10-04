@@ -178,6 +178,7 @@ directory.read = () => {
     };
     const retry = file.data.get('directory.read.retry');
     const token = user.token();
+    const refresh_token = user.refreshToken();
     if (
         token &&
         route.backend &&
@@ -185,11 +186,14 @@ directory.read = () => {
     ){
         header("Authorization", 'Bearer ' + token);
         request(route.backend, null, (url, data) => {
+            if(data?.class === 'Package\\Raxon\\Account\\Exception\\TokenExpiredException'){
+                alert('Found !! expired token');
+            }
             if(
                 !is.empty(retry) &&
                 exception.authorization(data)
             ){
-                redirect(user.loginUrl());
+                redirect(user.url.login);
             }
             else if(
                 is.empty(retry) &&

@@ -186,7 +186,7 @@ directory.read = () => {
         route.frontend
     ){
         header("Authorization", 'Bearer ' + token);
-        request(route.backend, null, (url, data) => {
+        request(route.backend, null, (url, response) => {
             if(
                 response?.class &&
                 in_array(

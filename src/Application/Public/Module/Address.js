@@ -304,7 +304,7 @@ address.bar = () => {
         debug.exception_exclude(["Raxon\\Exception\\DirectoryNotExistException"]);
         let url_login = user.url.login();
 //        priya.exception_exclude(["Raxon\\Exception\\ErrorException"]); //exclude exceptions from debugging...
-        request(route.backend, node, (url, data) => {
+        request(route.backend, node, (url, response) => {
             if(
                 response?.class &&
                 in_array(
@@ -373,7 +373,7 @@ address.bar = () => {
                     redirect(url_login);
                 }
             }
-            if(data?.class === 'Raxon\\Exception\\DirectoryNotExistException'){
+            if(response?.class === 'Raxon\\Exception\\DirectoryNotExistException'){
                 let element = _('_').create('div');
 
                 let directory = input.val().split('/');
@@ -396,7 +396,7 @@ address.bar = () => {
                 let form = body.select('form');
                 let p;
                 p = body.select('.message');
-                let message = data?.message;
+                let message = response?.message;
                 if(message){
                     let body = input_directory_new.closest('.body');
                     let form = body.select('form');
@@ -414,12 +414,12 @@ address.bar = () => {
                     dialog.addClass('has-message');
                 }
             }
-            else if(data?.class === 'Raxon\\Exception\\DirectoryCreateException'){
+            else if(response?.class === 'Raxon\\Exception\\DirectoryCreateException'){
                 let input_directory_new = section.select('input[name="directory_new"]');
                 let body = input_directory_new.closest('.body');
                 let form = body.select('form');
                 let p;
-                let message = data?.message;
+                let message = response?.message;
                 p = body.select('.message');
                 if(!p){
                     p = create('p');
@@ -431,8 +431,8 @@ address.bar = () => {
                 }
             } else {
                 // file.data.set('config', config);
-                file.data.set('directory.current.list', data);
-                file.list(data);
+                file.data.set('directory.current.list', response);
+                file.list(response);
                 debug.exception_exclude(); //return state to debug to all exceptions included
             }
         });

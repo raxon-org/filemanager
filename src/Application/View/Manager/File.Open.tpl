@@ -1,3 +1,5 @@
+{{dd(config('controller'))}}
+
 {{require(config('controller.dir.view') + config('controller.title') + '/Init.tpl')}}
 {{$request.method = 'replace-with-or-append-to'}}
 {{$request.target = html.target.create('section', ['name' => 'application-' + config('controller.name') + '-open'])}}

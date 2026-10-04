@@ -1851,52 +1851,8 @@ file.delete = (element) => {
 
     header("Authorization", 'Bearer ' + token);
     request(route.delete, node, (url, response) => {
-        if(
-            response?.class &&
-            in_array(
-                response?.class, [
-                    'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
-                    'Package\\Raxon\\Account\\Exception\\AuthorizationException',
-                ],
-                true
-            )
-        ){
-            user.authorization((url, data) => {
-                if (
-                    data?.class &&
-                    in_array(
-                        data?.class, [
-                            'Package\\Raxon\\Account\\Exception\\TokenExpiredException',
-                            'Package\\Raxon\\Account\\Exception\\AuthorizationException',
-                        ],
-                        true
-                    ) &&
-                    refresh_token
-                ) {
-                    if(url_login){
-                        redirect(url_login);
-                    }
-                }
-                else if (
-                    data.node?.token &&
-                    data.node?.refresh_token
-                ){
-                    user.token(data.node?.token);
-                    user.refreshToken(data.node?.refresh_token);
-                    const original = user.data();
-                    const user_node = data?.node || {};
-                    delete user_node?.token;
-                    delete user_node?.refresh_token;
-                    const merge = { ...original, ...user_node };
-                    user.data(merge);
-                    const refresh = section.select('.refresh');
-                    refresh.click();
-                } else {
-                    const refresh = section.select('.refresh');
-                    refresh.click();
-                }
-            });
-        }
+        const refresh = section.select('.refresh');
+        refresh.click();
     });
 }
 

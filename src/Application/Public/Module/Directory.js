@@ -70,6 +70,7 @@ directory.expand_open = (li) => {
     let node = {};
     node.directory = _('_').htmlspecialchars(li.data('dir')).replace(/'/g, '\\\'');
     //node.type = li.data('type');
+    const url_login = user.url.login();
     li.request(null, node, (url, response) => {
         if(
             response?.class &&
@@ -93,16 +94,18 @@ directory.expand_open = (li) => {
                     ) &&
                     refresh_token
                 ) {
-                    redirect(user.url.login());
+                    if(url_login){
+                        redirect(url_login);
+                    }
                 }
                 else if (
-                    response.node?.token &&
-                    response.node?.refresh_token
+                    data.node?.token &&
+                    data.node?.refresh_token
                 ){
-                    user.token(response.node?.token);
-                    user.refreshToken(response.node?.refresh_token);
+                    user.token(data.node?.token);
+                    user.refreshToken(data.node?.refresh_token);
                     const original = user.data();
-                    const node = response?.node || {};
+                    const node = data?.node || {};
                     delete node?.token;
                     delete node?.refresh_token;
                     const merge = { ...original, ...node };
@@ -142,8 +145,6 @@ directory.expand_open = (li) => {
                 loader.html('');
             });
         }
-
-        console.log(data);
         /*
         if(exception.authorization(data)){
             user.authorization(() => {

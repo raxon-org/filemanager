@@ -1,18 +1,11 @@
 import { date } from "/Module/Date.js";
 import { getSectionById } from "/Module/Section.js";
-//import { header } from "/Module/Header/Js/Header.js";
 import { object } from "/Module/Object.js";
-import { exception } from "/Module/Exception.js";
-//import { request } from "/Module/Request/Js/Request.js";
 import { round } from "/Module/Round.js";
-import { table } from "/Module/Table.js";
-import { taskbar } from "/Application/Desktop/Module/Taskbar.js";
 import { __ } from "/Module/Translation.js";
 import create from "/Module/Create.js";
 import user from "/Module/User.js";
-import login from "/User/Module/Login.js";
 import { dialog } from "/Dialog/Module/Dialog.js";
-import {directory} from "./Directory";
 
 let file = {};
 file.data = {

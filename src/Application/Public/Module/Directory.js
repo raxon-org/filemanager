@@ -45,7 +45,7 @@ directory.expand = (event) => {
     if(!li) {
         return;
     }
-    console.log('hasClass: ' + i.hasClass('expanded'));
+    console.log('hasClass: ' + li.hasClass('expanded'));
     if(directory.expand_open(li)){
     } else {
         directory.expand_close(li);

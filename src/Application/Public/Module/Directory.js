@@ -144,8 +144,6 @@ directory.expand_open = (li) => {
             directory.expand_open(li);
         } else {
             const data = directory.create_data(response, li);
-            directory.expand_close(li);
-            directory.expand_open(li);
             request(li.data('frontend-url'), data, (url, response) => {
                 loader.html('');
             });

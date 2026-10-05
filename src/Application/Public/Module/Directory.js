@@ -167,7 +167,7 @@ directory.expand_open = (li) => {
 }
 
 directory.expand_close = (li) => {
-    if(!li.hasClass('expanded')){
+    if(li.hasClass('expanded') === false){
         return;
     }
     const angle = li.select('.fa-angle-down');
@@ -180,6 +180,8 @@ directory.expand_close = (li) => {
     }
     const data_dir = _('_').htmlspecialchars(li.data('dir')).replace(/'/g, '\'');
     const section = select('section[id="' + file.data.get('section.id') + '"] ul.tree section[data-dir=\'' + data_dir + '\']');
+    console.log(data_dir);
+    console.log(section);
     if(section){
         section.html('');
     }

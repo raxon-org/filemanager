@@ -183,7 +183,6 @@ directory.expand_close = (li) => {
     const selector2 = 'section[id="' + file.data.get('section.id') + '"]';
     const section2 = select(selector2);
     const section = select(selector);
-    console.log(data_dir);
     console.log(selector);
     console.log(section);
     console.log(section2);

@@ -179,9 +179,14 @@ directory.expand_close = (li) => {
         folder_open.removeClass('fa-folder-open').addClass('fa-folder');
     }
     const data_dir = _('_').htmlspecialchars(li.data('dir')).replace(/'/g, '\'');
-    const section = select('section[id="' + file.data.get('section.id') + '"] ul.tree section[data-dir=\'' + data_dir + '\']');
+    const selector = 'section[id="' + file.data.get('section.id') + '"] ul.tree section[data-dir=\'' + data_dir + '\']';
+    const selector2 = 'section[id="' + file.data.get('section.id') + '"]';
+    const section2 = select(selector2);
+    const section = select(selector);
     console.log(data_dir);
+    console.log(selector);
     console.log(section);
+    console.log(section2);
     if(section){
         section.html('');
     }

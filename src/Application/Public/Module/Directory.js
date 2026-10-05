@@ -178,7 +178,7 @@ directory.expand_close = (li) => {
     if(folder_open){
         folder_open.removeClass('fa-folder-open').addClass('fa-folder');
     }
-    const data_dir = _('_').htmlspecialchars(li.data('dir')).replace(/'/g, '\'');
+    const data__section_dir = _('_').htmlspecialchars(li.data('section-dir')).replace(/'/g, '\'');
     const selector = 'section[id="' + file.data.get('section.id') + '"] ul.tree section[data-dir=\'' + data_dir + '\']';
     const selector2 = 'section[id="' + file.data.get('section.id') + '"]';
     const section2 = select(selector2);

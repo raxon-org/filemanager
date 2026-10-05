@@ -45,7 +45,10 @@ directory.expand = (event) => {
     if(!li) {
         return;
     }
-    if(directory.expand_open(li)){
+    if(li.hasClass('expanded')){
+        directory.expand_close(li);
+    }
+    else if(directory.expand_open(li)){
     } else {
         directory.expand_close(li);
     }

@@ -1,0 +1,64 @@
+{{$options = options()}}
+<?php
+namespace Domain\{{php.namespace.host($options.backend.host)}}\Controller\System;
+
+use Package\Raxon\Account\Module\Permission;
+use Package\Raxon\Account\Exception\AuthorizationException;
+use Package\Raxon\Filemanager\Exception\ApplicationNotFoundException;
+use Raxon\App;
+use Raxon\Exception\ErrorException;
+use Raxon\Exception\ObjectException;
+
+use Raxon\Exception\FileWriteException;
+
+use Raxon\Module\Controller;
+use Raxon\Module\File;
+use Raxon\Module\Response;
+use Raxon\Node\Module\Node;
+
+
+class Recycle extends Controller {
+    const DIR = __DIR__ . DIRECTORY_SEPARATOR;
+
+    /**
+     * @throws ErrorException
+     * @throws ObjectException
+     * @throws AuthorizationException
+     * @throws FileWriteException
+     * @throws ApplicationNotFoundException
+     */
+    public static function bin(App $object){
+        $role = Permission::controller($object, File::basename(__CLASS__), __FUNCTION__, $user);
+        if($role === null){
+            throw new AuthorizationException('You are not allowed to access this resource.');
+        }
+        if(property_exists($role, 'name') && $role->name === 'ROLE_ADMIN'){
+            $data = $object->request();
+            return new Response(
+                $data,
+                Response::TYPE_JSON
+            );
+        }
+    }
+
+    /**
+         * @throws ErrorException
+         * @throws ObjectException
+         * @throws AuthorizationException
+         * @throws FileWriteException
+         * @throws ApplicationNotFoundException
+         */
+        public static function restore(App $object){
+            $role = Permission::controller($object, File::basename(__CLASS__), __FUNCTION__, $user);
+            if($role === null){
+                throw new AuthorizationException('You are not allowed to access this resource.');
+            }
+            if(property_exists($role, 'name') && $role->name === 'ROLE_ADMIN'){
+                $data = $object->request();
+                return new Response(
+                    $data,
+                    Response::TYPE_JSON
+                );
+            }
+        }
+}

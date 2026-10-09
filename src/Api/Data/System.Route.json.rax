@@ -12,6 +12,30 @@
             "GET",
             "POST"
           ]
+        },
+        {
+          "#class": "System.Route",
+          "name": "api-file-manager-recycle-bin",
+          "path": "/Filemanager/Recycle/Bin/",
+          "host": "{{options('backend.host')}}",
+          "controller": "Domain:{{app.controller.host(options('backend.host'))}}:Controller:System:Recycle:bin",
+          "priority": 2001,
+          "method": [
+            "DELETE",
+            "GET"
+            "POST"
+          ]
+        },
+        {
+          "#class": "System.Route",
+          "name": "api-file-manager-recycle-bin",
+          "path": "/Filemanager/Recycle/Restore/{{$uuid}}/",
+          "host": "{{options('backend.host')}}",
+          "controller": "Domain:{{app.controller.host(options('backend.host'))}}:Controller:System:Recycle:restore",
+          "priority": 2001,
+          "method": [
+            "GET"
+          ]
         }
       ]
     }

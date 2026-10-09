@@ -19,7 +19,7 @@
           "path": "\/Filemanager\/Recycle\/Bin\/",
           "host": "{{options('backend.host')}}",
           "controller": "Domain:{{app.controller.host(options('backend.host'))}}:Controller:System:Recycle:bin",
-          "priority": 2001,
+          "priority": 2002,
           "method": [
             "DELETE",
             "GET",
@@ -32,7 +32,7 @@
           "path": "\/Filemanager\/Recycle\/Restore\/{{literal}}{{$uuid}}{{/literal}}\/",
           "host": "{{options('backend.host')}}",
           "controller": "Domain:{{app.controller.host(options('backend.host'))}}:Controller:System:Recycle:restore",
-          "priority": 2001,
+          "priority": 2003,
           "method": [
             "GET"
           ]

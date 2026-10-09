@@ -1833,7 +1833,7 @@ file.delete = (element) => {
             "request-method": "DELETE"
         }
     }
-
+    node["request-method"] = "POST";
     header("Authorization", 'Bearer ' + token);
     request(route.delete, node, (url, response) => {
         if(

@@ -28,7 +28,7 @@
         },
         {
           "#class": "System.Route",
-          "name": "api-file-manager-recycle-bin",
+          "name": "api-file-manager-recycle-restore",
           "path": "\/Filemanager\/Recycle\/Restore\/{{literal}}{{$uuid}}{{/literal}}\/",
           "host": "{{options('backend.host')}}",
           "controller": "Domain:{{app.controller.host(options('backend.host'))}}:Controller:System:Recycle:restore",

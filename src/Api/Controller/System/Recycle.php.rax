@@ -37,7 +37,7 @@ class Recycle extends Controller {
             $role = $node->role_system();
             $class = 'System.FileSystem.Recycle';
 
-            $target = $object->config('volume.dir');
+            $target = $object->config('project.volume.dir');
             $record = (object) [
                 'source' => $object->request('url'),
                 'target' => $target

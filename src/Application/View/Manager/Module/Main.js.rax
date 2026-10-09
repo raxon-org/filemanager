@@ -39,6 +39,9 @@ require(
         //debug.init("{{raw|>debug.init()}}");
         let active = file.data.get('active') ?? [];
         active.push("{{$id}}");
+        /*
+        "route.backend.file.delete": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}FileSystem/",
+        */
         file.data.set({
             "controller" : "{{raw|>object(config('controller'), 'json-line')}}",
             "section.id" : "{{$id}}",
@@ -49,7 +52,6 @@ require(
             "route.backend.file.create.file": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}FileSystem/File/",
             "route.backend.file.rename": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}FileSystem/Rename/",
             "route.backend.file.copy": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}FileSystem/Copy/",
-            "route.backend.file.delete": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}FileSystem/",
             "route.backend.file.delete": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}Filemanager/Recycle/Bin/",
             "route.backend.file.download": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}FileSystem/Download/",
             "route.backend.file.open": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}Filemanager/Open/",

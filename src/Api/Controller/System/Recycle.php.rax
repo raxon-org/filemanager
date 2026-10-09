@@ -34,7 +34,7 @@ class Recycle extends Controller {
         }
         if(property_exists($role, 'name') && $role->name === 'ROLE_ADMIN'){
             $node = new Node($object);
-            $role = $node->role_system()
+            $role = $node->role_system();
             $class = 'System.FileSystem.Recycle';
 
             $target = $object->config('volume.dir');

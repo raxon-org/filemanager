@@ -22,7 +22,7 @@
           "priority": 2001,
           "method": [
             "DELETE",
-            "GET"
+            "GET",
             "POST"
           ]
         },

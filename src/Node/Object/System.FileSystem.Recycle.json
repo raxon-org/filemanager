@@ -1,0 +1,54 @@
+{
+    "Node": {
+        "#class": "System.FileSystem.Recycle",
+        "type": "object",
+        "property": [
+            {
+                "name": "user",
+                "type": "uuid",
+                "relation": true,
+                "is_multiple": false
+            },
+            {
+              "name": "source",
+              "type": "string"
+            },
+            {
+              "name": "target",
+              "type": "string"
+            },
+            {
+              "name": "is",
+              "type": "object",
+              "property": [
+                {
+                  "name": "created",
+                  "type": "datetime"
+                },
+                {
+                  "name": "deleted",
+                  "type": "datetime"
+                }
+              ]
+            },
+            {
+                "name": "uuid",
+                "type": "uuid"
+            },
+            {
+                "name": "#class",
+                "type": "string"
+            }
+        ]
+    },
+    "is.unique": [
+        "source"
+    ],
+    "relation": [
+        {
+            "type": "one-one",
+            "class": "Account.User",
+            "attribute": "user"
+        }
+    ]
+}

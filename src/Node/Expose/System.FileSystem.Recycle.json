@@ -1,0 +1,227 @@
+{
+    "System": {
+        "FileSystem": {
+          "Recycle": {
+            "count": {
+              "output": [
+                {
+                  "role": "ROLE_SYSTEM",
+                  "property": [
+                    "uuid",
+                    "#class",
+                    "user",
+                    "source",
+                    "target",
+                    "is"
+                  ],
+                  "object": {
+                    "is": {
+                      "multiple": false,
+                      "output": [
+                        "created",
+                        "deleted"
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            "list": {
+              "output": [
+                {
+                  "role": "ROLE_SYSTEM",
+                  "property": [
+                    "uuid",
+                    "#class",
+                    "user",
+                    "source",
+                    "target",
+                    "is"
+                  ],
+                  "object": {
+                    "is": {
+                      "multiple": false,
+                      "output": [
+                        "created",
+                        "deleted"
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            "page": {
+              "output": [
+                {
+                  "role": "ROLE_SYSTEM",
+                  "property": [
+                    "uuid",
+                    "#class",
+                    "user",
+                    "source",
+                    "target",
+                    "is"
+                  ],
+                  "object": {
+                    "is": {
+                      "multiple": false,
+                      "output": [
+                        "created",
+                        "deleted"
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            "read": {
+              "output": [
+                {
+                  "role": "ROLE_SYSTEM",
+                  "property": [
+                    "uuid",
+                    "#class",
+                    "user",
+                    "source",
+                    "target",
+                    "is"
+                  ],
+                  "object": {
+                    "is": {
+                      "multiple": false,
+                      "output": [
+                        "created",
+                        "deleted"
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            "record": {
+              "output": [
+                {
+                  "role": "ROLE_SYSTEM",
+                  "property": [
+                    "uuid",
+                    "#class",
+                    "user",
+                    "source",
+                    "target",
+                    "is"
+                  ],
+                  "object": {
+                    "is": {
+                      "multiple": false,
+                      "output": [
+                        "created",
+                        "deleted"
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            "create": {
+              "output": [
+                {
+                  "role": "ROLE_SYSTEM",
+                  "property": [
+                    "uuid",
+                    "#class",
+                    "user",
+                    "source",
+                    "target",
+                    "is"
+                  ],
+                  "object": {
+                    "is": {
+                      "multiple": false,
+                      "output": [
+                        "created",
+                        "deleted"
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            "create_many": {
+              "output": [
+                {
+                  "role": "ROLE_SYSTEM",
+                  "property": [
+                    "uuid",
+                    "#class",
+                    "user",
+                    "source",
+                    "target",
+                    "is"
+                  ]
+                }
+              ]
+            },
+            "put": {
+              "output": [
+                {
+                  "role": "ROLE_SYSTEM",
+                  "property": [
+                    "uuid",
+                    "#class",
+                    "user",
+                    "source",
+                    "target",
+                    "is"
+                  ]
+                }
+              ]
+            },
+            "put_many": {
+              "output": [
+                {
+                  "role": "ROLE_SYSTEM",
+                  "property": [
+                    "uuid",
+                    "#class",
+                    "user",
+                    "source",
+                    "target",
+                    "is"
+                  ]
+                }
+              ]
+            },
+            "patch": {
+              "output": [
+                {
+                  "role": "ROLE_SYSTEM",
+                  "property": [
+                    "uuid",
+                    "#class",
+                    "user",
+                    "source",
+                    "target",
+                    "is"
+                  ]
+                }
+              ]
+            },
+            "patch_many": {
+              "output": [
+                {
+                  "role": "ROLE_SYSTEM",
+                  "property": [
+                    "uuid",
+                    "#class",
+                    "user",
+                    "source",
+                    "target",
+                    "is"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+    }
+}

@@ -1,0 +1,104 @@
+{
+    "System": {
+        "FileSystem": {
+          "Recycle": {
+            "create": {
+              "validate": {
+                "uuid": [
+                  {
+                    "is.uuid": true
+                  }
+                ],
+                "source": [
+                  {
+                    "string.length": ">=1"
+                  }
+                ],
+                "target": [
+                  {
+                    "string.length": ">=1"
+                  }
+                ],
+                "user": [
+                  {
+                    "is.uuid": true
+                  },
+                  {
+                    "is.unique": {
+                      "class": "Account.User",
+                      "attribute": [
+                        "uuid"
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            "put": {
+              "validate": {
+                "uuid": [
+                  {
+                    "is.uuid": true
+                  }
+                ],
+                "source": [
+                  {
+                    "string.length": ">=1"
+                  }
+                ],
+                "target": [
+                  {
+                    "string.length": ">=1"
+                  }
+                ],
+                "user": [
+                  {
+                    "is.uuid": true
+                  },
+                  {
+                    "is.unique": {
+                      "class": "Account.User",
+                      "attribute": [
+                        "uuid"
+                      ]
+                    }
+                  }
+                ]
+              }
+            },
+            "patch": {
+              "validate": {
+                "uuid": [
+                  {
+                    "is.uuid": true
+                  }
+                ],
+                "?source": [
+                  {
+                    "string.length": ">=1"
+                  }
+                ],
+                "?target": [
+                  {
+                    "string.length": ">=1"
+                  }
+                ],
+                "?user": [
+                  {
+                    "is.uuid": true
+                  },
+                  {
+                    "is.unique": {
+                      "class": "Account.User",
+                      "attribute": [
+                        "uuid"
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+    }
+}

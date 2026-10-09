@@ -33,6 +33,17 @@ class Recycle extends Controller {
             throw new AuthorizationException('You are not allowed to access this resource.');
         }
         if(property_exists($role, 'name') && $role->name === 'ROLE_ADMIN'){
+            $node = new Node($object);
+            $role = $node->role_system()
+            $class = 'System.FileSystem.Recycle';
+
+            $target = $object->config('volume.dir');
+            $record = (object) [
+                'source' => $object->request('url'),
+                'target' => $target
+            ];
+            ddd($record);
+
             $data = $object->request();
             return new Response(
                 $data,

@@ -2,20 +2,19 @@
 <?php
 namespace Domain\{{php.namespace.host($options.backend.host)}}\Controller\System;
 
-use Package\Raxon\Account\Module\Permission;
 use Package\Raxon\Account\Exception\AuthorizationException;
+use Package\Raxon\Account\Module\Permission;
+
 use Package\Raxon\Filemanager\Exception\ApplicationNotFoundException;
 use Raxon\App;
 use Raxon\Exception\ErrorException;
 use Raxon\Exception\ObjectException;
-
 use Raxon\Exception\FileWriteException;
-
 use Raxon\Module\Controller;
 use Raxon\Module\File;
 use Raxon\Module\Response;
 use Raxon\Node\Module\Node;
-
+use Raxon\Node\Core;
 
 class Recycle extends Controller {
     const DIR = __DIR__ . DIRECTORY_SEPARATOR;
@@ -36,12 +35,21 @@ class Recycle extends Controller {
             $node = new Node($object);
             $role = $node->role_system();
             $class = 'System.FileSystem.Recycle';
-
-            $target = $object->config('project.volume.dir');
+            $uuid = Core::uuid();
+            $target = $object->config('project.volume.dir.recycle') . date('Ymd') . DIRECTORY_SEPARATOR . $uuid . '.data';
             $record = (object) [
+                'uuid'=> $uuid,
+                'class' => $class,
                 'source' => $object->request('url'),
-                'target' => $target
+                'target' => $target,
+                'user' => $user->uuid,
+                'is' => (object) [
+                    'created' => microtime(true)
+                ]
             ];
+            $response = $node->create($class, $role, $record);;
+            //for directory go from most deep to least deep and then apply www-data
+            d($response);
             ddd($record);
 
             $data = $object->request();

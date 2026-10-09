@@ -54,6 +54,7 @@ class Recycle extends Controller {
                 throw new AuthorizationException('You are not allowed to access this resource.');
             }
             if(property_exists($role, 'name') && $role->name === 'ROLE_ADMIN'){
+                //uuid = recycle uuid combine with user uuid
                 $data = $object->request();
                 return new Response(
                     $data,

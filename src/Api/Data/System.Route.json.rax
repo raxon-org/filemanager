@@ -4,7 +4,7 @@
         {
           "#class": "System.Route",
           "name": "api-file-manager-file-open",
-          "path": "/Filemanager/Open/",
+          "path": "\/Filemanager\/Open\/",
           "host": "{{options('backend.host')}}",
           "controller": "Domain:{{app.controller.host(options('backend.host'))}}:Controller:System:Application:open",
           "priority": 2001,
@@ -16,7 +16,7 @@
         {
           "#class": "System.Route",
           "name": "api-file-manager-recycle-bin",
-          "path": "/Filemanager/Recycle/Bin/",
+          "path": "\/Filemanager\/Recycle\/Bin\/",
           "host": "{{options('backend.host')}}",
           "controller": "Domain:{{app.controller.host(options('backend.host'))}}:Controller:System:Recycle:bin",
           "priority": 2001,
@@ -29,7 +29,7 @@
         {
           "#class": "System.Route",
           "name": "api-file-manager-recycle-bin",
-          "path": "/Filemanager/Recycle/Restore/{{literal}}{{$uuid}}{{/literal}}/",
+          "path": "\/Filemanager\/Recycle\/Restore\/{{literal}}{{$uuid}}{{/literal}}\/",
           "host": "{{options('backend.host')}}",
           "controller": "Domain:{{app.controller.host(options('backend.host'))}}:Controller:System:Recycle:restore",
           "priority": 2001,

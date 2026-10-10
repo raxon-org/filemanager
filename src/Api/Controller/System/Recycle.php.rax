@@ -79,7 +79,7 @@ class Recycle extends Controller {
                     'group' => File::group($object->request('url')),
                     'mode' => File::mode($object->request('url')),
                     'type' => 'Link'
-                ]
+                ];
             }
             elseif($type === 'Dir'){
                 $attribute[] = (object) [

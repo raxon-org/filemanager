@@ -54,16 +54,15 @@ class Recycle extends Controller {
                     'owner' => File::owner($object->request('url'),
                     'group' => File::group($object->request('url'),
                     'mode' => File::mode($object->request('url'),
-                    'type' => $type,
-
-                ]
+                    'type' => $type
+                ],
                 'target' => $target,
                 'user' => $user->uuid,
                 'is' => (object) [
                     'created' => microtime(true)
                 ]
             ];
-            $response = $node->create($class, $role, $record);;
+            $response = $node->create($class, $role, $record);
             //for directory go from most deep to least deep and then re apply www-data to reconstruct the restoring directory structure
             d($response);
             ddd($record);

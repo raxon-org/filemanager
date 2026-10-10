@@ -37,11 +37,26 @@ class Recycle extends Controller {
             $role = $node->role_system();
             $class = 'System.FileSystem.Recycle';
             $uuid = Core::uuid();
-            $target = $object->config('project.volume.dir.recycle') . date('Ymd') . DIRECTORY_SEPARATOR . $uuid . '.data';
+            $type = File::type($object->request('url'));
+            switch($type){
+                case 'file':
+                    $target = $object->config('project.volume.dir.recycle') . date('Ymd') . DIRECTORY_SEPARATOR . $uuid . '.data';
+                    break;
+                case 'dir':
+                    $target = $object->config('project.volume.dir.recycle') . date('Ymd') . DIRECTORY_SEPARATOR . $uuid . DIRECTORY_SEPARATOR;
+                    break;
+            }
             $record = (object) [
                 'uuid'=> $uuid,
                 'class' => $class,
                 'source' => $object->request('url'),
+                'attribute' => (object) [
+                    'owner' => File::owner($object->request('url'),
+                    'group' => File::group($object->request('url'),
+                    'mode' => File::mode($object->request('url'),
+                    'type' => $type,
+
+                ]
                 'target' => $target,
                 'user' => $user->uuid,
                 'is' => (object) [

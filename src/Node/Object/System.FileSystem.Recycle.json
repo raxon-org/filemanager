@@ -32,6 +32,24 @@
               ]
             },
             {
+              "name": "attribute",
+              "type": "object",
+              "property": [
+                {
+                  "name": "owner",
+                  "type": "string"
+                },
+                {
+                  "name": "group",
+                  "type": "string"
+                },
+                {
+                  "name": "mode",
+                  "type": "string"
+                }
+              ]
+            },
+            {
                 "name": "uuid",
                 "type": "uuid"
             },

@@ -12,7 +12,8 @@
                     "user",
                     "source",
                     "target",
-                    "is"
+                    "is",
+                    "attribute"
                   ],
                   "object": {
                     "is": {
@@ -20,6 +21,15 @@
                       "output": [
                         "created",
                         "deleted"
+                      ]
+                    },
+                    "attribute": {
+                      "multiple": false,
+                      "output": [
+                        "owner",
+                        "group",
+                        "mode",
+                        "type"
                       ]
                     }
                   }
@@ -36,7 +46,8 @@
                     "user",
                     "source",
                     "target",
-                    "is"
+                    "is",
+                    "attribute"
                   ],
                   "object": {
                     "is": {
@@ -44,6 +55,15 @@
                       "output": [
                         "created",
                         "deleted"
+                      ]
+                    },
+                    "attribute": {
+                      "multiple": false,
+                      "output": [
+                        "owner",
+                        "group",
+                        "mode",
+                        "type"
                       ]
                     }
                   }
@@ -60,7 +80,8 @@
                     "user",
                     "source",
                     "target",
-                    "is"
+                    "is",
+                    "attribute"
                   ],
                   "object": {
                     "is": {
@@ -68,6 +89,15 @@
                       "output": [
                         "created",
                         "deleted"
+                      ]
+                    },
+                    "attribute": {
+                      "multiple": false,
+                      "output": [
+                        "owner",
+                        "group",
+                        "mode",
+                        "type"
                       ]
                     }
                   }
@@ -84,7 +114,8 @@
                     "user",
                     "source",
                     "target",
-                    "is"
+                    "is",
+                    "attribute"
                   ],
                   "object": {
                     "is": {
@@ -92,6 +123,15 @@
                       "output": [
                         "created",
                         "deleted"
+                      ]
+                    },
+                    "attribute": {
+                      "multiple": false,
+                      "output": [
+                        "owner",
+                        "group",
+                        "mode",
+                        "type"
                       ]
                     }
                   }
@@ -108,7 +148,8 @@
                     "user",
                     "source",
                     "target",
-                    "is"
+                    "is",
+                    "attribute"
                   ],
                   "object": {
                     "is": {
@@ -116,6 +157,15 @@
                       "output": [
                         "created",
                         "deleted"
+                      ]
+                    },
+                    "attribute": {
+                      "multiple": false,
+                      "output": [
+                        "owner",
+                        "group",
+                        "mode",
+                        "type"
                       ]
                     }
                   }
@@ -132,7 +182,8 @@
                     "user",
                     "source",
                     "target",
-                    "is"
+                    "is",
+                    "attribute"
                   ],
                   "object": {
                     "is": {
@@ -140,6 +191,15 @@
                       "output": [
                         "created",
                         "deleted"
+                      ]
+                    },
+                    "attribute": {
+                      "multiple": false,
+                      "output": [
+                        "owner",
+                        "group",
+                        "mode",
+                        "type"
                       ]
                     }
                   }
@@ -156,8 +216,27 @@
                     "user",
                     "source",
                     "target",
-                    "is"
-                  ]
+                    "is",
+                    "attribute"
+                  ],
+                  "object": {
+                    "is": {
+                      "multiple": false,
+                      "output": [
+                        "created",
+                        "deleted"
+                      ]
+                    },
+                    "attribute": {
+                      "multiple": false,
+                      "output": [
+                        "owner",
+                        "group",
+                        "mode",
+                        "type"
+                      ]
+                    }
+                  }
                 }
               ]
             },
@@ -171,8 +250,27 @@
                     "user",
                     "source",
                     "target",
-                    "is"
-                  ]
+                    "is",
+                    "attribute"
+                  ],
+                  "object": {
+                    "is": {
+                      "multiple": false,
+                      "output": [
+                        "created",
+                        "deleted"
+                      ]
+                    },
+                    "attribute": {
+                      "multiple": false,
+                      "output": [
+                        "owner",
+                        "group",
+                        "mode",
+                        "type"
+                      ]
+                    }
+                  }
                 }
               ]
             },
@@ -186,8 +284,27 @@
                     "user",
                     "source",
                     "target",
-                    "is"
-                  ]
+                    "is",
+                    "attribute"
+                  ],
+                  "object": {
+                    "is": {
+                      "multiple": false,
+                      "output": [
+                        "created",
+                        "deleted"
+                      ]
+                    },
+                    "attribute": {
+                      "multiple": false,
+                      "output": [
+                        "owner",
+                        "group",
+                        "mode",
+                        "type"
+                      ]
+                    }
+                  }
                 }
               ]
             },
@@ -201,8 +318,27 @@
                     "user",
                     "source",
                     "target",
-                    "is"
-                  ]
+                    "is",
+                    "attribute"
+                  ],
+                  "object": {
+                    "is": {
+                      "multiple": false,
+                      "output": [
+                        "created",
+                        "deleted"
+                      ]
+                    },
+                    "attribute": {
+                      "multiple": false,
+                      "output": [
+                        "owner",
+                        "group",
+                        "mode",
+                        "type"
+                      ]
+                    }
+                  }
                 }
               ]
             },
@@ -216,8 +352,27 @@
                     "user",
                     "source",
                     "target",
-                    "is"
-                  ]
+                    "is",
+                    "attribute"
+                  ],
+                  "object": {
+                    "is": {
+                      "multiple": false,
+                      "output": [
+                        "created",
+                        "deleted"
+                      ]
+                    },
+                    "attribute": {
+                      "multiple": false,
+                      "output": [
+                        "owner",
+                        "group",
+                        "mode",
+                        "type"
+                      ]
+                    }
+                  }
                 }
               ]
             }

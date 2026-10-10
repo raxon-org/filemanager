@@ -11,9 +11,7 @@
                 ],
                 "source": [
                   {
-                    "string.length": ">=1"
-                  },
-                  {
+                    "string.length": ">=1",
                     "is.unique": {
                       "class": "System.FileSystem.Recycle",
                       "attribute": [
@@ -29,9 +27,7 @@
                 ],
                 "user": [
                   {
-                    "is.uuid": true
-                  },
-                  {
+                    "is.uuid": true,
                     "is.unique": {
                       "class": "Account.User",
                       "attribute": [
@@ -51,9 +47,7 @@
                 ],
                 "source": [
                   {
-                    "string.length": ">=1"
-                  },
-                  {
+                    "string.length": ">=1",
                     "is.unique": {
                       "class": "System.FileSystem.Recycle",
                       "attribute": [
@@ -69,9 +63,7 @@
                 ],
                 "user": [
                   {
-                    "is.uuid": true
-                  },
-                  {
+                    "is.uuid": true,
                     "is.unique": {
                       "class": "Account.User",
                       "attribute": [
@@ -91,9 +83,7 @@
                 ],
                 "?source": [
                   {
-                    "string.length": ">=1"
-                  },
-                  {
+                    "string.length": ">=1",
                     "is.unique": {
                       "class": "System.FileSystem.Recycle",
                       "attribute": [
@@ -109,9 +99,7 @@
                 ],
                 "?user": [
                   {
-                    "is.uuid": true
-                  },
-                  {
+                    "is.uuid": true,
                     "is.unique": {
                       "class": "Account.User",
                       "attribute": [

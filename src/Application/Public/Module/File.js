@@ -1890,7 +1890,11 @@ file.delete = (element) => {
                      */
                 }
             });
-        } else {
+        }
+        else if(response?.error){
+            console.log(response);
+        }
+        else {
             const refresh = section.select('.refresh');
             refresh.click();
         }

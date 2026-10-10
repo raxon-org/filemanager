@@ -1821,6 +1821,7 @@ file.delete = (element) => {
         delete : file.data.get('route.backend.file.delete')
     };
     const token = user.token();
+    const refresh_token = user.refreshToken();
     let node;
     if(element.data('type') === 'File'){
         node = {
@@ -1833,7 +1834,6 @@ file.delete = (element) => {
             "request-method": "DELETE"
         }
     }
-    node["request-method"] = "POST";
     header("Authorization", 'Bearer ' + token);
     request(route.delete, node, (url, response) => {
         if(
@@ -1858,8 +1858,8 @@ file.delete = (element) => {
                     ) &&
                     refresh_token
                 ) {
-                    if(url_login){
-                        redirect(url_login);
+                    if(user.url.login()){
+                        redirect(user.url.login());
                     }
                 }
                 else if (
@@ -1874,19 +1874,26 @@ file.delete = (element) => {
                     delete user_node?.refresh_token;
                     const merge = { ...original, ...user_node };
                     user.data(merge);
+                    file.delete(element);
+                    /*
                     header("Authorization", 'Bearer ' + user.token());
                     request(route.delete, node, (url, response) => {
                         const refresh = section.select('.refresh');
                         refresh.click();
                     });
+                     */
                 } else {
+                    file.delete(element);
+                    /*
                     const refresh = section.select('.refresh');
                     refresh.click();
+                     */
                 }
             });
+        } else {
+            const refresh = section.select('.refresh');
+            refresh.click();
         }
-        const refresh = section.select('.refresh');
-        refresh.click();
     });
 }
 

@@ -51,9 +51,9 @@ class Recycle extends Controller {
                 'class' => $class,
                 'source' => $object->request('url'),
                 'attribute' => (object) [
-                    'owner' => File::owner($object->request('url'),
-                    'group' => File::group($object->request('url'),
-                    'mode' => File::mode($object->request('url'),
+                    'owner' => File::owner($object->request('url')),
+                    'group' => File::group($object->request('url')),
+                    'mode' => File::mode($object->request('url')),
                     'type' => $type
                 ],
                 'target' => $target,

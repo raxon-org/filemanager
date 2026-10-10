@@ -39,6 +39,31 @@
     {
       "name": "Recycle:restore",
       "#class": "Account.Permission"
+    },
+    {
+      "name": "System:FileSystem:Recycle:update",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:FileSystem:Recycle:create",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:FileSystem:Recycle:rename",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:FileSystem:Recycle:copy",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:FileSystem:Recycle:delete",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:FileSystem:Recycle:read",
+      "#class": "Account.Permission",
+      "#comment": "Application PhotoViewer read"
     }
   ]
 }

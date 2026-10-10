@@ -28,7 +28,9 @@
                 "user": [
                   {
                     "is.uuid": true,
-                    "user.is.active": true
+                    "user.is.active": {
+                      "attribute": "user"
+                    }
                   }
                 ]
               }
@@ -59,7 +61,9 @@
                 "user": [
                   {
                     "is.uuid": true,
-                    "user.is.active": true
+                    "user.is.active": {
+                      "attribute": "user"
+                    }
                   }
                 ]
               }
@@ -90,7 +94,9 @@
                 "?user": [
                   {
                     "is.uuid": true,
-                    "user.is.active": true
+                    "user.is.active": {
+                      "attribute": "user"
+                    }
                   }
                 ]
               }

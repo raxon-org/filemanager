@@ -12,6 +12,14 @@
                 "source": [
                   {
                     "string.length": ">=1"
+                  },
+                  {
+                    "is.unique": {
+                      "class": "System.FileSystem.Recycle",
+                      "attribute": [
+                        "source"
+                      ]
+                    }
                   }
                 ],
                 "target": [
@@ -44,6 +52,14 @@
                 "source": [
                   {
                     "string.length": ">=1"
+                  },
+                  {
+                    "is.unique": {
+                      "class": "System.FileSystem.Recycle",
+                      "attribute": [
+                        "source"
+                      ]
+                    }
                   }
                 ],
                 "target": [
@@ -76,6 +92,14 @@
                 "?source": [
                   {
                     "string.length": ">=1"
+                  },
+                  {
+                    "is.unique": {
+                      "class": "System.FileSystem.Recycle",
+                      "attribute": [
+                        "source"
+                      ]
+                    }
                   }
                 ],
                 "?target": [

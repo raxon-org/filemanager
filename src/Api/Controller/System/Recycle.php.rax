@@ -33,21 +33,31 @@ class Recycle extends Controller {
             throw new AuthorizationException('You are not allowed to access this resource.');
         }
         if(property_exists($role, 'name') && $role->name === 'ROLE_ADMIN'){
+            $dir_recycle = $object->config('project.volume.dir.recycle');
+            if(!Dir::is($dir_recycle)){
+                Dir::create($dir_recycle);
+                File::permission($object, ['dir' => $dir_recycle]);
+            }
+            $dir_target = $object->config('project.volume.dir.recycle') . date('Ymd');
+            if(!Dir::is($dir_target)){
+                Dir::create($dir_target);
+                File::permission($object, ['dir' => $dir_target]);
+            }
             $node = new Node($object);
             $role = $node->role_system();
             $class = 'System.FileSystem.Recycle';
             $uuid = Core::uuid();
             if(Dir::is($object->request('url'))){
                 $type = 'Dir';
-                $target = $object->config('project.volume.dir.recycle') . date('Ymd') . DIRECTORY_SEPARATOR . $uuid . DIRECTORY_SEPARATOR;
+                $target = $dir_target . DIRECTORY_SEPARATOR . $uuid . DIRECTORY_SEPARATOR;
             }
             elseif(File::is_link($object->request('url'))){
                 $type = 'Link';
-                $target = $object->config('project.volume.dir.recycle') . date('Ymd') . DIRECTORY_SEPARATOR . $uuid . '.link';
+                $target = $dir_target . DIRECTORY_SEPARATOR . $uuid . '.link';
             }
              else {
                 $type = 'File';
-                $target = $object->config('project.volume.dir.recycle') . date('Ymd') . DIRECTORY_SEPARATOR . $uuid . '.data';
+                $target = $dir_target . DIRECTORY_SEPARATOR . $uuid . '.data';
             }
             $attribute = [];
             $directory = explode('/', $object->request('url'));
@@ -102,6 +112,10 @@ class Recycle extends Controller {
                 ]
             ];
             $response = $node->create($class, $role, $record);
+            $record = $response['node'] ?? null;
+            if($record){
+                File::move($object->request('url'), $target);
+            }
             return new Response(
                 $response,
                 Response::TYPE_JSON

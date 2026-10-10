@@ -102,13 +102,8 @@ class Recycle extends Controller {
                 ]
             ];
             $response = $node->create($class, $role, $record);
-            //for directory go from most deep to least deep and then re apply www-data to reconstruct the restoring directory structure
-            d($response);
-            ddd($record);
-
-            $data = $object->request();
             return new Response(
-                $data,
+                $response,
                 Response::TYPE_JSON
             );
         }

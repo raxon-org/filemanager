@@ -1746,7 +1746,7 @@ file.open_file_with = (element) => {
                     ], true) &&
                     refresh_token
                 ){
-                    redirect(user.loginUrl());
+                    redirect(user.url.login());
                 } else {
                     user.token(data.node?.token);
                     user.refreshToken(data.node?.refresh_token);
@@ -1781,7 +1781,7 @@ file.open_file_with = (element) => {
             ], true) &&
             !refresh_token
         ){
-            redirect(user.loginUrl());
+            redirect(user.url.login());
         }
         else if(
             response?.class &&

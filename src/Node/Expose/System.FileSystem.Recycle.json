@@ -24,8 +24,9 @@
                       ]
                     },
                     "attribute": {
-                      "multiple": false,
+                      "multiple": true,
                       "output": [
+                        "url",
                         "owner",
                         "group",
                         "mode",
@@ -58,8 +59,9 @@
                       ]
                     },
                     "attribute": {
-                      "multiple": false,
+                      "multiple": true,
                       "output": [
+                        "url",
                         "owner",
                         "group",
                         "mode",
@@ -92,8 +94,9 @@
                       ]
                     },
                     "attribute": {
-                      "multiple": false,
+                      "multiple": true,
                       "output": [
+                        "url",
                         "owner",
                         "group",
                         "mode",
@@ -126,8 +129,9 @@
                       ]
                     },
                     "attribute": {
-                      "multiple": false,
+                      "multiple": true,
                       "output": [
+                        "url",
                         "owner",
                         "group",
                         "mode",
@@ -160,8 +164,9 @@
                       ]
                     },
                     "attribute": {
-                      "multiple": false,
+                      "multiple": true,
                       "output": [
+                        "url",
                         "owner",
                         "group",
                         "mode",
@@ -194,8 +199,9 @@
                       ]
                     },
                     "attribute": {
-                      "multiple": false,
+                      "multiple": true,
                       "output": [
+                        "url",
                         "owner",
                         "group",
                         "mode",
@@ -228,8 +234,9 @@
                       ]
                     },
                     "attribute": {
-                      "multiple": false,
+                      "multiple": true,
                       "output": [
+                        "url",
                         "owner",
                         "group",
                         "mode",
@@ -262,8 +269,9 @@
                       ]
                     },
                     "attribute": {
-                      "multiple": false,
+                      "multiple": true,
                       "output": [
+                        "url",
                         "owner",
                         "group",
                         "mode",
@@ -296,8 +304,9 @@
                       ]
                     },
                     "attribute": {
-                      "multiple": false,
+                      "multiple": true,
                       "output": [
+                        "url",
                         "owner",
                         "group",
                         "mode",
@@ -330,8 +339,9 @@
                       ]
                     },
                     "attribute": {
-                      "multiple": false,
+                      "multiple": true,
                       "output": [
+                        "url",
                         "owner",
                         "group",
                         "mode",
@@ -364,8 +374,9 @@
                       ]
                     },
                     "attribute": {
-                      "multiple": false,
+                      "multiple": true,
                       "output": [
+                        "url",
                         "owner",
                         "group",
                         "mode",

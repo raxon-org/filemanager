@@ -49,16 +49,52 @@ class Recycle extends Controller {
                 $type = 'File';
                 $target = $object->config('project.volume.dir.recycle') . date('Ymd') . DIRECTORY_SEPARATOR . $uuid . '.data';
             }
+            $attribute = [];
+            $directory = explode('/', $object->request('url'));
+            $end = array_pop($directory);
+            $directory_target = '';
+            foreach($directory as $part){
+               $directory_target .= $part . DIRECTORY_SEPARATOR;
+               $attribute[] = (object) [
+                   'url' => $directory_target,
+                   'owner' => File::owner($directory_target),
+                   'group' => File::group($directory_target),
+                   'mode' => File::mode($directory_target),
+                   'type' => 'Dir'
+               ];
+            }
+            if($type === 'File'){
+                $attribute[] = (object) [
+                    'url' => $object->request('url'),
+                    'owner' => File::owner($object->request('url')),
+                    'group' => File::group($object->request('url')),
+                    'mode' => File::mode($object->request('url')),
+                    'type' => 'File'
+                ];
+            }
+            elseif($type === 'Link'){
+                $attribute[] = (object) [
+                    'url' => $object->request('url'),
+                    'owner' => File::owner($object->request('url')),
+                    'group' => File::group($object->request('url')),
+                    'mode' => File::mode($object->request('url')),
+                    'type' => 'Link'
+                ]
+            }
+            elseif($type === 'Dir'){
+                $attribute[] = (object) [
+                    'url' => $object->request('url'),
+                    'owner' => File::owner($object->request('url')),
+                    'group' => File::group($object->request('url')),
+                    'mode' => File::mode($object->request('url')),
+                    'type' => 'Dir'
+                ];
+            }
             $record = (object) [
                 'uuid'=> $uuid,
                 'class' => $class,
                 'source' => $object->request('url'),
-                'attribute' => (object) [
-                    'owner' => File::owner($object->request('url')),
-                    'group' => File::group($object->request('url')),
-                    'mode' => File::mode($object->request('url')),
-                    'type' => $type
-                ],
+                'attribute' => $attribute,
                 'target' => $target,
                 'user' => $user->uuid,
                 'is' => (object) [

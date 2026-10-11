@@ -10,7 +10,17 @@ directory.open();
         {{$indent = (int) $request.indent}}
         {{$li.data.indent = $indent + 1}}
         {{foreach($request.nodeList.tree as $nr => $file)}}
-            {{if ($file.has_sub_dir)}}
+            {{if ($file.type === 'Link')}}
+                {{$li.class = 'bind indent indent-' + $indent}}
+                {{$li.data.url = server.url("{{/literal}}{{$backend.host}}{{literal}}") + 'FileSystem/List/Directory/'}}
+                {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
+                {{$li.data.type = $file.type}}
+                {{$li.data.dir = $file.url}}
+                {{$li.data.dir_target = $file.url|>string.replace:'\'':'\\\''}}
+                {{$li.data.target = "section[id='" + $id + "'] ul.tree section[data-dir='" + $li.data.dir_target + "']"}}
+                {{$li.data.method = "replace"}}
+                {{file.manager.tree.directory($file, $li)}}
+            {{elseif ($file.has_sub_dir)}}
                 {{$li.class = 'bind indent indent-' + $indent + ' expand'}}
                 {{$li.data.url = server.url("{{/literal}}{{$backend.host}}{{literal}}") + 'FileSystem/List/Directory/'}}
                 {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
@@ -71,6 +81,9 @@ directory.open();
             {{$li.data.url = server.url("{{/literal}}{{$backend.host}}{{literal}}") + 'FileSystem/List/Directory/'}}
             {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
             {{foreach($request.nodeList.tree as $node)}}
+                {{if(is.empty($node.dir))}}
+                    {{dd($node)}}
+                {{/if}}
                 {{$li.data.dir = $node.dir}}
                 {{$li.data.type = $node.type}}
                 {{$li.data.target = $node.target}}

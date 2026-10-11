@@ -38,7 +38,7 @@ class Recycle extends Controller {
                 Dir::create($dir_recycle);
                 File::permission($object, ['dir' => $dir_recycle]);
             }
-            $dir_target = $object->config('project.volume.dir.recycle') . date('Ymd');
+            $dir_target = $dir_recycle . date('Ymd');
             if(!Dir::is($dir_target)){
                 Dir::create($dir_target);
                 File::permission($object, ['dir' => $dir_target]);

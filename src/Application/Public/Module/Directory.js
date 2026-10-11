@@ -434,9 +434,15 @@ directory.address = (li) => {
     if(!address){
         return;
     }
-    address.value = li.data('dir');
-    address.data('dir', li.data('dir'));
-    address.trigger('change');
+    let link = li.data('link');
+    if(link){
+        console.log('###################### LINK');
+        console.log(link);
+    } else {
+        address.value = li.data('dir');
+        address.data('dir', li.data('dir'));
+        address.trigger('change');
+    }
 }
 
 directory.bind_node = (node) => {

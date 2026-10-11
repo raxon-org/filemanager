@@ -71,7 +71,12 @@ directory.expand_open = (li) => {
     const token = user.token();
     header("Authorization", 'Bearer ' + token);
     let node = {};
-    node.directory = _('_').htmlspecialchars(li.data('dir')).replace(/'/g, '\\\'');
+    let link = li.data('link');
+    if(link){
+        node.link = _('_').htmlspecialchars(li.data('link')).replace(/'/g, '\\\'');
+    } else {
+        node.directory = _('_').htmlspecialchars(li.data('dir')).replace(/'/g, '\\\'');
+    }
     //node.type = li.data('type');
     const url_login = user.url.login();
     li.request(null, node, (url, response) => {

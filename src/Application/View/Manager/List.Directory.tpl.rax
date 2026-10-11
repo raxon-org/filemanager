@@ -88,14 +88,14 @@ directory.open();
         {{$indent = 0}}
         {{if($request.nodeList.tree)}}
             {{$li.data.indent = $indent + 1}}
-            {{if($node.type === 'Link')}}
+            {{foreach($request.nodeList.tree as $node)}}
+                {{if($node.type === 'Link')}}
                 {{$li.data.url = server.url("{{/literal}}{{$backend.host}}{{literal}}") + 'FileSystem/List/Link/'}}
                 {{$li.data.frontend.url = route.get($section.name + '-list-link')}}
-            {{else}}
+                {{else}}
                 {{$li.data.url = server.url("{{/literal}}{{$backend.host}}{{literal}}") + 'FileSystem/List/Directory/'}}
                 {{$li.data.frontend.url = route.get($section.name + '-list-directory')}}
-            {{/if}}
-            {{foreach($request.nodeList.tree as $node)}}
+                {{/if}}
                 {{if($node.type === 'Link')}}
                 {{$li.data.link = $node.link}}
                 {{else}}

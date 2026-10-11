@@ -98,7 +98,6 @@ directory.open();
             {{foreach($request.nodeList.tree as $node)}}
                 {{if($node.type === 'Link')}}
                 {{$li.data.link = $node.link}}
-                {{d($node)}}
                 {{else}}
                 {{$li.data.dir = $node.dir}}
                 {{/if}}

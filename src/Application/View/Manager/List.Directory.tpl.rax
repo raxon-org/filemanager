@@ -110,6 +110,31 @@ directory.open();
                 {{else}}
                     {{$li.data.rename = ''}}
                 {{/if}}
+                {{if($node.type === 'Link')}}
+                <li
+                    class="bind indent indent-{{$indent}} expand"
+                    data-url="{{$li.data.url}}"
+                    data-frontend-url="{{$li.data.frontend.url}}"
+                    data-target="{{$li.data.target}}"
+                    data-method="{{$li.data.method}}"
+                    data-link="{{$li.data.link}}"
+                    data-type="{{$li.data.type}}"
+                    data-indent="{{$li.data.indent}}"
+                    data-section-dir="{{$li.data.section.dir}}"
+                    {{$li.data.rename}}
+                >
+                    <p>
+                        <span class="has-sub-dir expand">
+                            <i class="fas fa-angle-right"></i>
+                        </span>
+                        <span class="icon">
+                            <i class="{{$node.icon.class}}"></i>
+                        </span>
+                        <span class="name">{{$node.name}}</span>
+                        <span class="loader"></span>
+                    </p>
+                </li>
+                {{else}}
                 <li
                     class="bind indent indent-{{$indent}} expand"
                     data-url="{{$li.data.url}}"
@@ -133,6 +158,7 @@ directory.open();
                         <span class="loader"></span>
                     </p>
                 </li>
+                {{/if}}
                 <section data-dir="{{$node.section.dir}}"></section>
             {{/foreach}}
         {{/if}}

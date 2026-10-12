@@ -1090,7 +1090,7 @@ file.recycle_overview = (response) => {
         return;
     }
     let ul = create('ul');
-    for(date in response.nodeList){
+    for(let date in response.nodeList){
         let li = create('li');
         li.addClass('header date');
         li.html('<div>' + date + '<br><hr></div>');

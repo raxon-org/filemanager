@@ -62,6 +62,9 @@ class Recycle extends Controller {
             $attribute = [];
             $directory = explode('/', $object->request('url'));
             $end = array_pop($directory);
+            if(empty($end)){
+                $end = array_pop($directory);
+            }
             $directory_target = '';
             foreach($directory as $part){
                $directory_target .= $part . DIRECTORY_SEPARATOR;

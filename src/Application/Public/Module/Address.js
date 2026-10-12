@@ -18,11 +18,20 @@ address.resize = () => {
     if(!section){
         return;
     }
-    const config = file.data.get('config');
-    const data = file.data.get('directory.current.list');
-    if(data){
-        file.list(config, data);
+    let is_link = file.data.get('address.link') ?? false;
+    if(is_link){
+        return;
+    } else {
+        const config = file.data.get('config');
+        const data = file.data.get('directory.current.list');
+        if(
+            config &&
+            data
+        ){
+            file.list(config, data);
+        }
     }
+
     // const input = section.select('input[name="address"]');
     // input.trigger('change');
 }

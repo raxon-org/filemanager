@@ -1090,7 +1090,7 @@ file.recycle_overview = (response) => {
         return;
     }
     let ul = create('ul');
-    ul.class = 'recycle-overview';
+    ul.addClass('recycle-overview');
     let li_item = create('li');
     li_item.addClass('empty-recycle-bin');
     li_item.html('' +

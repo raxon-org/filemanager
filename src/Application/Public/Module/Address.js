@@ -443,9 +443,15 @@ address.bar = () => {
                     p.html(message);
                 }
             } else {
-                // file.data.set('config', config);
-                file.data.set('directory.current.list', response);
-                file.list(response);
+                if(is_link){
+                    //file.data.set('directory.current.list', response);
+                    file.recycle_overview(response);
+                } else {
+                    // file.data.set('config', config);
+                    file.data.set('directory.current.list', response);
+                    file.list(response);
+                }
+
                 debug.exception_exclude(); //return state to debug to all exceptions included
             }
         });

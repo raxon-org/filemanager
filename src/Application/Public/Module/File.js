@@ -1081,6 +1081,44 @@ file.dirname = (url) => {
     return url.substring(0, url.lastIndexOf('/')) + '/';
 }
 
+file.recycle_overview = (response) => {
+    const section = getSectionById(file.data.get('section.id'));
+    console.log(file.data.get('section.id'));
+    console.log(section);
+    console.log(response);
+    if (!section) {
+        return;
+    }
+    let ul = create('ul');
+    for(date in response.nodeList){
+        let li = create('li');
+        li.addClass('header date');
+        li.html('<div>' + date + '<br><hr></div>');
+        ul.appendChild(li);
+        let list = response.nodeList[date];
+        for(let index=0; index < list.length; index++){
+            let node = list[index];
+            let li_item = create('li');
+            li_item.addClass('item');
+            li_item.html('' +
+                '<div>' +
+                '<span class="label">Source</span>' +
+                '<span class="value">' + node.source +'</span>' +
+                '<span class="label">Size</span>' +
+                '<span class="value">' + node.size + '</span>' +
+                '</div>'
+            );
+            ul.appendChild(li_item);
+        }
+    }
+    const list = section.select('.list');
+    if(list) {
+        list.html('');
+        list.appendChild(ul, list.firstChild);
+    }
+}
+
+
 file.list = (response) => {
     const section = getSectionById(file.data.get('section.id'));
     console.log(file.data.get('section.id'));

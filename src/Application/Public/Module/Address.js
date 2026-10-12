@@ -285,20 +285,22 @@ address.bar = () => {
     }
     input.on('change', (event) => {
         let is_link = file.data.get('address.link') ?? false;
+        let route;
+        let node;
         if(is_link){
-            const route = {
+            route = {
                 backend : file.data.get('route.backend.link'),
                 frontend : file.data.get('route.frontend.link')
             };
-            let node = {
+            node = {
                 "link" : input.val()
             };
         } else {
-            const route = {
+            route = {
                 backend : file.data.get('route.backend.file.list'),
                 frontend : file.data.get('route.frontend.file.list')
             };
-            let node = {
+            node = {
                 "directory" : input.val()
             };
         }

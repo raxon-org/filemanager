@@ -1095,16 +1095,35 @@ file.recycle_overview = (response) => {
         li.addClass('header date');
         li.html('<div>' + date + '<br><hr></div>');
         ul.appendChild(li);
+        li.addClass('header source');
+        li.html('<div>Source:<br></div>');
+        ul.appendChild(li);
+        li.addClass('header size');
+        li.html('<div>Size:<br></div>');
+        ul.appendChild(li);
         let list = response.nodeList[date];
+        let li_item;
         for(let index=0; index < list.length; index++){
             let node = list[index];
-            let li_item = create('li');
-            li_item.addClass('item');
+            li_item = create('li');
+            li_item.addClass('date');
             li_item.html('' +
                 '<div>' +
-                '<span class="label">Source</span>' +
+                '</div>'
+            );
+            ul.appendChild(li_item);
+            li_item = create('li');
+            li_item.addClass('source');
+            li_item.html('' +
+                '<div>' +
                 '<span class="value">' + node.source +'</span>' +
-                '<span class="label">Size</span>' +
+                '</div>'
+            );
+            ul.appendChild(li_item);
+            li_item = create('li');
+            li_item.addClass('size');
+            li_item.html('' +
+                '<div>' +
                 '<span class="value">' + node.size + '</span>' +
                 '</div>'
             );

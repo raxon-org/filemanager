@@ -1126,7 +1126,7 @@ file.recycle_overview = (response) => {
             let node = list[index];
             li_item = create('li');
             li_item.addClass('date');
-            li_item.html('<div><br><hr></div>');
+            li_item.html('<div><br></div>');
             /*
             li_item.html('' +
                 '<div>' +
@@ -1148,6 +1148,15 @@ file.recycle_overview = (response) => {
             li_item.html('' +
                 '<div>' +
                 '<span class="value">' + node.size_format + '</span>' +
+                '</div>'
+            );
+            ul.appendChild(li_item);
+            li_item = create('li');
+            li_item.addClass('options');
+            li_item.html('' +
+                '<div>' +
+                '<span class="restore">restore</span>' +
+                '<span class="delete-permanantly">delete</span>' +
                 '</div>'
             );
             ul.appendChild(li_item);

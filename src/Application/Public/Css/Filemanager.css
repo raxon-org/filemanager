@@ -596,6 +596,18 @@ section[name="application-file-manager"] .list ul.recycle-overview li.date {
     margin-left: 10px;
 }
 
+section[name="application-file-manager"] .list ul.recycle-overview li.size {
+    clear: none;
+}
+
+section[name="application-file-manager"] .list ul.recycle-overview li.options {
+    clear: right;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding-left: 20px;
+    margin-right: 10px;
+}
+
 section[name="application-file-manager"] .body .search {
     width: calc(100% - 310px);
     height: calc(100% - 110px);

@@ -41,6 +41,14 @@
       "#class": "Account.Permission"
     },
     {
+      "name": "System:FileSystem:Recycle:list",
+      "#class": "Account.Permission"
+    },
+    {
+      "name": "System:FileSystem:Recycle:list.relation",
+      "#class": "Account.Permission"
+    },
+    {
       "name": "System:FileSystem:Recycle:update",
       "#class": "Account.Permission"
     },

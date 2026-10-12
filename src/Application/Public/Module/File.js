@@ -1090,6 +1090,23 @@ file.recycle_overview = (response) => {
         return;
     }
     let ul = create('ul');
+    ul.class = 'recycle-overview';
+    let li_item = create('li');
+    li_item.addClass('empty-recycle-bin');
+    li_item.html('' +
+        '<div>' +
+        '<span class="empty-recycle-bin">Empty recycle-bin</span>' +
+        '</div>'
+    );
+    ul.appendChild(li_item);
+    li_item = create('li');
+    li_item.addClass('restore-recycle-bin');
+    li_item.html('' +
+        '<div>' +
+        '<span class="restore-recycle-bin">Restore recycle-bin</span>' +
+        '</div>'
+    );
+    ul.appendChild(li_item);
     for(let date in response.nodeList){
         let li = create('li');
         li.addClass('header date');

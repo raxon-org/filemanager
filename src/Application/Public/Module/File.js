@@ -1111,6 +1111,7 @@ file.recycle_overview = (response) => {
             li_item.addClass('date');
             li_item.html('' +
                 '<div>' +
+                '<span class="date">' + date + '</span>' +
                 '</div>'
             );
             ul.appendChild(li_item);

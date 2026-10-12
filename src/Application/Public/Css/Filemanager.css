@@ -571,7 +571,7 @@ section[name="application-file-manager"] .body .list table tr.selected {
     background: rgba(200, 226, 230, 1);
 }
 
-section[name="application-file-manager"] .list ul.recycle-overview li.empty-recycle-bin {
+section[name="application-file-manager"] ul.recycle-overview li.empty-recycle-bin {
     clear: left;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -579,7 +579,7 @@ section[name="application-file-manager"] .list ul.recycle-overview li.empty-recy
     margin-left: 10px;
 }
 
-section[name="application-file-manager"] .list ul.recycle-overview li.restore-recycle-bin {
+section[name="application-file-manager"] ul.recycle-overview li.restore-recycle-bin {
     clear: right;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;

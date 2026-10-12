@@ -441,9 +441,12 @@ directory.address = (li) => {
     }
     let link = li.data('link');
     if(link){
-        console.log('###################### LINK');
-        console.log(link);
+        file.data.set('address.link', true);
+        address.value = li.data('link');
+        address.data('dir', li.data('link'));
+        address.trigger('change');
     } else {
+        file.data.delete('address.link');
         address.value = li.data('dir');
         address.data('dir', li.data('dir'));
         address.trigger('change');

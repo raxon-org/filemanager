@@ -284,13 +284,24 @@ address.bar = () => {
         return;
     }
     input.on('change', (event) => {
-        const route = {
-            backend : file.data.get('route.backend.file.list'),
-            frontend : file.data.get('route.frontend.file.list')
-        };
-        let node = {
-            "directory" : input.val()
-        };
+        let is_link = file.data.get('address.link') ?? false;
+        if(is_link){
+            const route = {
+                backend : file.data.get('route.backend.link'),
+                frontend : file.data.get('route.frontend.link')
+            };
+            let node = {
+                "link" : input.val()
+            };
+        } else {
+            const route = {
+                backend : file.data.get('route.backend.file.list'),
+                frontend : file.data.get('route.frontend.file.list')
+            };
+            let node = {
+                "directory" : input.val()
+            };
+        }
         input.data('dir', input.val());
         address.title(input.val());
         let token = user.token();

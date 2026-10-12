@@ -1095,9 +1095,11 @@ file.recycle_overview = (response) => {
         li.addClass('header date');
         li.html('<div>' + date + '<br><hr></div>');
         ul.appendChild(li);
+        li = create('li');
         li.addClass('header source');
         li.html('<div>Source:<br></div>');
         ul.appendChild(li);
+        li = create('li');
         li.addClass('header size');
         li.html('<div>Size:<br></div>');
         ul.appendChild(li);

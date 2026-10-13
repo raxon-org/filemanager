@@ -20,6 +20,12 @@ address.resize = () => {
     }
     let is_link = file.data.get('address.link') ?? false;
     if(is_link){
+        const list = section.select('.list');
+        let header = list.select('.header');
+        let column = header.length ?? 1;
+        if(list){
+            file.calculate_list(list, column);
+        }
         return;
     } else {
         const config = file.data.get('config');

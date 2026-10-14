@@ -1190,12 +1190,13 @@ file.recycle_overview = (response) => {
     }
     if(list) {
         list.appendChild(ul);
+        file.calculate_list(list, 4);
         /*
         for(let index=0; index < ul_list.length; index++){
             list.appendChild(ul_list[index]);
         }
          */
-        file.calculate_list(list, column);
+
     }
 }
 

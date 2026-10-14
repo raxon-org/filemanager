@@ -1141,7 +1141,23 @@ file.recycle_overview = (response) => {
         column++;
         li = create('li');
         li.addClass('header options');
-        li.html('<div><svg src="/Application/Filemanager/Icon/Recycle.Bin.Restore.svg"><br></div>');
+        li.html('<div><svg xmlns="http://www.w3.org/2000/svg"\n' +
+            '     width="20" height="20"\n' +
+            '     viewBox="0 0 20 20"\n' +
+            '     fill="none">\n' +
+            '    <path d="M3.5 5.5h8.2M7 5.5V3.8h4V5.5\n' +
+            '           M5 5.5l.7 10h4.1l.3-4"\n' +
+            '          stroke="currentColor"\n' +
+            '          stroke-width="1.4"\n' +
+            '          stroke-linecap="round"\n' +
+            '          stroke-linejoin="round"/>\n' +
+            '    <path d="M15.8 8.2a5 5 0 1 1-3.4-1.3\n' +
+            '           M15.8 5.5v2.7h-2.7"\n' +
+            '          stroke="currentColor"\n' +
+            '          stroke-width="1.4"\n' +
+            '          stroke-linecap="round"\n' +
+            '          stroke-linejoin="round"/>\n' +
+            '</svg><br></div>');
         ul.appendChild(li);
         column++;
         let list = response.nodeList[date];

@@ -562,6 +562,10 @@ section[name="application-file-manager"] .list li.source span.restore {
     margin: 5px;
 }
 
+section[name="application-file-manager"] .list li.source span.restore:hover {
+    border: 1px solid rgba(255, 255, 255, 1);
+}
+
 section[name="application-file-manager"] .list li.source span.empty {
     display: inline-block;
     margin: 5px;
@@ -569,6 +573,10 @@ section[name="application-file-manager"] .list li.source span.empty {
     padding: 5px;
     border-radius: 5px;
     border: 1px solid rgba(255, 124, 13, 1);
+}
+
+section[name="application-file-manager"] .list li.source span.empty:hover {
+    border: 1px solid rgba(200, 0, 0, 1);
 }
 
 

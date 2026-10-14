@@ -1114,7 +1114,7 @@ file.recycle_overview = (response) => {
     if(list) {
         list.html('');
         list.appendChild(ul);
-        file.calculate_list(list, column);
+        //file.calculate_list(list, column);
     }
     let ul_list = [];
     let ul_list_column = [];
@@ -1189,8 +1189,8 @@ file.recycle_overview = (response) => {
     if(list) {
         for(let index; index < ul_list.length; index++){
             list.appendChild(ul_list[index]);
-            file.calculate_list(list, ul_list_column[index]);
         }
+        file.calculate_list(list, ul_list_column[ul_list_column.length - 1]);
     }
 }
 

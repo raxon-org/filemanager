@@ -1092,14 +1092,6 @@ file.recycle_overview = (response) => {
     let ul = create('ul');
     ul.addClass('recycle-overview');
     let li_item = create('li');
-    li_item.addClass('empty-recycle-bin');
-    li_item.html('' +
-        '<div>' +
-        '<span class="empty-recycle-bin">Empty recycle-bin</span>' +
-        '</div>'
-    );
-    ul.appendChild(li_item);
-    li_item = create('li');
     li_item.addClass('restore-recycle-bin');
     li_item.html('' +
         '<div>' +
@@ -1107,19 +1099,44 @@ file.recycle_overview = (response) => {
         '</div>'
     );
     ul.appendChild(li_item);
+    li_item = create('li');
+    li_item.addClass('empty-recycle-bin');
+    li_item.html('' +
+        '<div>' +
+        '<span class="empty-recycle-bin">Empty recycle-bin</span>' +
+        '</div>'
+    );
+    ul.appendChild(li_item);
+    if(list) {
+        list.html('');
+        list.appendChild(ul);
+    }
+    let ul_list = [];
+    let ul_list_column = [];
     for(let date in response.nodeList){
+        let ul = create('ul');
+        let column = 0;
+        ul.addClass('recycle-list');
         let li = create('li');
         li.addClass('header date');
         li.html('<div>' + date + '<br><hr></div>');
         ul.appendChild(li);
+        column++;
         li = create('li');
         li.addClass('header source');
         li.html('<div>Source:<br></div>');
         ul.appendChild(li);
+        column++;
         li = create('li');
         li.addClass('header size');
         li.html('<div>Size:<br></div>');
         ul.appendChild(li);
+        column++;
+        li = create('li');
+        li.addClass('header options');
+        li.html('<div>Options:<br></div>');
+        ul.appendChild(li);
+        column++;
         let list = response.nodeList[date];
         let li_item;
         for(let index=0; index < list.length; index++){
@@ -1161,14 +1178,17 @@ file.recycle_overview = (response) => {
             );
             ul.appendChild(li_item);
         }
+        ul_list.push(ul);
+        ul_list_column.push(column);
     }
     const list = section.select('.list');
     if(list) {
-        list.html('');
-        list.appendChild(ul, list.firstChild);
+        for(let index; index < ul_list.length; index++){
+            list.appendChild(ul_list[index]);
+            file.calculate_list(list, ul_list_column[index]);
+        }
     }
 }
-
 
 file.list = (response) => {
     const section = getSectionById(file.data.get('section.id'));

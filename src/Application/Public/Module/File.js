@@ -1143,22 +1143,9 @@ file.recycle_overview = (response) => {
         li.addClass('header options');
         li.html('<div >' +
             '<span class="restore" title="Restore: '+ date +' data-point">' +
-            '<svg xmlns="http://www.w3.org/2000/svg"\n' +
-            '     width="20" height="20"\n' +
-            '     viewBox="0 0 20 20"\n' +
-            '     fill="none">\n' +
-            '    <path d="M3.5 5.5h8.2M7 5.5V3.8h4V5.5\n' +
-            '           M5 5.5l.7 10h4.1l.3-4"\n' +
-            '          stroke="currentColor"\n' +
-            '          stroke-width="1.4"\n' +
-            '          stroke-linecap="round"\n' +
-            '          stroke-linejoin="round"/>\n' +
-            '    <path d="M15.8 8.2a5 5 0 1 1-3.4-1.3\n' +
-            '           M15.8 5.5v2.7h-2.7"\n' +
-            '          stroke="currentColor"\n' +
-            '          stroke-width="1.4"\n' +
-            '          stroke-linecap="round"\n' +
-            '          stroke-linejoin="round"/>\n' +
+            '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 640 640">' +
+            '<!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc. -->' +
+            '<path fill="currentColor" d="M263.1 48L377 48C390.8 48 403 56.8 407.4 69.9L416 96L512 96C529.7 96 544 110.3 544 128C544 145.7 529.7 160 512 160L128 160C110.3 160 96 145.7 96 128C96 110.3 110.3 96 128 96L224 96L232.7 69.9C237.1 56.8 249.3 48 263.1 48zM128 208L512 208L490.9 531.1C489.3 556.4 468.3 576 443 576L197 576C171.7 576 150.7 556.4 149.1 531.1L128 208zM337 287C327.6 277.6 312.4 277.6 303.1 287L231.1 359C221.7 368.4 221.7 383.6 231.1 392.9C240.5 402.2 255.7 402.3 265 392.9L296 361.9L296 464C296 477.3 306.7 488 320 488C333.3 488 344 477.3 344 464L344 361.9L375 392.9C384.4 402.3 399.6 402.3 408.9 392.9C418.2 383.5 418.3 368.3 408.9 359L336.9 287z"/>' +
             '</svg>' +
             '</span>' +
             '<span class="delete" title="Delete: '+ date +' data-point">' +

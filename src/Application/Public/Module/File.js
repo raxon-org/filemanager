@@ -1123,9 +1123,32 @@ file.recycle_overview = (response) => {
     let ul_list_column = [];
     let column;
     let ul = create('ul');
+    ul.addClass('recycle-list');
+    let li = create('li');
+    li.addClass('header date');
+    li.html('<div><br></div>');
+    ul.appendChild(li);
+    column++;
+    li = create('li');
+    li.addClass('header source');
+    li.html('<div>' +
+        '<span class="restore">Restore recycle bin</span>' +
+        '<span class="empty">Empty recycle bin</span>' +
+        '<br>' +
+        '</div>');
+    ul.appendChild(li);
+    column++;
+    li = create('li');
+    li.addClass('header size');
+    li.html('<div><br></div>');
+    ul.appendChild(li);
+    column++;
+    li = create('li');
+    li.addClass('header options');
+    li.html('<div><br></div>');
+    ul.appendChild(li);
     for(let date in response.nodeList){
         column = 0;
-        ul.addClass('recycle-list');
         let li = create('li');
         li.addClass('header date');
         li.html('<div>' + date + '<br></div>');

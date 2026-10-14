@@ -1125,12 +1125,12 @@ file.recycle_overview = (response) => {
     let ul = create('ul');
     ul.addClass('recycle-list');
     let li = create('li');
-    li.addClass('header date');
+    li.addClass('title header date');
     li.html('<div><br></div>');
     ul.appendChild(li);
     column++;
     li = create('li');
-    li.addClass('header source');
+    li.addClass('title header source');
     li.html('<div>' +
         '<span class="restore">' +
         '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 640 640">' +
@@ -1151,12 +1151,12 @@ file.recycle_overview = (response) => {
     ul.appendChild(li);
     column++;
     li = create('li');
-    li.addClass('header size');
+    li.addClass('title header size');
     li.html('<div><br></div>');
     ul.appendChild(li);
     column++;
     li = create('li');
-    li.addClass('header options');
+    li.addClass('title header options');
     li.html('<div><br></div>');
     ul.appendChild(li);
     for(let date in response.nodeList){

@@ -552,6 +552,11 @@ section[name="application-file-manager"] .list ul.recycle-list li {
 
 section[name="application-file-manager"] .list li.options span.restore {
     padding-right: 20px;
+    padding-left: 20px;
+}
+
+section[name="application-file-manager"] .list li.options span.delete {
+    padding-right: 20px;
 }
 
 section[name="application-file-manager"] .list li.options span.restore:hover {

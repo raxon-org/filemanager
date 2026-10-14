@@ -1089,6 +1089,7 @@ file.recycle_overview = (response) => {
     if (!section) {
         return;
     }
+    /*
     let column = 0;
     let ul = create('ul');
     ul.addClass('recycle-overview');
@@ -1110,17 +1111,18 @@ file.recycle_overview = (response) => {
     );
     ul.appendChild(li_item);
     column++;
+     */
     const list = section.select('.list');
     if(list) {
         list.html('');
-        list.appendChild(ul);
         //file.calculate_list(list, column);
     }
     let ul_list = [];
     let ul_list_column = [];
+    let column;
     for(let date in response.nodeList){
         let ul = create('ul');
-        let column = 0;
+        column = 0;
         ul.addClass('recycle-list');
         let li = create('li');
         li.addClass('header date');
@@ -1190,7 +1192,7 @@ file.recycle_overview = (response) => {
         for(let index=0; index < ul_list.length; index++){
             list.appendChild(ul_list[index]);
         }
-        file.calculate_list(list, ul_list_column[ul_list_column.length - 1]);
+        file.calculate_list(list, column);
     }
 }
 

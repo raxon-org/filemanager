@@ -1141,7 +1141,9 @@ file.recycle_overview = (response) => {
         column++;
         li = create('li');
         li.addClass('header options');
-        li.html('<div><svg title="Restore '+ date +' data-point" xmlns="http://www.w3.org/2000/svg"\n' +
+        li.html('<div >' +
+            '<span title="Restore '+ date +' data-point"></span>' +
+            '<svg xmlns="http://www.w3.org/2000/svg"\n' +
             '     width="20" height="20"\n' +
             '     viewBox="0 0 20 20"\n' +
             '     fill="none">\n' +
@@ -1157,7 +1159,16 @@ file.recycle_overview = (response) => {
             '          stroke-width="1.4"\n' +
             '          stroke-linecap="round"\n' +
             '          stroke-linejoin="round"/>\n' +
-            '</svg><br></div>');
+            '</svg>' +
+            '</span>' +
+            '<span title="Delete '+ date +' data-point">' +
+            '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">' + "\n" +
+                '<path d="M6.5 3.5V2.8A1.3 1.3 0 0 1 7.8 1.5h4.4a1.3 1.3 0 0 1 1.3 1.3v.7M2.5 4.5h15M4.2 4.5l.9 12.1a1.5 1.5 0 0 0 1.5 1.4h5.1M15.8 4.5l-.4 5.2M8 7.2l.4 7.1M11.5 7.2l-.2 3.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>' + "\n" +
+                '<circle cx="14.8" cy="14.8" r="4.1" fill="currentColor" stroke="white" stroke-width=".5"/>' + "\n" +
+                '<path d="m13.3 13.3 3 3m0-3-3 3" stroke="white" stroke-width="1.2" stroke-linecap="round"/>' + "\n" +
+            '</svg>' +
+            '</span>' +
+            '</div>');
         ul.appendChild(li);
         column++;
         let list = response.nodeList[date];

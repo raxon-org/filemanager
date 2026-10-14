@@ -551,7 +551,7 @@ section[name="application-file-manager"] .list ul.recycle-list li {
 }
 
 section[name="application-file-manager"] .list ul.recycle-list li.title {
-    height: 40px;
+    height: 50px;
 }
 
 section[name="application-file-manager"] .list li.source span.restore {

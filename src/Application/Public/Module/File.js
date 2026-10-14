@@ -1141,7 +1141,7 @@ file.recycle_overview = (response) => {
         column++;
         li = create('li');
         li.addClass('header options');
-        li.html('<div><svg xmlns="http://www.w3.org/2000/svg"\n' +
+        li.html('<div><svg title="Restore '+ date +' data-point" xmlns="http://www.w3.org/2000/svg"\n' +
             '     width="20" height="20"\n' +
             '     viewBox="0 0 20 20"\n' +
             '     fill="none">\n' +

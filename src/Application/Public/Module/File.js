@@ -1120,8 +1120,8 @@ file.recycle_overview = (response) => {
     let ul_list = [];
     let ul_list_column = [];
     let column;
+    let ul = create('ul');
     for(let date in response.nodeList){
-        let ul = create('ul');
         column = 0;
         ul.addClass('recycle-list');
         let li = create('li');
@@ -1185,13 +1185,16 @@ file.recycle_overview = (response) => {
             );
             ul.appendChild(li_item);
         }
-        ul_list.push(ul);
-        ul_list_column.push(column);
+        // ul_list.push(ul);
+        // ul_list_column.push(column);
     }
     if(list) {
+        list.appendChild(ul);
+        /*
         for(let index=0; index < ul_list.length; index++){
             list.appendChild(ul_list[index]);
         }
+         */
         file.calculate_list(list, column);
     }
 }

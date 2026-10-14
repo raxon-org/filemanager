@@ -1089,6 +1089,7 @@ file.recycle_overview = (response) => {
     if (!section) {
         return;
     }
+    let column = 0;
     let ul = create('ul');
     ul.addClass('recycle-overview');
     let li_item = create('li');
@@ -1099,6 +1100,7 @@ file.recycle_overview = (response) => {
         '</div>'
     );
     ul.appendChild(li_item);
+    column++;
     li_item = create('li');
     li_item.addClass('empty-recycle-bin');
     li_item.html('' +
@@ -1107,9 +1109,11 @@ file.recycle_overview = (response) => {
         '</div>'
     );
     ul.appendChild(li_item);
+    column++;
     if(list) {
         list.html('');
         list.appendChild(ul);
+        file.calculate_list(list, column);
     }
     let ul_list = [];
     let ul_list_column = [];

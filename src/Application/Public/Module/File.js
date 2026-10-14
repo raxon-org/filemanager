@@ -1089,6 +1089,8 @@ file.recycle_overview = (response) => {
     if (!section) {
         return;
     }
+    let totalBytes = 0;
+    let totalItems = response?.nodeList?.length ?? 0;
     /*
     let column = 0;
     let ul = create('ul');
@@ -1162,6 +1164,7 @@ file.recycle_overview = (response) => {
         let li_item;
         for(let index=0; index < list.length; index++){
             let node = list[index];
+            totalBytes+=node.size;
             li_item = create('li');
             li_item.addClass('date');
             li_item.html('<div><br></div>');
@@ -1214,6 +1217,21 @@ file.recycle_overview = (response) => {
         }
          */
 
+    }
+    const footer = section.select('.footer');
+    if(footer){
+        const item = footer.select('.item');
+        if(item){
+            if(totalItems === 1){
+                item.html(totalItems + ' ' + __('file.manager.item'));
+            } else {
+                item.html(totalItems + ' ' + __('file.manager.items'));
+            }
+        }
+        const size = footer.select('.size');
+        if(size){
+            size.html(file.size(totalBytes));
+        }
     }
 }
 

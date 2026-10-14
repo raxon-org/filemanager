@@ -1126,7 +1126,7 @@ file.recycle_overview = (response) => {
         ul.addClass('recycle-list');
         let li = create('li');
         li.addClass('header date');
-        li.html('<div>' + date + '<br><hr></div>');
+        li.html('<div>' + date + '<br></div>');
         ul.appendChild(li);
         column++;
         li = create('li');

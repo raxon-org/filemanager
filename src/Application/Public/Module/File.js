@@ -1141,7 +1141,7 @@ file.recycle_overview = (response) => {
         column++;
         li = create('li');
         li.addClass('header options');
-        li.html('<div>Options:<br></div>');
+        li.html('<div><svg src="/Application/Filemanager/Icon/Recycle.Bin.Restore.svg"><br></div>');
         ul.appendChild(li);
         column++;
         let list = response.nodeList[date];

@@ -550,6 +550,11 @@ section[name="application-file-manager"] .list ul.recycle-list li {
     height: 24px;
 }
 
+section[name="application-file-manager"] .list li span.empty {
+    padding-left: 20px;
+}
+
+
 section[name="application-file-manager"] .list li.options span.restore {
     padding-right: 20px;
     padding-left: 20px;

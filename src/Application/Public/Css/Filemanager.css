@@ -579,13 +579,22 @@ section[name="application-file-manager"] ul.recycle-overview li.empty-recycle-bi
     margin-left: 10px;
 }
 
-section[name="application-file-manager"] ul.recycle-overview li.restore-recycle-bin {
+section[name="application-file-manager"] ul.recycle-overview li.empty-recycle-bin {
     clear: right;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     padding-left: 20px;
     padding-right: 20px;
     margin-right: 10px;
+}
+
+section[name="application-file-manager"] ul.recycle-overview li.restore-recycle-bin {
+    clear: left;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 10px;
 }
 
 section[name="application-file-manager"] .list ul.recycle-overview li.date {

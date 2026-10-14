@@ -1167,7 +1167,15 @@ file.recycle_overview = (response) => {
             totalBytes+=node.size;
             li_item = create('li');
             li_item.addClass('date');
-            li_item.html('<div><br></div>');
+            if(node.type==='Dir'){
+                li_item.html('<div><span class="type"><i class="far fa-folder"></i></span></div>');
+            }
+            else if (node.type === 'Link'){
+                li_item.html('<div><span class="type"><i class="far fa-link"></i></span></div>');
+            }
+            else {
+                li_item.html('<div><span class="type"><i class="far fa-file"></i></span></div>');
+            }
             ul.appendChild(li_item);
             li_item = create('li');
             li_item.addClass('source');

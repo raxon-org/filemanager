@@ -1187,6 +1187,7 @@ file.recycle_overview = (response) => {
         ul_list_column.push(column);
     }
     console.log(ul_list);
+    console.log(list);
     if(list) {
         for(let index; index < ul_list.length; index++){
             list.appendChild(ul_list[index]);

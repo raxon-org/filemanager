@@ -554,10 +554,12 @@ section[name="application-file-manager"] .list li.source span.restore {
     padding: 5px;
     border-radius: 5px;
     border: 1px solid rgba(255, 124, 13, 1);
+    margin: 5px;
 }
 
 section[name="application-file-manager"] .list li.source span.empty {
-    padding-left: 20px;
+    margin: 5px;
+    margin-left: 20px;
     padding: 5px;
     border-radius: 5px;
     border: 1px solid rgba(255, 124, 13, 1);

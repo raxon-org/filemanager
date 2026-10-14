@@ -548,10 +548,12 @@ section[name="application-file-manager"] .list li.header {
 
 section[name="application-file-manager"] .list li.header.options span.restore:hover {
     color: rgba(255, 124, 13, 1);
+    margin-right: 20px;
 }
 
 section[name="application-file-manager"] .list li.header.options span.delete:hover {
     color: rgba(200, 0, 0, 1);
+    margin-right: 20px;
 }
 
 section[name="application-file-manager"] .list ul.recycle-list li.size {
@@ -560,6 +562,9 @@ section[name="application-file-manager"] .list ul.recycle-list li.size {
 
 section[name="application-file-manager"] .list ul.recycle-list li.header.options {
     clear: right;
+    border-top-left-radius: 10px;
+    margin-left: 10px;
+    padding-left: 20px;
 }
 
 section[name="application-file-manager"] .list ul.recycle-list li.header.date {

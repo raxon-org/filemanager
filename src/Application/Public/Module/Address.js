@@ -20,21 +20,27 @@ address.resize = () => {
     }
     let is_link = file.data.get('address.link') ?? false;
     if(is_link){
+        const data = file.data.get('response');
+        if(
+            data
+        ){
+            file.recycle_overview(data);
+        }
+        /*
         const list = section.select('.list');
         let header = list.select('.header');
         let column = header.length ?? 1;
         if(list){
             file.calculate_list(list, column);
         }
+         */
         return;
     } else {
-        const config = file.data.get('config');
-        const data = file.data.get('directory.current.list');
+        const data = file.data.get('response');
         if(
-            config &&
             data
         ){
-            file.list(config, data);
+            file.list(data);
         }
     }
 
@@ -459,11 +465,12 @@ address.bar = () => {
                 }
             } else {
                 if(is_link){
-                    //file.data.set('directory.current.list', response);
+                    file.data.set('response', response);
                     file.recycle_overview(response);
                 } else {
                     // file.data.set('config', config);
-                    file.data.set('directory.current.list', response);
+                    file.data.set('response', response);
+                    //file.data.set('directory.current.list', response);
                     file.list(response);
                 }
 

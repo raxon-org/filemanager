@@ -1165,13 +1165,6 @@ file.recycle_overview = (response) => {
             li_item = create('li');
             li_item.addClass('date');
             li_item.html('<div><br></div>');
-            /*
-            li_item.html('' +
-                '<div>' +
-                '<span class="date">' + date + '</span>' +
-                '</div>'
-            );
-             */
             ul.appendChild(li_item);
             li_item = create('li');
             li_item.addClass('source');

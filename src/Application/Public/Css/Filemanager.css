@@ -556,14 +556,11 @@ section[name="application-file-manager"] .list li.options span.delete:hover {
 
 section[name="application-file-manager"] .list ul.recycle-list li.size {
     clear: none;
-    margin-right: 0;
 }
 
 section[name="application-file-manager"] .list ul.recycle-list li.header.options {
     clear: right;
     border-top-left-radius: 10px;
-    margin-left: 10px;
-    padding-left: 20px;
 }
 
 section[name="application-file-manager"] .list ul.recycle-list li.header.date {

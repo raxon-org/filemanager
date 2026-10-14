@@ -1110,6 +1110,7 @@ file.recycle_overview = (response) => {
     );
     ul.appendChild(li_item);
     column++;
+    const list = section.select('.list');
     if(list) {
         list.html('');
         list.appendChild(ul);
@@ -1185,7 +1186,6 @@ file.recycle_overview = (response) => {
         ul_list.push(ul);
         ul_list_column.push(column);
     }
-    const list = section.select('.list');
     if(list) {
         for(let index; index < ul_list.length; index++){
             list.appendChild(ul_list[index]);

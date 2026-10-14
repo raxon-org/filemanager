@@ -1212,11 +1212,8 @@ file.recycle_overview = (response) => {
                 '</svg>' +
             '</span>' +
                 '<span class="delete">'+
-                '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">' + "\n" +
-                '<path d="M3.5 5.5h13"/>' + "\n" +
-                '<path d="M7 5.5V3.5h6v2"/>' + "\n" +
-                '<path d="M5.5 5.5l.8 11h7.4l.8-11"/>' + "\n" +
-                '<path d="M8 8.5v5.5M12 8.5v5.5"/>' + "\n" +
+                '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">' + "\n" +
+                '<path d="M6.5 3.5V2.8A1.3 1.3 0 0 1 7.8 1.5h4.4a1.3 1.3 0 0 1 1.3 1.3v.7M2.5 4.5h15M4.2 4.5l.9 12.1a1.5 1.5 0 0 0 1.5 1.4h5.1M15.8 4.5l-.4 5.2M8 7.2l.4 7.1M11.5 7.2l-.2 3.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>' + "\n" +
                 '</svg>' +
                 '</span>' +
                 '</div>'

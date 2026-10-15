@@ -500,7 +500,7 @@ section[name="application-file-manager"] .list ul {
     position: absolute;
 }
 
-section[name="application-file-manager"] .list li {
+section[name="application-file-manager"] .list ul.file-list li {
     float: left;
     padding: 5px;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 33, 177, 0.4));
@@ -513,12 +513,12 @@ section[name="application-file-manager"] .list li {
     border-bottom: 1px solid transparent;
 }
 
-section[name="application-file-manager"] .list li.selected {
+section[name="application-file-manager"] .list ul.file-list li.selected {
     border-top: 1px solid rgba(255, 124, 13, 1);
     border-bottom: 1px solid rgba(255, 124, 13, 1);
 }
 
-section[name="application-file-manager"] .list li.icon {
+section[name="application-file-manager"] .list ul.file-list li.icon {
     clear: left;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -526,11 +526,11 @@ section[name="application-file-manager"] .list li.icon {
     margin-left: 10px;
 }
 
-section[name="application-file-manager"] .list li.name {
+section[name="application-file-manager"] .list ul.file-list li.name {
     min-width: 150px;
 }
 
-section[name="application-file-manager"] .list li.size {
+section[name="application-file-manager"] .list ul.file-list li.size {
     clear: right;
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -538,7 +538,7 @@ section[name="application-file-manager"] .list li.size {
     padding-right: 20px;
 }
 
-section[name="application-file-manager"] .list li.header {
+section[name="application-file-manager"] .list ul.file-list li.header {
     position: sticky;
     top: 0;
     background-image: linear-gradient(rgba(225, 225, 225, 0.5), rgba(0, 33, 177, 0.4));
@@ -546,6 +546,14 @@ section[name="application-file-manager"] .list li.header {
     border-bottom-right-radius: 0;
 }
 
+
+section[name="application-file-manager"] .list ul.recycle-list li.header {
+    position: sticky;
+    top: 0;
+    background-image: linear-gradient(rgba(225, 225, 225, 0.5), rgba(0, 33, 177, 0.4));
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
 section[name="application-file-manager"] .list ul.recycle-list li {
     height: 24px;
 }
@@ -554,7 +562,7 @@ section[name="application-file-manager"] .list ul.recycle-list li.title {
     height: 50px;
 }
 
-section[name="application-file-manager"] .list li.source span.restore {
+section[name="application-file-manager"] .list ul.recycle-list li.source span.restore {
     display: inline-block;
     padding: 5px;
     border-radius: 5px;
@@ -562,12 +570,12 @@ section[name="application-file-manager"] .list li.source span.restore {
     margin: 5px;
 }
 
-section[name="application-file-manager"] .list li.source span.restore:hover {
+section[name="application-file-manager"] .list ul.recycle-list li.source span.restore:hover {
     border: 1px solid rgba(255, 255, 255, 1);
     cursor: pointer;
 }
 
-section[name="application-file-manager"] .list li.source span.empty {
+section[name="application-file-manager"] .list ul.recycle-list li.source span.empty {
     display: inline-block;
     margin: 5px;
     margin-left: 20px;
@@ -576,26 +584,26 @@ section[name="application-file-manager"] .list li.source span.empty {
     border: 1px solid rgba(255, 124, 13, 1);
 }
 
-section[name="application-file-manager"] .list li.source span.empty:hover {
+section[name="application-file-manager"] .list ul.recycle-list li.source span.empty:hover {
     border: 1px solid rgba(200, 0, 0, 1);
     cursor: pointer;
 }
 
 
-section[name="application-file-manager"] .list li.options span.restore {
+section[name="application-file-manager"] .list ul.recycle-list li.options span.restore {
     padding-right: 20px;
     padding-left: 20px;
 }
 
-section[name="application-file-manager"] .list li.options span.delete {
+section[name="application-file-manager"] .list ul.recycle-list li.options span.delete {
     padding-right: 20px;
 }
 
-section[name="application-file-manager"] .list li.options span.restore:hover {
+section[name="application-file-manager"] .list ul.recycle-list li.options span.restore:hover {
     color: rgba(255, 124, 13, 1);
 }
 
-section[name="application-file-manager"] .list li.options span.delete:hover {
+section[name="application-file-manager"] .list ul.recycle-list li.options span.delete:hover {
     color: rgba(200, 0, 0, 1);
 }
 

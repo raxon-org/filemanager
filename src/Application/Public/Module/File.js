@@ -1291,6 +1291,7 @@ file.list = (response) => {
     let totalBytes = 0;
     let totalItems = response?.nodeList?.length ?? 0;
     let create_ul = create('ul');
+    create_ul.addClass('file-list');
     let li = create('li');
     li.addClass('header icon');
     li.html(__('file.manager.icon'));

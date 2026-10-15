@@ -34,5 +34,7 @@
     "file.manager.contextmenu.delete": "Delete",
     "file.manager.contextmenu.audio_options" : "Audio options",
     "file.manager.contextmenu.audio_options_song_play" : "Play song",
-    "file.manager.contextmenu.audio_options_song_queue" : "Queue song(s)"
+    "file.manager.contextmenu.audio_options_song_queue" : "Queue song(s)",
+    "file.manager.recycle.bin.restore.complete": "Restore complete content",
+    "file.manager.recycle.bin.empty.complete": "Empty complete recycle bin"
 }

@@ -1664,9 +1664,18 @@ file.list = (response) => {
     refresh.removeClass('fa-spin');
 }
 
+file.scrollbar_width = (element) =>  {
+    const style = getComputedStyle(element);
+
+    return element.offsetWidth
+        - element.clientWidth
+        - parseFloat(style.borderLeftWidth)
+        - parseFloat(style.borderRightWidth);
+}
+
 file.calculate_list = (list, column) => {
     let total_width = list.computedStyle('width');
-    const scrollbar_width = list.computedStyle('scrollbar-width');
+    const scrollbar_width = file.scrollbar_width(list);
 
     console.log(scrollbar_width);
     if(total_width.split('px').length > 1){

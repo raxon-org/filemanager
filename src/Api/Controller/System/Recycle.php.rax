@@ -109,7 +109,6 @@ class Recycle extends Controller {
                 'source' => $object->request('url'),
                 'attribute' => $attribute,
                 'target' => $target,
-                'type' => $type,
                 'user' => $user->uuid,
                 'is' => (object) [
                     'created' => microtime(true)

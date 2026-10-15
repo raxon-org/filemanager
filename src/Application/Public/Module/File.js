@@ -1202,17 +1202,20 @@ file.recycle_overview = (response) => {
             totalBytes+=node.size;
             li_item = create('li');
             li_item.addClass('date');
-            console.log(node);
-            if(node.type === 'Dir'){
-                li_item.html('<div><span class="type"><i class="far fa-folder"></i></span></div>');
+            let attribute = node.attribute ?? [];
+            let elem = attribute[attribute.length-1];
+            if(elem && elem.type){
+                if(elem.type === 'Dir'){
+                    li_item.html('<div><span class="type"><i class="far fa-folder"></i></span></div>');
+                }
+                else if (elem.type === 'Link'){
+                    li_item.html('<div><span class="type"><i class="far fa-link"></i></span></div>');
+                }
+                else {
+                    li_item.html('<div><span class="type"><i class="far fa-file"></i></span></div>');
+                }
+                ul.appendChild(li_item);
             }
-            else if (node.type === 'Link'){
-                li_item.html('<div><span class="type"><i class="far fa-link"></i></span></div>');
-            }
-            else {
-                li_item.html('<div><span class="type"><i class="far fa-file"></i></span></div>');
-            }
-            ul.appendChild(li_item);
             li_item = create('li');
             li_item.addClass('source');
             li_item.html('' +

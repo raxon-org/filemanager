@@ -1667,7 +1667,7 @@ file.list = (response) => {
 file.calculate_list = (list, column) => {
     let total_width = list.computedStyle('width');
     const scrollbar_width =
-        element.offsetWidth - element.clientWidth;
+        list.offsetWidth - list.clientWidth;
 
     console.log(scrollbar_width);
     if(total_width.split('px').length > 1){

@@ -1202,7 +1202,8 @@ file.recycle_overview = (response) => {
             totalBytes+=node.size;
             li_item = create('li');
             li_item.addClass('date');
-            if(node.type==='Dir'){
+            console.log(node);
+            if(node.type === 'Dir'){
                 li_item.html('<div><span class="type"><i class="far fa-folder"></i></span></div>');
             }
             else if (node.type === 'Link'){

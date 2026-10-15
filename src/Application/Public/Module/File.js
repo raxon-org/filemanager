@@ -1666,7 +1666,7 @@ file.list = (response) => {
 
 file.scrollbar_width = (element) =>  {
     const style = getComputedStyle(element);
-
+    console.log(style);
     return element.offsetWidth
         - element.clientWidth
         - parseFloat(style.borderLeftWidth)

@@ -1284,15 +1284,12 @@ file.recycle_overview = (response) => {
             });
              */
         }
-        li.options.data('uuid', JSON.stringify(datapoint));
+        li_options.data('uuid', JSON.stringify(datapoint));
         // ul_list.push(ul);
         // ul_list_column.push(column);
     }
     if(list) {
         list.appendChild(ul);
-        li_options
-
-
         let button_restore_all = list.select('.title .restore');
         button_restore_all.on('click', function(e){
             e.preventDefault();
@@ -1310,7 +1307,7 @@ file.recycle_overview = (response) => {
                 button.on('click', function(e){
                     e.preventDefault();
                     let li_option = button.closest('li');
-                    let uuid = li_option.options.data('uuid');
+                    let uuid = li_option.data('uuid');
                     console.log(uuid);
                     alert('restore data point');
                 });

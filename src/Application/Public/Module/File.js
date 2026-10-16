@@ -1687,8 +1687,10 @@ file.scrollbar_width = (element) =>  {
 
 file.calculate_list = (list, column) => {
     let total_width = list.computedStyle('width');
-    let content_width = list.computedStyle('content-width');
+    let content_width = list.contentWidth;
+    console.log(content_width);
     const scrollbar_width = file.scrollbar_width(list);
+    /*
     if(content_width.split('px').length > 1){
         content_width = parseFloat(content_width.split('px')[0]);
         if(total_width.split('px').length > 1){
@@ -1698,9 +1700,11 @@ file.calculate_list = (list, column) => {
             }
         }
     } else {
-        if(total_width.split('px').length > 1) {
-            total_width = parseFloat(total_width.split('px')[0]);
-        }
+
+    }
+     */
+    if(total_width.split('px').length > 1) {
+        total_width = parseFloat(total_width.split('px')[0]);
     }
     let li = list.select('li');
     let index = 0;

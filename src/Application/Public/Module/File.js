@@ -1178,9 +1178,9 @@ file.recycle_overview = (response) => {
         li.html('<div>Size:<br></div>');
         ul.appendChild(li);
         column++;
-        li = create('li');
-        li.addClass('header datapoint options');
-        li.html('<div >' +
+        let li_options = create('li');
+        li_options.addClass('header datapoint options');
+        li_options.html('<div >' +
             '<span class="restore" title="Restore: '+ date +' data-point">' +
             '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 640 640">' +
             '<!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc. -->' +
@@ -1209,12 +1209,14 @@ file.recycle_overview = (response) => {
             alert('delete data point');
         });
          */
-        ul.appendChild(li);
+        ul.appendChild(li_options);
         column++;
         let list = response.nodeList[date];
         let li_item;
+        let datapoint = [];
         for(let index=0; index < list.length; index++){
             let node = list[index];
+            datapoint.push(node.uuid);
             totalBytes+=node.size;
             li_item = create('li');
             li_item.addClass('location date');
@@ -1282,11 +1284,15 @@ file.recycle_overview = (response) => {
             });
              */
         }
+        li.options.data('uuid', JSON.stringify(datapoint));
         // ul_list.push(ul);
         // ul_list_column.push(column);
     }
     if(list) {
         list.appendChild(ul);
+        li_options
+
+
         let button_restore_all = list.select('.title .restore');
         button_restore_all.on('click', function(e){
             e.preventDefault();
@@ -1303,6 +1309,9 @@ file.recycle_overview = (response) => {
                 let button = button_restore_point[index];
                 button.on('click', function(e){
                     e.preventDefault();
+                    let li_option = button.closest('li');
+                    let uuid = li_option.options.data('uuid');
+                    console.log(uuid);
                     alert('restore data point');
                 });
             }

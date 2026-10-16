@@ -1257,7 +1257,11 @@ file.recycle_overview = (response) => {
     }
     if(list) {
         list.appendChild(ul);
-        file.calculate_list(list, 4);
+        //might be needed to constuct the scrollbar
+        setTimeout( () => {
+            file.calculate_list(list, 4);
+        });
+
         /*
         for(let index=0; index < ul_list.length; index++){
             list.appendChild(ul_list[index]);
@@ -1687,7 +1691,7 @@ file.scrollbar_width = (element) =>  {
 
 file.calculate_list = (list, column) => {
     let total_width = list.computedStyle('width');
-    let content_width = list.contentWidth;
+    //let content_width = list.contentWidth;
     console.log(content_width);
     const scrollbar_width = file.scrollbar_width(list);
     /*

@@ -1148,7 +1148,18 @@ file.recycle_overview = (response) => {
         '</span>' +
         '<br>' +
         '</div>');
+    let button_restore = li.select('.restore');
+    button_restore.on('click', function(e){
+        e.preventDefault();
+        alert('restore all');
+    });
+    let button_delete = li.select('.delete');
+    button_delete.on('click', function(e){
+        e.preventDefault();
+        alert('delete all');
+    });
     ul.appendChild(li);
+
     column++;
     li = create('li');
     li.addClass('title header size');
@@ -1193,6 +1204,18 @@ file.recycle_overview = (response) => {
             '</svg>' +
             '</span>' +
             '</div>');
+        let button_restore = li.select('.restore');
+        button_restore.on('click', function(e){
+            e.preventDefault();
+            console.log(node);
+            alert('restore data point');
+        });
+        let button_delete = li.select('.delete');
+        button_delete.on('click', function(e){
+            e.preventDefault();
+            console.log(node);
+            alert('delete data point');
+        });
         ul.appendChild(li);
         column++;
         let list = response.nodeList[date];
@@ -1251,6 +1274,18 @@ file.recycle_overview = (response) => {
                 '</div>'
             );
             ul.appendChild(li_item);
+            let button_restore = li_item.select('.restore');
+            button_restore.on('click', function(e){
+                e.preventDefault();
+                console.log(node);
+                alert('restore');
+            });
+            let button_delete = li_item.select('.delete');
+            button_delete.on('click', function(e){
+                e.preventDefault();
+                console.log(node);
+                alert('delete');
+            });
         }
         // ul_list.push(ul);
         // ul_list_column.push(column);

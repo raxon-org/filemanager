@@ -1292,10 +1292,10 @@ file.recycle_overview = (response) => {
             e.preventDefault();
             alert('restore all');
         });
-        let button_delete_all = list.select('.title .delete');
-        button_delete_all.on('click', function(e){
+        let button_empty_all = list.select('.title .empty');
+        button_empty_all.on('click', function(e){
             e.preventDefault();
-            alert('delete all');
+            alert('empty all');
         });
         let button_restore_point = list.select('.datapoint .restore');
         if(is.nodeList(button_restore_point)){

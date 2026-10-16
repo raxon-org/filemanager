@@ -1665,22 +1665,6 @@ file.list = (response) => {
 }
 
 file.scrollbar_width = (element) =>  {
-    /*
-    var $div = $('<div />')
-        .css({ width: 100, height: 100, overflow: 'auto', position: 'absolute', top: -1000, left: -1000 })
-        .prependTo('body').append('<div />').find('div')
-        .css({ width: '100%', height: 200 });
-    scrollbarWidth = 100 - $div.width();
-    $div.parent().remove();
-     */
-
-    let scrollbar = element.scrollbar('all');
-    console.log(scrollbar);
-}
-
-file.calculate_list = (list, column) => {
-    let total_width = list.computedStyle('width');
-    //const scrollbar_width = file.scrollbar_width(list);
 
     let div = create('div');
     div.css('width', '100px');
@@ -1695,19 +1679,16 @@ file.calculate_list = (list, column) => {
     div_child.css('width', '100%');
     div_child.css('height', '200px');
     div.appendChild(div_child);
-    list.appendChild(div);
-    let width = div.offsetWidth - div.clientWidth;
-    console.log(100 - width);
-    /*
-    var $div = $('<div />')
-        .css({ width: 100, height: 100, overflow: 'auto', position: 'absolute', top: -1000, left: -1000 })
-        .prependTo('body').append('<div />').find('div')
-        .css({ width: '100%', height: 200 });
-    scrollbarWidth = 100 - $div.width();
-    $div.parent().remove();
-     */
+    element.appendChild(div);
+    let result = div.offsetWidth - div.clientWidth;
+    element.removeChild(div);
+    return result;
+}
 
-    // console.log(scrollbar_width);
+file.calculate_list = (list, column) => {
+    let total_width = list.computedStyle('width');
+    const scrollbar_width = file.scrollbar_width(list);
+     console.log(scrollbar_width);
     if(total_width.split('px').length > 1){
         total_width = parseFloat(total_width.split('px')[0]);
     }

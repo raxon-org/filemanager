@@ -1688,9 +1688,9 @@ file.scrollbar_width = (element) =>  {
 file.calculate_list = (list, column) => {
     let total_width = list.computedStyle('width');
     const scrollbar_width = file.scrollbar_width(list);
-     console.log(scrollbar_width);
     if(total_width.split('px').length > 1){
         total_width = parseFloat(total_width.split('px')[0]);
+        total_width = total_width - scrollbar_width;
     }
     let li = list.select('li');
     let index = 0;

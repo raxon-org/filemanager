@@ -1687,10 +1687,20 @@ file.scrollbar_width = (element) =>  {
 
 file.calculate_list = (list, column) => {
     let total_width = list.computedStyle('width');
+    let content_width = list.computedStyle('content-width');
     const scrollbar_width = file.scrollbar_width(list);
-    if(total_width.split('px').length > 1){
-        total_width = parseFloat(total_width.split('px')[0]);
-        total_width = total_width - scrollbar_width;
+    if(content_width.split('px').length > 1){
+        content_width = parseFloat(content_width.split('px')[0]);
+        if(total_width.split('px').length > 1){
+            total_width = parseFloat(total_width.split('px')[0]);
+            if(total_width != content_width){
+                total_width = total_width - scrollbar_width;
+            }
+        }
+    } else {
+        if(total_width.split('px').length > 1) {
+            total_width = parseFloat(total_width.split('px')[0]);
+        }
     }
     let li = list.select('li');
     let index = 0;

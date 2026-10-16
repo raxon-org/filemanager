@@ -1696,7 +1696,7 @@ file.calculate_list = (list, column) => {
     div_child.css('height', '200px');
     div.appendChild(div_child);
     list.appendChild(div);
-    let width = div.offsetWidth;
+    let width = div.offsetWidth - div.clientWidth;
     console.log(100 - width);
     /*
     var $div = $('<div />')

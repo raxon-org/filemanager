@@ -1696,7 +1696,7 @@ file.calculate_list = (list, column) => {
     div_child.css('height', '200px');
     div.appendChild(div_child);
     list.appendChild(div);
-    let width = div.computedStyle('width');
+    let width = div.offsetWidth;
     console.log(100 - width);
     /*
     var $div = $('<div />')
@@ -1707,7 +1707,7 @@ file.calculate_list = (list, column) => {
     $div.parent().remove();
      */
 
-    console.log(scrollbar_width);
+    // console.log(scrollbar_width);
     if(total_width.split('px').length > 1){
         total_width = parseFloat(total_width.split('px')[0]);
     }

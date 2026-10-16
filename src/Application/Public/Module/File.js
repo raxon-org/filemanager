@@ -1307,7 +1307,7 @@ file.recycle_overview = (response) => {
                 button.on('click', function(e){
                     e.preventDefault();
                     let li_option = button.closest('li');
-                    let uuid = li_option.data('uuid');
+                    let uuid = JSON.parse(li_option.data('uuid'));
                     console.log(uuid);
                     alert('restore data point');
                 });
@@ -1315,6 +1315,9 @@ file.recycle_overview = (response) => {
         } else if(button_restore_point){
             button_restore_point.on('click', function(e){
                 e.preventDefault();
+                let li_option = button.closest('li');
+                let uuid = JSON.parse(li_option.data('uuid'));
+                console.log(uuid);
                 alert('restore data point');
             });
         }
@@ -1324,12 +1327,18 @@ file.recycle_overview = (response) => {
                 let button = button_delete_point[index];
                 button.on('click', function(e){
                     e.preventDefault();
+                    let li_option = button.closest('li');
+                    let uuid = JSON.parse(li_option.data('uuid'));
+                    console.log(uuid);
                     alert('delete data point');
                 });
             }
         } else if(button_delete_point){
             button_delete_point.on('click', function(e){
                 e.preventDefault();
+                let li_option = button.closest('li');
+                let uuid = JSON.parse(li_option.data('uuid'));
+                console.log(uuid);
                 alert('delete data point');
             });
         }

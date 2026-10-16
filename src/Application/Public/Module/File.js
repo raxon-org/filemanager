@@ -1148,16 +1148,7 @@ file.recycle_overview = (response) => {
         '</span>' +
         '<br>' +
         '</div>');
-    let button_restore = li.select('.restore');
-    button_restore.on('click', function(e){
-        e.preventDefault();
-        alert('restore all');
-    });
-    let button_delete = li.select('.delete');
-    button_delete.on('click', function(e){
-        e.preventDefault();
-        alert('delete all');
-    });
+
     ul.appendChild(li);
 
     column++;
@@ -1173,22 +1164,22 @@ file.recycle_overview = (response) => {
     for(let date in response.nodeList){
         column = 0;
         let li = create('li');
-        li.addClass('header date');
+        li.addClass('header datapoint date');
         li.html('<div>' + date + '<br></div>');
         ul.appendChild(li);
         column++;
         li = create('li');
-        li.addClass('header source');
+        li.addClass('header datapoint source');
         li.html('<div>Source:<br></div>');
         ul.appendChild(li);
         column++;
         li = create('li');
-        li.addClass('header size');
+        li.addClass('header datapoint size');
         li.html('<div>Size:<br></div>');
         ul.appendChild(li);
         column++;
         li = create('li');
-        li.addClass('header options');
+        li.addClass('header datapoint options');
         li.html('<div >' +
             '<span class="restore" title="Restore: '+ date +' data-point">' +
             '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 640 640">' +
@@ -1204,6 +1195,7 @@ file.recycle_overview = (response) => {
             '</svg>' +
             '</span>' +
             '</div>');
+        /*
         let button_restore = li.select('.restore');
         button_restore.on('click', function(e){
             e.preventDefault();
@@ -1216,6 +1208,7 @@ file.recycle_overview = (response) => {
             console.log(node);
             alert('delete data point');
         });
+         */
         ul.appendChild(li);
         column++;
         let list = response.nodeList[date];
@@ -1224,7 +1217,7 @@ file.recycle_overview = (response) => {
             let node = list[index];
             totalBytes+=node.size;
             li_item = create('li');
-            li_item.addClass('date');
+            li_item.addClass('location date');
             let attribute = node.attribute ?? [];
             let elem = attribute[attribute.length-1];
             if(elem && elem.type){
@@ -1240,7 +1233,7 @@ file.recycle_overview = (response) => {
                 ul.appendChild(li_item);
             }
             li_item = create('li');
-            li_item.addClass('source');
+            li_item.addClass('location source');
             li_item.html('' +
                 '<div>' +
                 '<span class="value">' + node.source +'</span>' +
@@ -1248,7 +1241,7 @@ file.recycle_overview = (response) => {
             );
             ul.appendChild(li_item);
             li_item = create('li');
-            li_item.addClass('size');
+            li_item.addClass('location size');
             li_item.html('' +
                 '<div>' +
                 '<span class="value">' + node.size_format + '</span>' +
@@ -1256,16 +1249,16 @@ file.recycle_overview = (response) => {
             );
             ul.appendChild(li_item);
             li_item = create('li');
-            li_item.addClass('options');
+            li_item.addClass('location options');
             li_item.html('' +
                 '<div>' +
-                '<span class="restore">'+
+                '<span class="restore" data-uuid="' + node.uuid +'">'+
                 '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 640 640">' +
                 '<!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc. -->' +
                 '<path fill="currentColor" d="M216.3 124C262.5 44 378 44 424.2 124L461.5 188.6L489.2 172.6C497.6 167.7 508.1 168.4 515.8 174.3C523.5 180.2 526.9 190.2 524.4 199.6L500.9 287C497.5 299.8 484.3 307.4 471.5 304L384.1 280.6C374.7 278.1 367.8 270.2 366.5 260.6C365.2 251 369.9 241.5 378.3 236.7L406 220.7L368.7 156.1C347.1 118.8 293.3 118.8 271.7 156.1L266.4 165.2C257.6 180.5 238 185.7 222.7 176.9C207.4 168.1 202.2 148.5 211 133.1L216.3 124zM513.7 343.1C529 334.3 548.6 339.5 557.4 354.8L562.7 363.9C608.9 443.9 551.2 543.9 458.8 543.9L384.2 543.9L384.2 575.9C384.2 585.6 378.4 594.4 369.4 598.1C360.4 601.8 350.1 599.8 343.2 592.9L279.2 528.9C269.8 519.5 269.8 504.3 279.2 495L343.2 431C350.1 424.1 360.4 422.1 369.4 425.8C378.4 429.5 384.2 438.3 384.2 448L384.2 480L458.8 480C501.9 480 528.9 433.3 507.3 396L502 386.9C493.2 371.6 498.4 352 513.7 343.2zM115 299.4L87.3 283.4C78.9 278.5 74.2 269.1 75.5 259.5C76.8 249.9 83.7 242 93.1 239.5L180.5 216C193.3 212.6 206.5 220.2 209.9 233L233.3 320.4C235.8 329.8 232.4 339.7 224.7 345.7C217 351.7 206.5 352.3 198.1 347.4L170.4 331.4L133.1 396C111.5 433.3 138.5 480 181.6 480L192.2 480C209.9 480 224.2 494.3 224.2 512C224.2 529.7 209.9 544 192.2 544L181.6 544C89.3 544 31.6 444 77.8 364L115 299.4z"/>' +
                 '</svg>' +
             '</span>' +
-                '<span class="delete">'+
+                '<span class="delete" data-uuid="' + node.uuid +'">'+
                 '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 640 640">' +
                 '<!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc. -->' +
                 '<path fill="currentColor" d="M232.7 69.9C237.1 56.8 249.3 48 263.1 48L377 48C390.8 48 403 56.8 407.4 69.9L416 96L512 96C529.7 96 544 110.3 544 128C544 145.7 529.7 160 512 160L128 160C110.3 160 96 145.7 96 128C96 110.3 110.3 96 128 96L224 96L232.7 69.9zM128 208L512 208L512 512C512 547.3 483.3 576 448 576L192 576C156.7 576 128 547.3 128 512L128 208zM216 272C202.7 272 192 282.7 192 296L192 488C192 501.3 202.7 512 216 512C229.3 512 240 501.3 240 488L240 296C240 282.7 229.3 272 216 272zM320 272C306.7 272 296 282.7 296 296L296 488C296 501.3 306.7 512 320 512C333.3 512 344 501.3 344 488L344 296C344 282.7 333.3 272 320 272zM424 272C410.7 272 400 282.7 400 296L400 488C400 501.3 410.7 512 424 512C437.3 512 448 501.3 448 488L448 296C448 282.7 437.3 272 424 272z"/>'+
@@ -1274,6 +1267,7 @@ file.recycle_overview = (response) => {
                 '</div>'
             );
             ul.appendChild(li_item);
+            /*
             let button_restore = li_item.select('.restore');
             button_restore.on('click', function(e){
                 e.preventDefault();
@@ -1286,12 +1280,85 @@ file.recycle_overview = (response) => {
                 console.log(node);
                 alert('delete');
             });
+             */
         }
         // ul_list.push(ul);
         // ul_list_column.push(column);
     }
     if(list) {
         list.appendChild(ul);
+        let button_restore_all = list.select('.title .restore');
+        button_restore_all.on('click', function(e){
+            e.preventDefault();
+            alert('restore all');
+        });
+        let button_delete_all = list.select('.title .delete');
+        button_delete_all.on('click', function(e){
+            e.preventDefault();
+            alert('delete all');
+        });
+        let button_restore_point = list.select('.datapoint .restore');
+        if(is.nodeList(button_restore_point)){
+            for(let index=0; index < button_restore_point.length; index++){
+                let button = button_restore_point[index];
+                button.on('click', function(e){
+                    e.preventDefault();
+                    alert('restore data point');
+                });
+            }
+        } else if(button_restore_point){
+            button_restore_point.on('click', function(e){
+                e.preventDefault();
+                alert('restore data point');
+            });
+        }
+        let button_delete_point = list.select('.datapoint .delete');
+        if(is.nodeList(button_delete_point)){
+            for(let index=0; index < button_delete_point.length; index++){
+                let button = button_delete_point[index];
+                button.on('click', function(e){
+                    e.preventDefault();
+                    alert('delete data point');
+                });
+            }
+        } else if(button_delete_point){
+            button_delete_point.on('click', function(e){
+                e.preventDefault();
+                alert('delete data point');
+            });
+        }
+        let button_restore_location = list.select('.location .restore');
+        if(is.nodeList(button_restore_location)){
+            for(let index=0; index < button_restore_location.length; index++){
+                let button = button_restore_location[index];
+                button.on('click', function(e){
+                    e.preventDefault();
+                    alert('restore uuid:' + button.data('uuid'));
+                });
+            }
+        } else if(button_restore_location){
+            button_restore_location.on('click', function(e){
+                e.preventDefault();
+                alert('restore uuid:' + button_restore_location.data('uuid'));
+            });
+        }
+
+        let button_delete_location = list.select('.location .delete');
+        if(is.nodeList(button_delete_location)){
+            for(let index=0; index < button_delete_location.length; index++){
+                let button = button_delete_location[index];
+                button.on('click', function(e){
+                    e.preventDefault();
+                    alert('delete uuid:' + button.data('uuid'));
+                });
+            }
+        } else if(button_delete_location){
+            button_delete_location.on('click', function(e){
+                e.preventDefault();
+                alert('delete uuid:' + button_delete_location.data('uuid'));
+            });
+        }
+
         //might be needed to constuct the scrollbar
         setTimeout( () => {
             file.calculate_list(list, 4);

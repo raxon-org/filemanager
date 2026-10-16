@@ -64,7 +64,7 @@ require(
             "route.backend.recycle.bin.delete.record": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}Filemanager/Recycle/Bin/Delete/",
             "route.backend.recycle.bin.restore.all": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}Filemanager/Recycle/Bin/Restore/All/",
             "route.backend.recycle.bin.restore.many": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}Filemanager/Recycle/Bin/Restore/Many/",
-            "route.backend.recycle.bin.restore.record": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}Filemanager/Recycle/Bin/Restore/
+            "route.backend.recycle.bin.restore.record": "{{server.url(\"{{/literal}}{{$backend.host}}{{literal}}\")}}Filemanager/Recycle/Bin/Restore/",
             "route.frontend.address.bar":"{{route.get($section.name + '-address-bar')}}",
             "route.frontend.directory":"{{route.get($section.name + '-list-directory')}}",
             "route.frontend.link":"{{route.get($section.name + '-list-link')}}",

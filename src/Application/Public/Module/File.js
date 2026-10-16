@@ -1665,13 +1665,47 @@ file.list = (response) => {
 }
 
 file.scrollbar_width = (element) =>  {
+    /*
+    var $div = $('<div />')
+        .css({ width: 100, height: 100, overflow: 'auto', position: 'absolute', top: -1000, left: -1000 })
+        .prependTo('body').append('<div />').find('div')
+        .css({ width: '100%', height: 200 });
+    scrollbarWidth = 100 - $div.width();
+    $div.parent().remove();
+     */
+
     let scrollbar = element.scrollbar('all');
     console.log(scrollbar);
 }
 
 file.calculate_list = (list, column) => {
     let total_width = list.computedStyle('width');
-    const scrollbar_width = file.scrollbar_width(list);
+    //const scrollbar_width = file.scrollbar_width(list);
+
+    let div = create('div');
+    div.css('width', '100px');
+    div.css('height', '100px');
+    div.css('overflow', 'auto');
+    div.css('position', 'absolute');
+    div.css('top', '-1000px');
+    div.css('top', '0px');
+    div.css('left', '-1000px');
+    div.css('left', '0px');
+    let div_child = create('div');
+    div_child.css('width', '100%');
+    div_child.css('height', '200px');
+    div.appendChild(div_child);
+    list.appendChild(div);
+    let width = div.computedStyle('width');
+    console.log(100 - width);
+    /*
+    var $div = $('<div />')
+        .css({ width: 100, height: 100, overflow: 'auto', position: 'absolute', top: -1000, left: -1000 })
+        .prependTo('body').append('<div />').find('div')
+        .css({ width: '100%', height: 200 });
+    scrollbarWidth = 100 - $div.width();
+    $div.parent().remove();
+     */
 
     console.log(scrollbar_width);
     if(total_width.split('px').length > 1){

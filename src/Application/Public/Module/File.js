@@ -1665,8 +1665,8 @@ file.list = (response) => {
 }
 
 file.scrollbar_width = (element) =>  {
-    const style = getComputedStyle(element);
-    style.scrollbarWidth = 'thin';
+    let scrollbar = element.scrollbar('all');
+    console.log(scrollbar);
 }
 
 file.calculate_list = (list, column) => {

@@ -1307,7 +1307,9 @@ file.recycle_overview = (response) => {
                 button.on('click', function(e){
                     e.preventDefault();
                     let li_option = button.closest('li');
-                    let data = JSON.parse(li_option.data('uuid'));
+                    let data = {
+                        many: JSON.parse(li_option.data('uuid'))
+                    };
                     let url = file.data.get('route.backend.recycle.bin.restore.many');
                     let token = user.token();
                     header('Authorization', 'Bearer ' + token);

@@ -1307,9 +1307,11 @@ file.recycle_overview = (response) => {
                 button.on('click', function(e){
                     e.preventDefault();
                     let li_option = button.closest('li');
-                    let uuid = JSON.parse(li_option.data('uuid'));
-                    console.log(uuid);
-                    alert('restore data point');
+                    let data = JSON.parse(li_option.data('uuid'));
+                    let url = file.get('route.backend.recycle.bin.restore.many');
+                    request(url, data, (url, response) => {
+                        console.log(response);
+                    });
                 });
             }
         } else if(button_restore_point){

@@ -1308,7 +1308,7 @@ file.recycle_overview = (response) => {
                     e.preventDefault();
                     let li_option = button.closest('li');
                     let data = JSON.parse(li_option.data('uuid'));
-                    let url = file.get('route.backend.recycle.bin.restore.many');
+                    let url = file.data.get('route.backend.recycle.bin.restore.many');
                     request(url, data, (url, response) => {
                         console.log(response);
                     });

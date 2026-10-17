@@ -566,8 +566,6 @@ section[name="application-file-manager"] .list ul.recycle-list li span.type {
 }
 
 section[name="application-file-manager"] .list ul.recycle-list li.header {
-    position: sticky;
-    top: 0;
     background-image: linear-gradient(rgba(225, 225, 225, 0.5), rgba(0, 33, 177, 0.4));
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;

@@ -1086,6 +1086,10 @@ file.recycle_overview = (response) => {
     console.log(file.data.get('section.id'));
     console.log(section);
     console.log(response);
+    const type = response?.type;
+    if(type !== 'recycle-bin'){
+        return;
+    }
     if (!section) {
         return;
     }

@@ -22,19 +22,11 @@ address.resize = () => {
     if(is_link){
         const data = file.data.get('response');
         if(
-            data
+            data &&
+            data?.type === 'recycle-bin'
         ){
             file.recycle_overview(data);
         }
-        /*
-        const list = section.select('.list');
-        let header = list.select('.header');
-        let column = header.length ?? 1;
-        if(list){
-            file.calculate_list(list, column);
-        }
-         */
-        return;
     } else {
         const data = file.data.get('response');
         if(

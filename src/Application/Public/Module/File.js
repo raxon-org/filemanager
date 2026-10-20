@@ -1331,12 +1331,27 @@ file.recycle_overview = (response) => {
                 });
             }
         } else if(button_restore_point){
-            button_restore_point.on('click', function(e){
+            let button = button_restore_point;
+            button.on('click', function(e){
                 e.preventDefault();
                 let li_option = button.closest('li');
-                let uuid = JSON.parse(li_option.data('uuid'));
-                console.log(uuid);
-                alert('restore data point');
+                let data = {
+                    many: JSON.parse(li_option.data('uuid'))
+                };
+                let url = file.data.get('route.backend.recycle.bin.restore.many');
+                let token = user.token();
+                header('Authorization', 'Bearer ' + token);
+                request(url, data, (url, response) => {
+                    if(response?.error === false){
+                        const section = getSectionById(file.data.get('section.id'));
+                        let address = section.select('input[name="address"]');
+                        if(address){
+                            address.trigger('change');
+                        }
+                    } else {
+                        console.log(response?.error);
+                    }
+                });
             });
         }
         let button_delete_point = list.select('.datapoint .delete');

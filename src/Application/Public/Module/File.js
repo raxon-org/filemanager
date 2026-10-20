@@ -1318,7 +1318,15 @@ file.recycle_overview = (response) => {
                     let token = user.token();
                     header('Authorization', 'Bearer ' + token);
                     request(url, data, (url, response) => {
-                        console.log(response);
+                        if(response?.error === false){
+                            const section = getSectionById(file.data.get('section.id'));
+                            let address = section.select('input[name="address"]');
+                            if(address){
+                                address.trigger('change');
+                            }
+                        } else {
+                            console.log(response?.error);
+                        }
                     });
                 });
             }

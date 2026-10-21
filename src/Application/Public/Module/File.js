@@ -1133,9 +1133,9 @@ file.recycle_overview = (response) => {
     li.html('<div><br></div>');
     ul.appendChild(li);
     column++;
-    li = create('li');
-    li.addClass('title header source');
-    li.html('<div>' +
+    let li_source = create('li');
+    li_source.addClass('title header source');
+    li_source.html('<div>' +
         '<span class="restore">' +
         '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 640 640">' +
         '<!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc. -->' +
@@ -1153,7 +1153,7 @@ file.recycle_overview = (response) => {
         '<br>' +
         '</div>');
 
-    ul.appendChild(li);
+    ul.appendChild(li_source);
 
     column++;
     li = create('li');
@@ -1294,7 +1294,7 @@ file.recycle_overview = (response) => {
         // ul_list.push(ul);
         // ul_list_column.push(column);
     }
-    li_all_options.data('uuid', JSON.stringify(all));
+    li_source.data('uuid', JSON.stringify(all));
     if(list) {
         list.appendChild(ul);
         let button_restore_all = list.select('.title .restore');

@@ -1322,7 +1322,24 @@ file.recycle_overview = (response) => {
         let button_empty_all = list.select('.title .empty');
         button_empty_all.on('click', function(e){
             e.preventDefault();
-            alert('empty all');
+            let li_option = button.closest('li');
+            let data = {
+                many: JSON.parse(li_option.data('uuid'))
+            };
+            let url = file.data.get('route.backend.recycle.bin.delete.many');
+            let token = user.token();
+            header('Authorization', 'Bearer ' + token);
+            request(url, data, (url, response) => {
+                if(response?.error === false){
+                    const section = getSectionById(file.data.get('section.id'));
+                    let address = section.select('input[name="address"]');
+                    if(address){
+                        address.trigger('change');
+                    }
+                } else {
+                    console.log(response?.error);
+                }
+            });
         });
         let button_restore_point = list.select('.datapoint .restore');
         if(is.nodeList(button_restore_point)){
@@ -1381,18 +1398,46 @@ file.recycle_overview = (response) => {
                 button.on('click', function(e){
                     e.preventDefault();
                     let li_option = button.closest('li');
-                    let uuid = JSON.parse(li_option.data('uuid'));
-                    console.log(uuid);
-                    alert('delete data point');
+                    let data = {
+                        many: JSON.parse(li_option.data('uuid'))
+                    };
+                    let url = file.data.get('route.backend.recycle.bin.delete.many');
+                    let token = user.token();
+                    header('Authorization', 'Bearer ' + token);
+                    request(url, data, (url, response) => {
+                        if(response?.error === false){
+                            const section = getSectionById(file.data.get('section.id'));
+                            let address = section.select('input[name="address"]');
+                            if(address){
+                                address.trigger('change');
+                            }
+                        } else {
+                            console.log(response?.error);
+                        }
+                    });
                 });
             }
         } else if(button_delete_point){
             button_delete_point.on('click', function(e){
                 e.preventDefault();
                 let li_option = button.closest('li');
-                let uuid = JSON.parse(li_option.data('uuid'));
-                console.log(uuid);
-                alert('delete data point');
+                let data = {
+                    many: JSON.parse(li_option.data('uuid'))
+                };
+                let url = file.data.get('route.backend.recycle.bin.delete.many');
+                let token = user.token();
+                header('Authorization', 'Bearer ' + token);
+                request(url, data, (url, response) => {
+                    if(response?.error === false){
+                        const section = getSectionById(file.data.get('section.id'));
+                        let address = section.select('input[name="address"]');
+                        if(address){
+                            address.trigger('change');
+                        }
+                    } else {
+                        console.log(response?.error);
+                    }
+                });
             });
         }
         let button_restore_location = list.select('.location .restore');
@@ -1401,13 +1446,46 @@ file.recycle_overview = (response) => {
                 let button = button_restore_location[index];
                 button.on('click', function(e){
                     e.preventDefault();
-                    alert('restore uuid:' + button.data('uuid'));
+                    let data = {
+                        uuid: button.data('uuid')
+                    };
+                    let url = file.data.get('route.backend.recycle.bin.restore.record');
+                    let token = user.token();
+                    header('Authorization', 'Bearer ' + token);
+                    request(url, data, (url, response) => {
+                        if(response?.error === false){
+                            const section = getSectionById(file.data.get('section.id'));
+                            let address = section.select('input[name="address"]');
+                            if(address){
+                                address.trigger('change');
+                            }
+                        } else {
+                            console.log(response?.error);
+                        }
+                    });
                 });
             }
         } else if(button_restore_location){
-            button_restore_location.on('click', function(e){
+            let button = button_restore_location;
+            button.on('click', function(e){
                 e.preventDefault();
-                alert('restore uuid:' + button_restore_location.data('uuid'));
+                let data = {
+                    uuid: button.data('uuid')
+                };
+                let url = file.data.get('route.backend.recycle.bin.restore.record');
+                let token = user.token();
+                header('Authorization', 'Bearer ' + token);
+                request(url, data, (url, response) => {
+                    if(response?.error === false){
+                        const section = getSectionById(file.data.get('section.id'));
+                        let address = section.select('input[name="address"]');
+                        if(address){
+                            address.trigger('change');
+                        }
+                    } else {
+                        console.log(response?.error);
+                    }
+                });
             });
         }
 
@@ -1417,16 +1495,48 @@ file.recycle_overview = (response) => {
                 let button = button_delete_location[index];
                 button.on('click', function(e){
                     e.preventDefault();
-                    alert('delete uuid:' + button.data('uuid'));
+                    let data = {
+                        uuid: button.data('uuid')
+                    };
+                    let url = file.data.get('route.backend.recycle.bin.delete.record');
+                    let token = user.token();
+                    header('Authorization', 'Bearer ' + token);
+                    request(url, data, (url, response) => {
+                        if(response?.error === false){
+                            const section = getSectionById(file.data.get('section.id'));
+                            let address = section.select('input[name="address"]');
+                            if(address){
+                                address.trigger('change');
+                            }
+                        } else {
+                            console.log(response?.error);
+                        }
+                    });
                 });
             }
         } else if(button_delete_location){
-            button_delete_location.on('click', function(e){
+            let button = button_delete_location;
+            button.on('click', function(e){
                 e.preventDefault();
-                alert('delete uuid:' + button_delete_location.data('uuid'));
+                let data = {
+                    uuid: button.data('uuid')
+                };
+                let url = file.data.get('route.backend.recycle.bin.delete.record');
+                let token = user.token();
+                header('Authorization', 'Bearer ' + token);
+                request(url, data, (url, response) => {
+                    if(response?.error === false){
+                        const section = getSectionById(file.data.get('section.id'));
+                        let address = section.select('input[name="address"]');
+                        if(address){
+                            address.trigger('change');
+                        }
+                    } else {
+                        console.log(response?.error);
+                    }
+                });
             });
         }
-
         //might be needed to constuct the scrollbar
         setTimeout( () => {
             file.calculate_list(list, 4);

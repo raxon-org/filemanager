@@ -4,7 +4,6 @@ namespace Domain\{{php.namespace.host($options.frontend.host)}}\Application\File
 
 use Raxon\App;
 use Raxon\Module\Controller;
-
 use Raxon\Exception\LocateException;
 use Raxon\Exception\UrlEmptyException;
 use Raxon\Exception\UrlNotExistException;

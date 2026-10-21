@@ -1299,6 +1299,7 @@ file.recycle_overview = (response) => {
         list.appendChild(ul);
         let button_restore_all = list.select('.title .restore');
         button_restore_all.on('click', function(e){
+            let button = button_restore_all;
             e.preventDefault();
             let li_option = button.closest('li');
             let data = {
@@ -1322,6 +1323,7 @@ file.recycle_overview = (response) => {
         let button_empty_all = list.select('.title .empty');
         button_empty_all.on('click', function(e){
             e.preventDefault();
+            let button = button_empty_all;
             let li_option = button.closest('li');
             let data = {
                 many: JSON.parse(li_option.data('uuid'))

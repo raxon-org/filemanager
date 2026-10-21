@@ -1490,7 +1490,6 @@ file.recycle_overview = (response) => {
                 });
             });
         }
-
         let button_delete_location = list.select('.location .delete');
         if(is.nodeList(button_delete_location)){
             for(let index=0; index < button_delete_location.length; index++){

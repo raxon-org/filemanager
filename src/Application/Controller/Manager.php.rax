@@ -54,6 +54,7 @@ class Manager extends Controller {
         return Manager::response($object, $url);
     }
 
+
     /**
      * @throws LocateException
      * @throws ObjectException

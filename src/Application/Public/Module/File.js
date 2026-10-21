@@ -1161,10 +1161,11 @@ file.recycle_overview = (response) => {
     li.html('<div><br></div>');
     ul.appendChild(li);
     column++;
-    li = create('li');
-    li.addClass('title header options');
-    li.html('<div><br></div>');
-    ul.appendChild(li);
+    let li_all_options = create('li');
+    li_all_options.addClass('title header options');
+    li_all_options.html('<div><br></div>');
+    ul.appendChild(li_all_options);
+    let all = [];
     for(let date in response.nodeList){
         column = 0;
         let li = create('li');
@@ -1221,6 +1222,7 @@ file.recycle_overview = (response) => {
         for(let index=0; index < list.length; index++){
             let node = list[index];
             datapoint.push(node.uuid);
+            all.push(node.uuid);
             totalBytes+=node.size;
             li_item = create('li');
             li_item.addClass('location date');
@@ -1292,12 +1294,30 @@ file.recycle_overview = (response) => {
         // ul_list.push(ul);
         // ul_list_column.push(column);
     }
+    li_all_options.data('uuid', JSON.stringify(all));
     if(list) {
         list.appendChild(ul);
         let button_restore_all = list.select('.title .restore');
         button_restore_all.on('click', function(e){
             e.preventDefault();
-            alert('restore all');
+            let li_option = button.closest('li');
+            let data = {
+                many: JSON.parse(li_option.data('uuid'))
+            };
+            let url = file.data.get('route.backend.recycle.bin.restore.many');
+            let token = user.token();
+            header('Authorization', 'Bearer ' + token);
+            request(url, data, (url, response) => {
+                if(response?.error === false){
+                    const section = getSectionById(file.data.get('section.id'));
+                    let address = section.select('input[name="address"]');
+                    if(address){
+                        address.trigger('change');
+                    }
+                } else {
+                    console.log(response?.error);
+                }
+            });
         });
         let button_empty_all = list.select('.title .empty');
         button_empty_all.on('click', function(e){

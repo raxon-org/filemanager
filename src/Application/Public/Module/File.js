@@ -1420,7 +1420,8 @@ file.recycle_overview = (response) => {
                 });
             }
         } else if(button_delete_point){
-            button_delete_point.on('click', function(e){
+            let button = button_delete_point;
+            button.on('click', function(e){
                 e.preventDefault();
                 let li_option = button.closest('li');
                 let data = {

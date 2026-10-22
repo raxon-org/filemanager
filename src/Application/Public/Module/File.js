@@ -1401,7 +1401,8 @@ file.recycle_overview = (response) => {
                     e.preventDefault();
                     let li_option = button.closest('li');
                     let data = {
-                        many: JSON.parse(li_option.data('uuid'))
+                        many: JSON.parse(li_option.data('uuid')),
+                        "request-method": "DELETE"
                     };
                     let url = file.data.get('route.backend.recycle.bin.delete.many');
                     let token = user.token();
@@ -1425,7 +1426,8 @@ file.recycle_overview = (response) => {
                 e.preventDefault();
                 let li_option = button.closest('li');
                 let data = {
-                    many: JSON.parse(li_option.data('uuid'))
+                    many: JSON.parse(li_option.data('uuid')),
+                    "request-method": "DELETE"
                 };
                 let url = file.data.get('route.backend.recycle.bin.delete.many');
                 let token = user.token();

@@ -1497,7 +1497,8 @@ file.recycle_overview = (response) => {
                 button.on('click', function(e){
                     e.preventDefault();
                     let data = {
-                        uuid: button.data('uuid')
+                        uuid: button.data('uuid'),
+                        "request-method": "DELETE"
                     };
                     let url = file.data.get('route.backend.recycle.bin.delete.record');
                     let token = user.token();
@@ -1520,7 +1521,8 @@ file.recycle_overview = (response) => {
             button.on('click', function(e){
                 e.preventDefault();
                 let data = {
-                    uuid: button.data('uuid')
+                    uuid: button.data('uuid'),
+                    "request-method": "DELETE"
                 };
                 let url = file.data.get('route.backend.recycle.bin.delete.record');
                 let token = user.token();

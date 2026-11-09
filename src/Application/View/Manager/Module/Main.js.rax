@@ -1,5 +1,4 @@
 {{$backend.host = options('backend.host')}}{{$frontend.host = options('frontend.host')}}{{literal}}
-{{$backend.host = options('backend.host')}}{{$frontend.host = options('frontend.host')}}{{literal}}
 //{{RAX}}
 import { address } from "/Application/Filemanager/Module/Address.js";
 import { directory } from "/Application/Filemanager/Module/Directory.js";

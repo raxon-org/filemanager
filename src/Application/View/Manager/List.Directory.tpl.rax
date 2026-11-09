@@ -113,15 +113,15 @@ directory.open();
                 {{if($node.type === 'Link')}}
                 <li
                     class="bind indent indent-{{$indent}} expand"
-                    data-url="{{$li.data.url}}"
-                    data-frontend-url="{{$li.data.frontend.url}}"
-                    data-target="{{$li.data.target}}"
-                    data-method="{{$li.data.method}}"
-                    data-link="{{$li.data.link}}"
-                    data-type="{{$li.data.type}}"
-                    data-indent="{{$li.data.indent}}"
-                    data-section-dir="{{$li.data.section.dir}}"
-                    {{$li.data.rename}}
+                    data-url="{{$li.data.url|>default:''}}"
+                    data-frontend-url="{{$li.data.frontend.url|>default:''}}"
+                    data-target="{{$li.data.target|>default:''}}"
+                    data-method="{{$li.data.method|>default:''}}"
+                    data-link="{{$li.data.link|>default:''}}"
+                    data-type="{{$li.data.type|>default:''}}"
+                    data-indent="{{$li.data.indent|>default:''}}"
+                    data-section-dir="{{$li.data.section.dir|>default:''}}"
+                    {{$li.data.rename|>default:''}}
                 >
                     <p>
                         <span class="has-sub-dir expand">

@@ -159,7 +159,7 @@ directory.open();
                     </p>
                 </li>
                 {{/if}}
-                <section data-dir="{{$node.section.dir}}"></section>
+                <section data-dir="{{$node.section.dir|>default:''}}"></section>
             {{/foreach}}
         {{/if}}
     </ul>
